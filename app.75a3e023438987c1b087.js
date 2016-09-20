@@ -3,7 +3,7 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(583);
+	module.exports = __webpack_require__(581);
 
 
 /***/ },
@@ -101,7 +101,7 @@ webpackJsonp([0],[
 	      // Development render functions
 	      var renderApp = render;
 	      var renderError = function renderError(error) {
-	        var RedBox = __webpack_require__(578).default;
+	        var RedBox = __webpack_require__(576).default;
 	
 	        _reactDom2.default.render(_react2.default.createElement(RedBox, { error: error }), MOUNT_NODE);
 	      };
@@ -25712,17 +25712,32 @@ webpackJsonp([0],[
 	
 	var _RepoList2 = _interopRequireDefault(_RepoList);
 	
-	var _RepoDetail = __webpack_require__(539);
+	var _RepoDetail = __webpack_require__(538);
 	
 	var _RepoDetail2 = _interopRequireDefault(_RepoDetail);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// import RepoListRoute from './RepoList'
+	// import RepoDetailRoute from './RepoDetail'
+	
 	/*  Note: Instead of using JSX, we recommend using react-router
 	    PlainRoute objects to build route definitions.   */
 	
-	// import RepoList from '../components/RepoList'
-	// import RepoDetail from '../components/RepoDetail'
+	// export const createRoutes = (store) => ({
+	//   path        : '/',
+	//   component   : CoreLayout,
+	//   indexRoute  : { component: UserPage },
+	//   childRoutes : [
+	//     {
+	//       path      : '/user/:username',
+	//       component : UserPage
+	//     },
+	//     RepoListRoute(store),
+	//     RepoDetailRoute(store)
+	//   ]
+	// })
+	
 	// We only need to import the modules necessary for initial render
 	var createRoutes = exports.createRoutes = function createRoutes(store) {
 	  return {
@@ -25732,29 +25747,15 @@ webpackJsonp([0],[
 	    childRoutes: [{
 	      path: '/user/:username',
 	      component: _UserPage2.default
-	    }, (0, _RepoList2.default)(store), (0, _RepoDetail2.default)(store)]
+	    }, {
+	      path: '/user/:username/repos',
+	      component: _RepoList2.default
+	    }, {
+	      path: '/user/:username/repos/:repoName',
+	      component: _RepoDetail2.default
+	    }]
 	  };
 	};
-	
-	// export const createRoutes = (store) => ({
-	//   path        : '/',
-	//   component   : CoreLayout,
-	//   indexRoute  : {component: UserPage},
-	//   childRoutes : [
-	//     {
-	//       path: '/user/:username',
-	//       component:UserPage
-	//     },
-	//     {
-	//       path: '/user/:username/repos',
-	//       component:RepoList
-	//     },
-	//     {
-	//       path: '/user/:username/repos/:repoName',
-	//       component:RepoDetail
-	//     },
-	//   ]
-	// })
 	
 	/*  Note: childRoutes can be chunked or otherwise loaded programmatically
 	    using getChildRoutes with the following signature:
@@ -39056,126 +39057,41145 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	      value: true
+	  value: true
 	});
 	
-	var _reducers = __webpack_require__(292);
+	var _RepoListTransition = __webpack_require__(532);
 	
-	exports.default = function (store) {
-	      return {
-	            path: '/user/:username/repos',
-	            /*  Async getComponent is only invoked when route matches   */
-	            getComponent: function getComponent(nextState, cb) {
-	                  /*  Webpack - use 'require.ensure' to create a split point
-	                   and embed an async module loader (jsonp) when bundling   */
-	                  __webpack_require__.e/* nsure */(1, function (require) {
-	                        /*  Webpack - use require callback to define
-	                         dependencies for bundling   */
-	                        var RepoList = __webpack_require__(532).default;
-	                        var reducer = __webpack_require__(538).default;
+	var _RepoListTransition2 = _interopRequireDefault(_RepoListTransition);
 	
-	                        /*  Add the reducer to the store on key 'counter'  */
-	                        (0, _reducers.injectReducer)(store, { key: 'repoListReducer', reducer: reducer });
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	                        // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
-	                        // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
-	
-	                        /*  Return getComponent   */
-	                        cb(null, RepoList);
-	
-	                        /* Webpack named bundle   */
-	                  });
-	            }
-	      };
-	};
+	exports.default = _RepoListTransition2.default; // import RepoListContainer from '../../routes/CoreLayout/containers/RepoListContainer'
 
 /***/ },
-/* 532 */,
-/* 533 */,
-/* 534 */,
-/* 535 */,
-/* 536 */,
-/* 537 */,
-/* 538 */,
+/* 532 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _getPrototypeOf = __webpack_require__(353);
+	
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+	
+	var _classCallCheck2 = __webpack_require__(357);
+	
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(358);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
+	
+	var _possibleConstructorReturn2 = __webpack_require__(359);
+	
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	
+	var _inherits2 = __webpack_require__(394);
+	
+	var _inherits3 = _interopRequireDefault(_inherits2);
+	
+	var _react = __webpack_require__(37);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	__webpack_require__(533);
+	
+	var _RepoListContainer = __webpack_require__(535);
+	
+	var _RepoListContainer2 = _interopRequireDefault(_RepoListContainer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var RepoListTransition = function (_React$Component) {
+	  (0, _inherits3.default)(RepoListTransition, _React$Component);
+	
+	  function RepoListTransition() {
+	    (0, _classCallCheck3.default)(this, RepoListTransition);
+	
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RepoListTransition.__proto__ || (0, _getPrototypeOf2.default)(RepoListTransition)).call(this));
+	
+	    _this.state = {
+	      offsetTop: 0
+	    };
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(RepoListTransition, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'onTransitionWillStart',
+	    value: function onTransitionWillStart(data) {
+	      this.setState({
+	        offsetTop: data.scrollTop
+	      });
+	    }
+	  }, {
+	    key: 'onTransitionDidEnd',
+	    value: function onTransitionDidEnd() {
+	      this.setState({ offsetTop: 0 });
+	
+	      // Show search, need a delay to trigger CSS animation
+	      // setTimeout(() => this.setState({ showSearch: true }), 50);
+	      //
+	      // setTimeout(() => {
+	      //     // Get user profile
+	      //     this.props.searchUserRepos(this.props.params.username, this.state.searchText, this.props.repoListReducer.page)
+	      // }, 300);
+	
+	      // Hack the footer
+	      this.hackTheFooter();
+	    }
+	  }, {
+	    key: 'hackTheFooter',
+	    value: function hackTheFooter() {
+	      var oldFooter = document.querySelector('.footer');
+	      var newFooter = oldFooter.cloneNode(true);
+	      oldFooter.style.display = 'none';
+	      newFooter.classList.remove('original');
+	      document.querySelector('#repo-list-page #scroll-wrapper').appendChild(newFooter);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          id: 'repo-list-page',
+	          className: 'transition-item',
+	          style: { top: this.state.offsetTop }
+	        },
+	        _react2.default.createElement(_RepoListContainer2.default, { params: this.props.params })
+	      );
+	    }
+	  }]);
+	  return RepoListTransition;
+	}(_react2.default.Component);
+	
+	RepoListTransition.propTypes = {};
+	exports.default = RepoListTransition;
+
+/***/ },
+/* 533 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(534);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(12)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(534, function() {
+				var newContent = __webpack_require__(534);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 534 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "#repo-list-page{padding-top:25px;background-color:#f5f5f5;position:absolute;bottom:0;right:0;left:0}#repo-list-page #search-wrapper{position:absolute;top:20px;left:15px;right:15px;z-index:2;border-radius:8px;transform:translateZ(0);transition:box-shadow .3s,transform .3s}#repo-list-page #search-wrapper.shadow{box-shadow:0 0 20px rgba(0,0,0,.3);transform:translate3d(0,-12px,0)}#repo-list-page #scroll-wrapper{position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:scroll;overflow-x:hidden;-webkit-overflow-scrolling:touch;z-index:1}#repo-list-page #search-input input{border:1px solid #e5e5e5}#repo-list-page #repo-list{margin:75px 15px 15px;min-height:100vh}#repo-list-page #load-more{width:165px;height:40px;margin:30px auto;line-height:40px;border-radius:8px;border:1px solid #aeb6c0;font-family:GothamPro-Bold;font-size:14px;letter-spacing:.5px;text-align:center;color:#8f9aa8}#repo-list-page.transition-appear{transform:scale(0);opacity:.01;transition:transform .3s cubic-bezier(.7,0,.25,1),box-shadow .3s cubic-bezier(.7,0,.25,1);height:100vh}#repo-list-page.transition-appear.transition-appear-active{transform:scale(1);opacity:1}", "", {"version":3,"sources":["/./src/components/RepoList/src/components/RepoList/RepoList.scss"],"names":[],"mappings":"AAAA,gBAEI,iBAAkB,yBACQ,kBACP,SACT,QACD,MACD,CAPZ,gCAUM,kBAAmB,SACT,UACC,WACC,UACD,kBACQ,wBACG,uCACsB,CAjBlD,uCAoBQ,mCAA2B,gCACL,CArB9B,gCA0BM,kBAAmB,MACZ,OACC,QACC,SACC,kBACS,kBACA,iCACe,SACvB,CAlCjB,oCAsCM,wBAA0B,CAtChC,2BA2CM,sBAAkB,gBAGA,CA9CxB,2BAkDM,YAAa,YACA,iBACK,iBACA,kBACC,yBACO,2BACE,eACZ,oBACM,kBACH,aACJ,CA5DrB,kCAgEM,mBAAgB,YACF,0FAEc,YACd,CApEpB,2DAwEM,mBAAgB,SACL,CACZ","file":"RepoList.scss","sourcesContent":[":global {\n  #repo-list-page {\n    padding-top: 25px;\n    background-color: #f5f5f5;\n    position: absolute;\n    bottom: 0;\n    right: 0;\n    left: 0;\n\n    #search-wrapper {\n      position: absolute;\n      top: 20px;\n      left: 15px;\n      right: 15px;\n      z-index: 2;\n      border-radius: 8px;\n      transform: translate3d(0, 0, 0);\n      transition: box-shadow 0.3s, transform 0.3s;\n\n      &.shadow {\n        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);\n        transform: translate3d(0, -12px, 0);\n      }\n    }\n\n    #scroll-wrapper {\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      overflow-y: scroll; /* has to be scroll, not auto */\n      overflow-x: hidden;\n      -webkit-overflow-scrolling: touch;\n      z-index: 1;\n    }\n\n    #search-input input {\n      border: solid 1px #e5e5e5;\n    }\n\n    #repo-list {\n      margin-top: 75px;\n      margin-left: 15px;\n      margin-right: 15px;\n      margin-bottom: 15px;\n      min-height: 100vh;\n    }\n\n    #load-more {\n      width: 165px;\n      height: 40px;\n      margin: 30px auto;\n      line-height: 40px;\n      border-radius: 8px;\n      border: solid 1px #aeb6c0;\n      font-family: GothamPro-Bold;\n      font-size: 14px;\n      letter-spacing: 0.5px;\n      text-align: center;\n      color: #8f9aa8;\n    }\n\n    &.transition-appear {\n      transform: scale(0);\n      opacity: 0.01;\n      transition: transform 0.3s cubic-bezier(0.7, 0, 0.25, 1),\n      box-shadow 0.3s cubic-bezier(0.7, 0, 0.25, 1);\n      height: 100vh;\n    }\n\n    &.transition-appear.transition-appear-active {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n\n\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 535 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(402);
+	
+	var _RepoList = __webpack_require__(536);
+	
+	var _RepoList2 = _interopRequireDefault(_RepoList);
+	
+	var _user = __webpack_require__(432);
+	
+	var _RepoList3 = __webpack_require__(537);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapDispatchToProps = {
+	  searchUserRepos: _user.searchUserRepos,
+	  clearUserReposPage: _RepoList3.clearUserReposPage
+	};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    repoListReducer: state.repoListReducer.toJS()
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RepoList2.default);
+
+/***/ },
+/* 536 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends2 = __webpack_require__(293);
+	
+	var _extends3 = _interopRequireDefault(_extends2);
+	
+	var _getPrototypeOf = __webpack_require__(353);
+	
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+	
+	var _classCallCheck2 = __webpack_require__(357);
+	
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(358);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
+	
+	var _possibleConstructorReturn2 = __webpack_require__(359);
+	
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	
+	var _inherits2 = __webpack_require__(394);
+	
+	var _inherits3 = _interopRequireDefault(_inherits2);
+	
+	var _react = __webpack_require__(37);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _RepoItem = __webpack_require__(520);
+	
+	var _RepoItem2 = _interopRequireDefault(_RepoItem);
+	
+	var _SearchInput = __webpack_require__(417);
+	
+	var _SearchInput2 = _interopRequireDefault(_SearchInput);
+	
+	var _reactAddonsCssTransitionGroup = __webpack_require__(420);
+	
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var RepoList = function (_React$Component) {
+	  (0, _inherits3.default)(RepoList, _React$Component);
+	
+	  function RepoList() {
+	    (0, _classCallCheck3.default)(this, RepoList);
+	
+	    var _this2 = (0, _possibleConstructorReturn3.default)(this, (RepoList.__proto__ || (0, _getPrototypeOf2.default)(RepoList)).call(this));
+	
+	    _this2.state = {
+	      searchText: '',
+	      showSearch: false,
+	      offsetTop: 0
+	    };
+	    _this2.wait = false;
+	    _this2.search = _this2.search.bind(_this2);
+	    _this2.loadMore = _this2.loadMore.bind(_this2);
+	    _this2.onSectionScroll = _this2.onSectionScroll.bind(_this2);
+	    return _this2;
+	  }
+	
+	  (0, _createClass3.default)(RepoList, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.repoListReducer != this.props.repoListReducer || nextState.searchText != this.state.searchText || nextState.showSearch != this.state.showSearch || nextState.offsetTop != this.state.offsetTop;
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'onSectionScroll',
+	    value: function onSectionScroll() {
+	      var _this = this;
+	
+	      _this.lastScrollTop = _this.refs.scrollWrapper.scrollTop;
+	      if (_this.wait === false) {
+	        window.requestAnimationFrame(function () {
+	          if (_this.lastScrollTop > 0) {
+	            _this.refs.searchWrapper.classList.add('shadow');
+	          } else {
+	            _this.refs.searchWrapper.classList.remove('shadow');
+	          }
+	          _this.wait = false;
+	        });
+	        _this.wait = true;
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this = this;
+	
+	      this.refs.scrollWrapper.addEventListener('scroll', this.onSectionScroll);
+	
+	      this.onTransitionDidEnd();
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.params.username !== this.props.params.username) {
+	        this.searchUserRepos(this.props.params.username, this.state.searchText, this.props.repoListReducer.page);
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.clearUserReposPage();
+	
+	      this.refs.scrollWrapper.removeEventListener('scroll', this.onSectionScroll);
+	
+	      // Undo the footer hack in RepoList
+	      document.querySelector('.footer.original').style.display = 'flex';
+	    }
+	  }, {
+	    key: 'onTransitionWillStart',
+	    value: function onTransitionWillStart(data) {
+	      this.setState({
+	        offsetTop: data.scrollTop
+	      });
+	    }
+	  }, {
+	    key: 'onTransitionDidEnd',
+	    value: function onTransitionDidEnd() {
+	      var _this3 = this;
+	
+	      this.setState({ offsetTop: 0 });
+	
+	      // Show search, need a delay to trigger CSS animation
+	      setTimeout(function () {
+	        return _this3.setState({ showSearch: true });
+	      }, 50);
+	
+	      setTimeout(function () {
+	        // Get user profile
+	        _this3.props.searchUserRepos(_this3.props.params.username, _this3.state.searchText, _this3.props.repoListReducer.page);
+	      }, 300);
+	
+	      // Hack the footer
+	      // this.hackTheFooter();
+	    }
+	  }, {
+	    key: 'hackTheFooter',
+	    value: function hackTheFooter() {
+	      var oldFooter = document.querySelector('.footer');
+	      var newFooter = oldFooter.cloneNode(true);
+	      oldFooter.style.display = 'none';
+	      newFooter.classList.remove('original');
+	      document.querySelector('#repo-list-page #scroll-wrapper').appendChild(newFooter);
+	    }
+	  }, {
+	    key: 'loadMore',
+	    value: function loadMore() {
+	      if (this.props.repoListReducer.isSearching) return;
+	      this.props.searchUserRepos(this.props.params.username, this.state.searchText, this.props.repoListReducer.page + 1);
+	    }
+	  }, {
+	    key: 'search',
+	    value: function search() {
+	      if (this.props.repoListReducer.isSearching) return;
+	
+	      this.refs.scrollWrapper.scrollTop = 0;
+	      this.props.searchUserRepos(this.props.params.username, this.state.searchText, 1);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+	
+	      var _props$repoListReduce = this.props.repoListReducer;
+	      var isSearching = _props$repoListReduce.isSearching;
+	      var emptyData = _props$repoListReduce.emptyData;
+	      var complete = _props$repoListReduce.complete;
+	      var repos = _props$repoListReduce.repos;
+	
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            ref: 'searchWrapper',
+	            id: 'search-wrapper'
+	          },
+	          _react2.default.createElement(
+	            _reactAddonsCssTransitionGroup2.default,
+	            {
+	              transitionName: 'list',
+	              transitionAppear: true,
+	              transitionAppearTimeout: 500,
+	              transitionEnterTimeout: 500,
+	              transitionLeaveTimeout: 500
+	            },
+	            this.state.showSearch ? _react2.default.createElement(_SearchInput2.default, {
+	              placeholder: 'Find a repository...',
+	              buttonText: 'SEARCH',
+	              onChange: function onChange(e) {
+	                return _this4.setState({ searchText: e.target.value });
+	              },
+	              onSearch: this.search
+	            }) : null
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            ref: 'scrollWrapper',
+	            id: 'scroll-wrapper'
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'repo-list' },
+	            emptyData ? _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              ':-( Sad... No result found!'
+	            ) : _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                  _reactAddonsCssTransitionGroup2.default,
+	                  {
+	                    transitionName: 'list',
+	                    transitionAppear: true,
+	                    transitionAppearTimeout: 500,
+	                    transitionEnterTimeout: 500,
+	                    transitionLeaveTimeout: 500
+	                  },
+	                  repos.map(function (repo) {
+	                    return _react2.default.createElement(_RepoItem2.default, (0, _extends3.default)({ key: repo.id }, repo));
+	                  })
+	                )
+	              ),
+	              !complete && repos.length > 0 ? _react2.default.createElement(
+	                'div',
+	                {
+	                  id: 'load-more',
+	                  onClick: this.loadMore
+	                },
+	                isSearching ? 'LOADING...' : 'LOAD MORE'
+	              ) : null
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return RepoList;
+	}(_react2.default.Component);
+	// import './RepoList.scss';
+	
+	
+	RepoList.propTypes = {
+	  repoListReducer: _react2.default.PropTypes.object.isRequired,
+	  searchUserRepos: _react2.default.PropTypes.func.isRequired,
+	  clearUserReposPage: _react2.default.PropTypes.func.isRequired
+	};
+	exports.default = RepoList;
+
+/***/ },
+/* 537 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _defineProperty2 = __webpack_require__(332);
+	
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	
+	var _ACTION_HANDLERS;
+	
+	exports.clearUserReposPage = clearUserReposPage;
+	exports.default = moduleReducer;
+	
+	var _types = __webpack_require__(336);
+	
+	var _reduxImmutablejs = __webpack_require__(337);
+	
+	var _immutable = __webpack_require__(339);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function clearUserReposPage() {
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.CLEAR_USER_REPOS_PAGE });
+	  };
+	}
+	
+	var initialState = (0, _immutable.fromJS)({
+	  page: 1,
+	  repos: [],
+	  isSearching: false,
+	  complete: false
+	});
+	
+	// ------------------------------------
+	// Action Handlers
+	// ------------------------------------
+	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLEAR_USER_REPOS_PAGE, function (state, action) {
+	  return state.merge({
+	    isSearching: false,
+	    repos: [],
+	    page: 1,
+	    complete: false
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_REPOS_REQUEST, function (state, action) {
+	  return state.merge({
+	    isSearching: true,
+	    repos: action.page === 1 ? [] : state.toJS().repos
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_REPOS_COMPLETE, function (state, action) {
+	  return state.merge({
+	    complete: true
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_REPOS_RECEIVED, function (state, action) {
+	  return state.merge({
+	    repos: action.data,
+	    isSearching: false,
+	    emptyData: action.data.length === 0 && state.toJS().page === 1
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_REPOS_NEXT_PAGE_RECEIVED, function (state, action) {
+	  return state.merge({
+	    page: action.data.page,
+	    repos: state.toJS().repos.concat(action.data.repos),
+	    isSearching: false
+	  });
+	}), _ACTION_HANDLERS);
+	
+	// ------------------------------------
+	// Reducer
+	// ------------------------------------
+	function moduleReducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
+	
+	  var handler = ACTION_HANDLERS[action.type];
+	
+	  return handler ? handler(state, action) : state;
+	}
+
+/***/ },
+/* 538 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _RepoDetailTransition = __webpack_require__(539);
+	
+	var _RepoDetailTransition2 = _interopRequireDefault(_RepoDetailTransition);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _RepoDetailTransition2.default; // import RepoDetailContainer from '../../routes/CoreLayout/containers/RepoDetailContainer'
+
+/***/ },
 /* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	      value: true
+	  value: true
 	});
 	
-	var _reducers = __webpack_require__(292);
+	var _promise = __webpack_require__(442);
 	
-	exports.default = function (store) {
-	      return {
-	            path: '/user/:username/repos/:repoName',
-	            /*  Async getComponent is only invoked when route matches   */
-	            getComponent: function getComponent(nextState, cb) {
-	                  /*  Webpack - use 'require.ensure' to create a split point
-	                   and embed an async module loader (jsonp) when bundling   */
-	                  __webpack_require__.e/* nsure */(2, function (require) {
-	                        /*  Webpack - use require callback to define
-	                         dependencies for bundling   */
-	                        var RepoDetail = __webpack_require__(540).default;
-	                        var reducer = __webpack_require__(577).default;
+	var _promise2 = _interopRequireDefault(_promise);
 	
-	                        /*  Add the reducer to the store on key 'counter'  */
-	                        (0, _reducers.injectReducer)(store, { key: 'repoDetailReducer', reducer: reducer });
+	var _getPrototypeOf = __webpack_require__(353);
 	
-	                        // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
-	                        // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 	
-	                        /*  Return getComponent   */
-	                        cb(null, RepoDetail);
+	var _classCallCheck2 = __webpack_require__(357);
 	
-	                        /* Webpack named bundle   */
-	                  });
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(358);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
+	
+	var _possibleConstructorReturn2 = __webpack_require__(359);
+	
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	
+	var _inherits2 = __webpack_require__(394);
+	
+	var _inherits3 = _interopRequireDefault(_inherits2);
+	
+	var _react = __webpack_require__(37);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _jsBase = __webpack_require__(459);
+	
+	__webpack_require__(540);
+	
+	var _RepoDetailContainer = __webpack_require__(542);
+	
+	var _RepoDetailContainer2 = _interopRequireDefault(_RepoDetailContainer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var RepoDetail = function (_React$Component) {
+	  (0, _inherits3.default)(RepoDetail, _React$Component);
+	
+	  function RepoDetail() {
+	    (0, _classCallCheck3.default)(this, RepoDetail);
+	
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
+	
+	    _this.state = {
+	      doTransform: false,
+	      offsetTop: 0,
+	      startPosition: {
+	        top: 0,
+	        left: 0,
+	        right: 0
+	      }
+	    };
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(RepoDetail, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'onTransitionWillStart',
+	    value: function onTransitionWillStart(data) {
+	      var _this2 = this;
+	
+	      return new _promise2.default(function (resolve) {
+	        if (!data || !data.detailPageData) return;
+	        _this2.setState({
+	          startPosition: data.detailPageData.startPosition,
+	          repoDetailData: data.detailPageData.repoData,
+	          offsetTop: data.scrollTop,
+	          doTransform: true
+	        }, resolve);
+	      });
+	    }
+	  }, {
+	    key: 'onTransitionDidEnd',
+	    value: function onTransitionDidEnd() {
+	      // this.getProfile();
+	    }
+	  }, {
+	    key: 'transitionManuallyStart',
+	    value: function transitionManuallyStart() {
+	      var _this3 = this;
+	
+	      return new _promise2.default(function (resolve) {
+	        _this3.setState({
+	          startPosition: {
+	            top: 60
+	          },
+	          doTransform: true
+	        }, resolve);
+	      });
+	    }
+	  }, {
+	    key: 'transitionManuallyStop',
+	    value: function transitionManuallyStop() {
+	      this.setState({
+	        doTransform: false
+	      });
+	    }
+	
+	    // <RepoDetailContainer repoDetailData={this.state.repoDetailData} params={this.props.params} />
+	
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          id: 'repo-detail',
+	          className: 'transition-item',
+	          style: {
+	            transform: this.state.doTransform ? 'translate3d(0, ' + (this.state.startPosition.top + this.state.offsetTop - 60) + 'px, 0)' : undefined
+	          }
+	        },
+	        _react2.default.createElement(_RepoDetailContainer2.default, { repoDetailData: this.state.repoDetailData, params: this.props.params })
+	      );
+	    }
+	  }]);
+	  return RepoDetail;
+	}(_react2.default.Component);
+	
+	RepoDetail.propTypes = {};
+	exports.default = RepoDetail;
+
+/***/ },
+/* 540 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(541);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(12)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(541, function() {
+				var newContent = __webpack_require__(541);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 541 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "#repo-detail{min-height:100vh;overflow:hidden;background-color:#f5f5f5}#repo-detail.transition-appear{transition:transform .3s,top .3s,left .3s,right .3s,width .3s,bottom .3s,width .3s,height .3s}.tab-wrapper-transition-group{height:50px;display:block}#repo-tabs-wrapper{height:50px;overflow:hidden;border-bottom:.5px solid #e5e5e5;z-index:2}#repo-tabs-wrapper.fixed{position:fixed;top:60px;right:0;left:0}#repo-tabs{height:70px;background-color:#f6f7f8;overflow-x:scroll;overflow-y:hidden;white-space:nowrap;-webkit-overflow-scrolling:touch}#repo-tabs .repo-tab-item{font-family:GothamPro;font-size:13px;height:50px;line-height:50px;letter-spacing:.3px;text-align:center;color:#8f9aa8;display:inline-block;padding:0 10px;position:relative;margin:0 5px}#repo-tabs .repo-tab-item:first-child{margin-left:15px}#repo-tabs .repo-tab-item:last-child{margin-right:15px}#repo-tabs .repo-tab-item:after{transform:scaleX(0);transition:transform .3s;transform-origin:left center;content:'';display:block;position:absolute;left:0;bottom:0;width:100%;height:3px;background-color:#8f9aa8}#repo-tabs .repo-tab-item.selected:after{transform:scaleX(1)}#repo-tab-content{position:relative;overflow:hidden;z-index:1}#repo-tab-content .repo-content-item{padding:15px;opacity:0;transform:translate3d(0,100px,0);transition:opacity .5s,transform .5s;position:absolute;right:15px;left:15px;top:15px}#repo-tab-content .repo-content-item.show{opacity:1;transform:translateZ(0);z-index:99}#repo-tab-content #files,#repo-tab-content #languages,#repo-tab-content #readme{border-radius:6px;background-color:#fff;border:1px solid #e5e5e5}.file-item{display:-ms-flexbox;display:flex;color:#8f9aa8;margin-bottom:19px}.file-item:last-child{margin-bottom:0}.file-item .file-icon{margin-right:12px}.file-item .file-name{font-family:GothamPro;font-size:14px;line-height:1.5;margin-bottom:8px}.file-item .file-date{font-family:GothamPro;font-size:13px;color:#aeb6c0}.contrib-item{display:-ms-flexbox;display:flex;color:#8f9aa8;margin-bottom:5px;border-radius:6px;background-color:#fff;border:.5px solid #e5e5e5;padding:15px}.contrib-item:last-child{margin-bottom:0}.contrib-item .contrib-avatar{margin-right:15px;width:40px;height:40px;background-position:50%;background-size:cover;border-radius:5px}.contrib-item .contrib-name{font-family:GothamPro-Medium;font-size:18px;letter-spacing:-.2px;color:#5c6877;margin-bottom:11px}.contrib-item .contrib-value{font-family:GothamPro;font-size:13px;color:#aeb6c0}.lang-item{display:-ms-flexbox;display:flex;color:#8f9aa8;margin-bottom:19px;-ms-flex-align:center;align-items:center}.lang-item:last-child{margin-bottom:0}.lang-item .lang-color{margin-right:20px;width:32px;height:32px;border-radius:16px}.lang-item .lang-name{font-family:GothamPro-Bold;font-size:15px;line-height:1.4;color:#5c6877;margin-bottom:5px}.lang-item .lang-date{font-family:GothamPro;font-size:13px;color:#aeb6c0}.empty-data,.offline-msg{text-align:center;font-size:15px;color:#ccc}.offline-msg{margin:20px 0}.offline-msg .blue-link{color:#64b5f6;font-weight:700;margin:10px;text-transform:uppercase}", "", {"version":3,"sources":["/./src/components/RepoDetail/src/components/RepoDetail/RepoDetail.scss"],"names":[],"mappings":"AAAA,aAII,iBAAkB,gBACD,wBACS,CAN9B,+BASM,6FAOY,CAhBlB,8BAwBI,YAvBc,aAwBC,CAzBnB,mBA6BI,YA5Bc,gBA6BG,iCACkB,SACxB,CAhCf,yBAmCM,eAAgB,SACN,QACD,MACD,CAtCd,WA2CI,YAAkB,yBACQ,kBACP,kBACA,mBACC,gCACc,CAhDtC,0BAmDM,sBAAuB,eACP,YAnDJ,iBAAA,oBAsDU,kBACH,cACJ,qBACO,eACN,kBACG,YACL,CA7DpB,sCAgEQ,gBAAkB,CAhE1B,qCAoEQ,iBAAmB,CApE3B,gCAwEQ,oBAAiB,yBACU,6BACG,WAClB,cACG,kBACI,OACX,SACE,WACE,WACA,wBACc,CAlFlC,yCAsFQ,mBAAiB,CAtFzB,kBA4FI,kBAAmB,gBACF,SACN,CA9Ff,qCAiGM,aAAc,UACH,iCACW,qCACmB,kBACtB,WACP,UACD,QACD,CAxGhB,0CA2GQ,UAAW,wBACW,UACV,CA7GpB,gFAkHM,kBAAmB,sBACO,wBACA,CApHhC,WAyHI,oBAAA,aAAc,cACC,kBACK,CA3HxB,sBA8HM,eAAiB,CA9HvB,sBAkIM,iBAAmB,CAlIzB,sBAqIM,sBAAuB,eACP,gBACC,iBACE,CAxIzB,sBA2IM,sBAAuB,eACP,aACD,CA7IrB,cAkJI,oBAAA,aAAc,cACC,kBACI,kBACA,sBACO,0BACE,YACd,CAxJlB,yBA2JM,eAAiB,CA3JvB,8BA+JM,kBAAmB,WACP,YACC,wBACsB,sBACZ,iBACJ,CApKzB,4BAwKM,6BAA8B,eACd,qBACO,cACR,kBACK,CA5K1B,6BA+KM,sBAAuB,eACP,aACD,CAjLrB,WAsLI,oBAAA,aAAc,cACC,mBACK,sBACpB,kBAAoB,CAzLxB,sBA2LM,eAAiB,CA3LvB,uBA+LM,kBAAmB,WACP,YACC,kBACO,CAlM1B,sBAqMM,2BAA4B,eACZ,gBACC,cACF,iBACI,CAzMzB,sBA4MM,sBAAuB,eACP,aACD,CA9MrB,yBAmNI,kBAAmB,eACH,UACJ,CArNhB,aAyNI,aAAe,CAzNnB,wBA8NM,cAAe,gBACG,YACL,wBACa,CAC3B","file":"RepoDetail.scss","sourcesContent":[":global {\n  $tabHeight: 50px;\n\n  #repo-detail {\n    min-height: 100vh;\n    overflow: hidden;\n    background-color: #f5f5f5;\n\n    &.transition-appear {\n      transition: transform 0.3s,\n      top 0.3s,\n      left 0.3s,\n      right 0.3s,\n      width 0.3s,\n      bottom 0.3s,\n      width 0.3s,\n      height 0.3s;\n    }\n\n    &.transition-appear.transition-appear-active {\n    }\n  }\n\n  .tab-wrapper-transition-group {\n    height: $tabHeight;\n    display: block;\n  }\n\n  #repo-tabs-wrapper {\n    height: $tabHeight;\n    overflow: hidden;\n    border-bottom: solid 0.5px #e5e5e5;\n    z-index: 2;\n\n    &.fixed {\n      position: fixed;\n      top: 60px;\n      right: 0;\n      left: 0;\n    }\n  }\n\n  #repo-tabs {\n    height: $tabHeight + 20px;\n    background-color: #f6f7f8;\n    overflow-x: scroll;\n    overflow-y: hidden;\n    white-space: nowrap;\n    -webkit-overflow-scrolling: touch;\n\n    .repo-tab-item {\n      font-family: GothamPro;\n      font-size: 13px;\n      height: $tabHeight;\n      line-height: $tabHeight;\n      letter-spacing: 0.3px;\n      text-align: center;\n      color: #8f9aa8;\n      display: inline-block;\n      padding: 0 10px;\n      position: relative;\n      margin: 0 5px;\n\n      &:first-child {\n        margin-left: 15px;\n      }\n\n      &:last-child {\n        margin-right: 15px;\n      }\n\n      &:after {\n        transform: scaleX(0);\n        transition: transform 0.3s;\n        transform-origin: left center;\n        content: '';\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        height: 3px;\n        background-color: #8f9aa8;\n      }\n\n      &.selected:after {\n        transform: scaleX(1);\n      }\n    }\n  }\n\n  #repo-tab-content {\n    position: relative;\n    overflow: hidden;\n    z-index: 1;\n\n    .repo-content-item {\n      padding: 15px;\n      opacity: 0;\n      transform: translate3d(0, 100px, 0);\n      transition: opacity 0.5s, transform 0.5s;\n      position: absolute;\n      right: 15px;\n      left: 15px;\n      top: 15px;\n\n      &.show {\n        opacity: 1;\n        transform: translate3d(0, 0, 0);\n        z-index: 99;\n      }\n    }\n\n    #readme, #files, #languages {\n      border-radius: 6px;\n      background-color: #ffffff;\n      border: solid 1px #e5e5e5;\n    }\n  }\n\n  .file-item {\n    display: flex;\n    color: #8f9aa8;\n    margin-bottom: 19px;\n\n    &:last-child {\n      margin-bottom: 0;\n    }\n\n    .file-icon {\n      margin-right: 12px;\n    }\n    .file-name {\n      font-family: GothamPro;\n      font-size: 14px;\n      line-height: 1.5;\n      margin-bottom: 8px;\n    }\n    .file-date {\n      font-family: GothamPro;\n      font-size: 13px;\n      color: #aeb6c0;\n    }\n  }\n\n  .contrib-item {\n    display: flex;\n    color: #8f9aa8;\n    margin-bottom: 5px;\n    border-radius: 6px;\n    background-color: #ffffff;\n    border: solid 0.5px #e5e5e5;\n    padding: 15px;\n\n    &:last-child {\n      margin-bottom: 0;\n    }\n\n    .contrib-avatar {\n      margin-right: 15px;\n      width: 40px;\n      height: 40px;\n      background-position: center center;\n      background-size: cover;\n      border-radius: 5px;\n    }\n\n    .contrib-name {\n      font-family: GothamPro-Medium;\n      font-size: 18px;\n      letter-spacing: -0.2px;\n      color: #5c6877;\n      margin-bottom: 11px;\n    }\n    .contrib-value {\n      font-family: GothamPro;\n      font-size: 13px;\n      color: #aeb6c0;\n    }\n  }\n\n  .lang-item {\n    display: flex;\n    color: #8f9aa8;\n    margin-bottom: 19px;\n    align-items: center;\n    &:last-child {\n      margin-bottom: 0;\n    }\n\n    .lang-color {\n      margin-right: 20px;\n      width: 32px;\n      height: 32px;\n      border-radius: 16px;\n    }\n    .lang-name {\n      font-family: GothamPro-Bold;\n      font-size: 15px;\n      line-height: 1.4;\n      color: #5c6877;\n      margin-bottom: 5px;\n    }\n    .lang-date {\n      font-family: GothamPro;\n      font-size: 13px;\n      color: #aeb6c0;\n    }\n  }\n\n  .empty-data {\n    text-align: center;\n    font-size: 15px;\n    color: #ccc;\n  }\n\n  .offline-msg {\n    margin: 20px 0;\n    text-align: center;\n    font-size: 15px;\n    color: #ccc;\n    .blue-link {\n      color: #64b5f6;\n      font-weight: bold;\n      margin: 10px;\n      text-transform: uppercase;\n    }\n  }\n\n}"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 542 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(402);
+	
+	var _RepoDetail = __webpack_require__(543);
+	
+	var _RepoDetail2 = _interopRequireDefault(_RepoDetail);
+	
+	var _user = __webpack_require__(432);
+	
+	var _RepoDetail3 = __webpack_require__(575);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapDispatchToProps = {
+	  getRepoPageDetail: _user.getRepoPageDetail,
+	  clearRepoDetailPage: _RepoDetail3.clearRepoDetailPage
+	};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    repoDetailReducer: state.repoDetailReducer.toJS()
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RepoDetail2.default);
+
+/***/ },
+/* 543 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _getPrototypeOf = __webpack_require__(353);
+	
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+	
+	var _classCallCheck2 = __webpack_require__(357);
+	
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+	
+	var _createClass2 = __webpack_require__(358);
+	
+	var _createClass3 = _interopRequireDefault(_createClass2);
+	
+	var _possibleConstructorReturn2 = __webpack_require__(359);
+	
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+	
+	var _inherits2 = __webpack_require__(394);
+	
+	var _inherits3 = _interopRequireDefault(_inherits2);
+	
+	var _react = __webpack_require__(37);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _jsBase = __webpack_require__(459);
+	
+	var _filesize = __webpack_require__(544);
+	
+	var _filesize2 = _interopRequireDefault(_filesize);
+	
+	var _reactMarkdown = __webpack_require__(545);
+	
+	var _reactMarkdown2 = _interopRequireDefault(_reactMarkdown);
+	
+	var _classnames = __webpack_require__(416);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _RepoContent = __webpack_require__(523);
+	
+	var _RepoContent2 = _interopRequireDefault(_RepoContent);
+	
+	var _languageColor = __webpack_require__(571);
+	
+	var _languageColor2 = _interopRequireDefault(_languageColor);
+	
+	var _reactAddonsCssTransitionGroup = __webpack_require__(420);
+	
+	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import './RepoDetail.scss';
+	
+	var TABS = [{ key: 'readme', value: 'README' }, { key: 'files', value: 'FILES & DIRECTORIES' }, { key: 'contributors', value: 'CONTRIBUTORS' }, { key: 'languages', value: 'LANGUAGES' }];
+	
+	var RepoDetail = function (_React$Component) {
+	  (0, _inherits3.default)(RepoDetail, _React$Component);
+	
+	  function RepoDetail() {
+	    (0, _classCallCheck3.default)(this, RepoDetail);
+	
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
+	
+	    _this.state = {
+	      activeTab: ''
+	    };
+	    _this.wait = false;
+	
+	    _this.getProfile = _this.getProfile.bind(_this);
+	    _this.switchTab = _this.switchTab.bind(_this);
+	    _this.refreshContentHeight = _this.refreshContentHeight.bind(_this);
+	    _this.onSectionScroll = _this.onSectionScroll.bind(_this);
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(RepoDetail, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.repoDetailReducer != this.props.repoDetailReducer || nextProps.repoDetailData != this.props.repoDetailData || nextState.activeTab != this.state.activeTab;
+	    }
+	  }, {
+	    key: 'onSectionScroll',
+	    value: function onSectionScroll() {
+	      var _this2 = this;
+	
+	      this.lastOffsetTop = this.refs.tabWrapper.parentElement.getBoundingClientRect().top;
+	      if (this.wait === false) {
+	        window.requestAnimationFrame(function () {
+	          if (_this2.lastOffsetTop < 60) {
+	            _this2.refs.tabWrapper.classList.add('fixed');
+	          } else {
+	            _this2.refs.tabWrapper.classList.remove('fixed');
+	          }
+	          _this2.wait = false;
+	        });
+	        this.wait = true;
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this3 = this;
+	
+	      this.scrollDom = document.getElementById('scroll-section');
+	
+	      this.scrollDom.addEventListener('scroll', this.onSectionScroll);
+	
+	      setTimeout(function () {
+	        _this3.getProfile();
+	      }, 300);
+	    }
+	  }, {
+	    key: 'getProfile',
+	    value: function getProfile() {
+	      var _this4 = this;
+	
+	      this.props.getRepoPageDetail(this.props.params.username, this.props.params.repoName).done(function () {
+	        return _this4.switchTab({
+	          key: 'readme'
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.clearRepoDetailPage();
+	
+	      this.scrollDom.removeEventListener('scroll', this.onSectionScroll);
+	    }
+	  }, {
+	    key: 'switchTab',
+	    value: function switchTab(tab) {
+	      var _this5 = this;
+	
+	      this.setState({
+	        activeTab: tab.key
+	      }, function () {
+	        _this5.refreshContentHeight(tab);
+	      });
+	    }
+	  }, {
+	    key: 'refreshContentHeight',
+	    value: function refreshContentHeight(tab) {
+	      var selectedTab = document.getElementById(tab.key);
+	      var tabContent = document.getElementById('repo-tab-content');
+	      // this.refs.tabContent.
+	      tabContent.style.height = selectedTab.offsetHeight + 30 + 'px';
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this6 = this;
+	
+	      var _props$repoDetailRedu = this.props.repoDetailReducer;
+	      var repo = _props$repoDetailRedu.repo;
+	      var readme = _props$repoDetailRedu.readme;
+	      var contribs = _props$repoDetailRedu.contribs;
+	      var contents = _props$repoDetailRedu.contents;
+	      var languages = _props$repoDetailRedu.languages;
+	      var loadFailed = _props$repoDetailRedu.loadFailed;
+	
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_RepoContent2.default, this.props.repoDetailData || repo),
+	        _react2.default.createElement(
+	          _reactAddonsCssTransitionGroup2.default,
+	          {
+	            className: 'tab-wrapper-transition-group',
+	            transitionName: 'list',
+	            transitionAppear: true,
+	            transitionAppearTimeout: 500,
+	            transitionEnterTimeout: 500,
+	            transitionLeaveTimeout: 500
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              id: 'repo-tabs-wrapper',
+	              ref: 'tabWrapper'
+	            },
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'repo-tabs' },
+	              TABS.map(function (tab) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  {
+	                    key: tab.key,
+	                    onClick: function onClick() {
+	                      return _this6.switchTab(tab);
+	                    },
+	                    className: (0, _classnames2.default)('repo-tab-item', { selected: _this6.state.activeTab === tab.key })
+	                  },
+	                  tab.value
+	                );
+	              })
+	            )
+	          )
+	        ),
+	        loadFailed ? _react2.default.createElement(
+	          'div',
+	          { className: 'offline-msg' },
+	          'You are offline!',
+	          _react2.default.createElement(
+	            'div',
+	            { onClick: this.getProfile(), className: 'blue-link' },
+	            'Try again'
+	          )
+	        ) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { ref: 'tabContent', id: 'repo-tab-content' },
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', 'markdown-body', { show: this.state.activeTab === 'readme' }),
+	              id: 'readme'
+	            },
+	            readme ? _react2.default.createElement(_reactMarkdown2.default, { source: readme }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'files' }),
+	              id: 'files'
+	            },
+	            contents.length ? contents.map(function (content) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: content.sha + content.name, className: 'file-item' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'file-icon' },
+	                  content.type === 'file' ? _react2.default.createElement('i', { className: 'fa fa-file-text-o' }) : _react2.default.createElement('i', { className: 'fa fa-folder' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'file-info' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'file-name' },
+	                    content.name
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'file-date' },
+	                    content.type === 'file' ? (0, _filesize2.default)(content.size) : null
+	                  )
+	                )
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'contributors' }),
+	              id: 'contributors'
+	            },
+	            contribs && contribs.length ? contribs.map(function (contrib) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: contrib.id + contrib.login, className: 'contrib-item' },
+	                _react2.default.createElement('div', {
+	                  className: 'contrib-avatar',
+	                  style: { backgroundImage: 'url(\'' + contrib.avatar_url + '\')' }
+	                }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'contrib-info' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'contrib-name' },
+	                    contrib.login
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'contrib-value' },
+	                    contrib.contributions,
+	                    ' ',
+	                    ' ',
+	                    'contribution',
+	                    contrib.contributions === 1 ? '' : 's'
+	                  )
+	                )
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'languages' }),
+	              id: 'languages'
+	            },
+	            languages.length ? languages.map(function (language) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: language.name, className: 'lang-item' },
+	                _react2.default.createElement('div', {
+	                  className: 'lang-color',
+	                  style: { backgroundColor: (0, _languageColor2.default)(language.name) }
+	                }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'lang-info' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'lang-name' },
+	                    language.name
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'lang-value' },
+	                    language.value,
+	                    '%'
+	                  )
+	                )
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return RepoDetail;
+	}(_react2.default.Component);
+	
+	RepoDetail.propTypes = {
+	  repoDetailReducer: _react2.default.PropTypes.object.isRequired,
+	  getRepoPageDetail: _react2.default.PropTypes.func.isRequired,
+	  clearRepoDetailPage: _react2.default.PropTypes.func.isRequired
+	};
+	exports.default = RepoDetail;
+
+/***/ },
+/* 544 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	
+	/**
+	 * filesize
+	 *
+	 * @copyright 2016 Jason Mulligan <jason.mulligan@avoidwork.com>
+	 * @license BSD-3-Clause
+	 * @version 3.3.0
+	 */
+	(function (global) {
+		var b = /^(b|B)$/;
+		var symbol = {
+			iec: {
+				bits: ["b", "Kib", "Mib", "Gib", "Tib", "Pib", "Eib", "Zib", "Yib"],
+				bytes: ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"]
+			},
+			jedec: {
+				bits: ["b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"],
+				bytes: ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+			}
+		};
+	
+		/**
+	  * filesize
+	  *
+	  * @method filesize
+	  * @param  {Mixed}   arg        String, Int or Float to transform
+	  * @param  {Object}  descriptor [Optional] Flags
+	  * @return {String}             Readable file size String
+	  */
+		function filesize(arg) {
+			var descriptor = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	
+			var result = [],
+			    val = 0,
+			    e = void 0,
+			    base = void 0,
+			    bits = void 0,
+			    ceil = void 0,
+			    neg = void 0,
+			    num = void 0,
+			    output = void 0,
+			    round = void 0,
+			    unix = void 0,
+			    spacer = void 0,
+			    standard = void 0,
+			    symbols = void 0;
+	
+			if (isNaN(arg)) {
+				throw new Error("Invalid arguments");
+			}
+	
+			bits = descriptor.bits === true;
+			unix = descriptor.unix === true;
+			base = descriptor.base || 2;
+			round = descriptor.round !== undefined ? descriptor.round : unix ? 1 : 2;
+			spacer = descriptor.spacer !== undefined ? descriptor.spacer : unix ? "" : " ";
+			symbols = descriptor.symbols || descriptor.suffixes || {};
+			standard = base === 2 ? descriptor.standard || "jedec" : "jedec";
+			output = descriptor.output || "string";
+			e = descriptor.exponent !== undefined ? descriptor.exponent : -1;
+			num = Number(arg);
+			neg = num < 0;
+			ceil = base > 2 ? 1000 : 1024;
+	
+			// Flipping a negative number to determine the size
+			if (neg) {
+				num = -num;
+			}
+	
+			// Zero is now a special case because bytes divide by 1
+			if (num === 0) {
+				result[0] = 0;
+				result[1] = unix ? "" : !bits ? "B" : "b";
+			} else {
+				// Determining the exponent
+				if (e === -1 || isNaN(e)) {
+					e = Math.floor(Math.log(num) / Math.log(ceil));
+	
+					if (e < 0) {
+						e = 0;
+					}
+				}
+	
+				// Exceeding supported length, time to reduce & multiply
+				if (e > 8) {
+					e = 8;
+				}
+	
+				val = base === 2 ? num / Math.pow(2, e * 10) : num / Math.pow(1000, e);
+	
+				if (bits) {
+					val = val * 8;
+	
+					if (val > ceil && e < 8) {
+						val = val / ceil;
+						e++;
+					}
+				}
+	
+				result[0] = Number(val.toFixed(e > 0 ? round : 0));
+				result[1] = base === 10 && e === 1 ? bits ? "kb" : "kB" : symbol[standard][bits ? "bits" : "bytes"][e];
+	
+				if (unix) {
+					result[1] = standard === "jedec" ? result[1].charAt(0) : e > 0 ? result[1].replace(/B$/, "") : result[1];
+	
+					if (b.test(result[1])) {
+						result[0] = Math.floor(result[0]);
+						result[1] = "";
+					}
+				}
+			}
+	
+			// Decorating a 'diff'
+			if (neg) {
+				result[0] = -result[0];
+			}
+	
+			// Applying custom symbol
+			result[1] = symbols[result[1]] || result[1];
+	
+			// Returning Array, Object, or String (default)
+			if (output === "array") {
+				return result;
+			}
+	
+			if (output === "exponent") {
+				return e;
+			}
+	
+			if (output === "object") {
+				return { value: result[0], suffix: result[1], symbol: result[1] };
+			}
+	
+			return result.join(spacer);
+		}
+	
+		// CommonJS, AMD, script tag
+		if (true) {
+			module.exports = filesize;
+		} else if (typeof define === "function" && define.amd) {
+			define(function () {
+				return filesize;
+			});
+		} else {
+			global.filesize = filesize;
+		}
+	})(typeof window !== "undefined" ? window : global);
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 545 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(37);
+	var Parser = __webpack_require__(546).Parser;
+	var ReactRenderer = __webpack_require__(566);
+	
+	var parser = new Parser();
+	var propTypes = React.PropTypes;
+	
+	var ReactMarkdown = React.createClass({
+	    displayName: 'ReactMarkdown',
+	
+	    propTypes: {
+	        className: propTypes.string,
+	        containerProps: propTypes.object,
+	        source: propTypes.string.isRequired,
+	        containerTagName: propTypes.string,
+	        childBefore: propTypes.object,
+	        childAfter: propTypes.object,
+	        sourcePos: propTypes.bool,
+	        escapeHtml: propTypes.bool,
+	        skipHtml: propTypes.bool,
+	        softBreak: propTypes.string,
+	        allowNode: propTypes.func,
+	        allowedTypes: propTypes.array,
+	        disallowedTypes: propTypes.array,
+	        transformLinkUri: propTypes.func,
+	        transformImageUri: propTypes.func,
+	        unwrapDisallowed: propTypes.bool,
+	        renderers: propTypes.object,
+	        walker: propTypes.func
+	    },
+	
+	    getDefaultProps: function() {
+	        return {
+	            containerTagName: 'div'
+	        };
+	    },
+	
+	    render: function() {
+	        var containerProps = this.props.containerProps || {};
+	        var renderer = new ReactRenderer(this.props);
+	        var ast = parser.parse(this.props.source || '');
+	
+	        if (this.props.walker) {
+	            var walker = ast.walker();
+	            var event;
+	
+	            while ((event = walker.next())) {
+	                this.props.walker.call(this, event, walker);
 	            }
-	      };
+	        }
+	
+	        if (this.props.className) {
+	            containerProps.className = this.props.className;
+	        }
+	
+	        return React.createElement.apply(React,
+	            [this.props.containerTagName, containerProps, this.props.childBefore]
+	                .concat(renderer.render(ast).concat(
+	                    [this.props.childAfter]
+	                ))
+	        );
+	    }
+	});
+	
+	ReactMarkdown.types = ReactRenderer.types;
+	ReactMarkdown.renderers = ReactRenderer.renderers;
+	ReactMarkdown.uriTransformer = ReactRenderer.uriTransformer;
+	
+	module.exports = ReactMarkdown;
+
+
+/***/ },
+/* 546 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	// commonmark.js - CommomMark in JavaScript
+	// Copyright (C) 2014 John MacFarlane
+	// License: BSD3.
+	
+	// Basic usage:
+	//
+	// var commonmark = require('commonmark');
+	// var parser = new commonmark.Parser();
+	// var renderer = new commonmark.HtmlRenderer();
+	// console.log(renderer.render(parser.parse('Hello *world*')));
+	
+	module.exports.version = '0.24.0'
+	module.exports.Node = __webpack_require__(547);
+	module.exports.Parser = __webpack_require__(548);
+	module.exports.HtmlRenderer = __webpack_require__(564);
+	module.exports.XmlRenderer = __webpack_require__(565);
+
+
+/***/ },
+/* 547 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	function isContainer(node) {
+	    switch (node._type) {
+	    case 'Document':
+	    case 'BlockQuote':
+	    case 'List':
+	    case 'Item':
+	    case 'Paragraph':
+	    case 'Heading':
+	    case 'Emph':
+	    case 'Strong':
+	    case 'Link':
+	    case 'Image':
+	    case 'CustomInline':
+	    case 'CustomBlock':
+	        return true;
+	    default:
+	        return false;
+	    }
+	}
+	
+	var resumeAt = function(node, entering) {
+	    this.current = node;
+	    this.entering = (entering === true);
+	};
+	
+	var next = function(){
+	    var cur = this.current;
+	    var entering = this.entering;
+	
+	    if (cur === null) {
+	        return null;
+	    }
+	
+	    var container = isContainer(cur);
+	
+	    if (entering && container) {
+	        if (cur._firstChild) {
+	            this.current = cur._firstChild;
+	            this.entering = true;
+	        } else {
+	            // stay on node but exit
+	            this.entering = false;
+	        }
+	
+	    } else if (cur === this.root) {
+	        this.current = null;
+	
+	    } else if (cur._next === null) {
+	        this.current = cur._parent;
+	        this.entering = false;
+	
+	    } else {
+	        this.current = cur._next;
+	        this.entering = true;
+	    }
+	
+	    return {entering: entering, node: cur};
+	};
+	
+	var NodeWalker = function(root) {
+	    return { current: root,
+	             root: root,
+	             entering: true,
+	             next: next,
+	             resumeAt: resumeAt };
+	};
+	
+	var Node = function(nodeType, sourcepos) {
+	    this._type = nodeType;
+	    this._parent = null;
+	    this._firstChild = null;
+	    this._lastChild = null;
+	    this._prev = null;
+	    this._next = null;
+	    this._sourcepos = sourcepos;
+	    this._lastLineBlank = false;
+	    this._open = true;
+	    this._string_content = null;
+	    this._literal = null;
+	    this._listData = {};
+	    this._info = null;
+	    this._destination = null;
+	    this._title = null;
+	    this._isFenced = false;
+	    this._fenceChar = null;
+	    this._fenceLength = 0;
+	    this._fenceOffset = null;
+	    this._level = null;
+	    this._onEnter = null;
+	    this._onExit = null;
+	};
+	
+	var proto = Node.prototype;
+	
+	Object.defineProperty(proto, 'isContainer', {
+	    get: function () { return isContainer(this); }
+	});
+	
+	Object.defineProperty(proto, 'type', {
+	    get: function() { return this._type; }
+	});
+	
+	Object.defineProperty(proto, 'firstChild', {
+	    get: function() { return this._firstChild; }
+	});
+	
+	Object.defineProperty(proto, 'lastChild', {
+	    get: function() { return this._lastChild; }
+	});
+	
+	Object.defineProperty(proto, 'next', {
+	    get: function() { return this._next; }
+	});
+	
+	Object.defineProperty(proto, 'prev', {
+	    get: function() { return this._prev; }
+	});
+	
+	Object.defineProperty(proto, 'parent', {
+	    get: function() { return this._parent; }
+	});
+	
+	Object.defineProperty(proto, 'sourcepos', {
+	    get: function() { return this._sourcepos; }
+	});
+	
+	Object.defineProperty(proto, 'literal', {
+	    get: function() { return this._literal; },
+	    set: function(s) { this._literal = s; }
+	});
+	
+	Object.defineProperty(proto, 'destination', {
+	    get: function() { return this._destination; },
+	    set: function(s) { this._destination = s; }
+	});
+	
+	Object.defineProperty(proto, 'title', {
+	    get: function() { return this._title; },
+	    set: function(s) { this._title = s; }
+	});
+	
+	Object.defineProperty(proto, 'info', {
+	    get: function() { return this._info; },
+	    set: function(s) { this._info = s; }
+	});
+	
+	Object.defineProperty(proto, 'level', {
+	    get: function() { return this._level; },
+	    set: function(s) { this._level = s; }
+	});
+	
+	Object.defineProperty(proto, 'listType', {
+	    get: function() { return this._listData.type; },
+	    set: function(t) { this._listData.type = t; }
+	});
+	
+	Object.defineProperty(proto, 'listTight', {
+	    get: function() { return this._listData.tight; },
+	    set: function(t) { this._listData.tight = t; }
+	});
+	
+	Object.defineProperty(proto, 'listStart', {
+	    get: function() { return this._listData.start; },
+	    set: function(n) { this._listData.start = n; }
+	});
+	
+	Object.defineProperty(proto, 'listDelimiter', {
+	    get: function() { return this._listData.delimiter; },
+	    set: function(delim) { this._listData.delimiter = delim; }
+	});
+	
+	Object.defineProperty(proto, 'onEnter', {
+	    get: function() { return this._onEnter; },
+	    set: function(s) { this._onEnter = s; }
+	});
+	
+	Object.defineProperty(proto, 'onExit', {
+	    get: function() { return this._onExit; },
+	    set: function(s) { this._onExit = s; }
+	});
+	
+	Node.prototype.appendChild = function(child) {
+	    child.unlink();
+	    child._parent = this;
+	    if (this._lastChild) {
+	        this._lastChild._next = child;
+	        child._prev = this._lastChild;
+	        this._lastChild = child;
+	    } else {
+	        this._firstChild = child;
+	        this._lastChild = child;
+	    }
+	};
+	
+	Node.prototype.prependChild = function(child) {
+	    child.unlink();
+	    child._parent = this;
+	    if (this._firstChild) {
+	        this._firstChild._prev = child;
+	        child._next = this._firstChild;
+	        this._firstChild = child;
+	    } else {
+	        this._firstChild = child;
+	        this._lastChild = child;
+	    }
+	};
+	
+	Node.prototype.unlink = function() {
+	    if (this._prev) {
+	        this._prev._next = this._next;
+	    } else if (this._parent) {
+	        this._parent._firstChild = this._next;
+	    }
+	    if (this._next) {
+	        this._next._prev = this._prev;
+	    } else if (this._parent) {
+	        this._parent._lastChild = this._prev;
+	    }
+	    this._parent = null;
+	    this._next = null;
+	    this._prev = null;
+	};
+	
+	Node.prototype.insertAfter = function(sibling) {
+	    sibling.unlink();
+	    sibling._next = this._next;
+	    if (sibling._next) {
+	        sibling._next._prev = sibling;
+	    }
+	    sibling._prev = this;
+	    this._next = sibling;
+	    sibling._parent = this._parent;
+	    if (!sibling._next) {
+	        sibling._parent._lastChild = sibling;
+	    }
+	};
+	
+	Node.prototype.insertBefore = function(sibling) {
+	    sibling.unlink();
+	    sibling._prev = this._prev;
+	    if (sibling._prev) {
+	        sibling._prev._next = sibling;
+	    }
+	    sibling._next = this;
+	    this._prev = sibling;
+	    sibling._parent = this._parent;
+	    if (!sibling._prev) {
+	        sibling._parent._firstChild = sibling;
+	    }
+	};
+	
+	Node.prototype.walker = function() {
+	    var walker = new NodeWalker(this);
+	    return walker;
+	};
+	
+	module.exports = Node;
+	
+	
+	/* Example of use of walker:
+	
+	 var walker = w.walker();
+	 var event;
+	
+	 while (event = walker.next()) {
+	 console.log(event.entering, event.node.type);
+	 }
+	
+	 */
+
+
+/***/ },
+/* 548 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var Node = __webpack_require__(547);
+	var unescapeString = __webpack_require__(549).unescapeString;
+	var OPENTAG = __webpack_require__(549).OPENTAG;
+	var CLOSETAG = __webpack_require__(549).CLOSETAG;
+	
+	var CODE_INDENT = 4;
+	
+	var C_TAB = 9;
+	var C_NEWLINE = 10;
+	var C_GREATERTHAN = 62;
+	var C_LESSTHAN = 60;
+	var C_SPACE = 32;
+	var C_OPEN_BRACKET = 91;
+	
+	var InlineParser = __webpack_require__(560);
+	
+	var reHtmlBlockOpen = [
+	   /./, // dummy for 0
+	   /^<(?:script|pre|style)(?:\s|>|$)/i,
+	   /^<!--/,
+	   /^<[?]/,
+	   /^<![A-Z]/,
+	   /^<!\[CDATA\[/,
+	   /^<[/]?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h1|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|title|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?:\s|[/]?[>]|$)/i,
+	    new RegExp('^(?:' + OPENTAG + '|' + CLOSETAG + ')\s*$', 'i')
+	];
+	
+	var reHtmlBlockClose = [
+	   /./, // dummy for 0
+	   /<\/(?:script|pre|style)>/i,
+	   /-->/,
+	   /\?>/,
+	   />/,
+	   /\]\]>/
+	];
+	
+	var reThematicBreak = /^(?:(?:\* *){3,}|(?:_ *){3,}|(?:- *){3,}) *$/;
+	
+	var reMaybeSpecial = /^[#`~*+_=<>0-9-]/;
+	
+	var reNonSpace = /[^ \t\f\v\r\n]/;
+	
+	var reBulletListMarker = /^[*+-]/;
+	
+	var reOrderedListMarker = /^(\d{1,9})([.)])/;
+	
+	var reATXHeadingMarker = /^#{1,6}(?: +|$)/;
+	
+	var reCodeFence = /^`{3,}(?!.*`)|^~{3,}(?!.*~)/;
+	
+	var reClosingCodeFence = /^(?:`{3,}|~{3,})(?= *$)/;
+	
+	var reSetextHeadingLine = /^(?:=+|-+) *$/;
+	
+	var reLineEnding = /\r\n|\n|\r/;
+	
+	// Returns true if string contains only space characters.
+	var isBlank = function(s) {
+	    return !(reNonSpace.test(s));
+	};
+	
+	var peek = function(ln, pos) {
+	    if (pos < ln.length) {
+	        return ln.charCodeAt(pos);
+	    } else {
+	        return -1;
+	    }
+	};
+	
+	// DOC PARSER
+	
+	// These are methods of a Parser object, defined below.
+	
+	// Returns true if block ends with a blank line, descending if needed
+	// into lists and sublists.
+	var endsWithBlankLine = function(block) {
+	    while (block) {
+	        if (block._lastLineBlank) {
+	            return true;
+	        }
+	        var t = block.type;
+	        if (t === 'List' || t === 'Item') {
+	            block = block._lastChild;
+	        } else {
+	            break;
+	        }
+	    }
+	    return false;
+	};
+	
+	// Break out of all containing lists, resetting the tip of the
+	// document to the parent of the highest list, and finalizing
+	// all the lists.  (This is used to implement the "two blank lines
+	// break out of all lists" feature.)
+	var breakOutOfLists = function(block) {
+	    var b = block;
+	    var last_list = null;
+	    do {
+	        if (b.type === 'List') {
+	            last_list = b;
+	        }
+	        b = b._parent;
+	    } while (b);
+	
+	    if (last_list) {
+	        while (block !== last_list) {
+	            this.finalize(block, this.lineNumber);
+	            block = block._parent;
+	        }
+	        this.finalize(last_list, this.lineNumber);
+	        this.tip = last_list._parent;
+	    }
+	};
+	
+	// Add a line to the block at the tip.  We assume the tip
+	// can accept lines -- that check should be done before calling this.
+	var addLine = function() {
+	    this.tip._string_content += this.currentLine.slice(this.offset) + '\n';
+	};
+	
+	// Add block of type tag as a child of the tip.  If the tip can't
+	// accept children, close and finalize it and try its parent,
+	// and so on til we find a block that can accept children.
+	var addChild = function(tag, offset) {
+	    while (!this.blocks[this.tip.type].canContain(tag)) {
+	        this.finalize(this.tip, this.lineNumber - 1);
+	    }
+	
+	    var column_number = offset + 1; // offset 0 = column 1
+	    var newBlock = new Node(tag, [[this.lineNumber, column_number], [0, 0]]);
+	    newBlock._string_content = '';
+	    this.tip.appendChild(newBlock);
+	    this.tip = newBlock;
+	    return newBlock;
+	};
+	
+	// Parse a list marker and return data on the marker (type,
+	// start, delimiter, bullet character, padding) or null.
+	var parseListMarker = function(parser) {
+	    var rest = parser.currentLine.slice(parser.nextNonspace);
+	    var match;
+	    var nextc;
+	    var spacesStartCol;
+	    var spacesStartOffset;
+	    var data = { type: null,
+	                 tight: true,  // lists are tight by default
+	                 bulletChar: null,
+	                 start: null,
+	                 delimiter: null,
+	                 padding: null,
+	                 markerOffset: parser.indent };
+	    if ((match = rest.match(reBulletListMarker))) {
+	        data.type = 'Bullet';
+	        data.bulletChar = match[0][0];
+	
+	    } else if ((match = rest.match(reOrderedListMarker))) {
+	        data.type = 'Ordered';
+	        data.start = parseInt(match[1]);
+	        data.delimiter = match[2];
+	    } else {
+	        return null;
+	    }
+	    // make sure we have spaces after
+	    nextc = peek(parser.currentLine, parser.nextNonspace + match[0].length);
+	    if (!(nextc === -1 || nextc === C_TAB || nextc === C_SPACE)) {
+	        return null;
+	    }
+	
+	    // we've got a match! advance offset and calculate padding
+	    parser.advanceNextNonspace(); // to start of marker
+	    parser.advanceOffset(match[0].length, true); // to end of marker
+	    spacesStartCol = parser.column;
+	    spacesStartOffset = parser.offset;
+	    do {
+	        parser.advanceOffset(1, true);
+	        nextc = peek(parser.currentLine, parser.offset);
+	    } while (parser.column - spacesStartCol < 5 &&
+	           (nextc === C_SPACE || nextc === C_TAB));
+	    var blank_item = peek(parser.currentLine, parser.offset) === -1;
+	    var spaces_after_marker = parser.column - spacesStartCol;
+	    if (spaces_after_marker >= 5 ||
+	        spaces_after_marker < 1 ||
+	        blank_item) {
+	        data.padding = match[0].length + 1;
+	        parser.column = spacesStartCol;
+	        parser.offset = spacesStartOffset;
+	        if (peek(parser.currentLine, parser.offset) === C_SPACE) {
+	            parser.advanceOffset(1, true);
+	        }
+	    } else {
+	        data.padding = match[0].length + spaces_after_marker;
+	    }
+	    return data;
+	};
+	
+	// Returns true if the two list items are of the same type,
+	// with the same delimiter and bullet character.  This is used
+	// in agglomerating list items into lists.
+	var listsMatch = function(list_data, item_data) {
+	    return (list_data.type === item_data.type &&
+	            list_data.delimiter === item_data.delimiter &&
+	            list_data.bulletChar === item_data.bulletChar);
+	};
+	
+	// Finalize and close any unmatched blocks.
+	var closeUnmatchedBlocks = function() {
+	    if (!this.allClosed) {
+	        // finalize any blocks not matched
+	        while (this.oldtip !== this.lastMatchedContainer) {
+	            var parent = this.oldtip._parent;
+	            this.finalize(this.oldtip, this.lineNumber - 1);
+	            this.oldtip = parent;
+	        }
+	        this.allClosed = true;
+	    }
+	};
+	
+	// 'finalize' is run when the block is closed.
+	// 'continue' is run to check whether the block is continuing
+	// at a certain line and offset (e.g. whether a block quote
+	// contains a `>`.  It returns 0 for matched, 1 for not matched,
+	// and 2 for "we've dealt with this line completely, go to next."
+	var blocks = {
+	    Document: {
+	        continue: function() { return 0; },
+	        finalize: function() { return; },
+	        canContain: function(t) { return (t !== 'Item'); },
+	        acceptsLines: false
+	    },
+	    List: {
+	        continue: function() { return 0; },
+	        finalize: function(parser, block) {
+	            var item = block._firstChild;
+	            while (item) {
+	                // check for non-final list item ending with blank line:
+	                if (endsWithBlankLine(item) && item._next) {
+	                    block._listData.tight = false;
+	                    break;
+	                }
+	                // recurse into children of list item, to see if there are
+	                // spaces between any of them:
+	                var subitem = item._firstChild;
+	                while (subitem) {
+	                    if (endsWithBlankLine(subitem) &&
+	                        (item._next || subitem._next)) {
+	                        block._listData.tight = false;
+	                        break;
+	                    }
+	                    subitem = subitem._next;
+	                }
+	                item = item._next;
+	            }
+	        },
+	        canContain: function(t) { return (t === 'Item'); },
+	        acceptsLines: false
+	    },
+	    BlockQuote: {
+	        continue: function(parser) {
+	            var ln = parser.currentLine;
+	            if (!parser.indented &&
+	                peek(ln, parser.nextNonspace) === C_GREATERTHAN) {
+	                parser.advanceNextNonspace();
+	                parser.advanceOffset(1, false);
+	                if (peek(ln, parser.offset) === C_SPACE) {
+	                    parser.offset++;
+	                }
+	            } else {
+	                return 1;
+	            }
+	            return 0;
+	        },
+	        finalize: function() { return; },
+	        canContain: function(t) { return (t !== 'Item'); },
+	        acceptsLines: false
+	    },
+	    Item: {
+	        continue: function(parser, container) {
+	            if (parser.blank && container._firstChild !== null) {
+	                parser.advanceNextNonspace();
+	            } else if (parser.indent >=
+	                       container._listData.markerOffset +
+	                       container._listData.padding) {
+	                parser.advanceOffset(container._listData.markerOffset +
+	                    container._listData.padding, true);
+	            } else {
+	                return 1;
+	            }
+	            return 0;
+	        },
+	        finalize: function() { return; },
+	        canContain: function(t) { return (t !== 'Item'); },
+	        acceptsLines: false
+	    },
+	    Heading: {
+	        continue: function() {
+	            // a heading can never container > 1 line, so fail to match:
+	            return 1;
+	        },
+	        finalize: function() { return; },
+	        canContain: function() { return false; },
+	        acceptsLines: false
+	    },
+	    ThematicBreak: {
+	        continue: function() {
+	            // a thematic break can never container > 1 line, so fail to match:
+	            return 1;
+	        },
+	        finalize: function() { return; },
+	        canContain: function() { return false; },
+	        acceptsLines: false
+	    },
+	    CodeBlock: {
+	        continue: function(parser, container) {
+	            var ln = parser.currentLine;
+	            var indent = parser.indent;
+	            if (container._isFenced) { // fenced
+	                var match = (indent <= 3 &&
+	                    ln.charAt(parser.nextNonspace) === container._fenceChar &&
+	                    ln.slice(parser.nextNonspace).match(reClosingCodeFence));
+	                if (match && match[0].length >= container._fenceLength) {
+	                    // closing fence - we're at end of line, so we can return
+	                    parser.finalize(container, parser.lineNumber);
+	                    return 2;
+	                } else {
+	                    // skip optional spaces of fence offset
+	                    var i = container._fenceOffset;
+	                    while (i > 0 && peek(ln, parser.offset) === C_SPACE) {
+	                        parser.advanceOffset(1, false);
+	                        i--;
+	                    }
+	                }
+	            } else { // indented
+	                if (indent >= CODE_INDENT) {
+	                    parser.advanceOffset(CODE_INDENT, true);
+	                } else if (parser.blank) {
+	                    parser.advanceNextNonspace();
+	                } else {
+	                    return 1;
+	                }
+	            }
+	            return 0;
+	        },
+	        finalize: function(parser, block) {
+	            if (block._isFenced) { // fenced
+	                // first line becomes info string
+	                var content = block._string_content;
+	                var newlinePos = content.indexOf('\n');
+	                var firstLine = content.slice(0, newlinePos);
+	                var rest = content.slice(newlinePos + 1);
+	                block.info = unescapeString(firstLine.trim());
+	                block._literal = rest;
+	            } else { // indented
+	                block._literal = block._string_content.replace(/(\n *)+$/, '\n');
+	            }
+	            block._string_content = null; // allow GC
+	        },
+	        canContain: function() { return false; },
+	        acceptsLines: true
+	    },
+	    HtmlBlock: {
+	        continue: function(parser, container) {
+	            return ((parser.blank &&
+	                     (container._htmlBlockType === 6 ||
+	                      container._htmlBlockType === 7)) ? 1 : 0);
+	        },
+	        finalize: function(parser, block) {
+	            block._literal = block._string_content.replace(/(\n *)+$/, '');
+	            block._string_content = null; // allow GC
+	        },
+	        canContain: function() { return false; },
+	        acceptsLines: true
+	    },
+	    Paragraph: {
+	        continue: function(parser) {
+	            return (parser.blank ? 1 : 0);
+	        },
+	        finalize: function(parser, block) {
+	            var pos;
+	            var hasReferenceDefs = false;
+	
+	            // try parsing the beginning as link reference definitions:
+	            while (peek(block._string_content, 0) === C_OPEN_BRACKET &&
+	                   (pos =
+	                    parser.inlineParser.parseReference(block._string_content,
+	                                                       parser.refmap))) {
+	                block._string_content = block._string_content.slice(pos);
+	                hasReferenceDefs = true;
+	            }
+	            if (hasReferenceDefs && isBlank(block._string_content)) {
+	                block.unlink();
+	            }
+	        },
+	        canContain: function() { return false; },
+	        acceptsLines: true
+	    }
+	};
+	
+	// block start functions.  Return values:
+	// 0 = no match
+	// 1 = matched container, keep going
+	// 2 = matched leaf, no more block starts
+	var blockStarts = [
+	    // block quote
+	    function(parser) {
+	        if (!parser.indented &&
+	            peek(parser.currentLine, parser.nextNonspace) === C_GREATERTHAN) {
+	            parser.advanceNextNonspace();
+	            parser.advanceOffset(1, false);
+	            // optional following space
+	            if (peek(parser.currentLine, parser.offset) === C_SPACE) {
+	                parser.advanceOffset(1, false);
+	            }
+	            parser.closeUnmatchedBlocks();
+	            parser.addChild('BlockQuote', parser.nextNonspace);
+	            return 1;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // ATX heading
+	    function(parser) {
+	        var match;
+	        if (!parser.indented &&
+	            (match = parser.currentLine.slice(parser.nextNonspace).match(reATXHeadingMarker))) {
+	            parser.advanceNextNonspace();
+	            parser.advanceOffset(match[0].length, false);
+	            parser.closeUnmatchedBlocks();
+	            var container = parser.addChild('Heading', parser.nextNonspace);
+	            container.level = match[0].trim().length; // number of #s
+	            // remove trailing ###s:
+	            container._string_content =
+	                parser.currentLine.slice(parser.offset).replace(/^ *#+ *$/, '').replace(/ +#+ *$/, '');
+	            parser.advanceOffset(parser.currentLine.length - parser.offset);
+	            return 2;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // Fenced code block
+	    function(parser) {
+	        var match;
+	        if (!parser.indented &&
+	            (match = parser.currentLine.slice(parser.nextNonspace).match(reCodeFence))) {
+	            var fenceLength = match[0].length;
+	            parser.closeUnmatchedBlocks();
+	            var container = parser.addChild('CodeBlock', parser.nextNonspace);
+	            container._isFenced = true;
+	            container._fenceLength = fenceLength;
+	            container._fenceChar = match[0][0];
+	            container._fenceOffset = parser.indent;
+	            parser.advanceNextNonspace();
+	            parser.advanceOffset(fenceLength, false);
+	            return 2;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // HTML block
+	    function(parser, container) {
+	        if (!parser.indented &&
+	            peek(parser.currentLine, parser.nextNonspace) === C_LESSTHAN) {
+	            var s = parser.currentLine.slice(parser.nextNonspace);
+	            var blockType;
+	
+	            for (blockType = 1; blockType <= 7; blockType++) {
+	                if (reHtmlBlockOpen[blockType].test(s) &&
+	                    (blockType < 7 ||
+	                     container.type !== 'Paragraph')) {
+	                    parser.closeUnmatchedBlocks();
+	                    // We don't adjust parser.offset;
+	                    // spaces are part of the HTML block:
+	                    var b = parser.addChild('HtmlBlock',
+	                                            parser.offset);
+	                    b._htmlBlockType = blockType;
+	                    return 2;
+	                }
+	            }
+	        }
+	
+	        return 0;
+	
+	    },
+	
+	    // Setext heading
+	    function(parser, container) {
+	        var match;
+	        if (!parser.indented &&
+	            container.type === 'Paragraph' &&
+	                   ((match = parser.currentLine.slice(parser.nextNonspace).match(reSetextHeadingLine)))) {
+	            parser.closeUnmatchedBlocks();
+	            var heading = new Node('Heading', container.sourcepos);
+	            heading.level = match[0][0] === '=' ? 1 : 2;
+	            heading._string_content = container._string_content;
+	            container.insertAfter(heading);
+	            container.unlink();
+	            parser.tip = heading;
+	            parser.advanceOffset(parser.currentLine.length - parser.offset, false);
+	            return 2;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // thematic break
+	    function(parser) {
+	        if (!parser.indented &&
+	            reThematicBreak.test(parser.currentLine.slice(parser.nextNonspace))) {
+	            parser.closeUnmatchedBlocks();
+	            parser.addChild('ThematicBreak', parser.nextNonspace);
+	            parser.advanceOffset(parser.currentLine.length - parser.offset, false);
+	            return 2;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // list item
+	    function(parser, container) {
+	        var data;
+	
+	        if ((!parser.indented || container.type === 'List')
+	                && (data = parseListMarker(parser))) {
+	            parser.closeUnmatchedBlocks();
+	
+	            // add the list if needed
+	            if (parser.tip.type !== 'List' ||
+	                !(listsMatch(container._listData, data))) {
+	                container = parser.addChild('List', parser.nextNonspace);
+	                container._listData = data;
+	            }
+	
+	            // add the list item
+	            container = parser.addChild('Item', parser.nextNonspace);
+	            container._listData = data;
+	            return 1;
+	        } else {
+	            return 0;
+	        }
+	    },
+	
+	    // indented code block
+	    function(parser) {
+	        if (parser.indented &&
+	            parser.tip.type !== 'Paragraph' &&
+	            !parser.blank) {
+	            // indented code
+	            parser.advanceOffset(CODE_INDENT, true);
+	            parser.closeUnmatchedBlocks();
+	            parser.addChild('CodeBlock', parser.offset);
+	            return 2;
+	        } else {
+	            return 0;
+	        }
+	     }
+	
+	];
+	
+	var advanceOffset = function(count, columns) {
+	    var cols = 0;
+	    var currentLine = this.currentLine;
+	    var charsToTab;
+	    var c;
+	    while (count > 0 && (c = currentLine[this.offset])) {
+	        if (c === '\t') {
+	            charsToTab = 4 - (this.column % 4);
+	            this.column += charsToTab;
+	            this.offset += 1;
+	            count -= (columns ? charsToTab : 1);
+	        } else {
+	            cols += 1;
+	            this.offset += 1;
+	            this.column += 1; // assume ascii; block starts are ascii
+	            count -= 1;
+	        }
+	    }
+	};
+	
+	var advanceNextNonspace = function() {
+	    this.offset = this.nextNonspace;
+	    this.column = this.nextNonspaceColumn;
+	};
+	
+	var findNextNonspace = function() {
+	    var currentLine = this.currentLine;
+	    var i = this.offset;
+	    var cols = this.column;
+	    var c;
+	
+	    while ((c = currentLine.charAt(i)) !== '') {
+	        if (c === ' ') {
+	            i++;
+	            cols++;
+	        } else if (c === '\t') {
+	            i++;
+	            cols += (4 - (cols % 4));
+	        } else {
+	            break;
+	        }
+	    }
+	    this.blank = (c === '\n' || c === '\r' || c === '');
+	    this.nextNonspace = i;
+	    this.nextNonspaceColumn = cols;
+	    this.indent = this.nextNonspaceColumn - this.column;
+	    this.indented = this.indent >= CODE_INDENT;
+	};
+	
+	// Analyze a line of text and update the document appropriately.
+	// We parse markdown text by calling this on each line of input,
+	// then finalizing the document.
+	var incorporateLine = function(ln) {
+	    var all_matched = true;
+	    var t;
+	
+	    var container = this.doc;
+	    this.oldtip = this.tip;
+	    this.offset = 0;
+	    this.column = 0;
+	    this.lineNumber += 1;
+	
+	    // replace NUL characters for security
+	    if (ln.indexOf('\u0000') !== -1) {
+	        ln = ln.replace(/\0/g, '\uFFFD');
+	    }
+	
+	    this.currentLine = ln;
+	
+	    // For each containing block, try to parse the associated line start.
+	    // Bail out on failure: container will point to the last matching block.
+	    // Set all_matched to false if not all containers match.
+	    var lastChild;
+	    while ((lastChild = container._lastChild) && lastChild._open) {
+	        container = lastChild;
+	
+	        this.findNextNonspace();
+	
+	        switch (this.blocks[container.type].continue(this, container)) {
+	        case 0: // we've matched, keep going
+	            break;
+	        case 1: // we've failed to match a block
+	            all_matched = false;
+	            break;
+	        case 2: // we've hit end of line for fenced code close and can return
+	            this.lastLineLength = ln.length;
+	            return;
+	        default:
+	            throw 'continue returned illegal value, must be 0, 1, or 2';
+	        }
+	        if (!all_matched) {
+	            container = container._parent; // back up to last matching block
+	            break;
+	        }
+	    }
+	
+	    this.allClosed = (container === this.oldtip);
+	    this.lastMatchedContainer = container;
+	
+	    // Check to see if we've hit 2nd blank line; if so break out of list:
+	    if (this.blank && container._lastLineBlank) {
+	        this.breakOutOfLists(container);
+	        container = this.tip;
+	    }
+	
+	    var matchedLeaf = container.type !== 'Paragraph' &&
+	            blocks[container.type].acceptsLines;
+	    var starts = this.blockStarts;
+	    var startsLen = starts.length;
+	    // Unless last matched container is a code block, try new container starts,
+	    // adding children to the last matched container:
+	    while (!matchedLeaf) {
+	
+	        this.findNextNonspace();
+	
+	        // this is a little performance optimization:
+	        if (!this.indented &&
+	            !reMaybeSpecial.test(ln.slice(this.nextNonspace))) {
+	            this.advanceNextNonspace();
+	            break;
+	        }
+	
+	        var i = 0;
+	        while (i < startsLen) {
+	            var res = starts[i](this, container);
+	            if (res === 1) {
+	                container = this.tip;
+	                break;
+	            } else if (res === 2) {
+	                container = this.tip;
+	                matchedLeaf = true;
+	                break;
+	            } else {
+	                i++;
+	            }
+	        }
+	
+	        if (i === startsLen) { // nothing matched
+	            this.advanceNextNonspace();
+	            break;
+	        }
+	    }
+	
+	    // What remains at the offset is a text line.  Add the text to the
+	    // appropriate container.
+	
+	   // First check for a lazy paragraph continuation:
+	    if (!this.allClosed && !this.blank &&
+	        this.tip.type === 'Paragraph') {
+	        // lazy paragraph continuation
+	        this.addLine();
+	
+	    } else { // not a lazy continuation
+	
+	        // finalize any blocks not matched
+	        this.closeUnmatchedBlocks();
+	        if (this.blank && container.lastChild) {
+	            container.lastChild._lastLineBlank = true;
+	        }
+	
+	        t = container.type;
+	
+	        // Block quote lines are never blank as they start with >
+	        // and we don't count blanks in fenced code for purposes of tight/loose
+	        // lists or breaking out of lists.  We also don't set _lastLineBlank
+	        // on an empty list item, or if we just closed a fenced block.
+	        var lastLineBlank = this.blank &&
+	            !(t === 'BlockQuote' ||
+	              (t === 'CodeBlock' && container._isFenced) ||
+	              (t === 'Item' &&
+	               !container._firstChild &&
+	               container.sourcepos[0][0] === this.lineNumber));
+	
+	        // propagate lastLineBlank up through parents:
+	        var cont = container;
+	        while (cont) {
+	            cont._lastLineBlank = lastLineBlank;
+	            cont = cont._parent;
+	        }
+	
+	        if (this.blocks[t].acceptsLines) {
+	            this.addLine();
+	            // if HtmlBlock, check for end condition
+	            if (t === 'HtmlBlock' &&
+	                container._htmlBlockType >= 1 &&
+	                container._htmlBlockType <= 5 &&
+	                reHtmlBlockClose[container._htmlBlockType].test(this.currentLine.slice(this.offset))) {
+	                this.finalize(container, this.lineNumber);
+	            }
+	
+	        } else if (this.offset < ln.length && !this.blank) {
+	            // create paragraph container for line
+	            container = this.addChild('Paragraph', this.offset);
+	            this.advanceNextNonspace();
+	            this.addLine();
+	        }
+	    }
+	    this.lastLineLength = ln.length;
+	};
+	
+	// Finalize a block.  Close it and do any necessary postprocessing,
+	// e.g. creating string_content from strings, setting the 'tight'
+	// or 'loose' status of a list, and parsing the beginnings
+	// of paragraphs for reference definitions.  Reset the tip to the
+	// parent of the closed block.
+	var finalize = function(block, lineNumber) {
+	    var above = block._parent;
+	    block._open = false;
+	    block.sourcepos[1] = [lineNumber, this.lastLineLength];
+	
+	    this.blocks[block.type].finalize(this, block);
+	
+	    this.tip = above;
+	};
+	
+	// Walk through a block & children recursively, parsing string content
+	// into inline content where appropriate.
+	var processInlines = function(block) {
+	    var node, event, t;
+	    var walker = block.walker();
+	    this.inlineParser.refmap = this.refmap;
+	    this.inlineParser.options = this.options;
+	    while ((event = walker.next())) {
+	        node = event.node;
+	        t = node.type;
+	        if (!event.entering && (t === 'Paragraph' || t === 'Heading')) {
+	            this.inlineParser.parse(node);
+	        }
+	    }
+	};
+	
+	var Document = function() {
+	    var doc = new Node('Document', [[1, 1], [0, 0]]);
+	    return doc;
+	};
+	
+	// The main parsing function.  Returns a parsed document AST.
+	var parse = function(input) {
+	    this.doc = new Document();
+	    this.tip = this.doc;
+	    this.refmap = {};
+	    this.lineNumber = 0;
+	    this.lastLineLength = 0;
+	    this.offset = 0;
+	    this.column = 0;
+	    this.lastMatchedContainer = this.doc;
+	    this.currentLine = "";
+	    if (this.options.time) { console.time("preparing input"); }
+	    var lines = input.split(reLineEnding);
+	    var len = lines.length;
+	    if (input.charCodeAt(input.length - 1) === C_NEWLINE) {
+	        // ignore last blank line created by final newline
+	        len -= 1;
+	    }
+	    if (this.options.time) { console.timeEnd("preparing input"); }
+	    if (this.options.time) { console.time("block parsing"); }
+	    for (var i = 0; i < len; i++) {
+	        this.incorporateLine(lines[i]);
+	    }
+	    while (this.tip) {
+	        this.finalize(this.tip, len);
+	    }
+	    if (this.options.time) { console.timeEnd("block parsing"); }
+	    if (this.options.time) { console.time("inline parsing"); }
+	    this.processInlines(this.doc);
+	    if (this.options.time) { console.timeEnd("inline parsing"); }
+	    return this.doc;
+	};
+	
+	
+	// The Parser object.
+	function Parser(options){
+	    return {
+	        doc: new Document(),
+	        blocks: blocks,
+	        blockStarts: blockStarts,
+	        tip: this.doc,
+	        oldtip: this.doc,
+	        currentLine: "",
+	        lineNumber: 0,
+	        offset: 0,
+	        column: 0,
+	        nextNonspace: 0,
+	        nextNonspaceColumn: 0,
+	        indent: 0,
+	        indented: false,
+	        blank: false,
+	        allClosed: true,
+	        lastMatchedContainer: this.doc,
+	        refmap: {},
+	        lastLineLength: 0,
+	        inlineParser: new InlineParser(options),
+	        findNextNonspace: findNextNonspace,
+	        advanceOffset: advanceOffset,
+	        advanceNextNonspace: advanceNextNonspace,
+	        breakOutOfLists: breakOutOfLists,
+	        addLine: addLine,
+	        addChild: addChild,
+	        incorporateLine: incorporateLine,
+	        finalize: finalize,
+	        processInlines: processInlines,
+	        closeUnmatchedBlocks: closeUnmatchedBlocks,
+	        parse: parse,
+	        options: options || {}
+	    };
+	}
+	
+	module.exports = Parser;
+
+
+/***/ },
+/* 549 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var encode = __webpack_require__(550);
+	var decode = __webpack_require__(551);
+	
+	var C_BACKSLASH = 92;
+	
+	var decodeHTML = __webpack_require__(552).decodeHTML;
+	
+	var ENTITY = "&(?:#x[a-f0-9]{1,8}|#[0-9]{1,8}|[a-z][a-z0-9]{1,31});";
+	
+	var TAGNAME = '[A-Za-z][A-Za-z0-9-]*';
+	var ATTRIBUTENAME = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
+	var UNQUOTEDVALUE = "[^\"'=<>`\\x00-\\x20]+";
+	var SINGLEQUOTEDVALUE = "'[^']*'";
+	var DOUBLEQUOTEDVALUE = '"[^"]*"';
+	var ATTRIBUTEVALUE = "(?:" + UNQUOTEDVALUE + "|" + SINGLEQUOTEDVALUE + "|" + DOUBLEQUOTEDVALUE + ")";
+	var ATTRIBUTEVALUESPEC = "(?:" + "\\s*=" + "\\s*" + ATTRIBUTEVALUE + ")";
+	var ATTRIBUTE = "(?:" + "\\s+" + ATTRIBUTENAME + ATTRIBUTEVALUESPEC + "?)";
+	var OPENTAG = "<" + TAGNAME + ATTRIBUTE + "*" + "\\s*/?>";
+	var CLOSETAG = "</" + TAGNAME + "\\s*[>]";
+	var HTMLCOMMENT = "<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->";
+	var PROCESSINGINSTRUCTION = "[<][?].*?[?][>]";
+	var DECLARATION = "<![A-Z]+" + "\\s+[^>]*>";
+	var CDATA = "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>";
+	var HTMLTAG = "(?:" + OPENTAG + "|" + CLOSETAG + "|" + HTMLCOMMENT + "|" +
+	        PROCESSINGINSTRUCTION + "|" + DECLARATION + "|" + CDATA + ")";
+	var reHtmlTag = new RegExp('^' + HTMLTAG, 'i');
+	
+	var reBackslashOrAmp = /[\\&]/;
+	
+	var ESCAPABLE = '[!"#$%&\'()*+,./:;<=>?@[\\\\\\]^_`{|}~-]';
+	
+	var reEntityOrEscapedChar = new RegExp('\\\\' + ESCAPABLE + '|' + ENTITY, 'gi');
+	
+	var XMLSPECIAL = '[&<>"]';
+	
+	var reXmlSpecial = new RegExp(XMLSPECIAL, 'g');
+	
+	var reXmlSpecialOrEntity = new RegExp(ENTITY + '|' + XMLSPECIAL, 'gi');
+	
+	var unescapeChar = function(s) {
+	    if (s.charCodeAt(0) === C_BACKSLASH) {
+	        return s.charAt(1);
+	    } else {
+	        return decodeHTML(s);
+	    }
+	};
+	
+	// Replace entities and backslash escapes with literal characters.
+	var unescapeString = function(s) {
+	    if (reBackslashOrAmp.test(s)) {
+	        return s.replace(reEntityOrEscapedChar, unescapeChar);
+	    } else {
+	        return s;
+	    }
+	};
+	
+	var normalizeURI = function(uri) {
+	    try {
+	        return encode(decode(uri));
+	    }
+	    catch(err) {
+	        return uri;
+	    }
+	};
+	
+	var replaceUnsafeChar = function(s) {
+	    switch (s) {
+	    case '&':
+	        return '&amp;';
+	    case '<':
+	        return '&lt;';
+	    case '>':
+	        return '&gt;';
+	    case '"':
+	        return '&quot;';
+	    default:
+	        return s;
+	    }
+	};
+	
+	var escapeXml = function(s, preserve_entities) {
+	    if (reXmlSpecial.test(s)) {
+	        if (preserve_entities) {
+	            return s.replace(reXmlSpecialOrEntity, replaceUnsafeChar);
+	        } else {
+	            return s.replace(reXmlSpecial, replaceUnsafeChar);
+	        }
+	    } else {
+	        return s;
+	    }
+	};
+	
+	module.exports = { unescapeString: unescapeString,
+	                   normalizeURI: normalizeURI,
+	                   escapeXml: escapeXml,
+	                   reHtmlTag: reHtmlTag,
+	                   OPENTAG: OPENTAG,
+	                   CLOSETAG: CLOSETAG,
+	                   ENTITY: ENTITY,
+	                   ESCAPABLE: ESCAPABLE
+	                 };
+
+
+/***/ },
+/* 550 */
+/***/ function(module, exports) {
+
+	
+	'use strict';
+	
+	
+	var encodeCache = {};
+	
+	
+	// Create a lookup array where anything but characters in `chars` string
+	// and alphanumeric chars is percent-encoded.
+	//
+	function getEncodeCache(exclude) {
+	  var i, ch, cache = encodeCache[exclude];
+	  if (cache) { return cache; }
+	
+	  cache = encodeCache[exclude] = [];
+	
+	  for (i = 0; i < 128; i++) {
+	    ch = String.fromCharCode(i);
+	
+	    if (/^[0-9a-z]$/i.test(ch)) {
+	      // always allow unencoded alphanumeric characters
+	      cache.push(ch);
+	    } else {
+	      cache.push('%' + ('0' + i.toString(16).toUpperCase()).slice(-2));
+	    }
+	  }
+	
+	  for (i = 0; i < exclude.length; i++) {
+	    cache[exclude.charCodeAt(i)] = exclude[i];
+	  }
+	
+	  return cache;
+	}
+	
+	
+	// Encode unsafe characters with percent-encoding, skipping already
+	// encoded sequences.
+	//
+	//  - string       - string to encode
+	//  - exclude      - list of characters to ignore (in addition to a-zA-Z0-9)
+	//  - keepEscaped  - don't encode '%' in a correct escape sequence (default: true)
+	//
+	function encode(string, exclude, keepEscaped) {
+	  var i, l, code, nextCode, cache,
+	      result = '';
+	
+	  if (typeof exclude !== 'string') {
+	    // encode(string, keepEscaped)
+	    keepEscaped  = exclude;
+	    exclude = encode.defaultChars;
+	  }
+	
+	  if (typeof keepEscaped === 'undefined') {
+	    keepEscaped = true;
+	  }
+	
+	  cache = getEncodeCache(exclude);
+	
+	  for (i = 0, l = string.length; i < l; i++) {
+	    code = string.charCodeAt(i);
+	
+	    if (keepEscaped && code === 0x25 /* % */ && i + 2 < l) {
+	      if (/^[0-9a-f]{2}$/i.test(string.slice(i + 1, i + 3))) {
+	        result += string.slice(i, i + 3);
+	        i += 2;
+	        continue;
+	      }
+	    }
+	
+	    if (code < 128) {
+	      result += cache[code];
+	      continue;
+	    }
+	
+	    if (code >= 0xD800 && code <= 0xDFFF) {
+	      if (code >= 0xD800 && code <= 0xDBFF && i + 1 < l) {
+	        nextCode = string.charCodeAt(i + 1);
+	        if (nextCode >= 0xDC00 && nextCode <= 0xDFFF) {
+	          result += encodeURIComponent(string[i] + string[i + 1]);
+	          i++;
+	          continue;
+	        }
+	      }
+	      result += '%EF%BF%BD';
+	      continue;
+	    }
+	
+	    result += encodeURIComponent(string[i]);
+	  }
+	
+	  return result;
+	}
+	
+	encode.defaultChars   = ";/?:@&=+$,-_.!~*'()#";
+	encode.componentChars = "-_.!~*'()";
+	
+	
+	module.exports = encode;
+
+
+/***/ },
+/* 551 */
+/***/ function(module, exports) {
+
+	
+	'use strict';
+	
+	
+	/* eslint-disable no-bitwise */
+	
+	var decodeCache = {};
+	
+	function getDecodeCache(exclude) {
+	  var i, ch, cache = decodeCache[exclude];
+	  if (cache) { return cache; }
+	
+	  cache = decodeCache[exclude] = [];
+	
+	  for (i = 0; i < 128; i++) {
+	    ch = String.fromCharCode(i);
+	    cache.push(ch);
+	  }
+	
+	  for (i = 0; i < exclude.length; i++) {
+	    ch = exclude.charCodeAt(i);
+	    cache[ch] = '%' + ('0' + ch.toString(16).toUpperCase()).slice(-2);
+	  }
+	
+	  return cache;
+	}
+	
+	
+	// Decode percent-encoded string.
+	//
+	function decode(string, exclude) {
+	  var cache;
+	
+	  if (typeof exclude !== 'string') {
+	    exclude = decode.defaultChars;
+	  }
+	
+	  cache = getDecodeCache(exclude);
+	
+	  return string.replace(/(%[a-f0-9]{2})+/gi, function(seq) {
+	    var i, l, b1, b2, b3, b4, chr,
+	        result = '';
+	
+	    for (i = 0, l = seq.length; i < l; i += 3) {
+	      b1 = parseInt(seq.slice(i + 1, i + 3), 16);
+	
+	      if (b1 < 0x80) {
+	        result += cache[b1];
+	        continue;
+	      }
+	
+	      if ((b1 & 0xE0) === 0xC0 && (i + 3 < l)) {
+	        // 110xxxxx 10xxxxxx
+	        b2 = parseInt(seq.slice(i + 4, i + 6), 16);
+	
+	        if ((b2 & 0xC0) === 0x80) {
+	          chr = ((b1 << 6) & 0x7C0) | (b2 & 0x3F);
+	
+	          if (chr < 0x80) {
+	            result += '\ufffd\ufffd';
+	          } else {
+	            result += String.fromCharCode(chr);
+	          }
+	
+	          i += 3;
+	          continue;
+	        }
+	      }
+	
+	      if ((b1 & 0xF0) === 0xE0 && (i + 6 < l)) {
+	        // 1110xxxx 10xxxxxx 10xxxxxx
+	        b2 = parseInt(seq.slice(i + 4, i + 6), 16);
+	        b3 = parseInt(seq.slice(i + 7, i + 9), 16);
+	
+	        if ((b2 & 0xC0) === 0x80 && (b3 & 0xC0) === 0x80) {
+	          chr = ((b1 << 12) & 0xF000) | ((b2 << 6) & 0xFC0) | (b3 & 0x3F);
+	
+	          if (chr < 0x800 || (chr >= 0xD800 && chr <= 0xDFFF)) {
+	            result += '\ufffd\ufffd\ufffd';
+	          } else {
+	            result += String.fromCharCode(chr);
+	          }
+	
+	          i += 6;
+	          continue;
+	        }
+	      }
+	
+	      if ((b1 & 0xF8) === 0xF0 && (i + 9 < l)) {
+	        // 111110xx 10xxxxxx 10xxxxxx 10xxxxxx
+	        b2 = parseInt(seq.slice(i + 4, i + 6), 16);
+	        b3 = parseInt(seq.slice(i + 7, i + 9), 16);
+	        b4 = parseInt(seq.slice(i + 10, i + 12), 16);
+	
+	        if ((b2 & 0xC0) === 0x80 && (b3 & 0xC0) === 0x80 && (b4 & 0xC0) === 0x80) {
+	          chr = ((b1 << 18) & 0x1C0000) | ((b2 << 12) & 0x3F000) | ((b3 << 6) & 0xFC0) | (b4 & 0x3F);
+	
+	          if (chr < 0x10000 || chr > 0x10FFFF) {
+	            result += '\ufffd\ufffd\ufffd\ufffd';
+	          } else {
+	            chr -= 0x10000;
+	            result += String.fromCharCode(0xD800 + (chr >> 10), 0xDC00 + (chr & 0x3FF));
+	          }
+	
+	          i += 9;
+	          continue;
+	        }
+	      }
+	
+	      result += '\ufffd';
+	    }
+	
+	    return result;
+	  });
+	}
+	
+	
+	decode.defaultChars   = ';/?:@&=+$,#';
+	decode.componentChars = '';
+	
+	
+	module.exports = decode;
+
+
+/***/ },
+/* 552 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var encode = __webpack_require__(553),
+	    decode = __webpack_require__(556);
+	
+	exports.decode = function(data, level){
+		return (!level || level <= 0 ? decode.XML : decode.HTML)(data);
+	};
+	
+	exports.decodeStrict = function(data, level){
+		return (!level || level <= 0 ? decode.XML : decode.HTMLStrict)(data);
+	};
+	
+	exports.encode = function(data, level){
+		return (!level || level <= 0 ? encode.XML : encode.HTML)(data);
+	};
+	
+	exports.encodeXML = encode.XML;
+	
+	exports.encodeHTML4 =
+	exports.encodeHTML5 =
+	exports.encodeHTML  = encode.HTML;
+	
+	exports.decodeXML =
+	exports.decodeXMLStrict = decode.XML;
+	
+	exports.decodeHTML4 =
+	exports.decodeHTML5 =
+	exports.decodeHTML = decode.HTML;
+	
+	exports.decodeHTML4Strict =
+	exports.decodeHTML5Strict =
+	exports.decodeHTMLStrict = decode.HTMLStrict;
+	
+	exports.escape = encode.escape;
+
+
+/***/ },
+/* 553 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var inverseXML = getInverseObj(__webpack_require__(554)),
+	    xmlReplacer = getInverseReplacer(inverseXML);
+	
+	exports.XML = getInverse(inverseXML, xmlReplacer);
+	
+	var inverseHTML = getInverseObj(__webpack_require__(555)),
+	    htmlReplacer = getInverseReplacer(inverseHTML);
+	
+	exports.HTML = getInverse(inverseHTML, htmlReplacer);
+	
+	function getInverseObj(obj){
+		return Object.keys(obj).sort().reduce(function(inverse, name){
+			inverse[obj[name]] = "&" + name + ";";
+			return inverse;
+		}, {});
+	}
+	
+	function getInverseReplacer(inverse){
+		var single = [],
+		    multiple = [];
+	
+		Object.keys(inverse).forEach(function(k){
+			if(k.length === 1){
+				single.push("\\" + k);
+			} else {
+				multiple.push(k);
+			}
+		});
+	
+		//TODO add ranges
+		multiple.unshift("[" + single.join("") + "]");
+	
+		return new RegExp(multiple.join("|"), "g");
+	}
+	
+	var re_nonASCII = /[^\0-\x7F]/g,
+	    re_astralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+	
+	function singleCharReplacer(c){
+		return "&#x" + c.charCodeAt(0).toString(16).toUpperCase() + ";";
+	}
+	
+	function astralReplacer(c){
+		// http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+		var high = c.charCodeAt(0);
+		var low  = c.charCodeAt(1);
+		var codePoint = (high - 0xD800) * 0x400 + low - 0xDC00 + 0x10000;
+		return "&#x" + codePoint.toString(16).toUpperCase() + ";";
+	}
+	
+	function getInverse(inverse, re){
+		function func(name){
+			return inverse[name];
+		}
+	
+		return function(data){
+			return data
+					.replace(re, func)
+					.replace(re_astralSymbols, astralReplacer)
+					.replace(re_nonASCII, singleCharReplacer);
+		};
+	}
+	
+	var re_xmlChars = getInverseReplacer(inverseXML);
+	
+	function escapeXML(data){
+		return data
+				.replace(re_xmlChars, singleCharReplacer)
+				.replace(re_astralSymbols, astralReplacer)
+				.replace(re_nonASCII, singleCharReplacer);
+	}
+	
+	exports.escape = escapeXML;
+
+
+/***/ },
+/* 554 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"amp": "&",
+		"apos": "'",
+		"gt": ">",
+		"lt": "<",
+		"quot": "\""
 	};
 
 /***/ },
-/* 540 */,
-/* 541 */,
-/* 542 */,
-/* 543 */,
-/* 544 */,
-/* 545 */,
-/* 546 */,
-/* 547 */,
-/* 548 */,
-/* 549 */,
-/* 550 */,
-/* 551 */,
-/* 552 */,
-/* 553 */,
-/* 554 */,
-/* 555 */,
-/* 556 */,
-/* 557 */,
-/* 558 */,
-/* 559 */,
-/* 560 */,
-/* 561 */,
-/* 562 */,
-/* 563 */,
-/* 564 */,
-/* 565 */,
-/* 566 */,
-/* 567 */,
-/* 568 */,
-/* 569 */,
-/* 570 */,
-/* 571 */,
-/* 572 */,
-/* 573 */,
-/* 574 */,
-/* 575 */,
-/* 576 */,
-/* 577 */,
-/* 578 */
+/* 555 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"Aacute": "Á",
+		"aacute": "á",
+		"Abreve": "Ă",
+		"abreve": "ă",
+		"ac": "∾",
+		"acd": "∿",
+		"acE": "∾̳",
+		"Acirc": "Â",
+		"acirc": "â",
+		"acute": "´",
+		"Acy": "А",
+		"acy": "а",
+		"AElig": "Æ",
+		"aelig": "æ",
+		"af": "⁡",
+		"Afr": "𝔄",
+		"afr": "𝔞",
+		"Agrave": "À",
+		"agrave": "à",
+		"alefsym": "ℵ",
+		"aleph": "ℵ",
+		"Alpha": "Α",
+		"alpha": "α",
+		"Amacr": "Ā",
+		"amacr": "ā",
+		"amalg": "⨿",
+		"amp": "&",
+		"AMP": "&",
+		"andand": "⩕",
+		"And": "⩓",
+		"and": "∧",
+		"andd": "⩜",
+		"andslope": "⩘",
+		"andv": "⩚",
+		"ang": "∠",
+		"ange": "⦤",
+		"angle": "∠",
+		"angmsdaa": "⦨",
+		"angmsdab": "⦩",
+		"angmsdac": "⦪",
+		"angmsdad": "⦫",
+		"angmsdae": "⦬",
+		"angmsdaf": "⦭",
+		"angmsdag": "⦮",
+		"angmsdah": "⦯",
+		"angmsd": "∡",
+		"angrt": "∟",
+		"angrtvb": "⊾",
+		"angrtvbd": "⦝",
+		"angsph": "∢",
+		"angst": "Å",
+		"angzarr": "⍼",
+		"Aogon": "Ą",
+		"aogon": "ą",
+		"Aopf": "𝔸",
+		"aopf": "𝕒",
+		"apacir": "⩯",
+		"ap": "≈",
+		"apE": "⩰",
+		"ape": "≊",
+		"apid": "≋",
+		"apos": "'",
+		"ApplyFunction": "⁡",
+		"approx": "≈",
+		"approxeq": "≊",
+		"Aring": "Å",
+		"aring": "å",
+		"Ascr": "𝒜",
+		"ascr": "𝒶",
+		"Assign": "≔",
+		"ast": "*",
+		"asymp": "≈",
+		"asympeq": "≍",
+		"Atilde": "Ã",
+		"atilde": "ã",
+		"Auml": "Ä",
+		"auml": "ä",
+		"awconint": "∳",
+		"awint": "⨑",
+		"backcong": "≌",
+		"backepsilon": "϶",
+		"backprime": "‵",
+		"backsim": "∽",
+		"backsimeq": "⋍",
+		"Backslash": "∖",
+		"Barv": "⫧",
+		"barvee": "⊽",
+		"barwed": "⌅",
+		"Barwed": "⌆",
+		"barwedge": "⌅",
+		"bbrk": "⎵",
+		"bbrktbrk": "⎶",
+		"bcong": "≌",
+		"Bcy": "Б",
+		"bcy": "б",
+		"bdquo": "„",
+		"becaus": "∵",
+		"because": "∵",
+		"Because": "∵",
+		"bemptyv": "⦰",
+		"bepsi": "϶",
+		"bernou": "ℬ",
+		"Bernoullis": "ℬ",
+		"Beta": "Β",
+		"beta": "β",
+		"beth": "ℶ",
+		"between": "≬",
+		"Bfr": "𝔅",
+		"bfr": "𝔟",
+		"bigcap": "⋂",
+		"bigcirc": "◯",
+		"bigcup": "⋃",
+		"bigodot": "⨀",
+		"bigoplus": "⨁",
+		"bigotimes": "⨂",
+		"bigsqcup": "⨆",
+		"bigstar": "★",
+		"bigtriangledown": "▽",
+		"bigtriangleup": "△",
+		"biguplus": "⨄",
+		"bigvee": "⋁",
+		"bigwedge": "⋀",
+		"bkarow": "⤍",
+		"blacklozenge": "⧫",
+		"blacksquare": "▪",
+		"blacktriangle": "▴",
+		"blacktriangledown": "▾",
+		"blacktriangleleft": "◂",
+		"blacktriangleright": "▸",
+		"blank": "␣",
+		"blk12": "▒",
+		"blk14": "░",
+		"blk34": "▓",
+		"block": "█",
+		"bne": "=⃥",
+		"bnequiv": "≡⃥",
+		"bNot": "⫭",
+		"bnot": "⌐",
+		"Bopf": "𝔹",
+		"bopf": "𝕓",
+		"bot": "⊥",
+		"bottom": "⊥",
+		"bowtie": "⋈",
+		"boxbox": "⧉",
+		"boxdl": "┐",
+		"boxdL": "╕",
+		"boxDl": "╖",
+		"boxDL": "╗",
+		"boxdr": "┌",
+		"boxdR": "╒",
+		"boxDr": "╓",
+		"boxDR": "╔",
+		"boxh": "─",
+		"boxH": "═",
+		"boxhd": "┬",
+		"boxHd": "╤",
+		"boxhD": "╥",
+		"boxHD": "╦",
+		"boxhu": "┴",
+		"boxHu": "╧",
+		"boxhU": "╨",
+		"boxHU": "╩",
+		"boxminus": "⊟",
+		"boxplus": "⊞",
+		"boxtimes": "⊠",
+		"boxul": "┘",
+		"boxuL": "╛",
+		"boxUl": "╜",
+		"boxUL": "╝",
+		"boxur": "└",
+		"boxuR": "╘",
+		"boxUr": "╙",
+		"boxUR": "╚",
+		"boxv": "│",
+		"boxV": "║",
+		"boxvh": "┼",
+		"boxvH": "╪",
+		"boxVh": "╫",
+		"boxVH": "╬",
+		"boxvl": "┤",
+		"boxvL": "╡",
+		"boxVl": "╢",
+		"boxVL": "╣",
+		"boxvr": "├",
+		"boxvR": "╞",
+		"boxVr": "╟",
+		"boxVR": "╠",
+		"bprime": "‵",
+		"breve": "˘",
+		"Breve": "˘",
+		"brvbar": "¦",
+		"bscr": "𝒷",
+		"Bscr": "ℬ",
+		"bsemi": "⁏",
+		"bsim": "∽",
+		"bsime": "⋍",
+		"bsolb": "⧅",
+		"bsol": "\\",
+		"bsolhsub": "⟈",
+		"bull": "•",
+		"bullet": "•",
+		"bump": "≎",
+		"bumpE": "⪮",
+		"bumpe": "≏",
+		"Bumpeq": "≎",
+		"bumpeq": "≏",
+		"Cacute": "Ć",
+		"cacute": "ć",
+		"capand": "⩄",
+		"capbrcup": "⩉",
+		"capcap": "⩋",
+		"cap": "∩",
+		"Cap": "⋒",
+		"capcup": "⩇",
+		"capdot": "⩀",
+		"CapitalDifferentialD": "ⅅ",
+		"caps": "∩︀",
+		"caret": "⁁",
+		"caron": "ˇ",
+		"Cayleys": "ℭ",
+		"ccaps": "⩍",
+		"Ccaron": "Č",
+		"ccaron": "č",
+		"Ccedil": "Ç",
+		"ccedil": "ç",
+		"Ccirc": "Ĉ",
+		"ccirc": "ĉ",
+		"Cconint": "∰",
+		"ccups": "⩌",
+		"ccupssm": "⩐",
+		"Cdot": "Ċ",
+		"cdot": "ċ",
+		"cedil": "¸",
+		"Cedilla": "¸",
+		"cemptyv": "⦲",
+		"cent": "¢",
+		"centerdot": "·",
+		"CenterDot": "·",
+		"cfr": "𝔠",
+		"Cfr": "ℭ",
+		"CHcy": "Ч",
+		"chcy": "ч",
+		"check": "✓",
+		"checkmark": "✓",
+		"Chi": "Χ",
+		"chi": "χ",
+		"circ": "ˆ",
+		"circeq": "≗",
+		"circlearrowleft": "↺",
+		"circlearrowright": "↻",
+		"circledast": "⊛",
+		"circledcirc": "⊚",
+		"circleddash": "⊝",
+		"CircleDot": "⊙",
+		"circledR": "®",
+		"circledS": "Ⓢ",
+		"CircleMinus": "⊖",
+		"CirclePlus": "⊕",
+		"CircleTimes": "⊗",
+		"cir": "○",
+		"cirE": "⧃",
+		"cire": "≗",
+		"cirfnint": "⨐",
+		"cirmid": "⫯",
+		"cirscir": "⧂",
+		"ClockwiseContourIntegral": "∲",
+		"CloseCurlyDoubleQuote": "”",
+		"CloseCurlyQuote": "’",
+		"clubs": "♣",
+		"clubsuit": "♣",
+		"colon": ":",
+		"Colon": "∷",
+		"Colone": "⩴",
+		"colone": "≔",
+		"coloneq": "≔",
+		"comma": ",",
+		"commat": "@",
+		"comp": "∁",
+		"compfn": "∘",
+		"complement": "∁",
+		"complexes": "ℂ",
+		"cong": "≅",
+		"congdot": "⩭",
+		"Congruent": "≡",
+		"conint": "∮",
+		"Conint": "∯",
+		"ContourIntegral": "∮",
+		"copf": "𝕔",
+		"Copf": "ℂ",
+		"coprod": "∐",
+		"Coproduct": "∐",
+		"copy": "©",
+		"COPY": "©",
+		"copysr": "℗",
+		"CounterClockwiseContourIntegral": "∳",
+		"crarr": "↵",
+		"cross": "✗",
+		"Cross": "⨯",
+		"Cscr": "𝒞",
+		"cscr": "𝒸",
+		"csub": "⫏",
+		"csube": "⫑",
+		"csup": "⫐",
+		"csupe": "⫒",
+		"ctdot": "⋯",
+		"cudarrl": "⤸",
+		"cudarrr": "⤵",
+		"cuepr": "⋞",
+		"cuesc": "⋟",
+		"cularr": "↶",
+		"cularrp": "⤽",
+		"cupbrcap": "⩈",
+		"cupcap": "⩆",
+		"CupCap": "≍",
+		"cup": "∪",
+		"Cup": "⋓",
+		"cupcup": "⩊",
+		"cupdot": "⊍",
+		"cupor": "⩅",
+		"cups": "∪︀",
+		"curarr": "↷",
+		"curarrm": "⤼",
+		"curlyeqprec": "⋞",
+		"curlyeqsucc": "⋟",
+		"curlyvee": "⋎",
+		"curlywedge": "⋏",
+		"curren": "¤",
+		"curvearrowleft": "↶",
+		"curvearrowright": "↷",
+		"cuvee": "⋎",
+		"cuwed": "⋏",
+		"cwconint": "∲",
+		"cwint": "∱",
+		"cylcty": "⌭",
+		"dagger": "†",
+		"Dagger": "‡",
+		"daleth": "ℸ",
+		"darr": "↓",
+		"Darr": "↡",
+		"dArr": "⇓",
+		"dash": "‐",
+		"Dashv": "⫤",
+		"dashv": "⊣",
+		"dbkarow": "⤏",
+		"dblac": "˝",
+		"Dcaron": "Ď",
+		"dcaron": "ď",
+		"Dcy": "Д",
+		"dcy": "д",
+		"ddagger": "‡",
+		"ddarr": "⇊",
+		"DD": "ⅅ",
+		"dd": "ⅆ",
+		"DDotrahd": "⤑",
+		"ddotseq": "⩷",
+		"deg": "°",
+		"Del": "∇",
+		"Delta": "Δ",
+		"delta": "δ",
+		"demptyv": "⦱",
+		"dfisht": "⥿",
+		"Dfr": "𝔇",
+		"dfr": "𝔡",
+		"dHar": "⥥",
+		"dharl": "⇃",
+		"dharr": "⇂",
+		"DiacriticalAcute": "´",
+		"DiacriticalDot": "˙",
+		"DiacriticalDoubleAcute": "˝",
+		"DiacriticalGrave": "`",
+		"DiacriticalTilde": "˜",
+		"diam": "⋄",
+		"diamond": "⋄",
+		"Diamond": "⋄",
+		"diamondsuit": "♦",
+		"diams": "♦",
+		"die": "¨",
+		"DifferentialD": "ⅆ",
+		"digamma": "ϝ",
+		"disin": "⋲",
+		"div": "÷",
+		"divide": "÷",
+		"divideontimes": "⋇",
+		"divonx": "⋇",
+		"DJcy": "Ђ",
+		"djcy": "ђ",
+		"dlcorn": "⌞",
+		"dlcrop": "⌍",
+		"dollar": "$",
+		"Dopf": "𝔻",
+		"dopf": "𝕕",
+		"Dot": "¨",
+		"dot": "˙",
+		"DotDot": "⃜",
+		"doteq": "≐",
+		"doteqdot": "≑",
+		"DotEqual": "≐",
+		"dotminus": "∸",
+		"dotplus": "∔",
+		"dotsquare": "⊡",
+		"doublebarwedge": "⌆",
+		"DoubleContourIntegral": "∯",
+		"DoubleDot": "¨",
+		"DoubleDownArrow": "⇓",
+		"DoubleLeftArrow": "⇐",
+		"DoubleLeftRightArrow": "⇔",
+		"DoubleLeftTee": "⫤",
+		"DoubleLongLeftArrow": "⟸",
+		"DoubleLongLeftRightArrow": "⟺",
+		"DoubleLongRightArrow": "⟹",
+		"DoubleRightArrow": "⇒",
+		"DoubleRightTee": "⊨",
+		"DoubleUpArrow": "⇑",
+		"DoubleUpDownArrow": "⇕",
+		"DoubleVerticalBar": "∥",
+		"DownArrowBar": "⤓",
+		"downarrow": "↓",
+		"DownArrow": "↓",
+		"Downarrow": "⇓",
+		"DownArrowUpArrow": "⇵",
+		"DownBreve": "̑",
+		"downdownarrows": "⇊",
+		"downharpoonleft": "⇃",
+		"downharpoonright": "⇂",
+		"DownLeftRightVector": "⥐",
+		"DownLeftTeeVector": "⥞",
+		"DownLeftVectorBar": "⥖",
+		"DownLeftVector": "↽",
+		"DownRightTeeVector": "⥟",
+		"DownRightVectorBar": "⥗",
+		"DownRightVector": "⇁",
+		"DownTeeArrow": "↧",
+		"DownTee": "⊤",
+		"drbkarow": "⤐",
+		"drcorn": "⌟",
+		"drcrop": "⌌",
+		"Dscr": "𝒟",
+		"dscr": "𝒹",
+		"DScy": "Ѕ",
+		"dscy": "ѕ",
+		"dsol": "⧶",
+		"Dstrok": "Đ",
+		"dstrok": "đ",
+		"dtdot": "⋱",
+		"dtri": "▿",
+		"dtrif": "▾",
+		"duarr": "⇵",
+		"duhar": "⥯",
+		"dwangle": "⦦",
+		"DZcy": "Џ",
+		"dzcy": "џ",
+		"dzigrarr": "⟿",
+		"Eacute": "É",
+		"eacute": "é",
+		"easter": "⩮",
+		"Ecaron": "Ě",
+		"ecaron": "ě",
+		"Ecirc": "Ê",
+		"ecirc": "ê",
+		"ecir": "≖",
+		"ecolon": "≕",
+		"Ecy": "Э",
+		"ecy": "э",
+		"eDDot": "⩷",
+		"Edot": "Ė",
+		"edot": "ė",
+		"eDot": "≑",
+		"ee": "ⅇ",
+		"efDot": "≒",
+		"Efr": "𝔈",
+		"efr": "𝔢",
+		"eg": "⪚",
+		"Egrave": "È",
+		"egrave": "è",
+		"egs": "⪖",
+		"egsdot": "⪘",
+		"el": "⪙",
+		"Element": "∈",
+		"elinters": "⏧",
+		"ell": "ℓ",
+		"els": "⪕",
+		"elsdot": "⪗",
+		"Emacr": "Ē",
+		"emacr": "ē",
+		"empty": "∅",
+		"emptyset": "∅",
+		"EmptySmallSquare": "◻",
+		"emptyv": "∅",
+		"EmptyVerySmallSquare": "▫",
+		"emsp13": " ",
+		"emsp14": " ",
+		"emsp": " ",
+		"ENG": "Ŋ",
+		"eng": "ŋ",
+		"ensp": " ",
+		"Eogon": "Ę",
+		"eogon": "ę",
+		"Eopf": "𝔼",
+		"eopf": "𝕖",
+		"epar": "⋕",
+		"eparsl": "⧣",
+		"eplus": "⩱",
+		"epsi": "ε",
+		"Epsilon": "Ε",
+		"epsilon": "ε",
+		"epsiv": "ϵ",
+		"eqcirc": "≖",
+		"eqcolon": "≕",
+		"eqsim": "≂",
+		"eqslantgtr": "⪖",
+		"eqslantless": "⪕",
+		"Equal": "⩵",
+		"equals": "=",
+		"EqualTilde": "≂",
+		"equest": "≟",
+		"Equilibrium": "⇌",
+		"equiv": "≡",
+		"equivDD": "⩸",
+		"eqvparsl": "⧥",
+		"erarr": "⥱",
+		"erDot": "≓",
+		"escr": "ℯ",
+		"Escr": "ℰ",
+		"esdot": "≐",
+		"Esim": "⩳",
+		"esim": "≂",
+		"Eta": "Η",
+		"eta": "η",
+		"ETH": "Ð",
+		"eth": "ð",
+		"Euml": "Ë",
+		"euml": "ë",
+		"euro": "€",
+		"excl": "!",
+		"exist": "∃",
+		"Exists": "∃",
+		"expectation": "ℰ",
+		"exponentiale": "ⅇ",
+		"ExponentialE": "ⅇ",
+		"fallingdotseq": "≒",
+		"Fcy": "Ф",
+		"fcy": "ф",
+		"female": "♀",
+		"ffilig": "ﬃ",
+		"fflig": "ﬀ",
+		"ffllig": "ﬄ",
+		"Ffr": "𝔉",
+		"ffr": "𝔣",
+		"filig": "ﬁ",
+		"FilledSmallSquare": "◼",
+		"FilledVerySmallSquare": "▪",
+		"fjlig": "fj",
+		"flat": "♭",
+		"fllig": "ﬂ",
+		"fltns": "▱",
+		"fnof": "ƒ",
+		"Fopf": "𝔽",
+		"fopf": "𝕗",
+		"forall": "∀",
+		"ForAll": "∀",
+		"fork": "⋔",
+		"forkv": "⫙",
+		"Fouriertrf": "ℱ",
+		"fpartint": "⨍",
+		"frac12": "½",
+		"frac13": "⅓",
+		"frac14": "¼",
+		"frac15": "⅕",
+		"frac16": "⅙",
+		"frac18": "⅛",
+		"frac23": "⅔",
+		"frac25": "⅖",
+		"frac34": "¾",
+		"frac35": "⅗",
+		"frac38": "⅜",
+		"frac45": "⅘",
+		"frac56": "⅚",
+		"frac58": "⅝",
+		"frac78": "⅞",
+		"frasl": "⁄",
+		"frown": "⌢",
+		"fscr": "𝒻",
+		"Fscr": "ℱ",
+		"gacute": "ǵ",
+		"Gamma": "Γ",
+		"gamma": "γ",
+		"Gammad": "Ϝ",
+		"gammad": "ϝ",
+		"gap": "⪆",
+		"Gbreve": "Ğ",
+		"gbreve": "ğ",
+		"Gcedil": "Ģ",
+		"Gcirc": "Ĝ",
+		"gcirc": "ĝ",
+		"Gcy": "Г",
+		"gcy": "г",
+		"Gdot": "Ġ",
+		"gdot": "ġ",
+		"ge": "≥",
+		"gE": "≧",
+		"gEl": "⪌",
+		"gel": "⋛",
+		"geq": "≥",
+		"geqq": "≧",
+		"geqslant": "⩾",
+		"gescc": "⪩",
+		"ges": "⩾",
+		"gesdot": "⪀",
+		"gesdoto": "⪂",
+		"gesdotol": "⪄",
+		"gesl": "⋛︀",
+		"gesles": "⪔",
+		"Gfr": "𝔊",
+		"gfr": "𝔤",
+		"gg": "≫",
+		"Gg": "⋙",
+		"ggg": "⋙",
+		"gimel": "ℷ",
+		"GJcy": "Ѓ",
+		"gjcy": "ѓ",
+		"gla": "⪥",
+		"gl": "≷",
+		"glE": "⪒",
+		"glj": "⪤",
+		"gnap": "⪊",
+		"gnapprox": "⪊",
+		"gne": "⪈",
+		"gnE": "≩",
+		"gneq": "⪈",
+		"gneqq": "≩",
+		"gnsim": "⋧",
+		"Gopf": "𝔾",
+		"gopf": "𝕘",
+		"grave": "`",
+		"GreaterEqual": "≥",
+		"GreaterEqualLess": "⋛",
+		"GreaterFullEqual": "≧",
+		"GreaterGreater": "⪢",
+		"GreaterLess": "≷",
+		"GreaterSlantEqual": "⩾",
+		"GreaterTilde": "≳",
+		"Gscr": "𝒢",
+		"gscr": "ℊ",
+		"gsim": "≳",
+		"gsime": "⪎",
+		"gsiml": "⪐",
+		"gtcc": "⪧",
+		"gtcir": "⩺",
+		"gt": ">",
+		"GT": ">",
+		"Gt": "≫",
+		"gtdot": "⋗",
+		"gtlPar": "⦕",
+		"gtquest": "⩼",
+		"gtrapprox": "⪆",
+		"gtrarr": "⥸",
+		"gtrdot": "⋗",
+		"gtreqless": "⋛",
+		"gtreqqless": "⪌",
+		"gtrless": "≷",
+		"gtrsim": "≳",
+		"gvertneqq": "≩︀",
+		"gvnE": "≩︀",
+		"Hacek": "ˇ",
+		"hairsp": " ",
+		"half": "½",
+		"hamilt": "ℋ",
+		"HARDcy": "Ъ",
+		"hardcy": "ъ",
+		"harrcir": "⥈",
+		"harr": "↔",
+		"hArr": "⇔",
+		"harrw": "↭",
+		"Hat": "^",
+		"hbar": "ℏ",
+		"Hcirc": "Ĥ",
+		"hcirc": "ĥ",
+		"hearts": "♥",
+		"heartsuit": "♥",
+		"hellip": "…",
+		"hercon": "⊹",
+		"hfr": "𝔥",
+		"Hfr": "ℌ",
+		"HilbertSpace": "ℋ",
+		"hksearow": "⤥",
+		"hkswarow": "⤦",
+		"hoarr": "⇿",
+		"homtht": "∻",
+		"hookleftarrow": "↩",
+		"hookrightarrow": "↪",
+		"hopf": "𝕙",
+		"Hopf": "ℍ",
+		"horbar": "―",
+		"HorizontalLine": "─",
+		"hscr": "𝒽",
+		"Hscr": "ℋ",
+		"hslash": "ℏ",
+		"Hstrok": "Ħ",
+		"hstrok": "ħ",
+		"HumpDownHump": "≎",
+		"HumpEqual": "≏",
+		"hybull": "⁃",
+		"hyphen": "‐",
+		"Iacute": "Í",
+		"iacute": "í",
+		"ic": "⁣",
+		"Icirc": "Î",
+		"icirc": "î",
+		"Icy": "И",
+		"icy": "и",
+		"Idot": "İ",
+		"IEcy": "Е",
+		"iecy": "е",
+		"iexcl": "¡",
+		"iff": "⇔",
+		"ifr": "𝔦",
+		"Ifr": "ℑ",
+		"Igrave": "Ì",
+		"igrave": "ì",
+		"ii": "ⅈ",
+		"iiiint": "⨌",
+		"iiint": "∭",
+		"iinfin": "⧜",
+		"iiota": "℩",
+		"IJlig": "Ĳ",
+		"ijlig": "ĳ",
+		"Imacr": "Ī",
+		"imacr": "ī",
+		"image": "ℑ",
+		"ImaginaryI": "ⅈ",
+		"imagline": "ℐ",
+		"imagpart": "ℑ",
+		"imath": "ı",
+		"Im": "ℑ",
+		"imof": "⊷",
+		"imped": "Ƶ",
+		"Implies": "⇒",
+		"incare": "℅",
+		"in": "∈",
+		"infin": "∞",
+		"infintie": "⧝",
+		"inodot": "ı",
+		"intcal": "⊺",
+		"int": "∫",
+		"Int": "∬",
+		"integers": "ℤ",
+		"Integral": "∫",
+		"intercal": "⊺",
+		"Intersection": "⋂",
+		"intlarhk": "⨗",
+		"intprod": "⨼",
+		"InvisibleComma": "⁣",
+		"InvisibleTimes": "⁢",
+		"IOcy": "Ё",
+		"iocy": "ё",
+		"Iogon": "Į",
+		"iogon": "į",
+		"Iopf": "𝕀",
+		"iopf": "𝕚",
+		"Iota": "Ι",
+		"iota": "ι",
+		"iprod": "⨼",
+		"iquest": "¿",
+		"iscr": "𝒾",
+		"Iscr": "ℐ",
+		"isin": "∈",
+		"isindot": "⋵",
+		"isinE": "⋹",
+		"isins": "⋴",
+		"isinsv": "⋳",
+		"isinv": "∈",
+		"it": "⁢",
+		"Itilde": "Ĩ",
+		"itilde": "ĩ",
+		"Iukcy": "І",
+		"iukcy": "і",
+		"Iuml": "Ï",
+		"iuml": "ï",
+		"Jcirc": "Ĵ",
+		"jcirc": "ĵ",
+		"Jcy": "Й",
+		"jcy": "й",
+		"Jfr": "𝔍",
+		"jfr": "𝔧",
+		"jmath": "ȷ",
+		"Jopf": "𝕁",
+		"jopf": "𝕛",
+		"Jscr": "𝒥",
+		"jscr": "𝒿",
+		"Jsercy": "Ј",
+		"jsercy": "ј",
+		"Jukcy": "Є",
+		"jukcy": "є",
+		"Kappa": "Κ",
+		"kappa": "κ",
+		"kappav": "ϰ",
+		"Kcedil": "Ķ",
+		"kcedil": "ķ",
+		"Kcy": "К",
+		"kcy": "к",
+		"Kfr": "𝔎",
+		"kfr": "𝔨",
+		"kgreen": "ĸ",
+		"KHcy": "Х",
+		"khcy": "х",
+		"KJcy": "Ќ",
+		"kjcy": "ќ",
+		"Kopf": "𝕂",
+		"kopf": "𝕜",
+		"Kscr": "𝒦",
+		"kscr": "𝓀",
+		"lAarr": "⇚",
+		"Lacute": "Ĺ",
+		"lacute": "ĺ",
+		"laemptyv": "⦴",
+		"lagran": "ℒ",
+		"Lambda": "Λ",
+		"lambda": "λ",
+		"lang": "⟨",
+		"Lang": "⟪",
+		"langd": "⦑",
+		"langle": "⟨",
+		"lap": "⪅",
+		"Laplacetrf": "ℒ",
+		"laquo": "«",
+		"larrb": "⇤",
+		"larrbfs": "⤟",
+		"larr": "←",
+		"Larr": "↞",
+		"lArr": "⇐",
+		"larrfs": "⤝",
+		"larrhk": "↩",
+		"larrlp": "↫",
+		"larrpl": "⤹",
+		"larrsim": "⥳",
+		"larrtl": "↢",
+		"latail": "⤙",
+		"lAtail": "⤛",
+		"lat": "⪫",
+		"late": "⪭",
+		"lates": "⪭︀",
+		"lbarr": "⤌",
+		"lBarr": "⤎",
+		"lbbrk": "❲",
+		"lbrace": "{",
+		"lbrack": "[",
+		"lbrke": "⦋",
+		"lbrksld": "⦏",
+		"lbrkslu": "⦍",
+		"Lcaron": "Ľ",
+		"lcaron": "ľ",
+		"Lcedil": "Ļ",
+		"lcedil": "ļ",
+		"lceil": "⌈",
+		"lcub": "{",
+		"Lcy": "Л",
+		"lcy": "л",
+		"ldca": "⤶",
+		"ldquo": "“",
+		"ldquor": "„",
+		"ldrdhar": "⥧",
+		"ldrushar": "⥋",
+		"ldsh": "↲",
+		"le": "≤",
+		"lE": "≦",
+		"LeftAngleBracket": "⟨",
+		"LeftArrowBar": "⇤",
+		"leftarrow": "←",
+		"LeftArrow": "←",
+		"Leftarrow": "⇐",
+		"LeftArrowRightArrow": "⇆",
+		"leftarrowtail": "↢",
+		"LeftCeiling": "⌈",
+		"LeftDoubleBracket": "⟦",
+		"LeftDownTeeVector": "⥡",
+		"LeftDownVectorBar": "⥙",
+		"LeftDownVector": "⇃",
+		"LeftFloor": "⌊",
+		"leftharpoondown": "↽",
+		"leftharpoonup": "↼",
+		"leftleftarrows": "⇇",
+		"leftrightarrow": "↔",
+		"LeftRightArrow": "↔",
+		"Leftrightarrow": "⇔",
+		"leftrightarrows": "⇆",
+		"leftrightharpoons": "⇋",
+		"leftrightsquigarrow": "↭",
+		"LeftRightVector": "⥎",
+		"LeftTeeArrow": "↤",
+		"LeftTee": "⊣",
+		"LeftTeeVector": "⥚",
+		"leftthreetimes": "⋋",
+		"LeftTriangleBar": "⧏",
+		"LeftTriangle": "⊲",
+		"LeftTriangleEqual": "⊴",
+		"LeftUpDownVector": "⥑",
+		"LeftUpTeeVector": "⥠",
+		"LeftUpVectorBar": "⥘",
+		"LeftUpVector": "↿",
+		"LeftVectorBar": "⥒",
+		"LeftVector": "↼",
+		"lEg": "⪋",
+		"leg": "⋚",
+		"leq": "≤",
+		"leqq": "≦",
+		"leqslant": "⩽",
+		"lescc": "⪨",
+		"les": "⩽",
+		"lesdot": "⩿",
+		"lesdoto": "⪁",
+		"lesdotor": "⪃",
+		"lesg": "⋚︀",
+		"lesges": "⪓",
+		"lessapprox": "⪅",
+		"lessdot": "⋖",
+		"lesseqgtr": "⋚",
+		"lesseqqgtr": "⪋",
+		"LessEqualGreater": "⋚",
+		"LessFullEqual": "≦",
+		"LessGreater": "≶",
+		"lessgtr": "≶",
+		"LessLess": "⪡",
+		"lesssim": "≲",
+		"LessSlantEqual": "⩽",
+		"LessTilde": "≲",
+		"lfisht": "⥼",
+		"lfloor": "⌊",
+		"Lfr": "𝔏",
+		"lfr": "𝔩",
+		"lg": "≶",
+		"lgE": "⪑",
+		"lHar": "⥢",
+		"lhard": "↽",
+		"lharu": "↼",
+		"lharul": "⥪",
+		"lhblk": "▄",
+		"LJcy": "Љ",
+		"ljcy": "љ",
+		"llarr": "⇇",
+		"ll": "≪",
+		"Ll": "⋘",
+		"llcorner": "⌞",
+		"Lleftarrow": "⇚",
+		"llhard": "⥫",
+		"lltri": "◺",
+		"Lmidot": "Ŀ",
+		"lmidot": "ŀ",
+		"lmoustache": "⎰",
+		"lmoust": "⎰",
+		"lnap": "⪉",
+		"lnapprox": "⪉",
+		"lne": "⪇",
+		"lnE": "≨",
+		"lneq": "⪇",
+		"lneqq": "≨",
+		"lnsim": "⋦",
+		"loang": "⟬",
+		"loarr": "⇽",
+		"lobrk": "⟦",
+		"longleftarrow": "⟵",
+		"LongLeftArrow": "⟵",
+		"Longleftarrow": "⟸",
+		"longleftrightarrow": "⟷",
+		"LongLeftRightArrow": "⟷",
+		"Longleftrightarrow": "⟺",
+		"longmapsto": "⟼",
+		"longrightarrow": "⟶",
+		"LongRightArrow": "⟶",
+		"Longrightarrow": "⟹",
+		"looparrowleft": "↫",
+		"looparrowright": "↬",
+		"lopar": "⦅",
+		"Lopf": "𝕃",
+		"lopf": "𝕝",
+		"loplus": "⨭",
+		"lotimes": "⨴",
+		"lowast": "∗",
+		"lowbar": "_",
+		"LowerLeftArrow": "↙",
+		"LowerRightArrow": "↘",
+		"loz": "◊",
+		"lozenge": "◊",
+		"lozf": "⧫",
+		"lpar": "(",
+		"lparlt": "⦓",
+		"lrarr": "⇆",
+		"lrcorner": "⌟",
+		"lrhar": "⇋",
+		"lrhard": "⥭",
+		"lrm": "‎",
+		"lrtri": "⊿",
+		"lsaquo": "‹",
+		"lscr": "𝓁",
+		"Lscr": "ℒ",
+		"lsh": "↰",
+		"Lsh": "↰",
+		"lsim": "≲",
+		"lsime": "⪍",
+		"lsimg": "⪏",
+		"lsqb": "[",
+		"lsquo": "‘",
+		"lsquor": "‚",
+		"Lstrok": "Ł",
+		"lstrok": "ł",
+		"ltcc": "⪦",
+		"ltcir": "⩹",
+		"lt": "<",
+		"LT": "<",
+		"Lt": "≪",
+		"ltdot": "⋖",
+		"lthree": "⋋",
+		"ltimes": "⋉",
+		"ltlarr": "⥶",
+		"ltquest": "⩻",
+		"ltri": "◃",
+		"ltrie": "⊴",
+		"ltrif": "◂",
+		"ltrPar": "⦖",
+		"lurdshar": "⥊",
+		"luruhar": "⥦",
+		"lvertneqq": "≨︀",
+		"lvnE": "≨︀",
+		"macr": "¯",
+		"male": "♂",
+		"malt": "✠",
+		"maltese": "✠",
+		"Map": "⤅",
+		"map": "↦",
+		"mapsto": "↦",
+		"mapstodown": "↧",
+		"mapstoleft": "↤",
+		"mapstoup": "↥",
+		"marker": "▮",
+		"mcomma": "⨩",
+		"Mcy": "М",
+		"mcy": "м",
+		"mdash": "—",
+		"mDDot": "∺",
+		"measuredangle": "∡",
+		"MediumSpace": " ",
+		"Mellintrf": "ℳ",
+		"Mfr": "𝔐",
+		"mfr": "𝔪",
+		"mho": "℧",
+		"micro": "µ",
+		"midast": "*",
+		"midcir": "⫰",
+		"mid": "∣",
+		"middot": "·",
+		"minusb": "⊟",
+		"minus": "−",
+		"minusd": "∸",
+		"minusdu": "⨪",
+		"MinusPlus": "∓",
+		"mlcp": "⫛",
+		"mldr": "…",
+		"mnplus": "∓",
+		"models": "⊧",
+		"Mopf": "𝕄",
+		"mopf": "𝕞",
+		"mp": "∓",
+		"mscr": "𝓂",
+		"Mscr": "ℳ",
+		"mstpos": "∾",
+		"Mu": "Μ",
+		"mu": "μ",
+		"multimap": "⊸",
+		"mumap": "⊸",
+		"nabla": "∇",
+		"Nacute": "Ń",
+		"nacute": "ń",
+		"nang": "∠⃒",
+		"nap": "≉",
+		"napE": "⩰̸",
+		"napid": "≋̸",
+		"napos": "ŉ",
+		"napprox": "≉",
+		"natural": "♮",
+		"naturals": "ℕ",
+		"natur": "♮",
+		"nbsp": " ",
+		"nbump": "≎̸",
+		"nbumpe": "≏̸",
+		"ncap": "⩃",
+		"Ncaron": "Ň",
+		"ncaron": "ň",
+		"Ncedil": "Ņ",
+		"ncedil": "ņ",
+		"ncong": "≇",
+		"ncongdot": "⩭̸",
+		"ncup": "⩂",
+		"Ncy": "Н",
+		"ncy": "н",
+		"ndash": "–",
+		"nearhk": "⤤",
+		"nearr": "↗",
+		"neArr": "⇗",
+		"nearrow": "↗",
+		"ne": "≠",
+		"nedot": "≐̸",
+		"NegativeMediumSpace": "​",
+		"NegativeThickSpace": "​",
+		"NegativeThinSpace": "​",
+		"NegativeVeryThinSpace": "​",
+		"nequiv": "≢",
+		"nesear": "⤨",
+		"nesim": "≂̸",
+		"NestedGreaterGreater": "≫",
+		"NestedLessLess": "≪",
+		"NewLine": "\n",
+		"nexist": "∄",
+		"nexists": "∄",
+		"Nfr": "𝔑",
+		"nfr": "𝔫",
+		"ngE": "≧̸",
+		"nge": "≱",
+		"ngeq": "≱",
+		"ngeqq": "≧̸",
+		"ngeqslant": "⩾̸",
+		"nges": "⩾̸",
+		"nGg": "⋙̸",
+		"ngsim": "≵",
+		"nGt": "≫⃒",
+		"ngt": "≯",
+		"ngtr": "≯",
+		"nGtv": "≫̸",
+		"nharr": "↮",
+		"nhArr": "⇎",
+		"nhpar": "⫲",
+		"ni": "∋",
+		"nis": "⋼",
+		"nisd": "⋺",
+		"niv": "∋",
+		"NJcy": "Њ",
+		"njcy": "њ",
+		"nlarr": "↚",
+		"nlArr": "⇍",
+		"nldr": "‥",
+		"nlE": "≦̸",
+		"nle": "≰",
+		"nleftarrow": "↚",
+		"nLeftarrow": "⇍",
+		"nleftrightarrow": "↮",
+		"nLeftrightarrow": "⇎",
+		"nleq": "≰",
+		"nleqq": "≦̸",
+		"nleqslant": "⩽̸",
+		"nles": "⩽̸",
+		"nless": "≮",
+		"nLl": "⋘̸",
+		"nlsim": "≴",
+		"nLt": "≪⃒",
+		"nlt": "≮",
+		"nltri": "⋪",
+		"nltrie": "⋬",
+		"nLtv": "≪̸",
+		"nmid": "∤",
+		"NoBreak": "⁠",
+		"NonBreakingSpace": " ",
+		"nopf": "𝕟",
+		"Nopf": "ℕ",
+		"Not": "⫬",
+		"not": "¬",
+		"NotCongruent": "≢",
+		"NotCupCap": "≭",
+		"NotDoubleVerticalBar": "∦",
+		"NotElement": "∉",
+		"NotEqual": "≠",
+		"NotEqualTilde": "≂̸",
+		"NotExists": "∄",
+		"NotGreater": "≯",
+		"NotGreaterEqual": "≱",
+		"NotGreaterFullEqual": "≧̸",
+		"NotGreaterGreater": "≫̸",
+		"NotGreaterLess": "≹",
+		"NotGreaterSlantEqual": "⩾̸",
+		"NotGreaterTilde": "≵",
+		"NotHumpDownHump": "≎̸",
+		"NotHumpEqual": "≏̸",
+		"notin": "∉",
+		"notindot": "⋵̸",
+		"notinE": "⋹̸",
+		"notinva": "∉",
+		"notinvb": "⋷",
+		"notinvc": "⋶",
+		"NotLeftTriangleBar": "⧏̸",
+		"NotLeftTriangle": "⋪",
+		"NotLeftTriangleEqual": "⋬",
+		"NotLess": "≮",
+		"NotLessEqual": "≰",
+		"NotLessGreater": "≸",
+		"NotLessLess": "≪̸",
+		"NotLessSlantEqual": "⩽̸",
+		"NotLessTilde": "≴",
+		"NotNestedGreaterGreater": "⪢̸",
+		"NotNestedLessLess": "⪡̸",
+		"notni": "∌",
+		"notniva": "∌",
+		"notnivb": "⋾",
+		"notnivc": "⋽",
+		"NotPrecedes": "⊀",
+		"NotPrecedesEqual": "⪯̸",
+		"NotPrecedesSlantEqual": "⋠",
+		"NotReverseElement": "∌",
+		"NotRightTriangleBar": "⧐̸",
+		"NotRightTriangle": "⋫",
+		"NotRightTriangleEqual": "⋭",
+		"NotSquareSubset": "⊏̸",
+		"NotSquareSubsetEqual": "⋢",
+		"NotSquareSuperset": "⊐̸",
+		"NotSquareSupersetEqual": "⋣",
+		"NotSubset": "⊂⃒",
+		"NotSubsetEqual": "⊈",
+		"NotSucceeds": "⊁",
+		"NotSucceedsEqual": "⪰̸",
+		"NotSucceedsSlantEqual": "⋡",
+		"NotSucceedsTilde": "≿̸",
+		"NotSuperset": "⊃⃒",
+		"NotSupersetEqual": "⊉",
+		"NotTilde": "≁",
+		"NotTildeEqual": "≄",
+		"NotTildeFullEqual": "≇",
+		"NotTildeTilde": "≉",
+		"NotVerticalBar": "∤",
+		"nparallel": "∦",
+		"npar": "∦",
+		"nparsl": "⫽⃥",
+		"npart": "∂̸",
+		"npolint": "⨔",
+		"npr": "⊀",
+		"nprcue": "⋠",
+		"nprec": "⊀",
+		"npreceq": "⪯̸",
+		"npre": "⪯̸",
+		"nrarrc": "⤳̸",
+		"nrarr": "↛",
+		"nrArr": "⇏",
+		"nrarrw": "↝̸",
+		"nrightarrow": "↛",
+		"nRightarrow": "⇏",
+		"nrtri": "⋫",
+		"nrtrie": "⋭",
+		"nsc": "⊁",
+		"nsccue": "⋡",
+		"nsce": "⪰̸",
+		"Nscr": "𝒩",
+		"nscr": "𝓃",
+		"nshortmid": "∤",
+		"nshortparallel": "∦",
+		"nsim": "≁",
+		"nsime": "≄",
+		"nsimeq": "≄",
+		"nsmid": "∤",
+		"nspar": "∦",
+		"nsqsube": "⋢",
+		"nsqsupe": "⋣",
+		"nsub": "⊄",
+		"nsubE": "⫅̸",
+		"nsube": "⊈",
+		"nsubset": "⊂⃒",
+		"nsubseteq": "⊈",
+		"nsubseteqq": "⫅̸",
+		"nsucc": "⊁",
+		"nsucceq": "⪰̸",
+		"nsup": "⊅",
+		"nsupE": "⫆̸",
+		"nsupe": "⊉",
+		"nsupset": "⊃⃒",
+		"nsupseteq": "⊉",
+		"nsupseteqq": "⫆̸",
+		"ntgl": "≹",
+		"Ntilde": "Ñ",
+		"ntilde": "ñ",
+		"ntlg": "≸",
+		"ntriangleleft": "⋪",
+		"ntrianglelefteq": "⋬",
+		"ntriangleright": "⋫",
+		"ntrianglerighteq": "⋭",
+		"Nu": "Ν",
+		"nu": "ν",
+		"num": "#",
+		"numero": "№",
+		"numsp": " ",
+		"nvap": "≍⃒",
+		"nvdash": "⊬",
+		"nvDash": "⊭",
+		"nVdash": "⊮",
+		"nVDash": "⊯",
+		"nvge": "≥⃒",
+		"nvgt": ">⃒",
+		"nvHarr": "⤄",
+		"nvinfin": "⧞",
+		"nvlArr": "⤂",
+		"nvle": "≤⃒",
+		"nvlt": "<⃒",
+		"nvltrie": "⊴⃒",
+		"nvrArr": "⤃",
+		"nvrtrie": "⊵⃒",
+		"nvsim": "∼⃒",
+		"nwarhk": "⤣",
+		"nwarr": "↖",
+		"nwArr": "⇖",
+		"nwarrow": "↖",
+		"nwnear": "⤧",
+		"Oacute": "Ó",
+		"oacute": "ó",
+		"oast": "⊛",
+		"Ocirc": "Ô",
+		"ocirc": "ô",
+		"ocir": "⊚",
+		"Ocy": "О",
+		"ocy": "о",
+		"odash": "⊝",
+		"Odblac": "Ő",
+		"odblac": "ő",
+		"odiv": "⨸",
+		"odot": "⊙",
+		"odsold": "⦼",
+		"OElig": "Œ",
+		"oelig": "œ",
+		"ofcir": "⦿",
+		"Ofr": "𝔒",
+		"ofr": "𝔬",
+		"ogon": "˛",
+		"Ograve": "Ò",
+		"ograve": "ò",
+		"ogt": "⧁",
+		"ohbar": "⦵",
+		"ohm": "Ω",
+		"oint": "∮",
+		"olarr": "↺",
+		"olcir": "⦾",
+		"olcross": "⦻",
+		"oline": "‾",
+		"olt": "⧀",
+		"Omacr": "Ō",
+		"omacr": "ō",
+		"Omega": "Ω",
+		"omega": "ω",
+		"Omicron": "Ο",
+		"omicron": "ο",
+		"omid": "⦶",
+		"ominus": "⊖",
+		"Oopf": "𝕆",
+		"oopf": "𝕠",
+		"opar": "⦷",
+		"OpenCurlyDoubleQuote": "“",
+		"OpenCurlyQuote": "‘",
+		"operp": "⦹",
+		"oplus": "⊕",
+		"orarr": "↻",
+		"Or": "⩔",
+		"or": "∨",
+		"ord": "⩝",
+		"order": "ℴ",
+		"orderof": "ℴ",
+		"ordf": "ª",
+		"ordm": "º",
+		"origof": "⊶",
+		"oror": "⩖",
+		"orslope": "⩗",
+		"orv": "⩛",
+		"oS": "Ⓢ",
+		"Oscr": "𝒪",
+		"oscr": "ℴ",
+		"Oslash": "Ø",
+		"oslash": "ø",
+		"osol": "⊘",
+		"Otilde": "Õ",
+		"otilde": "õ",
+		"otimesas": "⨶",
+		"Otimes": "⨷",
+		"otimes": "⊗",
+		"Ouml": "Ö",
+		"ouml": "ö",
+		"ovbar": "⌽",
+		"OverBar": "‾",
+		"OverBrace": "⏞",
+		"OverBracket": "⎴",
+		"OverParenthesis": "⏜",
+		"para": "¶",
+		"parallel": "∥",
+		"par": "∥",
+		"parsim": "⫳",
+		"parsl": "⫽",
+		"part": "∂",
+		"PartialD": "∂",
+		"Pcy": "П",
+		"pcy": "п",
+		"percnt": "%",
+		"period": ".",
+		"permil": "‰",
+		"perp": "⊥",
+		"pertenk": "‱",
+		"Pfr": "𝔓",
+		"pfr": "𝔭",
+		"Phi": "Φ",
+		"phi": "φ",
+		"phiv": "ϕ",
+		"phmmat": "ℳ",
+		"phone": "☎",
+		"Pi": "Π",
+		"pi": "π",
+		"pitchfork": "⋔",
+		"piv": "ϖ",
+		"planck": "ℏ",
+		"planckh": "ℎ",
+		"plankv": "ℏ",
+		"plusacir": "⨣",
+		"plusb": "⊞",
+		"pluscir": "⨢",
+		"plus": "+",
+		"plusdo": "∔",
+		"plusdu": "⨥",
+		"pluse": "⩲",
+		"PlusMinus": "±",
+		"plusmn": "±",
+		"plussim": "⨦",
+		"plustwo": "⨧",
+		"pm": "±",
+		"Poincareplane": "ℌ",
+		"pointint": "⨕",
+		"popf": "𝕡",
+		"Popf": "ℙ",
+		"pound": "£",
+		"prap": "⪷",
+		"Pr": "⪻",
+		"pr": "≺",
+		"prcue": "≼",
+		"precapprox": "⪷",
+		"prec": "≺",
+		"preccurlyeq": "≼",
+		"Precedes": "≺",
+		"PrecedesEqual": "⪯",
+		"PrecedesSlantEqual": "≼",
+		"PrecedesTilde": "≾",
+		"preceq": "⪯",
+		"precnapprox": "⪹",
+		"precneqq": "⪵",
+		"precnsim": "⋨",
+		"pre": "⪯",
+		"prE": "⪳",
+		"precsim": "≾",
+		"prime": "′",
+		"Prime": "″",
+		"primes": "ℙ",
+		"prnap": "⪹",
+		"prnE": "⪵",
+		"prnsim": "⋨",
+		"prod": "∏",
+		"Product": "∏",
+		"profalar": "⌮",
+		"profline": "⌒",
+		"profsurf": "⌓",
+		"prop": "∝",
+		"Proportional": "∝",
+		"Proportion": "∷",
+		"propto": "∝",
+		"prsim": "≾",
+		"prurel": "⊰",
+		"Pscr": "𝒫",
+		"pscr": "𝓅",
+		"Psi": "Ψ",
+		"psi": "ψ",
+		"puncsp": " ",
+		"Qfr": "𝔔",
+		"qfr": "𝔮",
+		"qint": "⨌",
+		"qopf": "𝕢",
+		"Qopf": "ℚ",
+		"qprime": "⁗",
+		"Qscr": "𝒬",
+		"qscr": "𝓆",
+		"quaternions": "ℍ",
+		"quatint": "⨖",
+		"quest": "?",
+		"questeq": "≟",
+		"quot": "\"",
+		"QUOT": "\"",
+		"rAarr": "⇛",
+		"race": "∽̱",
+		"Racute": "Ŕ",
+		"racute": "ŕ",
+		"radic": "√",
+		"raemptyv": "⦳",
+		"rang": "⟩",
+		"Rang": "⟫",
+		"rangd": "⦒",
+		"range": "⦥",
+		"rangle": "⟩",
+		"raquo": "»",
+		"rarrap": "⥵",
+		"rarrb": "⇥",
+		"rarrbfs": "⤠",
+		"rarrc": "⤳",
+		"rarr": "→",
+		"Rarr": "↠",
+		"rArr": "⇒",
+		"rarrfs": "⤞",
+		"rarrhk": "↪",
+		"rarrlp": "↬",
+		"rarrpl": "⥅",
+		"rarrsim": "⥴",
+		"Rarrtl": "⤖",
+		"rarrtl": "↣",
+		"rarrw": "↝",
+		"ratail": "⤚",
+		"rAtail": "⤜",
+		"ratio": "∶",
+		"rationals": "ℚ",
+		"rbarr": "⤍",
+		"rBarr": "⤏",
+		"RBarr": "⤐",
+		"rbbrk": "❳",
+		"rbrace": "}",
+		"rbrack": "]",
+		"rbrke": "⦌",
+		"rbrksld": "⦎",
+		"rbrkslu": "⦐",
+		"Rcaron": "Ř",
+		"rcaron": "ř",
+		"Rcedil": "Ŗ",
+		"rcedil": "ŗ",
+		"rceil": "⌉",
+		"rcub": "}",
+		"Rcy": "Р",
+		"rcy": "р",
+		"rdca": "⤷",
+		"rdldhar": "⥩",
+		"rdquo": "”",
+		"rdquor": "”",
+		"rdsh": "↳",
+		"real": "ℜ",
+		"realine": "ℛ",
+		"realpart": "ℜ",
+		"reals": "ℝ",
+		"Re": "ℜ",
+		"rect": "▭",
+		"reg": "®",
+		"REG": "®",
+		"ReverseElement": "∋",
+		"ReverseEquilibrium": "⇋",
+		"ReverseUpEquilibrium": "⥯",
+		"rfisht": "⥽",
+		"rfloor": "⌋",
+		"rfr": "𝔯",
+		"Rfr": "ℜ",
+		"rHar": "⥤",
+		"rhard": "⇁",
+		"rharu": "⇀",
+		"rharul": "⥬",
+		"Rho": "Ρ",
+		"rho": "ρ",
+		"rhov": "ϱ",
+		"RightAngleBracket": "⟩",
+		"RightArrowBar": "⇥",
+		"rightarrow": "→",
+		"RightArrow": "→",
+		"Rightarrow": "⇒",
+		"RightArrowLeftArrow": "⇄",
+		"rightarrowtail": "↣",
+		"RightCeiling": "⌉",
+		"RightDoubleBracket": "⟧",
+		"RightDownTeeVector": "⥝",
+		"RightDownVectorBar": "⥕",
+		"RightDownVector": "⇂",
+		"RightFloor": "⌋",
+		"rightharpoondown": "⇁",
+		"rightharpoonup": "⇀",
+		"rightleftarrows": "⇄",
+		"rightleftharpoons": "⇌",
+		"rightrightarrows": "⇉",
+		"rightsquigarrow": "↝",
+		"RightTeeArrow": "↦",
+		"RightTee": "⊢",
+		"RightTeeVector": "⥛",
+		"rightthreetimes": "⋌",
+		"RightTriangleBar": "⧐",
+		"RightTriangle": "⊳",
+		"RightTriangleEqual": "⊵",
+		"RightUpDownVector": "⥏",
+		"RightUpTeeVector": "⥜",
+		"RightUpVectorBar": "⥔",
+		"RightUpVector": "↾",
+		"RightVectorBar": "⥓",
+		"RightVector": "⇀",
+		"ring": "˚",
+		"risingdotseq": "≓",
+		"rlarr": "⇄",
+		"rlhar": "⇌",
+		"rlm": "‏",
+		"rmoustache": "⎱",
+		"rmoust": "⎱",
+		"rnmid": "⫮",
+		"roang": "⟭",
+		"roarr": "⇾",
+		"robrk": "⟧",
+		"ropar": "⦆",
+		"ropf": "𝕣",
+		"Ropf": "ℝ",
+		"roplus": "⨮",
+		"rotimes": "⨵",
+		"RoundImplies": "⥰",
+		"rpar": ")",
+		"rpargt": "⦔",
+		"rppolint": "⨒",
+		"rrarr": "⇉",
+		"Rrightarrow": "⇛",
+		"rsaquo": "›",
+		"rscr": "𝓇",
+		"Rscr": "ℛ",
+		"rsh": "↱",
+		"Rsh": "↱",
+		"rsqb": "]",
+		"rsquo": "’",
+		"rsquor": "’",
+		"rthree": "⋌",
+		"rtimes": "⋊",
+		"rtri": "▹",
+		"rtrie": "⊵",
+		"rtrif": "▸",
+		"rtriltri": "⧎",
+		"RuleDelayed": "⧴",
+		"ruluhar": "⥨",
+		"rx": "℞",
+		"Sacute": "Ś",
+		"sacute": "ś",
+		"sbquo": "‚",
+		"scap": "⪸",
+		"Scaron": "Š",
+		"scaron": "š",
+		"Sc": "⪼",
+		"sc": "≻",
+		"sccue": "≽",
+		"sce": "⪰",
+		"scE": "⪴",
+		"Scedil": "Ş",
+		"scedil": "ş",
+		"Scirc": "Ŝ",
+		"scirc": "ŝ",
+		"scnap": "⪺",
+		"scnE": "⪶",
+		"scnsim": "⋩",
+		"scpolint": "⨓",
+		"scsim": "≿",
+		"Scy": "С",
+		"scy": "с",
+		"sdotb": "⊡",
+		"sdot": "⋅",
+		"sdote": "⩦",
+		"searhk": "⤥",
+		"searr": "↘",
+		"seArr": "⇘",
+		"searrow": "↘",
+		"sect": "§",
+		"semi": ";",
+		"seswar": "⤩",
+		"setminus": "∖",
+		"setmn": "∖",
+		"sext": "✶",
+		"Sfr": "𝔖",
+		"sfr": "𝔰",
+		"sfrown": "⌢",
+		"sharp": "♯",
+		"SHCHcy": "Щ",
+		"shchcy": "щ",
+		"SHcy": "Ш",
+		"shcy": "ш",
+		"ShortDownArrow": "↓",
+		"ShortLeftArrow": "←",
+		"shortmid": "∣",
+		"shortparallel": "∥",
+		"ShortRightArrow": "→",
+		"ShortUpArrow": "↑",
+		"shy": "­",
+		"Sigma": "Σ",
+		"sigma": "σ",
+		"sigmaf": "ς",
+		"sigmav": "ς",
+		"sim": "∼",
+		"simdot": "⩪",
+		"sime": "≃",
+		"simeq": "≃",
+		"simg": "⪞",
+		"simgE": "⪠",
+		"siml": "⪝",
+		"simlE": "⪟",
+		"simne": "≆",
+		"simplus": "⨤",
+		"simrarr": "⥲",
+		"slarr": "←",
+		"SmallCircle": "∘",
+		"smallsetminus": "∖",
+		"smashp": "⨳",
+		"smeparsl": "⧤",
+		"smid": "∣",
+		"smile": "⌣",
+		"smt": "⪪",
+		"smte": "⪬",
+		"smtes": "⪬︀",
+		"SOFTcy": "Ь",
+		"softcy": "ь",
+		"solbar": "⌿",
+		"solb": "⧄",
+		"sol": "/",
+		"Sopf": "𝕊",
+		"sopf": "𝕤",
+		"spades": "♠",
+		"spadesuit": "♠",
+		"spar": "∥",
+		"sqcap": "⊓",
+		"sqcaps": "⊓︀",
+		"sqcup": "⊔",
+		"sqcups": "⊔︀",
+		"Sqrt": "√",
+		"sqsub": "⊏",
+		"sqsube": "⊑",
+		"sqsubset": "⊏",
+		"sqsubseteq": "⊑",
+		"sqsup": "⊐",
+		"sqsupe": "⊒",
+		"sqsupset": "⊐",
+		"sqsupseteq": "⊒",
+		"square": "□",
+		"Square": "□",
+		"SquareIntersection": "⊓",
+		"SquareSubset": "⊏",
+		"SquareSubsetEqual": "⊑",
+		"SquareSuperset": "⊐",
+		"SquareSupersetEqual": "⊒",
+		"SquareUnion": "⊔",
+		"squarf": "▪",
+		"squ": "□",
+		"squf": "▪",
+		"srarr": "→",
+		"Sscr": "𝒮",
+		"sscr": "𝓈",
+		"ssetmn": "∖",
+		"ssmile": "⌣",
+		"sstarf": "⋆",
+		"Star": "⋆",
+		"star": "☆",
+		"starf": "★",
+		"straightepsilon": "ϵ",
+		"straightphi": "ϕ",
+		"strns": "¯",
+		"sub": "⊂",
+		"Sub": "⋐",
+		"subdot": "⪽",
+		"subE": "⫅",
+		"sube": "⊆",
+		"subedot": "⫃",
+		"submult": "⫁",
+		"subnE": "⫋",
+		"subne": "⊊",
+		"subplus": "⪿",
+		"subrarr": "⥹",
+		"subset": "⊂",
+		"Subset": "⋐",
+		"subseteq": "⊆",
+		"subseteqq": "⫅",
+		"SubsetEqual": "⊆",
+		"subsetneq": "⊊",
+		"subsetneqq": "⫋",
+		"subsim": "⫇",
+		"subsub": "⫕",
+		"subsup": "⫓",
+		"succapprox": "⪸",
+		"succ": "≻",
+		"succcurlyeq": "≽",
+		"Succeeds": "≻",
+		"SucceedsEqual": "⪰",
+		"SucceedsSlantEqual": "≽",
+		"SucceedsTilde": "≿",
+		"succeq": "⪰",
+		"succnapprox": "⪺",
+		"succneqq": "⪶",
+		"succnsim": "⋩",
+		"succsim": "≿",
+		"SuchThat": "∋",
+		"sum": "∑",
+		"Sum": "∑",
+		"sung": "♪",
+		"sup1": "¹",
+		"sup2": "²",
+		"sup3": "³",
+		"sup": "⊃",
+		"Sup": "⋑",
+		"supdot": "⪾",
+		"supdsub": "⫘",
+		"supE": "⫆",
+		"supe": "⊇",
+		"supedot": "⫄",
+		"Superset": "⊃",
+		"SupersetEqual": "⊇",
+		"suphsol": "⟉",
+		"suphsub": "⫗",
+		"suplarr": "⥻",
+		"supmult": "⫂",
+		"supnE": "⫌",
+		"supne": "⊋",
+		"supplus": "⫀",
+		"supset": "⊃",
+		"Supset": "⋑",
+		"supseteq": "⊇",
+		"supseteqq": "⫆",
+		"supsetneq": "⊋",
+		"supsetneqq": "⫌",
+		"supsim": "⫈",
+		"supsub": "⫔",
+		"supsup": "⫖",
+		"swarhk": "⤦",
+		"swarr": "↙",
+		"swArr": "⇙",
+		"swarrow": "↙",
+		"swnwar": "⤪",
+		"szlig": "ß",
+		"Tab": "\t",
+		"target": "⌖",
+		"Tau": "Τ",
+		"tau": "τ",
+		"tbrk": "⎴",
+		"Tcaron": "Ť",
+		"tcaron": "ť",
+		"Tcedil": "Ţ",
+		"tcedil": "ţ",
+		"Tcy": "Т",
+		"tcy": "т",
+		"tdot": "⃛",
+		"telrec": "⌕",
+		"Tfr": "𝔗",
+		"tfr": "𝔱",
+		"there4": "∴",
+		"therefore": "∴",
+		"Therefore": "∴",
+		"Theta": "Θ",
+		"theta": "θ",
+		"thetasym": "ϑ",
+		"thetav": "ϑ",
+		"thickapprox": "≈",
+		"thicksim": "∼",
+		"ThickSpace": "  ",
+		"ThinSpace": " ",
+		"thinsp": " ",
+		"thkap": "≈",
+		"thksim": "∼",
+		"THORN": "Þ",
+		"thorn": "þ",
+		"tilde": "˜",
+		"Tilde": "∼",
+		"TildeEqual": "≃",
+		"TildeFullEqual": "≅",
+		"TildeTilde": "≈",
+		"timesbar": "⨱",
+		"timesb": "⊠",
+		"times": "×",
+		"timesd": "⨰",
+		"tint": "∭",
+		"toea": "⤨",
+		"topbot": "⌶",
+		"topcir": "⫱",
+		"top": "⊤",
+		"Topf": "𝕋",
+		"topf": "𝕥",
+		"topfork": "⫚",
+		"tosa": "⤩",
+		"tprime": "‴",
+		"trade": "™",
+		"TRADE": "™",
+		"triangle": "▵",
+		"triangledown": "▿",
+		"triangleleft": "◃",
+		"trianglelefteq": "⊴",
+		"triangleq": "≜",
+		"triangleright": "▹",
+		"trianglerighteq": "⊵",
+		"tridot": "◬",
+		"trie": "≜",
+		"triminus": "⨺",
+		"TripleDot": "⃛",
+		"triplus": "⨹",
+		"trisb": "⧍",
+		"tritime": "⨻",
+		"trpezium": "⏢",
+		"Tscr": "𝒯",
+		"tscr": "𝓉",
+		"TScy": "Ц",
+		"tscy": "ц",
+		"TSHcy": "Ћ",
+		"tshcy": "ћ",
+		"Tstrok": "Ŧ",
+		"tstrok": "ŧ",
+		"twixt": "≬",
+		"twoheadleftarrow": "↞",
+		"twoheadrightarrow": "↠",
+		"Uacute": "Ú",
+		"uacute": "ú",
+		"uarr": "↑",
+		"Uarr": "↟",
+		"uArr": "⇑",
+		"Uarrocir": "⥉",
+		"Ubrcy": "Ў",
+		"ubrcy": "ў",
+		"Ubreve": "Ŭ",
+		"ubreve": "ŭ",
+		"Ucirc": "Û",
+		"ucirc": "û",
+		"Ucy": "У",
+		"ucy": "у",
+		"udarr": "⇅",
+		"Udblac": "Ű",
+		"udblac": "ű",
+		"udhar": "⥮",
+		"ufisht": "⥾",
+		"Ufr": "𝔘",
+		"ufr": "𝔲",
+		"Ugrave": "Ù",
+		"ugrave": "ù",
+		"uHar": "⥣",
+		"uharl": "↿",
+		"uharr": "↾",
+		"uhblk": "▀",
+		"ulcorn": "⌜",
+		"ulcorner": "⌜",
+		"ulcrop": "⌏",
+		"ultri": "◸",
+		"Umacr": "Ū",
+		"umacr": "ū",
+		"uml": "¨",
+		"UnderBar": "_",
+		"UnderBrace": "⏟",
+		"UnderBracket": "⎵",
+		"UnderParenthesis": "⏝",
+		"Union": "⋃",
+		"UnionPlus": "⊎",
+		"Uogon": "Ų",
+		"uogon": "ų",
+		"Uopf": "𝕌",
+		"uopf": "𝕦",
+		"UpArrowBar": "⤒",
+		"uparrow": "↑",
+		"UpArrow": "↑",
+		"Uparrow": "⇑",
+		"UpArrowDownArrow": "⇅",
+		"updownarrow": "↕",
+		"UpDownArrow": "↕",
+		"Updownarrow": "⇕",
+		"UpEquilibrium": "⥮",
+		"upharpoonleft": "↿",
+		"upharpoonright": "↾",
+		"uplus": "⊎",
+		"UpperLeftArrow": "↖",
+		"UpperRightArrow": "↗",
+		"upsi": "υ",
+		"Upsi": "ϒ",
+		"upsih": "ϒ",
+		"Upsilon": "Υ",
+		"upsilon": "υ",
+		"UpTeeArrow": "↥",
+		"UpTee": "⊥",
+		"upuparrows": "⇈",
+		"urcorn": "⌝",
+		"urcorner": "⌝",
+		"urcrop": "⌎",
+		"Uring": "Ů",
+		"uring": "ů",
+		"urtri": "◹",
+		"Uscr": "𝒰",
+		"uscr": "𝓊",
+		"utdot": "⋰",
+		"Utilde": "Ũ",
+		"utilde": "ũ",
+		"utri": "▵",
+		"utrif": "▴",
+		"uuarr": "⇈",
+		"Uuml": "Ü",
+		"uuml": "ü",
+		"uwangle": "⦧",
+		"vangrt": "⦜",
+		"varepsilon": "ϵ",
+		"varkappa": "ϰ",
+		"varnothing": "∅",
+		"varphi": "ϕ",
+		"varpi": "ϖ",
+		"varpropto": "∝",
+		"varr": "↕",
+		"vArr": "⇕",
+		"varrho": "ϱ",
+		"varsigma": "ς",
+		"varsubsetneq": "⊊︀",
+		"varsubsetneqq": "⫋︀",
+		"varsupsetneq": "⊋︀",
+		"varsupsetneqq": "⫌︀",
+		"vartheta": "ϑ",
+		"vartriangleleft": "⊲",
+		"vartriangleright": "⊳",
+		"vBar": "⫨",
+		"Vbar": "⫫",
+		"vBarv": "⫩",
+		"Vcy": "В",
+		"vcy": "в",
+		"vdash": "⊢",
+		"vDash": "⊨",
+		"Vdash": "⊩",
+		"VDash": "⊫",
+		"Vdashl": "⫦",
+		"veebar": "⊻",
+		"vee": "∨",
+		"Vee": "⋁",
+		"veeeq": "≚",
+		"vellip": "⋮",
+		"verbar": "|",
+		"Verbar": "‖",
+		"vert": "|",
+		"Vert": "‖",
+		"VerticalBar": "∣",
+		"VerticalLine": "|",
+		"VerticalSeparator": "❘",
+		"VerticalTilde": "≀",
+		"VeryThinSpace": " ",
+		"Vfr": "𝔙",
+		"vfr": "𝔳",
+		"vltri": "⊲",
+		"vnsub": "⊂⃒",
+		"vnsup": "⊃⃒",
+		"Vopf": "𝕍",
+		"vopf": "𝕧",
+		"vprop": "∝",
+		"vrtri": "⊳",
+		"Vscr": "𝒱",
+		"vscr": "𝓋",
+		"vsubnE": "⫋︀",
+		"vsubne": "⊊︀",
+		"vsupnE": "⫌︀",
+		"vsupne": "⊋︀",
+		"Vvdash": "⊪",
+		"vzigzag": "⦚",
+		"Wcirc": "Ŵ",
+		"wcirc": "ŵ",
+		"wedbar": "⩟",
+		"wedge": "∧",
+		"Wedge": "⋀",
+		"wedgeq": "≙",
+		"weierp": "℘",
+		"Wfr": "𝔚",
+		"wfr": "𝔴",
+		"Wopf": "𝕎",
+		"wopf": "𝕨",
+		"wp": "℘",
+		"wr": "≀",
+		"wreath": "≀",
+		"Wscr": "𝒲",
+		"wscr": "𝓌",
+		"xcap": "⋂",
+		"xcirc": "◯",
+		"xcup": "⋃",
+		"xdtri": "▽",
+		"Xfr": "𝔛",
+		"xfr": "𝔵",
+		"xharr": "⟷",
+		"xhArr": "⟺",
+		"Xi": "Ξ",
+		"xi": "ξ",
+		"xlarr": "⟵",
+		"xlArr": "⟸",
+		"xmap": "⟼",
+		"xnis": "⋻",
+		"xodot": "⨀",
+		"Xopf": "𝕏",
+		"xopf": "𝕩",
+		"xoplus": "⨁",
+		"xotime": "⨂",
+		"xrarr": "⟶",
+		"xrArr": "⟹",
+		"Xscr": "𝒳",
+		"xscr": "𝓍",
+		"xsqcup": "⨆",
+		"xuplus": "⨄",
+		"xutri": "△",
+		"xvee": "⋁",
+		"xwedge": "⋀",
+		"Yacute": "Ý",
+		"yacute": "ý",
+		"YAcy": "Я",
+		"yacy": "я",
+		"Ycirc": "Ŷ",
+		"ycirc": "ŷ",
+		"Ycy": "Ы",
+		"ycy": "ы",
+		"yen": "¥",
+		"Yfr": "𝔜",
+		"yfr": "𝔶",
+		"YIcy": "Ї",
+		"yicy": "ї",
+		"Yopf": "𝕐",
+		"yopf": "𝕪",
+		"Yscr": "𝒴",
+		"yscr": "𝓎",
+		"YUcy": "Ю",
+		"yucy": "ю",
+		"yuml": "ÿ",
+		"Yuml": "Ÿ",
+		"Zacute": "Ź",
+		"zacute": "ź",
+		"Zcaron": "Ž",
+		"zcaron": "ž",
+		"Zcy": "З",
+		"zcy": "з",
+		"Zdot": "Ż",
+		"zdot": "ż",
+		"zeetrf": "ℨ",
+		"ZeroWidthSpace": "​",
+		"Zeta": "Ζ",
+		"zeta": "ζ",
+		"zfr": "𝔷",
+		"Zfr": "ℨ",
+		"ZHcy": "Ж",
+		"zhcy": "ж",
+		"zigrarr": "⇝",
+		"zopf": "𝕫",
+		"Zopf": "ℤ",
+		"Zscr": "𝒵",
+		"zscr": "𝓏",
+		"zwj": "‍",
+		"zwnj": "‌"
+	};
+
+/***/ },
+/* 556 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var entityMap = __webpack_require__(555),
+	    legacyMap = __webpack_require__(557),
+	    xmlMap    = __webpack_require__(554),
+	    decodeCodePoint = __webpack_require__(558);
+	
+	var decodeXMLStrict  = getStrictDecoder(xmlMap),
+	    decodeHTMLStrict = getStrictDecoder(entityMap);
+	
+	function getStrictDecoder(map){
+		var keys = Object.keys(map).join("|"),
+		    replace = getReplacer(map);
+	
+		keys += "|#[xX][\\da-fA-F]+|#\\d+";
+	
+		var re = new RegExp("&(?:" + keys + ");", "g");
+	
+		return function(str){
+			return String(str).replace(re, replace);
+		};
+	}
+	
+	var decodeHTML = (function(){
+		var legacy = Object.keys(legacyMap)
+			.sort(sorter);
+	
+		var keys = Object.keys(entityMap)
+			.sort(sorter);
+	
+		for(var i = 0, j = 0; i < keys.length; i++){
+			if(legacy[j] === keys[i]){
+				keys[i] += ";?";
+				j++;
+			} else {
+				keys[i] += ";";
+			}
+		}
+	
+		var re = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g"),
+		    replace = getReplacer(entityMap);
+	
+		function replacer(str){
+			if(str.substr(-1) !== ";") str += ";";
+			return replace(str);
+		}
+	
+		//TODO consider creating a merged map
+		return function(str){
+			return String(str).replace(re, replacer);
+		};
+	}());
+	
+	function sorter(a, b){
+		return a < b ? 1 : -1;
+	}
+	
+	function getReplacer(map){
+		return function replace(str){
+			if(str.charAt(1) === "#"){
+				if(str.charAt(2) === "X" || str.charAt(2) === "x"){
+					return decodeCodePoint(parseInt(str.substr(3), 16));
+				}
+				return decodeCodePoint(parseInt(str.substr(2), 10));
+			}
+			return map[str.slice(1, -1)];
+		};
+	}
+	
+	module.exports = {
+		XML: decodeXMLStrict,
+		HTML: decodeHTML,
+		HTMLStrict: decodeHTMLStrict
+	};
+
+/***/ },
+/* 557 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"Aacute": "Á",
+		"aacute": "á",
+		"Acirc": "Â",
+		"acirc": "â",
+		"acute": "´",
+		"AElig": "Æ",
+		"aelig": "æ",
+		"Agrave": "À",
+		"agrave": "à",
+		"amp": "&",
+		"AMP": "&",
+		"Aring": "Å",
+		"aring": "å",
+		"Atilde": "Ã",
+		"atilde": "ã",
+		"Auml": "Ä",
+		"auml": "ä",
+		"brvbar": "¦",
+		"Ccedil": "Ç",
+		"ccedil": "ç",
+		"cedil": "¸",
+		"cent": "¢",
+		"copy": "©",
+		"COPY": "©",
+		"curren": "¤",
+		"deg": "°",
+		"divide": "÷",
+		"Eacute": "É",
+		"eacute": "é",
+		"Ecirc": "Ê",
+		"ecirc": "ê",
+		"Egrave": "È",
+		"egrave": "è",
+		"ETH": "Ð",
+		"eth": "ð",
+		"Euml": "Ë",
+		"euml": "ë",
+		"frac12": "½",
+		"frac14": "¼",
+		"frac34": "¾",
+		"gt": ">",
+		"GT": ">",
+		"Iacute": "Í",
+		"iacute": "í",
+		"Icirc": "Î",
+		"icirc": "î",
+		"iexcl": "¡",
+		"Igrave": "Ì",
+		"igrave": "ì",
+		"iquest": "¿",
+		"Iuml": "Ï",
+		"iuml": "ï",
+		"laquo": "«",
+		"lt": "<",
+		"LT": "<",
+		"macr": "¯",
+		"micro": "µ",
+		"middot": "·",
+		"nbsp": " ",
+		"not": "¬",
+		"Ntilde": "Ñ",
+		"ntilde": "ñ",
+		"Oacute": "Ó",
+		"oacute": "ó",
+		"Ocirc": "Ô",
+		"ocirc": "ô",
+		"Ograve": "Ò",
+		"ograve": "ò",
+		"ordf": "ª",
+		"ordm": "º",
+		"Oslash": "Ø",
+		"oslash": "ø",
+		"Otilde": "Õ",
+		"otilde": "õ",
+		"Ouml": "Ö",
+		"ouml": "ö",
+		"para": "¶",
+		"plusmn": "±",
+		"pound": "£",
+		"quot": "\"",
+		"QUOT": "\"",
+		"raquo": "»",
+		"reg": "®",
+		"REG": "®",
+		"sect": "§",
+		"shy": "­",
+		"sup1": "¹",
+		"sup2": "²",
+		"sup3": "³",
+		"szlig": "ß",
+		"THORN": "Þ",
+		"thorn": "þ",
+		"times": "×",
+		"Uacute": "Ú",
+		"uacute": "ú",
+		"Ucirc": "Û",
+		"ucirc": "û",
+		"Ugrave": "Ù",
+		"ugrave": "ù",
+		"uml": "¨",
+		"Uuml": "Ü",
+		"uuml": "ü",
+		"Yacute": "Ý",
+		"yacute": "ý",
+		"yen": "¥",
+		"yuml": "ÿ"
+	};
+
+/***/ },
+/* 558 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var decodeMap = __webpack_require__(559);
+	
+	module.exports = decodeCodePoint;
+	
+	// modified version of https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
+	function decodeCodePoint(codePoint){
+	
+		if((codePoint >= 0xD800 && codePoint <= 0xDFFF) || codePoint > 0x10FFFF){
+			return "\uFFFD";
+		}
+	
+		if(codePoint in decodeMap){
+			codePoint = decodeMap[codePoint];
+		}
+	
+		var output = "";
+	
+		if(codePoint > 0xFFFF){
+			codePoint -= 0x10000;
+			output += String.fromCharCode(codePoint >>> 10 & 0x3FF | 0xD800);
+			codePoint = 0xDC00 | codePoint & 0x3FF;
+		}
+	
+		output += String.fromCharCode(codePoint);
+		return output;
+	}
+
+
+/***/ },
+/* 559 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"0": 65533,
+		"128": 8364,
+		"130": 8218,
+		"131": 402,
+		"132": 8222,
+		"133": 8230,
+		"134": 8224,
+		"135": 8225,
+		"136": 710,
+		"137": 8240,
+		"138": 352,
+		"139": 8249,
+		"140": 338,
+		"142": 381,
+		"145": 8216,
+		"146": 8217,
+		"147": 8220,
+		"148": 8221,
+		"149": 8226,
+		"150": 8211,
+		"151": 8212,
+		"152": 732,
+		"153": 8482,
+		"154": 353,
+		"155": 8250,
+		"156": 339,
+		"158": 382,
+		"159": 376
+	};
+
+/***/ },
+/* 560 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var Node = __webpack_require__(547);
+	var common = __webpack_require__(549);
+	var normalizeReference = __webpack_require__(561);
+	
+	var normalizeURI = common.normalizeURI;
+	var unescapeString = common.unescapeString;
+	var fromCodePoint = __webpack_require__(562);
+	var decodeHTML = __webpack_require__(552).decodeHTML;
+	__webpack_require__(563); // Polyfill for String.prototype.repeat
+	
+	// Constants for character codes:
+	
+	var C_NEWLINE = 10;
+	var C_ASTERISK = 42;
+	var C_UNDERSCORE = 95;
+	var C_BACKTICK = 96;
+	var C_OPEN_BRACKET = 91;
+	var C_CLOSE_BRACKET = 93;
+	var C_LESSTHAN = 60;
+	var C_BANG = 33;
+	var C_BACKSLASH = 92;
+	var C_AMPERSAND = 38;
+	var C_OPEN_PAREN = 40;
+	var C_CLOSE_PAREN = 41;
+	var C_COLON = 58;
+	var C_SINGLEQUOTE = 39;
+	var C_DOUBLEQUOTE = 34;
+	
+	// Some regexps used in inline parser:
+	
+	var ESCAPABLE = common.ESCAPABLE;
+	var ESCAPED_CHAR = '\\\\' + ESCAPABLE;
+	var REG_CHAR = '[^\\\\()\\x00-\\x20]';
+	var IN_PARENS_NOSP = '\\((' + REG_CHAR + '|' + ESCAPED_CHAR + '|\\\\)*\\)';
+	
+	var ENTITY = common.ENTITY;
+	var reHtmlTag = common.reHtmlTag;
+	
+	var rePunctuation = new RegExp(/^[\u2000-\u206F\u2E00-\u2E7F\\'!"#\$%&\(\)\*\+,\-\.\/:;<=>\?@\[\]\^_`\{\|\}~]/);
+	
+	var reLinkTitle = new RegExp(
+	    '^(?:"(' + ESCAPED_CHAR + '|[^"\\x00])*"' +
+	        '|' +
+	        '\'(' + ESCAPED_CHAR + '|[^\'\\x00])*\'' +
+	        '|' +
+	        '\\((' + ESCAPED_CHAR + '|[^)\\x00])*\\))');
+	
+	var reLinkDestinationBraces = new RegExp(
+	    '^(?:[<](?:[^ <>\\t\\n\\\\\\x00]' + '|' + ESCAPED_CHAR + '|' + '\\\\)*[>])');
+	
+	var reLinkDestination = new RegExp(
+	    '^(?:' + REG_CHAR + '+|' + ESCAPED_CHAR + '|\\\\|' + IN_PARENS_NOSP + ')*');
+	
+	var reEscapable = new RegExp('^' + ESCAPABLE);
+	
+	var reEntityHere = new RegExp('^' + ENTITY, 'i');
+	
+	var reTicks = /`+/;
+	
+	var reTicksHere = /^`+/;
+	
+	var reEllipses = /\.\.\./g;
+	
+	var reDash = /--+/g;
+	
+	var reEmailAutolink = /^<([a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/;
+	
+	var reAutolink = /^<[A-Za-z][A-Za-z0-9.+-]{1,31}:[^<>\x00-\x20]*>/i;
+	
+	var reSpnl = /^ *(?:\n *)?/;
+	
+	var reWhitespaceChar = /^\s/;
+	
+	var reWhitespace = /\s+/g;
+	
+	var reFinalSpace = / *$/;
+	
+	var reInitialSpace = /^ */;
+	
+	var reSpaceAtEndOfLine = /^ *(?:\n|$)/;
+	
+	var reLinkLabel = new RegExp('^\\[(?:[^\\\\\\[\\]]|' + ESCAPED_CHAR +
+	  '|\\\\){0,1000}\\]');
+	
+	// Matches a string of non-special characters.
+	var reMain = /^[^\n`\[\]\\!<&*_'"]+/m;
+	
+	var text = function(s) {
+	    var node = new Node('Text');
+	    node._literal = s;
+	    return node;
+	};
+	
+	// INLINE PARSER
+	
+	// These are methods of an InlineParser object, defined below.
+	// An InlineParser keeps track of a subject (a string to be
+	// parsed) and a position in that subject.
+	
+	// If re matches at current position in the subject, advance
+	// position in subject and return the match; otherwise return null.
+	var match = function(re) {
+	    var m = re.exec(this.subject.slice(this.pos));
+	    if (m === null) {
+	        return null;
+	    } else {
+	        this.pos += m.index + m[0].length;
+	        return m[0];
+	    }
+	};
+	
+	// Returns the code for the character at the current subject position, or -1
+	// there are no more characters.
+	var peek = function() {
+	    if (this.pos < this.subject.length) {
+	        return this.subject.charCodeAt(this.pos);
+	    } else {
+	        return -1;
+	    }
+	};
+	
+	// Parse zero or more space characters, including at most one newline
+	var spnl = function() {
+	    this.match(reSpnl);
+	    return true;
+	};
+	
+	// All of the parsers below try to match something at the current position
+	// in the subject.  If they succeed in matching anything, they
+	// return the inline matched, advancing the subject.
+	
+	// Attempt to parse backticks, adding either a backtick code span or a
+	// literal sequence of backticks.
+	var parseBackticks = function(block) {
+	    var ticks = this.match(reTicksHere);
+	    if (ticks === null) {
+	        return false;
+	    }
+	    var afterOpenTicks = this.pos;
+	    var matched;
+	    var node;
+	    while ((matched = this.match(reTicks)) !== null) {
+	        if (matched === ticks) {
+	            node = new Node('Code');
+	            node._literal = this.subject.slice(afterOpenTicks,
+	                                        this.pos - ticks.length)
+	                          .trim().replace(reWhitespace, ' ');
+	            block.appendChild(node);
+	            return true;
+	        }
+	    }
+	    // If we got here, we didn't match a closing backtick sequence.
+	    this.pos = afterOpenTicks;
+	    block.appendChild(text(ticks));
+	    return true;
+	};
+	
+	// Parse a backslash-escaped special character, adding either the escaped
+	// character, a hard line break (if the backslash is followed by a newline),
+	// or a literal backslash to the block's children.  Assumes current character
+	// is a backslash.
+	var parseBackslash = function(block) {
+	    var subj = this.subject;
+	    var node;
+	    this.pos += 1;
+	    if (this.peek() === C_NEWLINE) {
+	        this.pos += 1;
+	        node = new Node('Hardbreak');
+	        block.appendChild(node);
+	    } else if (reEscapable.test(subj.charAt(this.pos))) {
+	        block.appendChild(text(subj.charAt(this.pos)));
+	        this.pos += 1;
+	    } else {
+	        block.appendChild(text('\\'));
+	    }
+	    return true;
+	};
+	
+	// Attempt to parse an autolink (URL or email in pointy brackets).
+	var parseAutolink = function(block) {
+	    var m;
+	    var dest;
+	    var node;
+	    if ((m = this.match(reEmailAutolink))) {
+	        dest = m.slice(1, m.length - 1);
+	        node = new Node('Link');
+	        node._destination = normalizeURI('mailto:' + dest);
+	        node._title = '';
+	        node.appendChild(text(dest));
+	        block.appendChild(node);
+	        return true;
+	    } else if ((m = this.match(reAutolink))) {
+	        dest = m.slice(1, m.length - 1);
+	        node = new Node('Link');
+	        node._destination = normalizeURI(dest);
+	        node._title = '';
+	        node.appendChild(text(dest));
+	        block.appendChild(node);
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+	
+	// Attempt to parse a raw HTML tag.
+	var parseHtmlTag = function(block) {
+	    var m = this.match(reHtmlTag);
+	    if (m === null) {
+	        return false;
+	    } else {
+	        var node = new Node('HtmlInline');
+	        node._literal = m;
+	        block.appendChild(node);
+	        return true;
+	    }
+	};
+	
+	// Scan a sequence of characters with code cc, and return information about
+	// the number of delimiters and whether they are positioned such that
+	// they can open and/or close emphasis or strong emphasis.  A utility
+	// function for strong/emph parsing.
+	var scanDelims = function(cc) {
+	    var numdelims = 0;
+	    var char_before, char_after, cc_after;
+	    var startpos = this.pos;
+	    var left_flanking, right_flanking, can_open, can_close;
+	    var after_is_whitespace, after_is_punctuation, before_is_whitespace, before_is_punctuation;
+	
+	    if (cc === C_SINGLEQUOTE || cc === C_DOUBLEQUOTE) {
+	        numdelims++;
+	        this.pos++;
+	    } else {
+	        while (this.peek() === cc) {
+	            numdelims++;
+	            this.pos++;
+	        }
+	    }
+	
+	    if (numdelims === 0) {
+	        return null;
+	    }
+	
+	    char_before = startpos === 0 ? '\n' : this.subject.charAt(startpos - 1);
+	
+	    cc_after = this.peek();
+	    if (cc_after === -1) {
+	        char_after = '\n';
+	    } else {
+	        char_after = fromCodePoint(cc_after);
+	    }
+	
+	    after_is_whitespace = reWhitespaceChar.test(char_after);
+	    after_is_punctuation = rePunctuation.test(char_after);
+	    before_is_whitespace = reWhitespaceChar.test(char_before);
+	    before_is_punctuation = rePunctuation.test(char_before);
+	
+	    left_flanking = !after_is_whitespace &&
+	            !(after_is_punctuation && !before_is_whitespace && !before_is_punctuation);
+	    right_flanking = !before_is_whitespace &&
+	            !(before_is_punctuation && !after_is_whitespace && !after_is_punctuation);
+	    if (cc === C_UNDERSCORE) {
+	        can_open = left_flanking &&
+	            (!right_flanking || before_is_punctuation);
+	        can_close = right_flanking &&
+	            (!left_flanking || after_is_punctuation);
+	    } else if (cc === C_SINGLEQUOTE || cc === C_DOUBLEQUOTE) {
+	        can_open = left_flanking && !right_flanking;
+	        can_close = right_flanking;
+	    } else {
+	        can_open = left_flanking;
+	        can_close = right_flanking;
+	    }
+	    this.pos = startpos;
+	    return { numdelims: numdelims,
+	             can_open: can_open,
+	             can_close: can_close };
+	};
+	
+	// Handle a delimiter marker for emphasis or a quote.
+	var handleDelim = function(cc, block) {
+	    var res = this.scanDelims(cc);
+	    if (!res) {
+	        return false;
+	    }
+	    var numdelims = res.numdelims;
+	    var startpos = this.pos;
+	    var contents;
+	
+	    this.pos += numdelims;
+	    if (cc === C_SINGLEQUOTE) {
+	        contents = "\u2019";
+	    } else if (cc === C_DOUBLEQUOTE) {
+	        contents = "\u201C";
+	    } else {
+	        contents = this.subject.slice(startpos, this.pos);
+	    }
+	    var node = text(contents);
+	    block.appendChild(node);
+	
+	    // Add entry to stack for this opener
+	    this.delimiters = { cc: cc,
+	                        numdelims: numdelims,
+	                        node: node,
+	                        previous: this.delimiters,
+	                        next: null,
+	                        can_open: res.can_open,
+	                        can_close: res.can_close,
+	                        active: true };
+	    if (this.delimiters.previous !== null) {
+	        this.delimiters.previous.next = this.delimiters;
+	    }
+	
+	    return true;
+	
+	};
+	
+	var removeDelimiter = function(delim) {
+	    if (delim.previous !== null) {
+	        delim.previous.next = delim.next;
+	    }
+	    if (delim.next === null) {
+	        // top of stack
+	        this.delimiters = delim.previous;
+	    } else {
+	        delim.next.previous = delim.previous;
+	    }
+	};
+	
+	var removeDelimitersBetween = function(bottom, top) {
+	    if (bottom.next !== top) {
+	        bottom.next = top;
+	        top.previous = bottom;
+	    }
+	};
+	
+	var processEmphasis = function(stack_bottom) {
+	    var opener, closer, old_closer;
+	    var opener_inl, closer_inl;
+	    var tempstack;
+	    var use_delims;
+	    var tmp, next;
+	    var opener_found;
+	    var openers_bottom = [];
+	
+	    openers_bottom[C_UNDERSCORE] = stack_bottom;
+	    openers_bottom[C_ASTERISK] = stack_bottom;
+	    openers_bottom[C_SINGLEQUOTE] = stack_bottom;
+	    openers_bottom[C_DOUBLEQUOTE] = stack_bottom;
+	
+	    // find first closer above stack_bottom:
+	    closer = this.delimiters;
+	    while (closer !== null && closer.previous !== stack_bottom) {
+	        closer = closer.previous;
+	    }
+	    // move forward, looking for closers, and handling each
+	    while (closer !== null) {
+	        var closercc = closer.cc;
+	        if (!(closer.can_close && (closercc === C_UNDERSCORE ||
+	                                   closercc === C_ASTERISK ||
+	                                   closercc === C_SINGLEQUOTE ||
+	                                   closercc === C_DOUBLEQUOTE))) {
+	            closer = closer.next;
+	        } else {
+	            // found emphasis closer. now look back for first matching opener:
+	            opener = closer.previous;
+	            opener_found = false;
+	            while (opener !== null && opener !== stack_bottom &&
+	                   opener !== openers_bottom[closercc]) {
+	                if (opener.cc === closer.cc && opener.can_open) {
+	                    opener_found = true;
+	                    break;
+	                }
+	                opener = opener.previous;
+	            }
+	            old_closer = closer;
+	
+	            if (closercc === C_ASTERISK || closercc === C_UNDERSCORE) {
+	                if (!opener_found) {
+	                    closer = closer.next;
+	                } else {
+	                    // calculate actual number of delimiters used from closer
+	                    if (closer.numdelims < 3 || opener.numdelims < 3) {
+	                        use_delims = closer.numdelims <= opener.numdelims ?
+	                            closer.numdelims : opener.numdelims;
+	                    } else {
+	                        use_delims = closer.numdelims % 2 === 0 ? 2 : 1;
+	                    }
+	
+	                    opener_inl = opener.node;
+	                    closer_inl = closer.node;
+	
+	                    // remove used delimiters from stack elts and inlines
+	                    opener.numdelims -= use_delims;
+	                    closer.numdelims -= use_delims;
+	                    opener_inl._literal =
+	                        opener_inl._literal.slice(0,
+	                                                  opener_inl._literal.length - use_delims);
+	                    closer_inl._literal =
+	                        closer_inl._literal.slice(0,
+	                                                  closer_inl._literal.length - use_delims);
+	
+	                    // build contents for new emph element
+	                    var emph = new Node(use_delims === 1 ? 'Emph' : 'Strong');
+	
+	                    tmp = opener_inl._next;
+	                    while (tmp && tmp !== closer_inl) {
+	                        next = tmp._next;
+	                        tmp.unlink();
+	                        emph.appendChild(tmp);
+	                        tmp = next;
+	                    }
+	
+	                    opener_inl.insertAfter(emph);
+	
+	                    // remove elts between opener and closer in delimiters stack
+	                    removeDelimitersBetween(opener, closer);
+	
+	                    // if opener has 0 delims, remove it and the inline
+	                    if (opener.numdelims === 0) {
+	                        opener_inl.unlink();
+	                        this.removeDelimiter(opener);
+	                    }
+	
+	                    if (closer.numdelims === 0) {
+	                        closer_inl.unlink();
+	                        tempstack = closer.next;
+	                        this.removeDelimiter(closer);
+	                        closer = tempstack;
+	                    }
+	
+	                }
+	
+	            } else if (closercc === C_SINGLEQUOTE) {
+	                closer.node._literal = "\u2019";
+	                if (opener_found) {
+	                    opener.node._literal = "\u2018";
+	                }
+	                closer = closer.next;
+	
+	            } else if (closercc === C_DOUBLEQUOTE) {
+	                closer.node._literal = "\u201D";
+	                if (opener_found) {
+	                    opener.node.literal = "\u201C";
+	                }
+	                closer = closer.next;
+	
+	            }
+	            if (!opener_found) {
+	                // Set lower bound for future searches for openers:
+	                openers_bottom[closercc] = old_closer.previous;
+	                if (!old_closer.can_open) {
+	                    // We can remove a closer that can't be an opener,
+	                    // once we've seen there's no matching opener:
+	                    this.removeDelimiter(old_closer);
+	                }
+	            }
+	        }
+	
+	    }
+	
+	    // remove all delimiters
+	    while (this.delimiters !== null && this.delimiters !== stack_bottom) {
+	        this.removeDelimiter(this.delimiters);
+	    }
+	};
+	
+	// Attempt to parse link title (sans quotes), returning the string
+	// or null if no match.
+	var parseLinkTitle = function() {
+	    var title = this.match(reLinkTitle);
+	    if (title === null) {
+	        return null;
+	    } else {
+	        // chop off quotes from title and unescape:
+	        return unescapeString(title.substr(1, title.length - 2));
+	    }
+	};
+	
+	// Attempt to parse link destination, returning the string or
+	// null if no match.
+	var parseLinkDestination = function() {
+	    var res = this.match(reLinkDestinationBraces);
+	    if (res === null) {
+	        res = this.match(reLinkDestination);
+	        if (res === null) {
+	            return null;
+	        } else {
+	            return normalizeURI(unescapeString(res));
+	        }
+	    } else {  // chop off surrounding <..>:
+	        return normalizeURI(unescapeString(res.substr(1, res.length - 2)));
+	    }
+	};
+	
+	// Attempt to parse a link label, returning number of characters parsed.
+	var parseLinkLabel = function() {
+	    var m = this.match(reLinkLabel);
+	    if (m === null || m.length > 1001) {
+	        return 0;
+	    } else {
+	        return m.length;
+	    }
+	};
+	
+	// Add open bracket to delimiter stack and add a text node to block's children.
+	var parseOpenBracket = function(block) {
+	    var startpos = this.pos;
+	    this.pos += 1;
+	
+	    var node = text('[');
+	    block.appendChild(node);
+	
+	    // Add entry to stack for this opener
+	    this.delimiters = { cc: C_OPEN_BRACKET,
+	                        numdelims: 1,
+	                        node: node,
+	                        previous: this.delimiters,
+	                        next: null,
+	                        can_open: true,
+	                        can_close: false,
+	                        index: startpos,
+	                        active: true };
+	    if (this.delimiters.previous !== null) {
+	        this.delimiters.previous.next = this.delimiters;
+	    }
+	
+	    return true;
+	
+	};
+	
+	// IF next character is [, and ! delimiter to delimiter stack and
+	// add a text node to block's children.  Otherwise just add a text node.
+	var parseBang = function(block) {
+	    var startpos = this.pos;
+	    this.pos += 1;
+	    if (this.peek() === C_OPEN_BRACKET) {
+	        this.pos += 1;
+	
+	        var node = text('![');
+	        block.appendChild(node);
+	
+	        // Add entry to stack for this opener
+	        this.delimiters = { cc: C_BANG,
+	                            numdelims: 1,
+	                            node: node,
+	                            previous: this.delimiters,
+	                            next: null,
+	                            can_open: true,
+	                            can_close: false,
+	                            index: startpos + 1,
+	                            active: true };
+	        if (this.delimiters.previous !== null) {
+	            this.delimiters.previous.next = this.delimiters;
+	        }
+	    } else {
+	        block.appendChild(text('!'));
+	    }
+	    return true;
+	};
+	
+	// Try to match close bracket against an opening in the delimiter
+	// stack.  Add either a link or image, or a plain [ character,
+	// to block's children.  If there is a matching delimiter,
+	// remove it from the delimiter stack.
+	var parseCloseBracket = function(block) {
+	    var startpos;
+	    var is_image;
+	    var dest;
+	    var title;
+	    var matched = false;
+	    var reflabel;
+	    var opener;
+	
+	    this.pos += 1;
+	    startpos = this.pos;
+	
+	    // look through stack of delimiters for a [ or ![
+	    opener = this.delimiters;
+	
+	    while (opener !== null) {
+	        if (opener.cc === C_OPEN_BRACKET || opener.cc === C_BANG) {
+	            break;
+	        }
+	        opener = opener.previous;
+	    }
+	
+	    if (opener === null) {
+	        // no matched opener, just return a literal
+	        block.appendChild(text(']'));
+	        return true;
+	    }
+	
+	    if (!opener.active) {
+	        // no matched opener, just return a literal
+	        block.appendChild(text(']'));
+	        // take opener off emphasis stack
+	        this.removeDelimiter(opener);
+	        return true;
+	    }
+	
+	    // If we got here, open is a potential opener
+	    is_image = opener.cc === C_BANG;
+	
+	    // Check to see if we have a link/image
+	
+	    // Inline link?
+	    if (this.peek() === C_OPEN_PAREN) {
+	        this.pos++;
+	        if (this.spnl() &&
+	            ((dest = this.parseLinkDestination()) !== null) &&
+	            this.spnl() &&
+	            // make sure there's a space before the title:
+	            (reWhitespaceChar.test(this.subject.charAt(this.pos - 1)) &&
+	             (title = this.parseLinkTitle()) || true) &&
+	            this.spnl() &&
+	            this.peek() === C_CLOSE_PAREN) {
+	            this.pos += 1;
+	            matched = true;
+	        }
+	    } else {
+	
+	        // Next, see if there's a link label
+	        var savepos = this.pos;
+	        var beforelabel = this.pos;
+	        var n = this.parseLinkLabel();
+	        if (n === 0 || n === 2) {
+	            // empty or missing second label
+	            reflabel = this.subject.slice(opener.index, startpos);
+	        } else {
+	            reflabel = this.subject.slice(beforelabel, beforelabel + n);
+	        }
+	        if (n === 0) {
+	            // If shortcut reference link, rewind before spaces we skipped.
+	            this.pos = savepos;
+	        }
+	
+	        // lookup rawlabel in refmap
+	        var link = this.refmap[normalizeReference(reflabel)];
+	        if (link) {
+	            dest = link.destination;
+	            title = link.title;
+	            matched = true;
+	        }
+	    }
+	
+	    if (matched) {
+	        var node = new Node(is_image ? 'Image' : 'Link');
+	        node._destination = dest;
+	        node._title = title || '';
+	
+	        var tmp, next;
+	        tmp = opener.node._next;
+	        while (tmp) {
+	            next = tmp._next;
+	            tmp.unlink();
+	            node.appendChild(tmp);
+	            tmp = next;
+	        }
+	        block.appendChild(node);
+	        this.processEmphasis(opener.previous);
+	
+	        opener.node.unlink();
+	
+	        // processEmphasis will remove this and later delimiters.
+	        // Now, for a link, we also deactivate earlier link openers.
+	        // (no links in links)
+	        if (!is_image) {
+	          opener = this.delimiters;
+	          while (opener !== null) {
+	            if (opener.cc === C_OPEN_BRACKET) {
+	                opener.active = false; // deactivate this opener
+	            }
+	            opener = opener.previous;
+	          }
+	        }
+	
+	        return true;
+	
+	    } else { // no match
+	
+	        this.removeDelimiter(opener);  // remove this opener from stack
+	        this.pos = startpos;
+	        block.appendChild(text(']'));
+	        return true;
+	    }
+	
+	};
+	
+	// Attempt to parse an entity.
+	var parseEntity = function(block) {
+	    var m;
+	    if ((m = this.match(reEntityHere))) {
+	        block.appendChild(text(decodeHTML(m)));
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+	
+	// Parse a run of ordinary characters, or a single character with
+	// a special meaning in markdown, as a plain string.
+	var parseString = function(block) {
+	    var m;
+	    if ((m = this.match(reMain))) {
+	        if (this.options.smart) {
+	            block.appendChild(text(
+	                m.replace(reEllipses, "\u2026")
+	                    .replace(reDash, function(chars) {
+	                        var enCount = 0;
+	                        var emCount = 0;
+	                        if (chars.length % 3 === 0) { // If divisible by 3, use all em dashes
+	                            emCount = chars.length / 3;
+	                        } else if (chars.length % 2 === 0) { // If divisible by 2, use all en dashes
+	                            enCount = chars.length / 2;
+	                        } else if (chars.length % 3 === 2) { // If 2 extra dashes, use en dash for last 2; em dashes for rest
+	                            enCount = 1;
+	                            emCount = (chars.length - 2) / 3;
+	                        } else { // Use en dashes for last 4 hyphens; em dashes for rest
+	                            enCount = 2;
+	                            emCount = (chars.length - 4) / 3;
+	                        }
+	                        return "\u2014".repeat(emCount) + "\u2013".repeat(enCount);
+	                    })));
+	        } else {
+	            block.appendChild(text(m));
+	        }
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+	
+	// Parse a newline.  If it was preceded by two spaces, return a hard
+	// line break; otherwise a soft line break.
+	var parseNewline = function(block) {
+	    this.pos += 1; // assume we're at a \n
+	    // check previous node for trailing spaces
+	    var lastc = block._lastChild;
+	    if (lastc && lastc.type === 'Text' && lastc._literal[lastc._literal.length - 1] === ' ') {
+	        var hardbreak = lastc._literal[lastc._literal.length - 2] === ' ';
+	        lastc._literal = lastc._literal.replace(reFinalSpace, '');
+	        block.appendChild(new Node(hardbreak ? 'Hardbreak' : 'Softbreak'));
+	    } else {
+	        block.appendChild(new Node('Softbreak'));
+	    }
+	    this.match(reInitialSpace); // gobble leading spaces in next line
+	    return true;
+	};
+	
+	// Attempt to parse a link reference, modifying refmap.
+	var parseReference = function(s, refmap) {
+	    this.subject = s;
+	    this.pos = 0;
+	    var rawlabel;
+	    var dest;
+	    var title;
+	    var matchChars;
+	    var startpos = this.pos;
+	
+	    // label:
+	    matchChars = this.parseLinkLabel();
+	    if (matchChars === 0) {
+	        return 0;
+	    } else {
+	        rawlabel = this.subject.substr(0, matchChars);
+	    }
+	
+	    // colon:
+	    if (this.peek() === C_COLON) {
+	        this.pos++;
+	    } else {
+	        this.pos = startpos;
+	        return 0;
+	    }
+	
+	    //  link url
+	    this.spnl();
+	
+	    dest = this.parseLinkDestination();
+	    if (dest === null || dest.length === 0) {
+	        this.pos = startpos;
+	        return 0;
+	    }
+	
+	    var beforetitle = this.pos;
+	    this.spnl();
+	    title = this.parseLinkTitle();
+	    if (title === null) {
+	        title = '';
+	        // rewind before spaces
+	        this.pos = beforetitle;
+	    }
+	
+	    // make sure we're at line end:
+	    var atLineEnd = true;
+	    if (this.match(reSpaceAtEndOfLine) === null) {
+	        if (title === '') {
+	            atLineEnd = false;
+	        } else {
+	            // the potential title we found is not at the line end,
+	            // but it could still be a legal link reference if we
+	            // discard the title
+	            title = '';
+	            // rewind before spaces
+	            this.pos = beforetitle;
+	            // and instead check if the link URL is at the line end
+	            atLineEnd = this.match(reSpaceAtEndOfLine) !== null;
+	        }
+	    }
+	
+	    if (!atLineEnd) {
+	        this.pos = startpos;
+	        return 0;
+	    }
+	
+	    var normlabel = normalizeReference(rawlabel);
+	    if (normlabel === '') {
+	        // label must contain non-whitespace characters
+	        this.pos = startpos;
+	        return 0;
+	    }
+	
+	    if (!refmap[normlabel]) {
+	        refmap[normlabel] = { destination: dest, title: title };
+	    }
+	    return this.pos - startpos;
+	};
+	
+	// Parse the next inline element in subject, advancing subject position.
+	// On success, add the result to block's children and return true.
+	// On failure, return false.
+	var parseInline = function(block) {
+	    var res = false;
+	    var c = this.peek();
+	    if (c === -1) {
+	        return false;
+	    }
+	    switch(c) {
+	    case C_NEWLINE:
+	        res = this.parseNewline(block);
+	        break;
+	    case C_BACKSLASH:
+	        res = this.parseBackslash(block);
+	        break;
+	    case C_BACKTICK:
+	        res = this.parseBackticks(block);
+	        break;
+	    case C_ASTERISK:
+	    case C_UNDERSCORE:
+	        res = this.handleDelim(c, block);
+	        break;
+	    case C_SINGLEQUOTE:
+	    case C_DOUBLEQUOTE:
+	        res = this.options.smart && this.handleDelim(c, block);
+	        break;
+	    case C_OPEN_BRACKET:
+	        res = this.parseOpenBracket(block);
+	        break;
+	    case C_BANG:
+	        res = this.parseBang(block);
+	        break;
+	    case C_CLOSE_BRACKET:
+	        res = this.parseCloseBracket(block);
+	        break;
+	    case C_LESSTHAN:
+	        res = this.parseAutolink(block) || this.parseHtmlTag(block);
+	        break;
+	    case C_AMPERSAND:
+	        res = this.parseEntity(block);
+	        break;
+	    default:
+	        res = this.parseString(block);
+	        break;
+	    }
+	    if (!res) {
+	        this.pos += 1;
+	        block.appendChild(text(fromCodePoint(c)));
+	    }
+	
+	    return true;
+	};
+	
+	// Parse string content in block into inline children,
+	// using refmap to resolve references.
+	var parseInlines = function(block) {
+	    this.subject = block._string_content.trim();
+	    this.pos = 0;
+	    this.delimiters = null;
+	    while (this.parseInline(block)) {
+	    }
+	    block._string_content = null; // allow raw string to be garbage collected
+	    this.processEmphasis(null);
+	};
+	
+	// The InlineParser object.
+	function InlineParser(options){
+	    return {
+	        subject: '',
+	        delimiters: null,  // used by handleDelim method
+	        pos: 0,
+	        refmap: {},
+	        match: match,
+	        peek: peek,
+	        spnl: spnl,
+	        parseBackticks: parseBackticks,
+	        parseBackslash: parseBackslash,
+	        parseAutolink: parseAutolink,
+	        parseHtmlTag: parseHtmlTag,
+	        scanDelims: scanDelims,
+	        handleDelim: handleDelim,
+	        parseLinkTitle: parseLinkTitle,
+	        parseLinkDestination: parseLinkDestination,
+	        parseLinkLabel: parseLinkLabel,
+	        parseOpenBracket: parseOpenBracket,
+	        parseCloseBracket: parseCloseBracket,
+	        parseBang: parseBang,
+	        parseEntity: parseEntity,
+	        parseString: parseString,
+	        parseNewline: parseNewline,
+	        parseReference: parseReference,
+	        parseInline: parseInline,
+	        processEmphasis: processEmphasis,
+	        removeDelimiter: removeDelimiter,
+	        options: options || {},
+	        parse: parseInlines
+	    };
+	}
+	
+	module.exports = InlineParser;
+
+
+/***/ },
+/* 561 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	/* The bulk of this code derives from https://github.com/dmoscrop/fold-case
+	But in addition to case-folding, we also normalize whitespace.
+	
+	fold-case is Copyright Mathias Bynens <https://mathiasbynens.be/>
+	
+	Permission is hereby granted, free of charge, to any person obtaining
+	a copy of this software and associated documentation files (the
+	"Software"), to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the Software, and to
+	permit persons to whom the Software is furnished to do so, subject to
+	the following conditions:
+	
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+	LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+	OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+	WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	
+	/*eslint-disable  key-spacing, comma-spacing */
+	
+	var regex = /[ \t\r\n]+|[A-Z\xB5\xC0-\xD6\xD8-\xDF\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u0149\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u017F\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C5\u01C7\u01C8\u01CA\u01CB\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F0-\u01F2\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0345\u0370\u0372\u0376\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03AB\u03B0\u03C2\u03CF-\u03D1\u03D5\u03D6\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F0\u03F1\u03F4\u03F5\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0528\u052A\u052C\u052E\u0531-\u0556\u0587\u10A0-\u10C5\u10C7\u10CD\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E96-\u1E9B\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F50\u1F52\u1F54\u1F56\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1F80-\u1FAF\u1FB2-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD2\u1FD3\u1FD6-\u1FDB\u1FE2-\u1FE4\u1FE6-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2126\u212A\u212B\u2132\u2160-\u216F\u2183\u24B6-\u24CF\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA698\uA69A\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA796\uA798\uA79A\uA79C\uA79E\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA-\uA7AD\uA7B0\uA7B1\uFB00-\uFB06\uFB13-\uFB17\uFF21-\uFF3A]|\uD801[\uDC00-\uDC27]|\uD806[\uDCA0-\uDCBF]/g;
+	
+	var map = {'A':'a','B':'b','C':'c','D':'d','E':'e','F':'f','G':'g','H':'h','I':'i','J':'j','K':'k','L':'l','M':'m','N':'n','O':'o','P':'p','Q':'q','R':'r','S':'s','T':'t','U':'u','V':'v','W':'w','X':'x','Y':'y','Z':'z','\xB5':'\u03BC','\xC0':'\xE0','\xC1':'\xE1','\xC2':'\xE2','\xC3':'\xE3','\xC4':'\xE4','\xC5':'\xE5','\xC6':'\xE6','\xC7':'\xE7','\xC8':'\xE8','\xC9':'\xE9','\xCA':'\xEA','\xCB':'\xEB','\xCC':'\xEC','\xCD':'\xED','\xCE':'\xEE','\xCF':'\xEF','\xD0':'\xF0','\xD1':'\xF1','\xD2':'\xF2','\xD3':'\xF3','\xD4':'\xF4','\xD5':'\xF5','\xD6':'\xF6','\xD8':'\xF8','\xD9':'\xF9','\xDA':'\xFA','\xDB':'\xFB','\xDC':'\xFC','\xDD':'\xFD','\xDE':'\xFE','\u0100':'\u0101','\u0102':'\u0103','\u0104':'\u0105','\u0106':'\u0107','\u0108':'\u0109','\u010A':'\u010B','\u010C':'\u010D','\u010E':'\u010F','\u0110':'\u0111','\u0112':'\u0113','\u0114':'\u0115','\u0116':'\u0117','\u0118':'\u0119','\u011A':'\u011B','\u011C':'\u011D','\u011E':'\u011F','\u0120':'\u0121','\u0122':'\u0123','\u0124':'\u0125','\u0126':'\u0127','\u0128':'\u0129','\u012A':'\u012B','\u012C':'\u012D','\u012E':'\u012F','\u0132':'\u0133','\u0134':'\u0135','\u0136':'\u0137','\u0139':'\u013A','\u013B':'\u013C','\u013D':'\u013E','\u013F':'\u0140','\u0141':'\u0142','\u0143':'\u0144','\u0145':'\u0146','\u0147':'\u0148','\u014A':'\u014B','\u014C':'\u014D','\u014E':'\u014F','\u0150':'\u0151','\u0152':'\u0153','\u0154':'\u0155','\u0156':'\u0157','\u0158':'\u0159','\u015A':'\u015B','\u015C':'\u015D','\u015E':'\u015F','\u0160':'\u0161','\u0162':'\u0163','\u0164':'\u0165','\u0166':'\u0167','\u0168':'\u0169','\u016A':'\u016B','\u016C':'\u016D','\u016E':'\u016F','\u0170':'\u0171','\u0172':'\u0173','\u0174':'\u0175','\u0176':'\u0177','\u0178':'\xFF','\u0179':'\u017A','\u017B':'\u017C','\u017D':'\u017E','\u017F':'s','\u0181':'\u0253','\u0182':'\u0183','\u0184':'\u0185','\u0186':'\u0254','\u0187':'\u0188','\u0189':'\u0256','\u018A':'\u0257','\u018B':'\u018C','\u018E':'\u01DD','\u018F':'\u0259','\u0190':'\u025B','\u0191':'\u0192','\u0193':'\u0260','\u0194':'\u0263','\u0196':'\u0269','\u0197':'\u0268','\u0198':'\u0199','\u019C':'\u026F','\u019D':'\u0272','\u019F':'\u0275','\u01A0':'\u01A1','\u01A2':'\u01A3','\u01A4':'\u01A5','\u01A6':'\u0280','\u01A7':'\u01A8','\u01A9':'\u0283','\u01AC':'\u01AD','\u01AE':'\u0288','\u01AF':'\u01B0','\u01B1':'\u028A','\u01B2':'\u028B','\u01B3':'\u01B4','\u01B5':'\u01B6','\u01B7':'\u0292','\u01B8':'\u01B9','\u01BC':'\u01BD','\u01C4':'\u01C6','\u01C5':'\u01C6','\u01C7':'\u01C9','\u01C8':'\u01C9','\u01CA':'\u01CC','\u01CB':'\u01CC','\u01CD':'\u01CE','\u01CF':'\u01D0','\u01D1':'\u01D2','\u01D3':'\u01D4','\u01D5':'\u01D6','\u01D7':'\u01D8','\u01D9':'\u01DA','\u01DB':'\u01DC','\u01DE':'\u01DF','\u01E0':'\u01E1','\u01E2':'\u01E3','\u01E4':'\u01E5','\u01E6':'\u01E7','\u01E8':'\u01E9','\u01EA':'\u01EB','\u01EC':'\u01ED','\u01EE':'\u01EF','\u01F1':'\u01F3','\u01F2':'\u01F3','\u01F4':'\u01F5','\u01F6':'\u0195','\u01F7':'\u01BF','\u01F8':'\u01F9','\u01FA':'\u01FB','\u01FC':'\u01FD','\u01FE':'\u01FF','\u0200':'\u0201','\u0202':'\u0203','\u0204':'\u0205','\u0206':'\u0207','\u0208':'\u0209','\u020A':'\u020B','\u020C':'\u020D','\u020E':'\u020F','\u0210':'\u0211','\u0212':'\u0213','\u0214':'\u0215','\u0216':'\u0217','\u0218':'\u0219','\u021A':'\u021B','\u021C':'\u021D','\u021E':'\u021F','\u0220':'\u019E','\u0222':'\u0223','\u0224':'\u0225','\u0226':'\u0227','\u0228':'\u0229','\u022A':'\u022B','\u022C':'\u022D','\u022E':'\u022F','\u0230':'\u0231','\u0232':'\u0233','\u023A':'\u2C65','\u023B':'\u023C','\u023D':'\u019A','\u023E':'\u2C66','\u0241':'\u0242','\u0243':'\u0180','\u0244':'\u0289','\u0245':'\u028C','\u0246':'\u0247','\u0248':'\u0249','\u024A':'\u024B','\u024C':'\u024D','\u024E':'\u024F','\u0345':'\u03B9','\u0370':'\u0371','\u0372':'\u0373','\u0376':'\u0377','\u037F':'\u03F3','\u0386':'\u03AC','\u0388':'\u03AD','\u0389':'\u03AE','\u038A':'\u03AF','\u038C':'\u03CC','\u038E':'\u03CD','\u038F':'\u03CE','\u0391':'\u03B1','\u0392':'\u03B2','\u0393':'\u03B3','\u0394':'\u03B4','\u0395':'\u03B5','\u0396':'\u03B6','\u0397':'\u03B7','\u0398':'\u03B8','\u0399':'\u03B9','\u039A':'\u03BA','\u039B':'\u03BB','\u039C':'\u03BC','\u039D':'\u03BD','\u039E':'\u03BE','\u039F':'\u03BF','\u03A0':'\u03C0','\u03A1':'\u03C1','\u03A3':'\u03C3','\u03A4':'\u03C4','\u03A5':'\u03C5','\u03A6':'\u03C6','\u03A7':'\u03C7','\u03A8':'\u03C8','\u03A9':'\u03C9','\u03AA':'\u03CA','\u03AB':'\u03CB','\u03C2':'\u03C3','\u03CF':'\u03D7','\u03D0':'\u03B2','\u03D1':'\u03B8','\u03D5':'\u03C6','\u03D6':'\u03C0','\u03D8':'\u03D9','\u03DA':'\u03DB','\u03DC':'\u03DD','\u03DE':'\u03DF','\u03E0':'\u03E1','\u03E2':'\u03E3','\u03E4':'\u03E5','\u03E6':'\u03E7','\u03E8':'\u03E9','\u03EA':'\u03EB','\u03EC':'\u03ED','\u03EE':'\u03EF','\u03F0':'\u03BA','\u03F1':'\u03C1','\u03F4':'\u03B8','\u03F5':'\u03B5','\u03F7':'\u03F8','\u03F9':'\u03F2','\u03FA':'\u03FB','\u03FD':'\u037B','\u03FE':'\u037C','\u03FF':'\u037D','\u0400':'\u0450','\u0401':'\u0451','\u0402':'\u0452','\u0403':'\u0453','\u0404':'\u0454','\u0405':'\u0455','\u0406':'\u0456','\u0407':'\u0457','\u0408':'\u0458','\u0409':'\u0459','\u040A':'\u045A','\u040B':'\u045B','\u040C':'\u045C','\u040D':'\u045D','\u040E':'\u045E','\u040F':'\u045F','\u0410':'\u0430','\u0411':'\u0431','\u0412':'\u0432','\u0413':'\u0433','\u0414':'\u0434','\u0415':'\u0435','\u0416':'\u0436','\u0417':'\u0437','\u0418':'\u0438','\u0419':'\u0439','\u041A':'\u043A','\u041B':'\u043B','\u041C':'\u043C','\u041D':'\u043D','\u041E':'\u043E','\u041F':'\u043F','\u0420':'\u0440','\u0421':'\u0441','\u0422':'\u0442','\u0423':'\u0443','\u0424':'\u0444','\u0425':'\u0445','\u0426':'\u0446','\u0427':'\u0447','\u0428':'\u0448','\u0429':'\u0449','\u042A':'\u044A','\u042B':'\u044B','\u042C':'\u044C','\u042D':'\u044D','\u042E':'\u044E','\u042F':'\u044F','\u0460':'\u0461','\u0462':'\u0463','\u0464':'\u0465','\u0466':'\u0467','\u0468':'\u0469','\u046A':'\u046B','\u046C':'\u046D','\u046E':'\u046F','\u0470':'\u0471','\u0472':'\u0473','\u0474':'\u0475','\u0476':'\u0477','\u0478':'\u0479','\u047A':'\u047B','\u047C':'\u047D','\u047E':'\u047F','\u0480':'\u0481','\u048A':'\u048B','\u048C':'\u048D','\u048E':'\u048F','\u0490':'\u0491','\u0492':'\u0493','\u0494':'\u0495','\u0496':'\u0497','\u0498':'\u0499','\u049A':'\u049B','\u049C':'\u049D','\u049E':'\u049F','\u04A0':'\u04A1','\u04A2':'\u04A3','\u04A4':'\u04A5','\u04A6':'\u04A7','\u04A8':'\u04A9','\u04AA':'\u04AB','\u04AC':'\u04AD','\u04AE':'\u04AF','\u04B0':'\u04B1','\u04B2':'\u04B3','\u04B4':'\u04B5','\u04B6':'\u04B7','\u04B8':'\u04B9','\u04BA':'\u04BB','\u04BC':'\u04BD','\u04BE':'\u04BF','\u04C0':'\u04CF','\u04C1':'\u04C2','\u04C3':'\u04C4','\u04C5':'\u04C6','\u04C7':'\u04C8','\u04C9':'\u04CA','\u04CB':'\u04CC','\u04CD':'\u04CE','\u04D0':'\u04D1','\u04D2':'\u04D3','\u04D4':'\u04D5','\u04D6':'\u04D7','\u04D8':'\u04D9','\u04DA':'\u04DB','\u04DC':'\u04DD','\u04DE':'\u04DF','\u04E0':'\u04E1','\u04E2':'\u04E3','\u04E4':'\u04E5','\u04E6':'\u04E7','\u04E8':'\u04E9','\u04EA':'\u04EB','\u04EC':'\u04ED','\u04EE':'\u04EF','\u04F0':'\u04F1','\u04F2':'\u04F3','\u04F4':'\u04F5','\u04F6':'\u04F7','\u04F8':'\u04F9','\u04FA':'\u04FB','\u04FC':'\u04FD','\u04FE':'\u04FF','\u0500':'\u0501','\u0502':'\u0503','\u0504':'\u0505','\u0506':'\u0507','\u0508':'\u0509','\u050A':'\u050B','\u050C':'\u050D','\u050E':'\u050F','\u0510':'\u0511','\u0512':'\u0513','\u0514':'\u0515','\u0516':'\u0517','\u0518':'\u0519','\u051A':'\u051B','\u051C':'\u051D','\u051E':'\u051F','\u0520':'\u0521','\u0522':'\u0523','\u0524':'\u0525','\u0526':'\u0527','\u0528':'\u0529','\u052A':'\u052B','\u052C':'\u052D','\u052E':'\u052F','\u0531':'\u0561','\u0532':'\u0562','\u0533':'\u0563','\u0534':'\u0564','\u0535':'\u0565','\u0536':'\u0566','\u0537':'\u0567','\u0538':'\u0568','\u0539':'\u0569','\u053A':'\u056A','\u053B':'\u056B','\u053C':'\u056C','\u053D':'\u056D','\u053E':'\u056E','\u053F':'\u056F','\u0540':'\u0570','\u0541':'\u0571','\u0542':'\u0572','\u0543':'\u0573','\u0544':'\u0574','\u0545':'\u0575','\u0546':'\u0576','\u0547':'\u0577','\u0548':'\u0578','\u0549':'\u0579','\u054A':'\u057A','\u054B':'\u057B','\u054C':'\u057C','\u054D':'\u057D','\u054E':'\u057E','\u054F':'\u057F','\u0550':'\u0580','\u0551':'\u0581','\u0552':'\u0582','\u0553':'\u0583','\u0554':'\u0584','\u0555':'\u0585','\u0556':'\u0586','\u10A0':'\u2D00','\u10A1':'\u2D01','\u10A2':'\u2D02','\u10A3':'\u2D03','\u10A4':'\u2D04','\u10A5':'\u2D05','\u10A6':'\u2D06','\u10A7':'\u2D07','\u10A8':'\u2D08','\u10A9':'\u2D09','\u10AA':'\u2D0A','\u10AB':'\u2D0B','\u10AC':'\u2D0C','\u10AD':'\u2D0D','\u10AE':'\u2D0E','\u10AF':'\u2D0F','\u10B0':'\u2D10','\u10B1':'\u2D11','\u10B2':'\u2D12','\u10B3':'\u2D13','\u10B4':'\u2D14','\u10B5':'\u2D15','\u10B6':'\u2D16','\u10B7':'\u2D17','\u10B8':'\u2D18','\u10B9':'\u2D19','\u10BA':'\u2D1A','\u10BB':'\u2D1B','\u10BC':'\u2D1C','\u10BD':'\u2D1D','\u10BE':'\u2D1E','\u10BF':'\u2D1F','\u10C0':'\u2D20','\u10C1':'\u2D21','\u10C2':'\u2D22','\u10C3':'\u2D23','\u10C4':'\u2D24','\u10C5':'\u2D25','\u10C7':'\u2D27','\u10CD':'\u2D2D','\u1E00':'\u1E01','\u1E02':'\u1E03','\u1E04':'\u1E05','\u1E06':'\u1E07','\u1E08':'\u1E09','\u1E0A':'\u1E0B','\u1E0C':'\u1E0D','\u1E0E':'\u1E0F','\u1E10':'\u1E11','\u1E12':'\u1E13','\u1E14':'\u1E15','\u1E16':'\u1E17','\u1E18':'\u1E19','\u1E1A':'\u1E1B','\u1E1C':'\u1E1D','\u1E1E':'\u1E1F','\u1E20':'\u1E21','\u1E22':'\u1E23','\u1E24':'\u1E25','\u1E26':'\u1E27','\u1E28':'\u1E29','\u1E2A':'\u1E2B','\u1E2C':'\u1E2D','\u1E2E':'\u1E2F','\u1E30':'\u1E31','\u1E32':'\u1E33','\u1E34':'\u1E35','\u1E36':'\u1E37','\u1E38':'\u1E39','\u1E3A':'\u1E3B','\u1E3C':'\u1E3D','\u1E3E':'\u1E3F','\u1E40':'\u1E41','\u1E42':'\u1E43','\u1E44':'\u1E45','\u1E46':'\u1E47','\u1E48':'\u1E49','\u1E4A':'\u1E4B','\u1E4C':'\u1E4D','\u1E4E':'\u1E4F','\u1E50':'\u1E51','\u1E52':'\u1E53','\u1E54':'\u1E55','\u1E56':'\u1E57','\u1E58':'\u1E59','\u1E5A':'\u1E5B','\u1E5C':'\u1E5D','\u1E5E':'\u1E5F','\u1E60':'\u1E61','\u1E62':'\u1E63','\u1E64':'\u1E65','\u1E66':'\u1E67','\u1E68':'\u1E69','\u1E6A':'\u1E6B','\u1E6C':'\u1E6D','\u1E6E':'\u1E6F','\u1E70':'\u1E71','\u1E72':'\u1E73','\u1E74':'\u1E75','\u1E76':'\u1E77','\u1E78':'\u1E79','\u1E7A':'\u1E7B','\u1E7C':'\u1E7D','\u1E7E':'\u1E7F','\u1E80':'\u1E81','\u1E82':'\u1E83','\u1E84':'\u1E85','\u1E86':'\u1E87','\u1E88':'\u1E89','\u1E8A':'\u1E8B','\u1E8C':'\u1E8D','\u1E8E':'\u1E8F','\u1E90':'\u1E91','\u1E92':'\u1E93','\u1E94':'\u1E95','\u1E9B':'\u1E61','\u1EA0':'\u1EA1','\u1EA2':'\u1EA3','\u1EA4':'\u1EA5','\u1EA6':'\u1EA7','\u1EA8':'\u1EA9','\u1EAA':'\u1EAB','\u1EAC':'\u1EAD','\u1EAE':'\u1EAF','\u1EB0':'\u1EB1','\u1EB2':'\u1EB3','\u1EB4':'\u1EB5','\u1EB6':'\u1EB7','\u1EB8':'\u1EB9','\u1EBA':'\u1EBB','\u1EBC':'\u1EBD','\u1EBE':'\u1EBF','\u1EC0':'\u1EC1','\u1EC2':'\u1EC3','\u1EC4':'\u1EC5','\u1EC6':'\u1EC7','\u1EC8':'\u1EC9','\u1ECA':'\u1ECB','\u1ECC':'\u1ECD','\u1ECE':'\u1ECF','\u1ED0':'\u1ED1','\u1ED2':'\u1ED3','\u1ED4':'\u1ED5','\u1ED6':'\u1ED7','\u1ED8':'\u1ED9','\u1EDA':'\u1EDB','\u1EDC':'\u1EDD','\u1EDE':'\u1EDF','\u1EE0':'\u1EE1','\u1EE2':'\u1EE3','\u1EE4':'\u1EE5','\u1EE6':'\u1EE7','\u1EE8':'\u1EE9','\u1EEA':'\u1EEB','\u1EEC':'\u1EED','\u1EEE':'\u1EEF','\u1EF0':'\u1EF1','\u1EF2':'\u1EF3','\u1EF4':'\u1EF5','\u1EF6':'\u1EF7','\u1EF8':'\u1EF9','\u1EFA':'\u1EFB','\u1EFC':'\u1EFD','\u1EFE':'\u1EFF','\u1F08':'\u1F00','\u1F09':'\u1F01','\u1F0A':'\u1F02','\u1F0B':'\u1F03','\u1F0C':'\u1F04','\u1F0D':'\u1F05','\u1F0E':'\u1F06','\u1F0F':'\u1F07','\u1F18':'\u1F10','\u1F19':'\u1F11','\u1F1A':'\u1F12','\u1F1B':'\u1F13','\u1F1C':'\u1F14','\u1F1D':'\u1F15','\u1F28':'\u1F20','\u1F29':'\u1F21','\u1F2A':'\u1F22','\u1F2B':'\u1F23','\u1F2C':'\u1F24','\u1F2D':'\u1F25','\u1F2E':'\u1F26','\u1F2F':'\u1F27','\u1F38':'\u1F30','\u1F39':'\u1F31','\u1F3A':'\u1F32','\u1F3B':'\u1F33','\u1F3C':'\u1F34','\u1F3D':'\u1F35','\u1F3E':'\u1F36','\u1F3F':'\u1F37','\u1F48':'\u1F40','\u1F49':'\u1F41','\u1F4A':'\u1F42','\u1F4B':'\u1F43','\u1F4C':'\u1F44','\u1F4D':'\u1F45','\u1F59':'\u1F51','\u1F5B':'\u1F53','\u1F5D':'\u1F55','\u1F5F':'\u1F57','\u1F68':'\u1F60','\u1F69':'\u1F61','\u1F6A':'\u1F62','\u1F6B':'\u1F63','\u1F6C':'\u1F64','\u1F6D':'\u1F65','\u1F6E':'\u1F66','\u1F6F':'\u1F67','\u1FB8':'\u1FB0','\u1FB9':'\u1FB1','\u1FBA':'\u1F70','\u1FBB':'\u1F71','\u1FBE':'\u03B9','\u1FC8':'\u1F72','\u1FC9':'\u1F73','\u1FCA':'\u1F74','\u1FCB':'\u1F75','\u1FD8':'\u1FD0','\u1FD9':'\u1FD1','\u1FDA':'\u1F76','\u1FDB':'\u1F77','\u1FE8':'\u1FE0','\u1FE9':'\u1FE1','\u1FEA':'\u1F7A','\u1FEB':'\u1F7B','\u1FEC':'\u1FE5','\u1FF8':'\u1F78','\u1FF9':'\u1F79','\u1FFA':'\u1F7C','\u1FFB':'\u1F7D','\u2126':'\u03C9','\u212A':'k','\u212B':'\xE5','\u2132':'\u214E','\u2160':'\u2170','\u2161':'\u2171','\u2162':'\u2172','\u2163':'\u2173','\u2164':'\u2174','\u2165':'\u2175','\u2166':'\u2176','\u2167':'\u2177','\u2168':'\u2178','\u2169':'\u2179','\u216A':'\u217A','\u216B':'\u217B','\u216C':'\u217C','\u216D':'\u217D','\u216E':'\u217E','\u216F':'\u217F','\u2183':'\u2184','\u24B6':'\u24D0','\u24B7':'\u24D1','\u24B8':'\u24D2','\u24B9':'\u24D3','\u24BA':'\u24D4','\u24BB':'\u24D5','\u24BC':'\u24D6','\u24BD':'\u24D7','\u24BE':'\u24D8','\u24BF':'\u24D9','\u24C0':'\u24DA','\u24C1':'\u24DB','\u24C2':'\u24DC','\u24C3':'\u24DD','\u24C4':'\u24DE','\u24C5':'\u24DF','\u24C6':'\u24E0','\u24C7':'\u24E1','\u24C8':'\u24E2','\u24C9':'\u24E3','\u24CA':'\u24E4','\u24CB':'\u24E5','\u24CC':'\u24E6','\u24CD':'\u24E7','\u24CE':'\u24E8','\u24CF':'\u24E9','\u2C00':'\u2C30','\u2C01':'\u2C31','\u2C02':'\u2C32','\u2C03':'\u2C33','\u2C04':'\u2C34','\u2C05':'\u2C35','\u2C06':'\u2C36','\u2C07':'\u2C37','\u2C08':'\u2C38','\u2C09':'\u2C39','\u2C0A':'\u2C3A','\u2C0B':'\u2C3B','\u2C0C':'\u2C3C','\u2C0D':'\u2C3D','\u2C0E':'\u2C3E','\u2C0F':'\u2C3F','\u2C10':'\u2C40','\u2C11':'\u2C41','\u2C12':'\u2C42','\u2C13':'\u2C43','\u2C14':'\u2C44','\u2C15':'\u2C45','\u2C16':'\u2C46','\u2C17':'\u2C47','\u2C18':'\u2C48','\u2C19':'\u2C49','\u2C1A':'\u2C4A','\u2C1B':'\u2C4B','\u2C1C':'\u2C4C','\u2C1D':'\u2C4D','\u2C1E':'\u2C4E','\u2C1F':'\u2C4F','\u2C20':'\u2C50','\u2C21':'\u2C51','\u2C22':'\u2C52','\u2C23':'\u2C53','\u2C24':'\u2C54','\u2C25':'\u2C55','\u2C26':'\u2C56','\u2C27':'\u2C57','\u2C28':'\u2C58','\u2C29':'\u2C59','\u2C2A':'\u2C5A','\u2C2B':'\u2C5B','\u2C2C':'\u2C5C','\u2C2D':'\u2C5D','\u2C2E':'\u2C5E','\u2C60':'\u2C61','\u2C62':'\u026B','\u2C63':'\u1D7D','\u2C64':'\u027D','\u2C67':'\u2C68','\u2C69':'\u2C6A','\u2C6B':'\u2C6C','\u2C6D':'\u0251','\u2C6E':'\u0271','\u2C6F':'\u0250','\u2C70':'\u0252','\u2C72':'\u2C73','\u2C75':'\u2C76','\u2C7E':'\u023F','\u2C7F':'\u0240','\u2C80':'\u2C81','\u2C82':'\u2C83','\u2C84':'\u2C85','\u2C86':'\u2C87','\u2C88':'\u2C89','\u2C8A':'\u2C8B','\u2C8C':'\u2C8D','\u2C8E':'\u2C8F','\u2C90':'\u2C91','\u2C92':'\u2C93','\u2C94':'\u2C95','\u2C96':'\u2C97','\u2C98':'\u2C99','\u2C9A':'\u2C9B','\u2C9C':'\u2C9D','\u2C9E':'\u2C9F','\u2CA0':'\u2CA1','\u2CA2':'\u2CA3','\u2CA4':'\u2CA5','\u2CA6':'\u2CA7','\u2CA8':'\u2CA9','\u2CAA':'\u2CAB','\u2CAC':'\u2CAD','\u2CAE':'\u2CAF','\u2CB0':'\u2CB1','\u2CB2':'\u2CB3','\u2CB4':'\u2CB5','\u2CB6':'\u2CB7','\u2CB8':'\u2CB9','\u2CBA':'\u2CBB','\u2CBC':'\u2CBD','\u2CBE':'\u2CBF','\u2CC0':'\u2CC1','\u2CC2':'\u2CC3','\u2CC4':'\u2CC5','\u2CC6':'\u2CC7','\u2CC8':'\u2CC9','\u2CCA':'\u2CCB','\u2CCC':'\u2CCD','\u2CCE':'\u2CCF','\u2CD0':'\u2CD1','\u2CD2':'\u2CD3','\u2CD4':'\u2CD5','\u2CD6':'\u2CD7','\u2CD8':'\u2CD9','\u2CDA':'\u2CDB','\u2CDC':'\u2CDD','\u2CDE':'\u2CDF','\u2CE0':'\u2CE1','\u2CE2':'\u2CE3','\u2CEB':'\u2CEC','\u2CED':'\u2CEE','\u2CF2':'\u2CF3','\uA640':'\uA641','\uA642':'\uA643','\uA644':'\uA645','\uA646':'\uA647','\uA648':'\uA649','\uA64A':'\uA64B','\uA64C':'\uA64D','\uA64E':'\uA64F','\uA650':'\uA651','\uA652':'\uA653','\uA654':'\uA655','\uA656':'\uA657','\uA658':'\uA659','\uA65A':'\uA65B','\uA65C':'\uA65D','\uA65E':'\uA65F','\uA660':'\uA661','\uA662':'\uA663','\uA664':'\uA665','\uA666':'\uA667','\uA668':'\uA669','\uA66A':'\uA66B','\uA66C':'\uA66D','\uA680':'\uA681','\uA682':'\uA683','\uA684':'\uA685','\uA686':'\uA687','\uA688':'\uA689','\uA68A':'\uA68B','\uA68C':'\uA68D','\uA68E':'\uA68F','\uA690':'\uA691','\uA692':'\uA693','\uA694':'\uA695','\uA696':'\uA697','\uA698':'\uA699','\uA69A':'\uA69B','\uA722':'\uA723','\uA724':'\uA725','\uA726':'\uA727','\uA728':'\uA729','\uA72A':'\uA72B','\uA72C':'\uA72D','\uA72E':'\uA72F','\uA732':'\uA733','\uA734':'\uA735','\uA736':'\uA737','\uA738':'\uA739','\uA73A':'\uA73B','\uA73C':'\uA73D','\uA73E':'\uA73F','\uA740':'\uA741','\uA742':'\uA743','\uA744':'\uA745','\uA746':'\uA747','\uA748':'\uA749','\uA74A':'\uA74B','\uA74C':'\uA74D','\uA74E':'\uA74F','\uA750':'\uA751','\uA752':'\uA753','\uA754':'\uA755','\uA756':'\uA757','\uA758':'\uA759','\uA75A':'\uA75B','\uA75C':'\uA75D','\uA75E':'\uA75F','\uA760':'\uA761','\uA762':'\uA763','\uA764':'\uA765','\uA766':'\uA767','\uA768':'\uA769','\uA76A':'\uA76B','\uA76C':'\uA76D','\uA76E':'\uA76F','\uA779':'\uA77A','\uA77B':'\uA77C','\uA77D':'\u1D79','\uA77E':'\uA77F','\uA780':'\uA781','\uA782':'\uA783','\uA784':'\uA785','\uA786':'\uA787','\uA78B':'\uA78C','\uA78D':'\u0265','\uA790':'\uA791','\uA792':'\uA793','\uA796':'\uA797','\uA798':'\uA799','\uA79A':'\uA79B','\uA79C':'\uA79D','\uA79E':'\uA79F','\uA7A0':'\uA7A1','\uA7A2':'\uA7A3','\uA7A4':'\uA7A5','\uA7A6':'\uA7A7','\uA7A8':'\uA7A9','\uA7AA':'\u0266','\uA7AB':'\u025C','\uA7AC':'\u0261','\uA7AD':'\u026C','\uA7B0':'\u029E','\uA7B1':'\u0287','\uFF21':'\uFF41','\uFF22':'\uFF42','\uFF23':'\uFF43','\uFF24':'\uFF44','\uFF25':'\uFF45','\uFF26':'\uFF46','\uFF27':'\uFF47','\uFF28':'\uFF48','\uFF29':'\uFF49','\uFF2A':'\uFF4A','\uFF2B':'\uFF4B','\uFF2C':'\uFF4C','\uFF2D':'\uFF4D','\uFF2E':'\uFF4E','\uFF2F':'\uFF4F','\uFF30':'\uFF50','\uFF31':'\uFF51','\uFF32':'\uFF52','\uFF33':'\uFF53','\uFF34':'\uFF54','\uFF35':'\uFF55','\uFF36':'\uFF56','\uFF37':'\uFF57','\uFF38':'\uFF58','\uFF39':'\uFF59','\uFF3A':'\uFF5A','\uD801\uDC00':'\uD801\uDC28','\uD801\uDC01':'\uD801\uDC29','\uD801\uDC02':'\uD801\uDC2A','\uD801\uDC03':'\uD801\uDC2B','\uD801\uDC04':'\uD801\uDC2C','\uD801\uDC05':'\uD801\uDC2D','\uD801\uDC06':'\uD801\uDC2E','\uD801\uDC07':'\uD801\uDC2F','\uD801\uDC08':'\uD801\uDC30','\uD801\uDC09':'\uD801\uDC31','\uD801\uDC0A':'\uD801\uDC32','\uD801\uDC0B':'\uD801\uDC33','\uD801\uDC0C':'\uD801\uDC34','\uD801\uDC0D':'\uD801\uDC35','\uD801\uDC0E':'\uD801\uDC36','\uD801\uDC0F':'\uD801\uDC37','\uD801\uDC10':'\uD801\uDC38','\uD801\uDC11':'\uD801\uDC39','\uD801\uDC12':'\uD801\uDC3A','\uD801\uDC13':'\uD801\uDC3B','\uD801\uDC14':'\uD801\uDC3C','\uD801\uDC15':'\uD801\uDC3D','\uD801\uDC16':'\uD801\uDC3E','\uD801\uDC17':'\uD801\uDC3F','\uD801\uDC18':'\uD801\uDC40','\uD801\uDC19':'\uD801\uDC41','\uD801\uDC1A':'\uD801\uDC42','\uD801\uDC1B':'\uD801\uDC43','\uD801\uDC1C':'\uD801\uDC44','\uD801\uDC1D':'\uD801\uDC45','\uD801\uDC1E':'\uD801\uDC46','\uD801\uDC1F':'\uD801\uDC47','\uD801\uDC20':'\uD801\uDC48','\uD801\uDC21':'\uD801\uDC49','\uD801\uDC22':'\uD801\uDC4A','\uD801\uDC23':'\uD801\uDC4B','\uD801\uDC24':'\uD801\uDC4C','\uD801\uDC25':'\uD801\uDC4D','\uD801\uDC26':'\uD801\uDC4E','\uD801\uDC27':'\uD801\uDC4F','\uD806\uDCA0':'\uD806\uDCC0','\uD806\uDCA1':'\uD806\uDCC1','\uD806\uDCA2':'\uD806\uDCC2','\uD806\uDCA3':'\uD806\uDCC3','\uD806\uDCA4':'\uD806\uDCC4','\uD806\uDCA5':'\uD806\uDCC5','\uD806\uDCA6':'\uD806\uDCC6','\uD806\uDCA7':'\uD806\uDCC7','\uD806\uDCA8':'\uD806\uDCC8','\uD806\uDCA9':'\uD806\uDCC9','\uD806\uDCAA':'\uD806\uDCCA','\uD806\uDCAB':'\uD806\uDCCB','\uD806\uDCAC':'\uD806\uDCCC','\uD806\uDCAD':'\uD806\uDCCD','\uD806\uDCAE':'\uD806\uDCCE','\uD806\uDCAF':'\uD806\uDCCF','\uD806\uDCB0':'\uD806\uDCD0','\uD806\uDCB1':'\uD806\uDCD1','\uD806\uDCB2':'\uD806\uDCD2','\uD806\uDCB3':'\uD806\uDCD3','\uD806\uDCB4':'\uD806\uDCD4','\uD806\uDCB5':'\uD806\uDCD5','\uD806\uDCB6':'\uD806\uDCD6','\uD806\uDCB7':'\uD806\uDCD7','\uD806\uDCB8':'\uD806\uDCD8','\uD806\uDCB9':'\uD806\uDCD9','\uD806\uDCBA':'\uD806\uDCDA','\uD806\uDCBB':'\uD806\uDCDB','\uD806\uDCBC':'\uD806\uDCDC','\uD806\uDCBD':'\uD806\uDCDD','\uD806\uDCBE':'\uD806\uDCDE','\uD806\uDCBF':'\uD806\uDCDF','\xDF':'ss','\u0130':'i\u0307','\u0149':'\u02BCn','\u01F0':'j\u030C','\u0390':'\u03B9\u0308\u0301','\u03B0':'\u03C5\u0308\u0301','\u0587':'\u0565\u0582','\u1E96':'h\u0331','\u1E97':'t\u0308','\u1E98':'w\u030A','\u1E99':'y\u030A','\u1E9A':'a\u02BE','\u1E9E':'ss','\u1F50':'\u03C5\u0313','\u1F52':'\u03C5\u0313\u0300','\u1F54':'\u03C5\u0313\u0301','\u1F56':'\u03C5\u0313\u0342','\u1F80':'\u1F00\u03B9','\u1F81':'\u1F01\u03B9','\u1F82':'\u1F02\u03B9','\u1F83':'\u1F03\u03B9','\u1F84':'\u1F04\u03B9','\u1F85':'\u1F05\u03B9','\u1F86':'\u1F06\u03B9','\u1F87':'\u1F07\u03B9','\u1F88':'\u1F00\u03B9','\u1F89':'\u1F01\u03B9','\u1F8A':'\u1F02\u03B9','\u1F8B':'\u1F03\u03B9','\u1F8C':'\u1F04\u03B9','\u1F8D':'\u1F05\u03B9','\u1F8E':'\u1F06\u03B9','\u1F8F':'\u1F07\u03B9','\u1F90':'\u1F20\u03B9','\u1F91':'\u1F21\u03B9','\u1F92':'\u1F22\u03B9','\u1F93':'\u1F23\u03B9','\u1F94':'\u1F24\u03B9','\u1F95':'\u1F25\u03B9','\u1F96':'\u1F26\u03B9','\u1F97':'\u1F27\u03B9','\u1F98':'\u1F20\u03B9','\u1F99':'\u1F21\u03B9','\u1F9A':'\u1F22\u03B9','\u1F9B':'\u1F23\u03B9','\u1F9C':'\u1F24\u03B9','\u1F9D':'\u1F25\u03B9','\u1F9E':'\u1F26\u03B9','\u1F9F':'\u1F27\u03B9','\u1FA0':'\u1F60\u03B9','\u1FA1':'\u1F61\u03B9','\u1FA2':'\u1F62\u03B9','\u1FA3':'\u1F63\u03B9','\u1FA4':'\u1F64\u03B9','\u1FA5':'\u1F65\u03B9','\u1FA6':'\u1F66\u03B9','\u1FA7':'\u1F67\u03B9','\u1FA8':'\u1F60\u03B9','\u1FA9':'\u1F61\u03B9','\u1FAA':'\u1F62\u03B9','\u1FAB':'\u1F63\u03B9','\u1FAC':'\u1F64\u03B9','\u1FAD':'\u1F65\u03B9','\u1FAE':'\u1F66\u03B9','\u1FAF':'\u1F67\u03B9','\u1FB2':'\u1F70\u03B9','\u1FB3':'\u03B1\u03B9','\u1FB4':'\u03AC\u03B9','\u1FB6':'\u03B1\u0342','\u1FB7':'\u03B1\u0342\u03B9','\u1FBC':'\u03B1\u03B9','\u1FC2':'\u1F74\u03B9','\u1FC3':'\u03B7\u03B9','\u1FC4':'\u03AE\u03B9','\u1FC6':'\u03B7\u0342','\u1FC7':'\u03B7\u0342\u03B9','\u1FCC':'\u03B7\u03B9','\u1FD2':'\u03B9\u0308\u0300','\u1FD3':'\u03B9\u0308\u0301','\u1FD6':'\u03B9\u0342','\u1FD7':'\u03B9\u0308\u0342','\u1FE2':'\u03C5\u0308\u0300','\u1FE3':'\u03C5\u0308\u0301','\u1FE4':'\u03C1\u0313','\u1FE6':'\u03C5\u0342','\u1FE7':'\u03C5\u0308\u0342','\u1FF2':'\u1F7C\u03B9','\u1FF3':'\u03C9\u03B9','\u1FF4':'\u03CE\u03B9','\u1FF6':'\u03C9\u0342','\u1FF7':'\u03C9\u0342\u03B9','\u1FFC':'\u03C9\u03B9','\uFB00':'ff','\uFB01':'fi','\uFB02':'fl','\uFB03':'ffi','\uFB04':'ffl','\uFB05':'st','\uFB06':'st','\uFB13':'\u0574\u0576','\uFB14':'\u0574\u0565','\uFB15':'\u0574\u056B','\uFB16':'\u057E\u0576','\uFB17':'\u0574\u056D'};
+	
+	// Normalize reference label: collapse internal whitespace
+	// to single space, remove leading/trailing whitespace, case fold.
+	module.exports = function(string) {
+	    return string.slice(1, string.length - 1).trim().replace(regex, function($0) {
+	        // Note: there is no need to check `hasOwnProperty($0)` here.
+	        // If character not found in lookup table, it must be whitespace.
+	        return map[$0] || ' ';
+	    });
+	};
+
+
+/***/ },
+/* 562 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	// derived from https://github.com/mathiasbynens/String.fromCodePoint
+	/*! http://mths.be/fromcodepoint v0.2.1 by @mathias */
+	if (String.fromCodePoint) {
+	    module.exports = function (_) {
+	        try {
+	            return String.fromCodePoint(_);
+	        } catch (e) {
+	            if (e instanceof RangeError) {
+	                return String.fromCharCode(0xFFFD);
+	            }
+	            throw e;
+	        }
+	    };
+	
+	} else {
+	
+	  var stringFromCharCode = String.fromCharCode;
+	  var floor = Math.floor;
+	  var fromCodePoint = function() {
+	      var MAX_SIZE = 0x4000;
+	      var codeUnits = [];
+	      var highSurrogate;
+	      var lowSurrogate;
+	      var index = -1;
+	      var length = arguments.length;
+	      if (!length) {
+	          return '';
+	      }
+	      var result = '';
+	      while (++index < length) {
+	          var codePoint = Number(arguments[index]);
+	          if (
+	              !isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+	                  codePoint < 0 || // not a valid Unicode code point
+	                  codePoint > 0x10FFFF || // not a valid Unicode code point
+	                  floor(codePoint) !== codePoint // not an integer
+	          ) {
+	              return String.fromCharCode(0xFFFD);
+	          }
+	          if (codePoint <= 0xFFFF) { // BMP code point
+	              codeUnits.push(codePoint);
+	          } else { // Astral code point; split in surrogate halves
+	              // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+	              codePoint -= 0x10000;
+	              highSurrogate = (codePoint >> 10) + 0xD800;
+	              lowSurrogate = (codePoint % 0x400) + 0xDC00;
+	              codeUnits.push(highSurrogate, lowSurrogate);
+	          }
+	          if (index + 1 === length || codeUnits.length > MAX_SIZE) {
+	              result += stringFromCharCode.apply(null, codeUnits);
+	              codeUnits.length = 0;
+	          }
+	      }
+	      return result;
+	  };
+	  module.exports = fromCodePoint;
+	}
+
+
+/***/ },
+/* 563 */
+/***/ function(module, exports) {
+
+	/*! http://mths.be/repeat v0.2.0 by @mathias */
+	if (!String.prototype.repeat) {
+		(function() {
+			'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
+			var defineProperty = (function() {
+				// IE 8 only supports `Object.defineProperty` on DOM elements
+				try {
+					var object = {};
+					var $defineProperty = Object.defineProperty;
+					var result = $defineProperty(object, object, object) && $defineProperty;
+				} catch(error) {}
+				return result;
+			}());
+			var repeat = function(count) {
+				if (this == null) {
+					throw TypeError();
+				}
+				var string = String(this);
+				// `ToInteger`
+				var n = count ? Number(count) : 0;
+				if (n != n) { // better `isNaN`
+					n = 0;
+				}
+				// Account for out-of-bounds indices
+				if (n < 0 || n == Infinity) {
+					throw RangeError();
+				}
+				var result = '';
+				while (n) {
+					if (n % 2 == 1) {
+						result += string;
+					}
+					if (n > 1) {
+						string += string;
+					}
+					n >>= 1;
+				}
+				return result;
+			};
+			if (defineProperty) {
+				defineProperty(String.prototype, 'repeat', {
+					'value': repeat,
+					'configurable': true,
+					'writable': true
+				});
+			} else {
+				String.prototype.repeat = repeat;
+			}
+		}());
+	}
+
+
+/***/ },
+/* 564 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var escapeXml = __webpack_require__(549).escapeXml;
+	
+	// Helper function to produce an HTML tag.
+	var tag = function(name, attrs, selfclosing) {
+	    var result = '<' + name;
+	    if (attrs && attrs.length > 0) {
+	        var i = 0;
+	        var attrib;
+	        while ((attrib = attrs[i]) !== undefined) {
+	            result += ' ' + attrib[0] + '="' + attrib[1] + '"';
+	            i++;
+	        }
+	    }
+	    if (selfclosing) {
+	        result += ' /';
+	    }
+	
+	    result += '>';
+	    return result;
+	};
+	
+	var reHtmlTag = /\<[^>]*\>/;
+	var reUnsafeProtocol = /^javascript:|vbscript:|file:|data:/i;
+	var reSafeDataProtocol = /^data:image\/(?:png|gif|jpeg|webp)/i;
+	
+	var potentiallyUnsafe = function(url) {
+	    return reUnsafeProtocol.test(url) &&
+	        !reSafeDataProtocol.test(url);
+	};
+	
+	var renderNodes = function(block) {
+	
+	    var attrs;
+	    var info_words;
+	    var tagname;
+	    var walker = block.walker();
+	    var event, node, entering;
+	    var buffer = "";
+	    var lastOut = "\n";
+	    var disableTags = 0;
+	    var grandparent;
+	    var out = function(s) {
+	        if (disableTags > 0) {
+	            buffer += s.replace(reHtmlTag, '');
+	        } else {
+	            buffer += s;
+	        }
+	        lastOut = s;
+	    };
+	    var esc = this.escape;
+	    var cr = function() {
+	        if (lastOut !== '\n') {
+	            buffer += '\n';
+	            lastOut = '\n';
+	        }
+	    };
+	
+	    var options = this.options;
+	
+	    if (options.time) { console.time("rendering"); }
+	
+	    while ((event = walker.next())) {
+	        entering = event.entering;
+	        node = event.node;
+	
+	        attrs = [];
+	        if (options.sourcepos) {
+	            var pos = node.sourcepos;
+	            if (pos) {
+	                attrs.push(['data-sourcepos', String(pos[0][0]) + ':' +
+	                            String(pos[0][1]) + '-' + String(pos[1][0]) + ':' +
+	                            String(pos[1][1])]);
+	            }
+	        }
+	
+	        switch (node.type) {
+	        case 'Text':
+	            out(esc(node.literal, false));
+	            break;
+	
+	        case 'Softbreak':
+	            out(this.softbreak);
+	            break;
+	
+	        case 'Hardbreak':
+	            out(tag('br', [], true));
+	            cr();
+	            break;
+	
+	        case 'Emph':
+	            out(tag(entering ? 'em' : '/em'));
+	            break;
+	
+	        case 'Strong':
+	            out(tag(entering ? 'strong' : '/strong'));
+	            break;
+	
+	        case 'HtmlInline':
+	            if (options.safe) {
+	                out('<!-- raw HTML omitted -->');
+	            } else {
+	                out(node.literal);
+	            }
+	            break;
+	
+	        case 'CustomInline':
+	            if (entering && node.onEnter) {
+	                out(node.onEnter);
+	            } else if (!entering && node.onExit) {
+	                out(node.onExit);
+	            }
+	            break;
+	
+	        case 'Link':
+	            if (entering) {
+	                if (!(options.safe && potentiallyUnsafe(node.destination))) {
+	                    attrs.push(['href', esc(node.destination, true)]);
+	                }
+	                if (node.title) {
+	                    attrs.push(['title', esc(node.title, true)]);
+	                }
+	                out(tag('a', attrs));
+	            } else {
+	                out(tag('/a'));
+	            }
+	            break;
+	
+	        case 'Image':
+	            if (entering) {
+	                if (disableTags === 0) {
+	                    if (options.safe &&
+	                         potentiallyUnsafe(node.destination)) {
+	                        out('<img src="" alt="');
+	                    } else {
+	                        out('<img src="' + esc(node.destination, true) +
+	                            '" alt="');
+	                    }
+	                }
+	                disableTags += 1;
+	            } else {
+	                disableTags -= 1;
+	                if (disableTags === 0) {
+	                    if (node.title) {
+	                        out('" title="' + esc(node.title, true));
+	                    }
+	                    out('" />');
+	                }
+	            }
+	            break;
+	
+	        case 'Code':
+	            out(tag('code') + esc(node.literal, false) + tag('/code'));
+	            break;
+	
+	        case 'Document':
+	            break;
+	
+	        case 'Paragraph':
+	            grandparent = node.parent.parent;
+	            if (grandparent !== null &&
+	                grandparent.type === 'List') {
+	                if (grandparent.listTight) {
+	                    break;
+	                }
+	            }
+	            if (entering) {
+	                cr();
+	                out(tag('p', attrs));
+	            } else {
+	                out(tag('/p'));
+	                cr();
+	            }
+	            break;
+	
+	        case 'BlockQuote':
+	            if (entering) {
+	                cr();
+	                out(tag('blockquote', attrs));
+	                cr();
+	            } else {
+	                cr();
+	                out(tag('/blockquote'));
+	                cr();
+	            }
+	            break;
+	
+	        case 'Item':
+	            if (entering) {
+	                out(tag('li', attrs));
+	            } else {
+	                out(tag('/li'));
+	                cr();
+	            }
+	            break;
+	
+	        case 'List':
+	            tagname = node.listType === 'Bullet' ? 'ul' : 'ol';
+	            if (entering) {
+	                var start = node.listStart;
+	                if (start !== null && start !== 1) {
+	                    attrs.push(['start', start.toString()]);
+	                }
+	                cr();
+	                out(tag(tagname, attrs));
+	                cr();
+	            } else {
+	                cr();
+	                out(tag('/' + tagname));
+	                cr();
+	            }
+	            break;
+	
+	        case 'Heading':
+	            tagname = 'h' + node.level;
+	            if (entering) {
+	                cr();
+	                out(tag(tagname, attrs));
+	            } else {
+	                out(tag('/' + tagname));
+	                cr();
+	            }
+	            break;
+	
+	        case 'CodeBlock':
+	            info_words = node.info ? node.info.split(/\s+/) : [];
+	            if (info_words.length > 0 && info_words[0].length > 0) {
+	                attrs.push(['class', 'language-' + esc(info_words[0], true)]);
+	            }
+	            cr();
+	            out(tag('pre') + tag('code', attrs));
+	            out(esc(node.literal, false));
+	            out(tag('/code') + tag('/pre'));
+	            cr();
+	            break;
+	
+	        case 'HtmlBlock':
+	            cr();
+	            if (options.safe) {
+	                out('<!-- raw HTML omitted -->');
+	            } else {
+	                out(node.literal);
+	            }
+	            cr();
+	            break;
+	
+	        case 'CustomBlock':
+	            cr();
+	            if (entering && node.onEnter) {
+	                out(node.onEnter);
+	            } else if (!entering && node.onExit) {
+	                out(node.onExit);
+	            }
+	            cr();
+	            break;
+	
+	        case 'ThematicBreak':
+	            cr();
+	            out(tag('hr', attrs, true));
+	            cr();
+	            break;
+	
+	        default:
+	            throw "Unknown node type " + node.type;
+	        }
+	
+	    }
+	    if (options.time) { console.timeEnd("rendering"); }
+	    return buffer;
+	};
+	
+	// The HtmlRenderer object.
+	function HtmlRenderer(options){
+	    return {
+	        // default options:
+	        softbreak: '\n', // by default, soft breaks are rendered as newlines in HTML
+	        // set to "<br />" to make them hard breaks
+	        // set to " " if you want to ignore line wrapping in source
+	        escape: escapeXml,
+	        options: options || {},
+	        render: renderNodes
+	    };
+	}
+	
+	module.exports = HtmlRenderer;
+
+
+/***/ },
+/* 565 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var escapeXml = __webpack_require__(549).escapeXml;
+	
+	// Helper function to produce an XML tag.
+	var tag = function(name, attrs, selfclosing) {
+	    var result = '<' + name;
+	    if (attrs && attrs.length > 0) {
+	        var i = 0;
+	        var attrib;
+	        while ((attrib = attrs[i]) !== undefined) {
+	            result += ' ' + attrib[0] + '="' + attrib[1] + '"';
+	            i++;
+	        }
+	    }
+	    if (selfclosing) {
+	        result += ' /';
+	    }
+	
+	    result += '>';
+	    return result;
+	};
+	
+	var reXMLTag = /\<[^>]*\>/;
+	
+	var toTagName = function(s) {
+	    return s.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
+	};
+	
+	var renderNodes = function(block) {
+	
+	    var attrs;
+	    var tagname;
+	    var walker = block.walker();
+	    var event, node, entering;
+	    var buffer = "";
+	    var lastOut = "\n";
+	    var disableTags = 0;
+	    var indentLevel = 0;
+	    var indent = '  ';
+	    var container;
+	    var selfClosing;
+	    var nodetype;
+	
+	    var out = function(s) {
+	        if (disableTags > 0) {
+	            buffer += s.replace(reXMLTag, '');
+	        } else {
+	            buffer += s;
+	        }
+	        lastOut = s;
+	    };
+	    var esc = this.escape;
+	    var cr = function() {
+	        if (lastOut !== '\n') {
+	            buffer += '\n';
+	            lastOut = '\n';
+	            for (var i = indentLevel; i > 0; i--) {
+	                buffer += indent;
+	            }
+	        }
+	    };
+	
+	    var options = this.options;
+	
+	    if (options.time) { console.time("rendering"); }
+	
+	    buffer += '<?xml version="1.0" encoding="UTF-8"?>\n';
+	    buffer += '<!DOCTYPE CommonMark SYSTEM "CommonMark.dtd">\n';
+	
+	    while ((event = walker.next())) {
+	        entering = event.entering;
+	        node = event.node;
+	        nodetype = node.type;
+	
+	        container = node.isContainer;
+	        selfClosing = nodetype === 'ThematicBreak' || nodetype === 'Hardbreak' ||
+	            nodetype === 'Softbreak';
+	        tagname = toTagName(nodetype);
+	
+	        if (entering) {
+	
+	            attrs = [];
+	
+	            switch (nodetype) {
+	            case 'Document':
+	                attrs.push(['xmlns', 'http://commonmark.org/xml/1.0']);
+	                break;
+	            case 'List':
+	                if (node.listType !== null) {
+	                    attrs.push(['type', node.listType.toLowerCase()]);
+	                }
+	                if (node.listStart !== null) {
+	                    attrs.push(['start', String(node.listStart)]);
+	                }
+	                if (node.listTight !== null) {
+	                    attrs.push(['tight', (node.listTight ? 'true' : 'false')]);
+	                }
+	                var delim = node.listDelimiter;
+	                if (delim !== null) {
+	                    var delimword = '';
+	                    if (delim === '.') {
+	                        delimword = 'period';
+	                    } else {
+	                        delimword = 'paren';
+	                    }
+	                    attrs.push(['delimiter', delimword]);
+	                }
+	                break;
+	            case 'CodeBlock':
+	                if (node.info) {
+	                    attrs.push(['info', node.info]);
+	                }
+	                break;
+	            case 'Heading':
+	                attrs.push(['level', String(node.level)]);
+	                break;
+	            case 'Link':
+	            case 'Image':
+	                attrs.push(['destination', node.destination]);
+	                attrs.push(['title', node.title]);
+	                break;
+	            case 'CustomInline':
+	            case 'CustomBlock':
+	                attrs.push(['on_enter', node.onEnter]);
+	                attrs.push(['on_exit', node.onExit]);
+	                break;
+	            default:
+	                break;
+	            }
+	            if (options.sourcepos) {
+	                var pos = node.sourcepos;
+	                if (pos) {
+	                    attrs.push(['sourcepos', String(pos[0][0]) + ':' +
+	                                String(pos[0][1]) + '-' + String(pos[1][0]) + ':' +
+	                                String(pos[1][1])]);
+	                }
+	            }
+	
+	            cr();
+	            out(tag(tagname, attrs, selfClosing));
+	            if (container) {
+	                indentLevel += 1;
+	            } else if (!container && !selfClosing) {
+	                var lit = node.literal;
+	                if (lit) {
+	                    out(esc(lit));
+	                }
+	                out(tag('/' + tagname));
+	            }
+	        } else {
+	            indentLevel -= 1;
+	            cr();
+	            out(tag('/' + tagname));
+	        }
+	
+	
+	    }
+	    if (options.time) { console.timeEnd("rendering"); }
+	    buffer += '\n';
+	    return buffer;
+	};
+	
+	// The XmlRenderer object.
+	function XmlRenderer(options){
+	    return {
+	        // default options:
+	        softbreak: '\n', // by default, soft breaks are rendered as newlines in HTML
+	        // set to "<br />" to make them hard breaks
+	        // set to " " if you want to ignore line wrapping in source
+	        escape: escapeXml,
+	        options: options || {},
+	        render: renderNodes
+	    };
+	}
+	
+	module.exports = XmlRenderer;
+
+
+/***/ },
+/* 566 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(37);
+	var assign = __webpack_require__(567);
+	var isPlainObject = __webpack_require__(568);
+	var xssFilters = __webpack_require__(569);
+	var pascalCase = __webpack_require__(570);
+	
+	var typeAliases = {
+	    blockquote: 'block_quote',
+	    thematicbreak: 'thematic_break',
+	    htmlblock: 'html_block',
+	    htmlinline: 'html_inline',
+	    codeblock: 'code_block',
+	    hardbreak: 'linebreak'
+	};
+	
+	var defaultRenderers = {
+	    block_quote: 'blockquote', // eslint-disable-line camelcase
+	    emph: 'em',
+	    linebreak: 'br',
+	    image: 'img',
+	    item: 'li',
+	    link: 'a',
+	    paragraph: 'p',
+	    strong: 'strong',
+	    thematic_break: 'hr', // eslint-disable-line camelcase
+	
+	    html_block: HtmlRenderer, // eslint-disable-line camelcase
+	    html_inline: HtmlRenderer, // eslint-disable-line camelcase
+	
+	    list: function List(props) {
+	        var tag = props.type.toLowerCase() === 'bullet' ? 'ul' : 'ol';
+	        var attrs = getCoreProps(props);
+	
+	        if (props.start !== null && props.start !== 1) {
+	            attrs.start = props.start.toString();
+	        }
+	
+	        return createElement(tag, attrs, props.children);
+	    },
+	    code_block: function CodeBlock(props) { // eslint-disable-line camelcase
+	        var className = props.language && 'language-' + props.language;
+	        var code = createElement('code', { className: className }, props.literal);
+	        return createElement('pre', getCoreProps(props), code);
+	    },
+	    code: function Code(props) {
+	        return createElement('code', getCoreProps(props), props.children);
+	    },
+	    heading: function Heading(props) {
+	        return createElement('h' + props.level, getCoreProps(props), props.children);
+	    },
+	
+	    text: null,
+	    softbreak: null
+	};
+	
+	var coreTypes = Object.keys(defaultRenderers);
+	
+	function getCoreProps(props) {
+	    return {
+	        'key': props.nodeKey,
+	        'data-sourcepos': props['data-sourcepos']
+	    };
+	}
+	
+	function normalizeTypeName(typeName) {
+	    var norm = typeName.toLowerCase();
+	    var type = typeAliases[norm] || norm;
+	    return typeof defaultRenderers[type] !== 'undefined' ? type : typeName;
+	}
+	
+	function normalizeRenderers(renderers) {
+	    return Object.keys(renderers || {}).reduce(function(normalized, type) {
+	        var norm = normalizeTypeName(type);
+	        normalized[norm] = renderers[type];
+	        return normalized;
+	    }, {});
+	}
+	
+	function HtmlRenderer(props) {
+	    var nodeProps = props.escapeHtml ? {} : { dangerouslySetInnerHTML: { __html: props.literal } };
+	    var children = props.escapeHtml ? [props.literal] : null;
+	
+	    if (props.escapeHtml || !props.skipHtml) {
+	        return createElement(props.isBlock ? 'div' : 'span', nodeProps, children);
+	    }
+	}
+	
+	function isGrandChildOfList(node) {
+	    var grandparent = node.parent.parent;
+	    return (
+	        grandparent &&
+	        grandparent.type.toLowerCase() === 'list' &&
+	        grandparent.listTight
+	    );
+	}
+	
+	function addChild(node, child) {
+	    var parent = node;
+	    do {
+	        parent = parent.parent;
+	    } while (!parent.react);
+	
+	    parent.react.children.push(child);
+	}
+	
+	function createElement(tagName, props, children) {
+	    var nodeChildren = Array.isArray(children) && children.reduce(reduceChildren, []);
+	    var args = [tagName, props].concat(nodeChildren || children);
+	    return React.createElement.apply(React, args);
+	}
+	
+	function reduceChildren(children, child) {
+	    var lastIndex = children.length - 1;
+	    if (typeof child === 'string' && typeof children[lastIndex] === 'string') {
+	        children[lastIndex] += child;
+	    } else {
+	        children.push(child);
+	    }
+	
+	    return children;
+	}
+	
+	function flattenPosition(pos) {
+	    return [
+	        pos[0][0], ':', pos[0][1], '-',
+	        pos[1][0], ':', pos[1][1]
+	    ].map(String).join('');
+	}
+	
+	// For some nodes, we want to include more props than for others
+	function getNodeProps(node, key, opts, renderer) {
+	    var props = { key: key }, undef;
+	
+	    // `sourcePos` is true if the user wants source information (line/column info from markdown source)
+	    if (opts.sourcePos && node.sourcepos) {
+	        props['data-sourcepos'] = flattenPosition(node.sourcepos);
+	    }
+	
+	    var type = normalizeTypeName(node.type);
+	
+	    switch (type) {
+	        case 'html_inline':
+	        case 'html_block':
+	            props.isBlock = type === 'html_block';
+	            props.escapeHtml = opts.escapeHtml;
+	            props.skipHtml = opts.skipHtml;
+	            break;
+	        case 'code_block':
+	            var codeInfo = node.info ? node.info.split(/ +/) : [];
+	            if (codeInfo.length > 0 && codeInfo[0].length > 0) {
+	                props.language = codeInfo[0];
+	            }
+	            break;
+	        case 'code':
+	            props.children = node.literal;
+	            props.inline = true;
+	            break;
+	        case 'heading':
+	            props.level = node.level;
+	            break;
+	        case 'softbreak':
+	            props.softBreak = opts.softBreak;
+	            break;
+	        case 'link':
+	            props.href = opts.transformLinkUri ? opts.transformLinkUri(node.destination) : node.destination;
+	            props.title = node.title || undef;
+	            break;
+	        case 'image':
+	            props.src = opts.transformImageUri ? opts.transformImageUri(node.destination) : node.destination;
+	            props.title = node.title || undef;
+	
+	            // Commonmark treats image description as children. We just want the text
+	            props.alt = node.react.children.join('');
+	            node.react.children = undef;
+	            break;
+	        case 'list':
+	            props.start = node.listStart;
+	            props.type = node.listType;
+	            props.tight = node.listTight;
+	            break;
+	        default:
+	    }
+	
+	    if (typeof renderer !== 'string') {
+	        props.literal = node.literal;
+	    }
+	
+	    var children = props.children || (node.react && node.react.children);
+	    if (Array.isArray(children)) {
+	        props.children = children.reduce(reduceChildren, []) || null;
+	    }
+	
+	    return props;
+	}
+	
+	function getPosition(node) {
+	    if (!node) {
+	        return null;
+	    }
+	
+	    if (node.sourcepos) {
+	        return flattenPosition(node.sourcepos);
+	    }
+	
+	    return getPosition(node.parent);
+	}
+	
+	function renderNodes(block) {
+	    var walker = block.walker();
+	
+	    // Softbreaks are usually treated as newlines, but in HTML we might want explicit linebreaks
+	    var softBreak = (
+	        this.softBreak === 'br' ?
+	        React.createElement('br') :
+	        this.softBreak
+	    );
+	
+	    var propOptions = {
+	        sourcePos: this.sourcePos,
+	        escapeHtml: this.escapeHtml,
+	        skipHtml: this.skipHtml,
+	        transformLinkUri: this.transformLinkUri,
+	        transformImageUri: this.transformImageUri,
+	        softBreak: softBreak
+	    };
+	
+	    var e, node, entering, leaving, type, doc, key, nodeProps, prevPos, prevIndex = 0;
+	    while ((e = walker.next())) {
+	        var pos = getPosition(e.node.sourcepos ? e.node : e.node.parent);
+	        if (prevPos === pos) {
+	            key = pos + prevIndex;
+	            prevIndex++;
+	        } else {
+	            key = pos;
+	            prevIndex = 0;
+	        }
+	
+	        prevPos = pos;
+	        entering = e.entering;
+	        leaving = !entering;
+	        node = e.node;
+	        type = normalizeTypeName(node.type);
+	        nodeProps = null;
+	
+	        // If we have not assigned a document yet, assume the current node is just that
+	        if (!doc) {
+	            doc = node;
+	            node.react = { children: [] };
+	            continue;
+	        } else if (node === doc) {
+	            // When we're leaving...
+	            continue;
+	        }
+	
+	        // In HTML, we don't want paragraphs inside of list items
+	        if (type === 'paragraph' && isGrandChildOfList(node)) {
+	            continue;
+	        }
+	
+	        // If we're skipping HTML nodes, don't keep processing
+	        if (this.skipHtml && (type === 'html_block' || type === 'html_inline')) {
+	            continue;
+	        }
+	
+	        var isDocument = node === doc;
+	        var disallowedByConfig = this.allowedTypes.indexOf(type) === -1;
+	        var disallowedByUser = false;
+	
+	        // Do we have a user-defined function?
+	        var isCompleteParent = node.isContainer && leaving;
+	        var renderer = this.renderers[type];
+	        if (this.allowNode && (isCompleteParent || !node.isContainer)) {
+	            var nodeChildren = isCompleteParent ? node.react.children : [];
+	
+	            nodeProps = getNodeProps(node, key, propOptions, renderer);
+	            disallowedByUser = !this.allowNode({
+	                type: pascalCase(type),
+	                renderer: this.renderers[type],
+	                props: nodeProps,
+	                children: nodeChildren
+	            });
+	        }
+	
+	        if (!isDocument && (disallowedByUser || disallowedByConfig)) {
+	            if (!this.unwrapDisallowed && entering && node.isContainer) {
+	                walker.resumeAt(node, false);
+	            }
+	
+	            continue;
+	        }
+	
+	        var isSimpleNode = type === 'text' || type === 'softbreak';
+	        if (typeof renderer !== 'function' && !isSimpleNode && typeof renderer !== 'string') {
+	            throw new Error(
+	                'Renderer for type `' + pascalCase(node.type) + '` not defined or is not renderable'
+	            );
+	        }
+	
+	        if (node.isContainer && entering) {
+	            node.react = {
+	                component: renderer,
+	                props: {},
+	                children: []
+	            };
+	        } else {
+	            var childProps = nodeProps || getNodeProps(node, key, propOptions, renderer);
+	            if (renderer) {
+	                childProps = typeof renderer === 'string'
+	                    ? childProps
+	                    : assign(childProps, {nodeKey: childProps.key});
+	
+	                addChild(node, React.createElement(renderer, childProps));
+	            } else if (type === 'text') {
+	                addChild(node, node.literal);
+	            } else if (type === 'softbreak') {
+	                addChild(node, softBreak);
+	            }
+	        }
+	    }
+	
+	    return doc.react.children;
+	}
+	
+	function defaultLinkUriFilter(uri) {
+	    var url = uri.replace(/file:\/\//g, 'x-file://');
+	
+	    // React does a pretty swell job of escaping attributes,
+	    // so to prevent double-escaping, we need to decode
+	    return decodeURI(xssFilters.uriInDoubleQuotedAttr(url));
+	}
+	
+	function ReactRenderer(options) {
+	    var opts = options || {};
+	
+	    if (opts.allowedTypes && opts.disallowedTypes) {
+	        throw new Error('Only one of `allowedTypes` and `disallowedTypes` should be defined');
+	    }
+	
+	    if (opts.allowedTypes && !Array.isArray(opts.allowedTypes)) {
+	        throw new Error('`allowedTypes` must be an array');
+	    }
+	
+	    if (opts.disallowedTypes && !Array.isArray(opts.disallowedTypes)) {
+	        throw new Error('`disallowedTypes` must be an array');
+	    }
+	
+	    if (opts.allowNode && typeof opts.allowNode !== 'function') {
+	        throw new Error('`allowNode` must be a function');
+	    }
+	
+	    var linkFilter = opts.transformLinkUri;
+	    if (typeof linkFilter === 'undefined') {
+	        linkFilter = defaultLinkUriFilter;
+	    } else if (linkFilter && typeof linkFilter !== 'function') {
+	        throw new Error('`transformLinkUri` must either be a function, or `null` to disable');
+	    }
+	
+	    var imageFilter = opts.transformImageUri;
+	    if (typeof imageFilter !== 'undefined' && typeof imageFilter !== 'function') {
+	        throw new Error('`transformImageUri` must be a function');
+	    }
+	
+	    if (opts.renderers && !isPlainObject(opts.renderers)) {
+	        throw new Error('`renderers` must be a plain object of `Type`: `Renderer` pairs');
+	    }
+	
+	    var allowedTypes = (opts.allowedTypes && opts.allowedTypes.map(normalizeTypeName)) || coreTypes;
+	    if (opts.disallowedTypes) {
+	        var disallowed = opts.disallowedTypes.map(normalizeTypeName);
+	        allowedTypes = allowedTypes.filter(function filterDisallowed(type) {
+	            return disallowed.indexOf(type) === -1;
+	        });
+	    }
+	
+	    return {
+	        sourcePos: Boolean(opts.sourcePos),
+	        softBreak: opts.softBreak || '\n',
+	        renderers: assign({}, defaultRenderers, normalizeRenderers(opts.renderers)),
+	        escapeHtml: Boolean(opts.escapeHtml),
+	        skipHtml: Boolean(opts.skipHtml),
+	        transformLinkUri: linkFilter,
+	        transformImageUri: imageFilter,
+	        allowNode: opts.allowNode,
+	        allowedTypes: allowedTypes,
+	        unwrapDisallowed: Boolean(opts.unwrapDisallowed),
+	        render: renderNodes
+	    };
+	}
+	
+	ReactRenderer.uriTransformer = defaultLinkUriFilter;
+	ReactRenderer.types = coreTypes.map(pascalCase);
+	ReactRenderer.renderers = coreTypes.reduce(function(renderers, type) {
+	    renderers[pascalCase(type)] = defaultRenderers[type];
+	    return renderers;
+	}, {});
+	
+	module.exports = ReactRenderer;
+
+
+/***/ },
+/* 567 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
+	
+	/** Used as references for various `Number` constants. */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    funcTag = '[object Function]',
+	    genTag = '[object GeneratorFunction]';
+	
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^(?:0|[1-9]\d*)$/;
+	
+	/**
+	 * A faster alternative to `Function#apply`, this function invokes `func`
+	 * with the `this` binding of `thisArg` and the arguments of `args`.
+	 *
+	 * @private
+	 * @param {Function} func The function to invoke.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {Array} args The arguments to invoke `func` with.
+	 * @returns {*} Returns the result of `func`.
+	 */
+	function apply(func, thisArg, args) {
+	  switch (args.length) {
+	    case 0: return func.call(thisArg);
+	    case 1: return func.call(thisArg, args[0]);
+	    case 2: return func.call(thisArg, args[0], args[1]);
+	    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+	  }
+	  return func.apply(thisArg, args);
+	}
+	
+	/**
+	 * The base implementation of `_.times` without support for iteratee shorthands
+	 * or max array length checks.
+	 *
+	 * @private
+	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the array of results.
+	 */
+	function baseTimes(n, iteratee) {
+	  var index = -1,
+	      result = Array(n);
+	
+	  while (++index < n) {
+	    result[index] = iteratee(index);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+	
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+	
+	/** Built-in value references. */
+	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+	
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeKeys = overArg(Object.keys, Object),
+	    nativeMax = Math.max;
+	
+	/** Detect if properties shadowing those on `Object.prototype` are non-enumerable. */
+	var nonEnumShadows = !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf');
+	
+	/**
+	 * Creates an array of the enumerable property names of the array-like `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @param {boolean} inherited Specify returning inherited property names.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function arrayLikeKeys(value, inherited) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  // Safari 9 makes `arguments.length` enumerable in strict mode.
+	  var result = (isArray(value) || isArguments(value))
+	    ? baseTimes(value.length, String)
+	    : [];
+	
+	  var length = result.length,
+	      skipIndexes = !!length;
+	
+	  for (var key in value) {
+	    if ((inherited || hasOwnProperty.call(value, key)) &&
+	        !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Assigns `value` to `key` of `object` if the existing value is not equivalent
+	 * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * for equality comparisons.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function assignValue(object, key, value) {
+	  var objValue = object[key];
+	  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+	      (value === undefined && !(key in object))) {
+	    object[key] = value;
+	  }
+	}
+	
+	/**
+	 * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function baseKeys(object) {
+	  if (!isPrototype(object)) {
+	    return nativeKeys(object);
+	  }
+	  var result = [];
+	  for (var key in Object(object)) {
+	    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	 *
+	 * @private
+	 * @param {Function} func The function to apply a rest parameter to.
+	 * @param {number} [start=func.length-1] The start position of the rest parameter.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseRest(func, start) {
+	  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+	  return function() {
+	    var args = arguments,
+	        index = -1,
+	        length = nativeMax(args.length - start, 0),
+	        array = Array(length);
+	
+	    while (++index < length) {
+	      array[index] = args[start + index];
+	    }
+	    index = -1;
+	    var otherArgs = Array(start + 1);
+	    while (++index < start) {
+	      otherArgs[index] = args[index];
+	    }
+	    otherArgs[start] = array;
+	    return apply(func, this, otherArgs);
+	  };
+	}
+	
+	/**
+	 * Copies properties of `source` to `object`.
+	 *
+	 * @private
+	 * @param {Object} source The object to copy properties from.
+	 * @param {Array} props The property identifiers to copy.
+	 * @param {Object} [object={}] The object to copy properties to.
+	 * @param {Function} [customizer] The function to customize copied values.
+	 * @returns {Object} Returns `object`.
+	 */
+	function copyObject(source, props, object, customizer) {
+	  object || (object = {});
+	
+	  var index = -1,
+	      length = props.length;
+	
+	  while (++index < length) {
+	    var key = props[index];
+	
+	    var newValue = customizer
+	      ? customizer(object[key], source[key], key, object, source)
+	      : undefined;
+	
+	    assignValue(object, key, newValue === undefined ? source[key] : newValue);
+	  }
+	  return object;
+	}
+	
+	/**
+	 * Creates a function like `_.assign`.
+	 *
+	 * @private
+	 * @param {Function} assigner The function to assign values.
+	 * @returns {Function} Returns the new assigner function.
+	 */
+	function createAssigner(assigner) {
+	  return baseRest(function(object, sources) {
+	    var index = -1,
+	        length = sources.length,
+	        customizer = length > 1 ? sources[length - 1] : undefined,
+	        guard = length > 2 ? sources[2] : undefined;
+	
+	    customizer = (assigner.length > 3 && typeof customizer == 'function')
+	      ? (length--, customizer)
+	      : undefined;
+	
+	    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+	      customizer = length < 3 ? undefined : customizer;
+	      length = 1;
+	    }
+	    object = Object(object);
+	    while (++index < length) {
+	      var source = sources[index];
+	      if (source) {
+	        assigner(object, source, index, customizer);
+	      }
+	    }
+	    return object;
+	  });
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return !!length &&
+	    (typeof value == 'number' || reIsUint.test(value)) &&
+	    (value > -1 && value % 1 == 0 && value < length);
+	}
+	
+	/**
+	 * Checks if the given arguments are from an iteratee call.
+	 *
+	 * @private
+	 * @param {*} value The potential iteratee value argument.
+	 * @param {*} index The potential iteratee index or key argument.
+	 * @param {*} object The potential iteratee object argument.
+	 * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+	 *  else `false`.
+	 */
+	function isIterateeCall(value, index, object) {
+	  if (!isObject(object)) {
+	    return false;
+	  }
+	  var type = typeof index;
+	  if (type == 'number'
+	        ? (isArrayLike(object) && isIndex(index, object.length))
+	        : (type == 'string' && index in object)
+	      ) {
+	    return eq(object[index], value);
+	  }
+	  return false;
+	}
+	
+	/**
+	 * Checks if `value` is likely a prototype object.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+	 */
+	function isPrototype(value) {
+	  var Ctor = value && value.constructor,
+	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+	
+	  return value === proto;
+	}
+	
+	/**
+	 * Performs a
+	 * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * comparison between two values to determine if they are equivalent.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 * @example
+	 *
+	 * var object = { 'a': 1 };
+	 * var other = { 'a': 1 };
+	 *
+	 * _.eq(object, object);
+	 * // => true
+	 *
+	 * _.eq(object, other);
+	 * // => false
+	 *
+	 * _.eq('a', 'a');
+	 * // => true
+	 *
+	 * _.eq('a', Object('a'));
+	 * // => false
+	 *
+	 * _.eq(NaN, NaN);
+	 * // => true
+	 */
+	function eq(value, other) {
+	  return value === other || (value !== value && other !== other);
+	}
+	
+	/**
+	 * Checks if `value` is likely an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+	}
+	
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(document.body.children);
+	 * // => false
+	 *
+	 * _.isArray('abc');
+	 * // => false
+	 *
+	 * _.isArray(_.noop);
+	 * // => false
+	 */
+	var isArray = Array.isArray;
+	
+	/**
+	 * Checks if `value` is array-like. A value is considered array-like if it's
+	 * not a function and has a `value.length` that's an integer greater than or
+	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 * @example
+	 *
+	 * _.isArrayLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLike(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLike('abc');
+	 * // => true
+	 *
+	 * _.isArrayLike(_.noop);
+	 * // => false
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(value.length) && !isFunction(value);
+	}
+	
+	/**
+	 * This method is like `_.isArrayLike` except that it also checks if `value`
+	 * is an object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array-like object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArrayLikeObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject('abc');
+	 * // => false
+	 *
+	 * _.isArrayLikeObject(_.noop);
+	 * // => false
+	 */
+	function isArrayLikeObject(value) {
+	  return isObjectLike(value) && isArrayLike(value);
+	}
+	
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+	  var tag = isObject(value) ? objectToString.call(value) : '';
+	  return tag == funcTag || tag == genTag;
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This method is loosely based on
+	 * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 * @example
+	 *
+	 * _.isLength(3);
+	 * // => true
+	 *
+	 * _.isLength(Number.MIN_VALUE);
+	 * // => false
+	 *
+	 * _.isLength(Infinity);
+	 * // => false
+	 *
+	 * _.isLength('3');
+	 * // => false
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' &&
+	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/**
+	 * Assigns own enumerable string keyed properties of source objects to the
+	 * destination object. Source objects are applied from left to right.
+	 * Subsequent sources overwrite property assignments of previous sources.
+	 *
+	 * **Note:** This method mutates `object` and is loosely based on
+	 * [`Object.assign`](https://mdn.io/Object/assign).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.10.0
+	 * @category Object
+	 * @param {Object} object The destination object.
+	 * @param {...Object} [sources] The source objects.
+	 * @returns {Object} Returns `object`.
+	 * @see _.assignIn
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * function Bar() {
+	 *   this.c = 3;
+	 * }
+	 *
+	 * Foo.prototype.b = 2;
+	 * Bar.prototype.d = 4;
+	 *
+	 * _.assign({ 'a': 0 }, new Foo, new Bar);
+	 * // => { 'a': 1, 'c': 3 }
+	 */
+	var assign = createAssigner(function(object, source) {
+	  if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
+	    copyObject(source, keys(source), object);
+	    return;
+	  }
+	  for (var key in source) {
+	    if (hasOwnProperty.call(source, key)) {
+	      assignValue(object, key, source[key]);
+	    }
+	  }
+	});
+	
+	/**
+	 * Creates an array of the own enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects. See the
+	 * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+	 * for more details.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keys(new Foo);
+	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 *
+	 * _.keys('hi');
+	 * // => ['0', '1']
+	 */
+	function keys(object) {
+	  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+	}
+	
+	module.exports = assign;
+
+
+/***/ },
+/* 568 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
+	
+	/** `Object#toString` result references. */
+	var objectTag = '[object Object]';
+	
+	/**
+	 * Checks if `value` is a host object in IE < 9.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 */
+	function isHostObject(value) {
+	  // Many host objects are `Object` objects that can coerce to strings
+	  // despite having improperly defined `toString` methods.
+	  var result = false;
+	  if (value != null && typeof value.toString != 'function') {
+	    try {
+	      result = !!(value + '');
+	    } catch (e) {}
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+	
+	/** Used for built-in method references. */
+	var funcProto = Function.prototype,
+	    objectProto = Object.prototype;
+	
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = funcProto.toString;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/** Used to infer the `Object` constructor. */
+	var objectCtorString = funcToString.call(Object);
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+	
+	/** Built-in value references. */
+	var getPrototype = overArg(Object.getPrototypeOf, Object);
+	
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/**
+	 * Checks if `value` is a plain object, that is, an object created by the
+	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.8.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * _.isPlainObject(new Foo);
+	 * // => false
+	 *
+	 * _.isPlainObject([1, 2, 3]);
+	 * // => false
+	 *
+	 * _.isPlainObject({ 'x': 0, 'y': 0 });
+	 * // => true
+	 *
+	 * _.isPlainObject(Object.create(null));
+	 * // => true
+	 */
+	function isPlainObject(value) {
+	  if (!isObjectLike(value) ||
+	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	    return false;
+	  }
+	  var proto = getPrototype(value);
+	  if (proto === null) {
+	    return true;
+	  }
+	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+	  return (typeof Ctor == 'function' &&
+	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	}
+	
+	module.exports = isPlainObject;
+
+
+/***/ },
+/* 569 */
+/***/ function(module, exports) {
+
+	/*
+	Copyright (c) 2015, Yahoo! Inc. All rights reserved.
+	Copyrights licensed under the New BSD License.
+	See the accompanying LICENSE file for terms.
+	
+	Authors: Nera Liu <neraliu@yahoo-inc.com>
+	         Adonis Fung <adon@yahoo-inc.com>
+	         Albert Yu <albertyu@yahoo-inc.com>
+	*/
+	/*jshint node: true */
+	
+	exports._getPrivFilters = function () {
+	
+	    var LT     = /</g,
+	        QUOT   = /"/g,
+	        SQUOT  = /'/g,
+	        AMP    = /&/g,
+	        NULL   = /\x00/g,
+	        SPECIAL_ATTR_VALUE_UNQUOTED_CHARS = /(?:^$|[\x00\x09-\x0D "'`=<>])/g,
+	        SPECIAL_HTML_CHARS = /[&<>"'`]/g, 
+	        SPECIAL_COMMENT_CHARS = /(?:\x00|^-*!?>|--!?>|--?!?$|\]>|\]$)/g;
+	
+	    // CSS sensitive chars: ()"'/,!*@{}:;
+	    // By CSS: (Tab|NewLine|colon|semi|lpar|rpar|apos|sol|comma|excl|ast|midast);|(quot|QUOT)
+	    // By URI_PROTOCOL: (Tab|NewLine);
+	    var SENSITIVE_HTML_ENTITIES = /&(?:#([xX][0-9A-Fa-f]+|\d+);?|(Tab|NewLine|colon|semi|lpar|rpar|apos|sol|comma|excl|ast|midast|ensp|emsp|thinsp);|(nbsp|amp|AMP|lt|LT|gt|GT|quot|QUOT);?)/g,
+	        SENSITIVE_NAMED_REF_MAP = {Tab: '\t', NewLine: '\n', colon: ':', semi: ';', lpar: '(', rpar: ')', apos: '\'', sol: '/', comma: ',', excl: '!', ast: '*', midast: '*', ensp: '\u2002', emsp: '\u2003', thinsp: '\u2009', nbsp: '\xA0', amp: '&', lt: '<', gt: '>', quot: '"', QUOT: '"'};
+	
+	    // var CSS_VALID_VALUE = 
+	    //     /^(?:
+	    //     (?!-*expression)#?[-\w]+
+	    //     |[+-]?(?:\d+|\d*\.\d+)(?:em|ex|ch|rem|px|mm|cm|in|pt|pc|%|vh|vw|vmin|vmax)?
+	    //     |!important
+	    //     | //empty
+	    //     )$/i;
+	    var CSS_VALID_VALUE = /^(?:(?!-*expression)#?[-\w]+|[+-]?(?:\d+|\d*\.\d+)(?:r?em|ex|ch|cm|mm|in|px|pt|pc|%|vh|vw|vmin|vmax)?|!important|)$/i,
+	        // TODO: prevent double css escaping by not encoding \ again, but this may require CSS decoding
+	        // \x7F and \x01-\x1F less \x09 are for Safari 5.0, added []{}/* for unbalanced quote
+	        CSS_DOUBLE_QUOTED_CHARS = /[\x00-\x1F\x7F\[\]{}\\"]/g,
+	        CSS_SINGLE_QUOTED_CHARS = /[\x00-\x1F\x7F\[\]{}\\']/g,
+	        // (, \u207D and \u208D can be used in background: 'url(...)' in IE, assumed all \ chars are encoded by QUOTED_CHARS, and null is already replaced with \uFFFD
+	        // otherwise, use this CSS_BLACKLIST instead (enhance it with url matching): /(?:\\?\(|[\u207D\u208D]|\\0{0,4}28 ?|\\0{0,2}20[78][Dd] ?)+/g
+	        CSS_BLACKLIST = /url[\(\u207D\u208D]+/g,
+	        // this assumes encodeURI() and encodeURIComponent() has escaped 1-32, 127 for IE8
+	        CSS_UNQUOTED_URL = /['\(\)]/g; // " \ treated by encodeURI()
+	
+	    // Given a full URI, need to support "[" ( IPv6address ) "]" in URI as per RFC3986
+	    // Reference: https://tools.ietf.org/html/rfc3986
+	    var URL_IPV6 = /\/\/%5[Bb]([A-Fa-f0-9:]+)%5[Dd]/;
+	
+	
+	    // Reference: http://shazzer.co.uk/database/All/characters-allowd-in-html-entities
+	    // Reference: http://shazzer.co.uk/vector/Characters-allowed-after-ampersand-in-named-character-references
+	    // Reference: http://shazzer.co.uk/database/All/Characters-before-javascript-uri
+	    // Reference: http://shazzer.co.uk/database/All/Characters-after-javascript-uri
+	    // Reference: https://html.spec.whatwg.org/multipage/syntax.html#consume-a-character-reference
+	    // Reference for named characters: https://html.spec.whatwg.org/multipage/entities.json
+	    var URI_BLACKLIST_PROTOCOLS = {'javascript':1, 'data':1, 'vbscript':1, 'mhtml':1, 'x-schema':1},
+	        URI_PROTOCOL_COLON = /(?::|&#[xX]0*3[aA];?|&#0*58;?|&colon;)/,
+	        URI_PROTOCOL_WHITESPACES = /(?:^[\x00-\x20]+|[\t\n\r\x00]+)/g,
+	        URI_PROTOCOL_NAMED_REF_MAP = {Tab: '\t', NewLine: '\n'};
+	
+	    var x, 
+	        strReplace = function (s, regexp, callback) {
+	            return s === undefined ? 'undefined'
+	                    : s === null            ? 'null'
+	                    : s.toString().replace(regexp, callback);
+	        },
+	        fromCodePoint = String.fromCodePoint || function(codePoint) {
+	            if (arguments.length === 0) {
+	                return '';
+	            }
+	            if (codePoint <= 0xFFFF) { // BMP code point
+	                return String.fromCharCode(codePoint);
+	            }
+	
+	            // Astral code point; split in surrogate halves
+	            // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+	            codePoint -= 0x10000;
+	            return String.fromCharCode((codePoint >> 10) + 0xD800, (codePoint % 0x400) + 0xDC00);
+	        };
+	
+	
+	    function getProtocol(str) {
+	        var s = str.split(URI_PROTOCOL_COLON, 2);
+	        // str.length !== s[0].length is for older IE (e.g., v8), where delimeter residing at last will result in length equals 1, but not 2
+	        return (s[0] && (s.length === 2 || str.length !== s[0].length)) ? s[0] : null;
+	    }
+	
+	    function htmlDecode(s, namedRefMap, reNamedRef, skipReplacement) {
+	        
+	        namedRefMap = namedRefMap || SENSITIVE_NAMED_REF_MAP;
+	        reNamedRef = reNamedRef || SENSITIVE_HTML_ENTITIES;
+	
+	        function regExpFunction(m, num, named, named1) {
+	            if (num) {
+	                num = Number(num[0] <= '9' ? num : '0' + num);
+	                // switch(num) {
+	                //     case 0x80: return '\u20AC';  // EURO SIGN (€)
+	                //     case 0x82: return '\u201A';  // SINGLE LOW-9 QUOTATION MARK (‚)
+	                //     case 0x83: return '\u0192';  // LATIN SMALL LETTER F WITH HOOK (ƒ)
+	                //     case 0x84: return '\u201E';  // DOUBLE LOW-9 QUOTATION MARK („)
+	                //     case 0x85: return '\u2026';  // HORIZONTAL ELLIPSIS (…)
+	                //     case 0x86: return '\u2020';  // DAGGER (†)
+	                //     case 0x87: return '\u2021';  // DOUBLE DAGGER (‡)
+	                //     case 0x88: return '\u02C6';  // MODIFIER LETTER CIRCUMFLEX ACCENT (ˆ)
+	                //     case 0x89: return '\u2030';  // PER MILLE SIGN (‰)
+	                //     case 0x8A: return '\u0160';  // LATIN CAPITAL LETTER S WITH CARON (Š)
+	                //     case 0x8B: return '\u2039';  // SINGLE LEFT-POINTING ANGLE QUOTATION MARK (‹)
+	                //     case 0x8C: return '\u0152';  // LATIN CAPITAL LIGATURE OE (Œ)
+	                //     case 0x8E: return '\u017D';  // LATIN CAPITAL LETTER Z WITH CARON (Ž)
+	                //     case 0x91: return '\u2018';  // LEFT SINGLE QUOTATION MARK (‘)
+	                //     case 0x92: return '\u2019';  // RIGHT SINGLE QUOTATION MARK (’)
+	                //     case 0x93: return '\u201C';  // LEFT DOUBLE QUOTATION MARK (“)
+	                //     case 0x94: return '\u201D';  // RIGHT DOUBLE QUOTATION MARK (”)
+	                //     case 0x95: return '\u2022';  // BULLET (•)
+	                //     case 0x96: return '\u2013';  // EN DASH (–)
+	                //     case 0x97: return '\u2014';  // EM DASH (—)
+	                //     case 0x98: return '\u02DC';  // SMALL TILDE (˜)
+	                //     case 0x99: return '\u2122';  // TRADE MARK SIGN (™)
+	                //     case 0x9A: return '\u0161';  // LATIN SMALL LETTER S WITH CARON (š)
+	                //     case 0x9B: return '\u203A';  // SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (›)
+	                //     case 0x9C: return '\u0153';  // LATIN SMALL LIGATURE OE (œ)
+	                //     case 0x9E: return '\u017E';  // LATIN SMALL LETTER Z WITH CARON (ž)
+	                //     case 0x9F: return '\u0178';  // LATIN CAPITAL LETTER Y WITH DIAERESIS (Ÿ)
+	                // }
+	                // // num >= 0xD800 && num <= 0xDFFF, and 0x0D is separately handled, as it doesn't fall into the range of x.pec()
+	                // return (num >= 0xD800 && num <= 0xDFFF) || num === 0x0D ? '\uFFFD' : x.frCoPt(num);
+	
+	                return skipReplacement ? fromCodePoint(num)
+	                        : num === 0x80 ? '\u20AC'  // EURO SIGN (€)
+	                        : num === 0x82 ? '\u201A'  // SINGLE LOW-9 QUOTATION MARK (‚)
+	                        : num === 0x83 ? '\u0192'  // LATIN SMALL LETTER F WITH HOOK (ƒ)
+	                        : num === 0x84 ? '\u201E'  // DOUBLE LOW-9 QUOTATION MARK („)
+	                        : num === 0x85 ? '\u2026'  // HORIZONTAL ELLIPSIS (…)
+	                        : num === 0x86 ? '\u2020'  // DAGGER (†)
+	                        : num === 0x87 ? '\u2021'  // DOUBLE DAGGER (‡)
+	                        : num === 0x88 ? '\u02C6'  // MODIFIER LETTER CIRCUMFLEX ACCENT (ˆ)
+	                        : num === 0x89 ? '\u2030'  // PER MILLE SIGN (‰)
+	                        : num === 0x8A ? '\u0160'  // LATIN CAPITAL LETTER S WITH CARON (Š)
+	                        : num === 0x8B ? '\u2039'  // SINGLE LEFT-POINTING ANGLE QUOTATION MARK (‹)
+	                        : num === 0x8C ? '\u0152'  // LATIN CAPITAL LIGATURE OE (Œ)
+	                        : num === 0x8E ? '\u017D'  // LATIN CAPITAL LETTER Z WITH CARON (Ž)
+	                        : num === 0x91 ? '\u2018'  // LEFT SINGLE QUOTATION MARK (‘)
+	                        : num === 0x92 ? '\u2019'  // RIGHT SINGLE QUOTATION MARK (’)
+	                        : num === 0x93 ? '\u201C'  // LEFT DOUBLE QUOTATION MARK (“)
+	                        : num === 0x94 ? '\u201D'  // RIGHT DOUBLE QUOTATION MARK (”)
+	                        : num === 0x95 ? '\u2022'  // BULLET (•)
+	                        : num === 0x96 ? '\u2013'  // EN DASH (–)
+	                        : num === 0x97 ? '\u2014'  // EM DASH (—)
+	                        : num === 0x98 ? '\u02DC'  // SMALL TILDE (˜)
+	                        : num === 0x99 ? '\u2122'  // TRADE MARK SIGN (™)
+	                        : num === 0x9A ? '\u0161'  // LATIN SMALL LETTER S WITH CARON (š)
+	                        : num === 0x9B ? '\u203A'  // SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (›)
+	                        : num === 0x9C ? '\u0153'  // LATIN SMALL LIGATURE OE (œ)
+	                        : num === 0x9E ? '\u017E'  // LATIN SMALL LETTER Z WITH CARON (ž)
+	                        : num === 0x9F ? '\u0178'  // LATIN CAPITAL LETTER Y WITH DIAERESIS (Ÿ)
+	                        : (num >= 0xD800 && num <= 0xDFFF) || num === 0x0D ? '\uFFFD'
+	                        : x.frCoPt(num);
+	            }
+	            return namedRefMap[named || named1] || m;
+	        }
+	
+	        return s === undefined  ? 'undefined'
+	            : s === null        ? 'null'
+	            : s.toString().replace(NULL, '\uFFFD').replace(reNamedRef, regExpFunction);
+	    }
+	
+	    function cssEncode(chr) {
+	        // space after \\HEX is needed by spec
+	        return '\\' + chr.charCodeAt(0).toString(16).toLowerCase() + ' ';
+	    }
+	    function cssBlacklist(s) {
+	        return s.replace(CSS_BLACKLIST, function(m){ return '-x-' + m; });
+	    }
+	    function cssUrl(s) {
+	        // encodeURI() in yufull() will throw error for use of the CSS_UNSUPPORTED_CODE_POINT (i.e., [\uD800-\uDFFF])
+	        s = x.yufull(htmlDecode(s));
+	        var protocol = getProtocol(s);
+	
+	        // prefix ## for blacklisted protocols
+	        // here .replace(URI_PROTOCOL_WHITESPACES, '') is not needed since yufull has already percent-encoded the whitespaces
+	        return (protocol && URI_BLACKLIST_PROTOCOLS[protocol.toLowerCase()]) ? '##' + s : s;
+	    }
+	
+	    return (x = {
+	        // turn invalid codePoints and that of non-characters to \uFFFD, and then fromCodePoint()
+	        frCoPt: function(num) {
+	            return num === undefined || num === null ? '' :
+	                !isFinite(num = Number(num)) || // `NaN`, `+Infinity`, or `-Infinity`
+	                num <= 0 ||                     // not a valid Unicode code point
+	                num > 0x10FFFF ||               // not a valid Unicode code point
+	                // Math.floor(num) != num || 
+	
+	                (num >= 0x01 && num <= 0x08) ||
+	                (num >= 0x0E && num <= 0x1F) ||
+	                (num >= 0x7F && num <= 0x9F) ||
+	                (num >= 0xFDD0 && num <= 0xFDEF) ||
+	                
+	                 num === 0x0B || 
+	                (num & 0xFFFF) === 0xFFFF || 
+	                (num & 0xFFFF) === 0xFFFE ? '\uFFFD' : fromCodePoint(num);
+	        },
+	        d: htmlDecode,
+	        /*
+	         * @param {string} s - An untrusted uri input
+	         * @returns {string} s - null if relative url, otherwise the protocol with whitespaces stripped and lower-cased
+	         */
+	        yup: function(s) {
+	            s = getProtocol(s.replace(NULL, ''));
+	            // URI_PROTOCOL_WHITESPACES is required for left trim and remove interim whitespaces
+	            return s ? htmlDecode(s, URI_PROTOCOL_NAMED_REF_MAP, null, true).replace(URI_PROTOCOL_WHITESPACES, '').toLowerCase() : null;
+	        },
+	
+	        /*
+	         * @deprecated
+	         * @param {string} s - An untrusted user input
+	         * @returns {string} s - The original user input with & < > " ' ` encoded respectively as &amp; &lt; &gt; &quot; &#39; and &#96;.
+	         *
+	         */
+	        y: function(s) {
+	            return strReplace(s, SPECIAL_HTML_CHARS, function (m) {
+	                return m === '&' ? '&amp;'
+	                    :  m === '<' ? '&lt;'
+	                    :  m === '>' ? '&gt;'
+	                    :  m === '"' ? '&quot;'
+	                    :  m === "'" ? '&#39;'
+	                    :  /*m === '`'*/ '&#96;';       // in hex: 60
+	            });
+	        },
+	
+	        // This filter is meant to introduce double-encoding, and should be used with extra care.
+	        ya: function(s) {
+	            return strReplace(s, AMP, '&amp;');
+	        },
+	
+	        // FOR DETAILS, refer to inHTMLData()
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#data-state
+	        yd: function (s) {
+	            return strReplace(s, LT, '&lt;');
+	        },
+	
+	        // FOR DETAILS, refer to inHTMLComment()
+	        // All NULL characters in s are first replaced with \uFFFD.
+	        // If s contains -->, --!>, or starts with -*>, insert a space right before > to stop state breaking at <!--{{{yc s}}}-->
+	        // If s ends with --!, --, or -, append a space to stop collaborative state breaking at {{{yc s}}}>, {{{yc s}}}!>, {{{yc s}}}-!>, {{{yc s}}}->
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#comment-state
+	        // Reference: http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment-3
+	        // Reference: http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment
+	        // Reference: http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment-0021
+	        // If s contains ]> or ends with ], append a space after ] is verified in IE to stop IE conditional comments.
+	        // Reference: http://msdn.microsoft.com/en-us/library/ms537512%28v=vs.85%29.aspx
+	        // We do not care --\s>, which can possibly be intepreted as a valid close comment tag in very old browsers (e.g., firefox 3.6), as specified in the html4 spec
+	        // Reference: http://www.w3.org/TR/html401/intro/sgmltut.html#h-3.2.4
+	        yc: function (s) {
+	            return strReplace(s, SPECIAL_COMMENT_CHARS, function(m){
+	                return m === '\x00' ? '\uFFFD'
+	                    : m === '--!' || m === '--' || m === '-' || m === ']' ? m + ' '
+	                    :/*
+	                    :  m === ']>'   ? '] >'
+	                    :  m === '-->'  ? '-- >'
+	                    :  m === '--!>' ? '--! >'
+	                    : /-*!?>/.test(m) ? */ m.slice(0, -1) + ' >';
+	            });
+	        },
+	
+	        // FOR DETAILS, refer to inDoubleQuotedAttr()
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state
+	        yavd: function (s) {
+	            return strReplace(s, QUOT, '&quot;');
+	        },
+	
+	        // FOR DETAILS, refer to inSingleQuotedAttr()
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state
+	        yavs: function (s) {
+	            return strReplace(s, SQUOT, '&#39;');
+	        },
+	
+	        // FOR DETAILS, refer to inUnQuotedAttr()
+	        // PART A.
+	        // if s contains any state breaking chars (\t, \n, \v, \f, \r, space, and >),
+	        // they are escaped and encoded into their equivalent HTML entity representations. 
+	        // Reference: http://shazzer.co.uk/database/All/Characters-which-break-attributes-without-quotes
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state
+	        //
+	        // PART B. 
+	        // if s starts with ', " or `, encode it resp. as &#39;, &quot;, or &#96; to 
+	        // enforce the attr value (unquoted) state
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#before-attribute-value-state
+	        // Reference: http://shazzer.co.uk/vector/Characters-allowed-attribute-quote
+	        // 
+	        // PART C.
+	        // Inject a \uFFFD character if an empty or all null string is encountered in 
+	        // unquoted attribute value state.
+	        // 
+	        // Rationale 1: our belief is that developers wouldn't expect an 
+	        //   empty string would result in ' name="passwd"' rendered as 
+	        //   attribute value, even though this is how HTML5 is specified.
+	        // Rationale 2: an empty or all null string (for IE) can 
+	        //   effectively alter its immediate subsequent state, we choose
+	        //   \uFFFD to end the unquoted attr 
+	        //   state, which therefore will not mess up later contexts.
+	        // Rationale 3: Since IE 6, it is verified that NULL chars are stripped.
+	        // Reference: https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state
+	        // 
+	        // Example:
+	        // <input value={{{yavu s}}} name="passwd"/>
+	        yavu: function (s) {
+	            return strReplace(s, SPECIAL_ATTR_VALUE_UNQUOTED_CHARS, function (m) {
+	                return m === '\t'   ? '&#9;'  // in hex: 09
+	                    :  m === '\n'   ? '&#10;' // in hex: 0A
+	                    :  m === '\x0B' ? '&#11;' // in hex: 0B  for IE. IE<9 \v equals v, so use \x0B instead
+	                    :  m === '\f'   ? '&#12;' // in hex: 0C
+	                    :  m === '\r'   ? '&#13;' // in hex: 0D
+	                    :  m === ' '    ? '&#32;' // in hex: 20
+	                    :  m === '='    ? '&#61;' // in hex: 3D
+	                    :  m === '<'    ? '&lt;'
+	                    :  m === '>'    ? '&gt;'
+	                    :  m === '"'    ? '&quot;'
+	                    :  m === "'"    ? '&#39;'
+	                    :  m === '`'    ? '&#96;'
+	                    : /*empty or null*/ '\uFFFD';
+	            });
+	        },
+	
+	        yu: encodeURI,
+	        yuc: encodeURIComponent,
+	
+	        // Notice that yubl MUST BE APPLIED LAST, and will not be used independently (expected output from encodeURI/encodeURIComponent and yavd/yavs/yavu)
+	        // This is used to disable JS execution capabilities by prefixing x- to ^javascript:, ^vbscript: or ^data: that possibly could trigger script execution in URI attribute context
+	        yubl: function (s) {
+	            return URI_BLACKLIST_PROTOCOLS[x.yup(s)] ? 'x-' + s : s;
+	        },
+	
+	        // This is NOT a security-critical filter.
+	        // Reference: https://tools.ietf.org/html/rfc3986
+	        yufull: function (s) {
+	            return x.yu(s).replace(URL_IPV6, function(m, p) {
+	                return '//[' + p + ']';
+	            });
+	        },
+	
+	        // chain yufull() with yubl()
+	        yublf: function (s) {
+	            return x.yubl(x.yufull(s));
+	        },
+	
+	        // The design principle of the CSS filter MUST meet the following goal(s).
+	        // (1) The input cannot break out of the context (expr) and this is to fulfill the just sufficient encoding principle.
+	        // (2) The input cannot introduce CSS parsing error and this is to address the concern of UI redressing.
+	        //
+	        // term
+	        //   : unary_operator?
+	        //     [ NUMBER S* | PERCENTAGE S* | LENGTH S* | EMS S* | EXS S* | ANGLE S* |
+	        //     TIME S* | FREQ S* ]
+	        //   | STRING S* | IDENT S* | URI S* | hexcolor | function
+	        // 
+	        // Reference:
+	        // * http://www.w3.org/TR/CSS21/grammar.html 
+	        // * http://www.w3.org/TR/css-syntax-3/
+	        // 
+	        // NOTE: delimiter in CSS -  \  _  :  ;  (  )  "  '  /  ,  %  #  !  *  @  .  {  }
+	        //                        2d 5c 5f 3a 3b 28 29 22 27 2f 2c 25 23 21 2a 40 2e 7b 7d
+	
+	        yceu: function(s) {
+	            s = htmlDecode(s);
+	            return CSS_VALID_VALUE.test(s) ? s : ";-x:'" + cssBlacklist(s.replace(CSS_SINGLE_QUOTED_CHARS, cssEncode)) + "';-v:";
+	        },
+	
+	        // string1 = \"([^\n\r\f\\"]|\\{nl}|\\[^\n\r\f0-9a-f]|\\[0-9a-f]{1,6}(\r\n|[ \n\r\t\f])?)*\"
+	        yced: function(s) {
+	            return cssBlacklist(htmlDecode(s).replace(CSS_DOUBLE_QUOTED_CHARS, cssEncode));
+	        },
+	
+	        // string2 = \'([^\n\r\f\\']|\\{nl}|\\[^\n\r\f0-9a-f]|\\[0-9a-f]{1,6}(\r\n|[ \n\r\t\f])?)*\'
+	        yces: function(s) {
+	            return cssBlacklist(htmlDecode(s).replace(CSS_SINGLE_QUOTED_CHARS, cssEncode));
+	        },
+	
+	        // for url({{{yceuu url}}}
+	        // unquoted_url = ([!#$%&*-~]|\\{h}{1,6}(\r\n|[ \t\r\n\f])?|\\[^\r\n\f0-9a-f])* (CSS 2.1 definition)
+	        // unquoted_url = ([^"'()\\ \t\n\r\f\v\u0000\u0008\u000b\u000e-\u001f\u007f]|\\{h}{1,6}(\r\n|[ \t\r\n\f])?|\\[^\r\n\f0-9a-f])* (CSS 3.0 definition)
+	        // The state machine in CSS 3.0 is more well defined - http://www.w3.org/TR/css-syntax-3/#consume-a-url-token0
+	        // CSS_UNQUOTED_URL = /['\(\)]/g; // " \ treated by encodeURI()   
+	        yceuu: function(s) {
+	            return cssUrl(s).replace(CSS_UNQUOTED_URL, function (chr) {
+	                return  chr === '\''        ? '\\27 ' :
+	                        chr === '('         ? '%28' :
+	                        /* chr === ')' ? */   '%29';
+	            });
+	        },
+	
+	        // for url("{{{yceud url}}}
+	        yceud: function(s) { 
+	            return cssUrl(s);
+	        },
+	
+	        // for url('{{{yceus url}}}
+	        yceus: function(s) { 
+	            return cssUrl(s).replace(SQUOT, '\\27 ');
+	        }
+	    });
+	};
+	
+	// exposing privFilters
+	// this is an undocumented feature, and please use it with extra care
+	var privFilters = exports._privFilters = exports._getPrivFilters();
+	
+	
+	/* chaining filters */
+	
+	// uriInAttr and literally uriPathInAttr
+	// yubl is always used 
+	// Rationale: given pattern like this: <a href="{{{uriPathInDoubleQuotedAttr s}}}">
+	//            developer may expect s is always prefixed with ? or /, but an attacker can abuse it with 'javascript:alert(1)'
+	function uriInAttr (s, yav, yu) {
+	    return privFilters.yubl(yav((yu || privFilters.yufull)(s)));
+	}
+	
+	/** 
+	* Yahoo Secure XSS Filters - just sufficient output filtering to prevent XSS!
+	* @module xss-filters 
+	*/
+	
+	/**
+	* @function module:xss-filters#inHTMLData
+	*
+	* @param {string} s - An untrusted user input
+	* @returns {string} The string s with '<' encoded as '&amp;lt;'
+	*
+	* @description
+	* This filter is to be placed in HTML Data context to encode all '<' characters into '&amp;lt;'
+	* <ul>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <div>{{{inHTMLData htmlData}}}</div>
+	*
+	*/
+	exports.inHTMLData = privFilters.yd;
+	
+	/**
+	* @function module:xss-filters#inHTMLComment
+	*
+	* @param {string} s - An untrusted user input
+	* @returns {string} All NULL characters in s are first replaced with \uFFFD. If s contains -->, --!>, or starts with -*>, insert a space right before > to stop state breaking at <!--{{{yc s}}}-->. If s ends with --!, --, or -, append a space to stop collaborative state breaking at {{{yc s}}}>, {{{yc s}}}!>, {{{yc s}}}-!>, {{{yc s}}}->. If s contains ]> or ends with ], append a space after ] is verified in IE to stop IE conditional comments.
+	*
+	* @description
+	* This filter is to be placed in HTML Comment context
+	* <ul>
+	* <li><a href="http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment-3">Shazzer - Closing comments for -.-></a>
+	* <li><a href="http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment">Shazzer - Closing comments for --.></a>
+	* <li><a href="http://shazzer.co.uk/vector/Characters-that-close-a-HTML-comment-0021">Shazzer - Closing comments for .></a>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-start-state">HTML5 Comment Start State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-start-dash-state">HTML5 Comment Start Dash State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-state">HTML5 Comment State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-end-dash-state">HTML5 Comment End Dash State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-end-state">HTML5 Comment End State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-end-bang-state">HTML5 Comment End Bang State</a></li>
+	* <li><a href="http://msdn.microsoft.com/en-us/library/ms537512%28v=vs.85%29.aspx">Conditional Comments in Internet Explorer</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <!-- {{{inHTMLComment html_comment}}} -->
+	*
+	*/
+	exports.inHTMLComment = privFilters.yc;
+	
+	/**
+	* @function module:xss-filters#inSingleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input
+	* @returns {string} The string s with any single-quote characters encoded into '&amp;&#39;'.
+	*
+	* @description
+	* <p class="warning">Warning: This is NOT designed for any onX (e.g., onclick) attributes!</p>
+	* <p class="warning">Warning: If you're working on URI/components, use the more specific uri___InSingleQuotedAttr filter </p>
+	* This filter is to be placed in HTML Attribute Value (single-quoted) state to encode all single-quote characters into '&amp;&#39;'
+	*
+	* <ul>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state">HTML5 Attribute Value (Single-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <input name='firstname' value='{{{inSingleQuotedAttr firstname}}}' />
+	*
+	*/
+	exports.inSingleQuotedAttr = privFilters.yavs;
+	
+	/**
+	* @function module:xss-filters#inDoubleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input
+	* @returns {string} The string s with any single-quote characters encoded into '&amp;&quot;'.
+	*
+	* @description
+	* <p class="warning">Warning: This is NOT designed for any onX (e.g., onclick) attributes!</p>
+	* <p class="warning">Warning: If you're working on URI/components, use the more specific uri___InDoubleQuotedAttr filter </p>
+	* This filter is to be placed in HTML Attribute Value (double-quoted) state to encode all single-quote characters into '&amp;&quot;'
+	*
+	* <ul>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state">HTML5 Attribute Value (Double-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <input name="firstname" value="{{{inDoubleQuotedAttr firstname}}}" />
+	*
+	*/
+	exports.inDoubleQuotedAttr = privFilters.yavd;
+	
+	/**
+	* @function module:xss-filters#inUnQuotedAttr
+	*
+	* @param {string} s - An untrusted user input
+	* @returns {string} If s contains any state breaking chars (\t, \n, \v, \f, \r, space, null, ', ", `, <, >, and =), they are escaped and encoded into their equivalent HTML entity representations. If the string is empty, inject a \uFFFD character.
+	*
+	* @description
+	* <p class="warning">Warning: This is NOT designed for any onX (e.g., onclick) attributes!</p>
+	* <p class="warning">Warning: If you're working on URI/components, use the more specific uri___InUnQuotedAttr filter </p>
+	* <p>Regarding \uFFFD injection, given <a id={{{id}}} name="passwd">,<br/>
+	*        Rationale 1: our belief is that developers wouldn't expect when id equals an
+	*          empty string would result in ' name="passwd"' rendered as 
+	*          attribute value, even though this is how HTML5 is specified.<br/>
+	*        Rationale 2: an empty or all null string (for IE) can 
+	*          effectively alter its immediate subsequent state, we choose
+	*          \uFFFD to end the unquoted attr 
+	*          state, which therefore will not mess up later contexts.<br/>
+	*        Rationale 3: Since IE 6, it is verified that NULL chars are stripped.<br/>
+	*        Reference: https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state</p>
+	* <ul>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state">HTML5 Attribute Value (Unquoted) State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#before-attribute-value-state">HTML5 Before Attribute Value State</a></li>
+	* <li><a href="http://shazzer.co.uk/database/All/Characters-which-break-attributes-without-quotes">Shazzer - Characters-which-break-attributes-without-quotes</a></li>
+	* <li><a href="http://shazzer.co.uk/vector/Characters-allowed-attribute-quote">Shazzer - Characters-allowed-attribute-quote</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <input name="firstname" value={{{inUnQuotedAttr firstname}}} />
+	*
+	*/
+	exports.inUnQuotedAttr = privFilters.yavu;
+	
+	
+	/**
+	* @function module:xss-filters#uriInSingleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly an <strong>absolute</strong> URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (single-quoted) state for an <strong>absolute</strong> URI.<br/>
+	* The correct order of encoders is thus: first window.encodeURI(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <p>Notice: This filter is IPv6 friendly by not encoding '[' and ']'.</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state">HTML5 Attribute Value (Single-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href='{{{uriInSingleQuotedAttr full_uri}}}'>link</a>
+	* 
+	*/
+	exports.uriInSingleQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavs);
+	};
+	
+	/**
+	* @function module:xss-filters#uriInDoubleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly an <strong>absolute</strong> URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (double-quoted) state for an <strong>absolute</strong> URI.<br/>
+	* The correct order of encoders is thus: first window.encodeURI(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <p>Notice: This filter is IPv6 friendly by not encoding '[' and ']'.</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state">HTML5 Attribute Value (Double-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="{{{uriInDoubleQuotedAttr full_uri}}}">link</a>
+	* 
+	*/
+	exports.uriInDoubleQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavd);
+	};
+	
+	
+	/**
+	* @function module:xss-filters#uriInUnQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly an <strong>absolute</strong> URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (unquoted) state for an <strong>absolute</strong> URI.<br/>
+	* The correct order of encoders is thus: first the built-in encodeURI(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <p>Notice: This filter is IPv6 friendly by not encoding '[' and ']'.</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state">HTML5 Attribute Value (Unquoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href={{{uriInUnQuotedAttr full_uri}}}>link</a>
+	* 
+	*/
+	exports.uriInUnQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavu);
+	};
+	
+	/**
+	* @function module:xss-filters#uriInHTMLData
+	*
+	* @param {string} s - An untrusted user input, supposedly an <strong>absolute</strong> URI
+	* @returns {string} The string s encoded by window.encodeURI() and then inHTMLData()
+	*
+	* @description
+	* This filter is to be placed in HTML Data state for an <strong>absolute</strong> URI.
+	*
+	* <p>Notice: The actual implementation skips inHTMLData(), since '<' is already encoded as '%3C' by encodeURI().</p>
+	* <p>Notice: This filter is IPv6 friendly by not encoding '[' and ']'.</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="/somewhere">{{{uriInHTMLData full_uri}}}</a>
+	* 
+	*/
+	exports.uriInHTMLData = privFilters.yufull;
+	
+	
+	/**
+	* @function module:xss-filters#uriInHTMLComment
+	*
+	* @param {string} s - An untrusted user input, supposedly an <strong>absolute</strong> URI
+	* @returns {string} The string s encoded by window.encodeURI(), and finally inHTMLComment()
+	*
+	* @description
+	* This filter is to be placed in HTML Comment state for an <strong>absolute</strong> URI.
+	*
+	* <p>Notice: This filter is IPv6 friendly by not encoding '[' and ']'.</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-state">HTML5 Comment State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <!-- {{{uriInHTMLComment full_uri}}} -->
+	* 
+	*/
+	exports.uriInHTMLComment = function (s) {
+	    return privFilters.yc(privFilters.yufull(s));
+	};
+	
+	
+	
+	
+	/**
+	* @function module:xss-filters#uriPathInSingleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Path/Query or relative URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (single-quoted) state for a URI Path/Query or relative URI.<br/>
+	* The correct order of encoders is thus: first window.encodeURI(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state">HTML5 Attribute Value (Single-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href='http://example.com/{{{uriPathInSingleQuotedAttr uri_path}}}'>link</a>
+	* <a href='http://example.com/?{{{uriQueryInSingleQuotedAttr uri_query}}}'>link</a>
+	* 
+	*/
+	exports.uriPathInSingleQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavs, privFilters.yu);
+	};
+	
+	/**
+	* @function module:xss-filters#uriPathInDoubleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Path/Query or relative URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (double-quoted) state for a URI Path/Query or relative URI.<br/>
+	* The correct order of encoders is thus: first window.encodeURI(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state">HTML5 Attribute Value (Double-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="http://example.com/{{{uriPathInDoubleQuotedAttr uri_path}}}">link</a>
+	* <a href="http://example.com/?{{{uriQueryInDoubleQuotedAttr uri_query}}}">link</a>
+	* 
+	*/
+	exports.uriPathInDoubleQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavd, privFilters.yu);
+	};
+	
+	
+	/**
+	* @function module:xss-filters#uriPathInUnQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Path/Query or relative URI
+	* @returns {string} The string s encoded first by window.encodeURI(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (unquoted) state for a URI Path/Query or relative URI.<br/>
+	* The correct order of encoders is thus: first the built-in encodeURI(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state">HTML5 Attribute Value (Unquoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href=http://example.com/{{{uriPathInUnQuotedAttr uri_path}}}>link</a>
+	* <a href=http://example.com/?{{{uriQueryInUnQuotedAttr uri_query}}}>link</a>
+	* 
+	*/
+	exports.uriPathInUnQuotedAttr = function (s) {
+	    return uriInAttr(s, privFilters.yavu, privFilters.yu);
+	};
+	
+	/**
+	* @function module:xss-filters#uriPathInHTMLData
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Path/Query or relative URI
+	* @returns {string} The string s encoded by window.encodeURI() and then inHTMLData()
+	*
+	* @description
+	* This filter is to be placed in HTML Data state for a URI Path/Query or relative URI.
+	*
+	* <p>Notice: The actual implementation skips inHTMLData(), since '<' is already encoded as '%3C' by encodeURI().</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="http://example.com/">http://example.com/{{{uriPathInHTMLData uri_path}}}</a>
+	* <a href="http://example.com/">http://example.com/?{{{uriQueryInHTMLData uri_query}}}</a>
+	* 
+	*/
+	exports.uriPathInHTMLData = privFilters.yu;
+	
+	
+	/**
+	* @function module:xss-filters#uriPathInHTMLComment
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Path/Query or relative URI
+	* @returns {string} The string s encoded by window.encodeURI(), and finally inHTMLComment()
+	*
+	* @description
+	* This filter is to be placed in HTML Comment state for a URI Path/Query or relative URI.
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-state">HTML5 Comment State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <!-- http://example.com/{{{uriPathInHTMLComment uri_path}}} -->
+	* <!-- http://example.com/?{{{uriQueryInHTMLComment uri_query}}} -->
+	*/
+	exports.uriPathInHTMLComment = function (s) {
+	    return privFilters.yc(privFilters.yu(s));
+	};
+	
+	
+	/**
+	* @function module:xss-filters#uriQueryInSingleQuotedAttr
+	* @description This is an alias of {@link module:xss-filters#uriPathInSingleQuotedAttr}
+	* 
+	* @alias module:xss-filters#uriPathInSingleQuotedAttr
+	*/
+	exports.uriQueryInSingleQuotedAttr = exports.uriPathInSingleQuotedAttr;
+	
+	/**
+	* @function module:xss-filters#uriQueryInDoubleQuotedAttr
+	* @description This is an alias of {@link module:xss-filters#uriPathInDoubleQuotedAttr}
+	* 
+	* @alias module:xss-filters#uriPathInDoubleQuotedAttr
+	*/
+	exports.uriQueryInDoubleQuotedAttr = exports.uriPathInDoubleQuotedAttr;
+	
+	/**
+	* @function module:xss-filters#uriQueryInUnQuotedAttr
+	* @description This is an alias of {@link module:xss-filters#uriPathInUnQuotedAttr}
+	* 
+	* @alias module:xss-filters#uriPathInUnQuotedAttr
+	*/
+	exports.uriQueryInUnQuotedAttr = exports.uriPathInUnQuotedAttr;
+	
+	/**
+	* @function module:xss-filters#uriQueryInHTMLData
+	* @description This is an alias of {@link module:xss-filters#uriPathInHTMLData}
+	* 
+	* @alias module:xss-filters#uriPathInHTMLData
+	*/
+	exports.uriQueryInHTMLData = exports.uriPathInHTMLData;
+	
+	/**
+	* @function module:xss-filters#uriQueryInHTMLComment
+	* @description This is an alias of {@link module:xss-filters#uriPathInHTMLComment}
+	* 
+	* @alias module:xss-filters#uriPathInHTMLComment
+	*/
+	exports.uriQueryInHTMLComment = exports.uriPathInHTMLComment;
+	
+	
+	
+	/**
+	* @function module:xss-filters#uriComponentInSingleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Component
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inSingleQuotedAttr()
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (single-quoted) state for a URI Component.<br/>
+	* The correct order of encoders is thus: first window.encodeURIComponent(), then inSingleQuotedAttr()
+	*
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state">HTML5 Attribute Value (Single-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href='http://example.com/?q={{{uriComponentInSingleQuotedAttr uri_component}}}'>link</a>
+	* 
+	*/
+	exports.uriComponentInSingleQuotedAttr = function (s) {
+	    return privFilters.yavs(privFilters.yuc(s));
+	};
+	
+	/**
+	* @function module:xss-filters#uriComponentInDoubleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Component
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inDoubleQuotedAttr()
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (double-quoted) state for a URI Component.<br/>
+	* The correct order of encoders is thus: first window.encodeURIComponent(), then inDoubleQuotedAttr()
+	*
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state">HTML5 Attribute Value (Double-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="http://example.com/?q={{{uriComponentInDoubleQuotedAttr uri_component}}}">link</a>
+	* 
+	*/
+	exports.uriComponentInDoubleQuotedAttr = function (s) {
+	    return privFilters.yavd(privFilters.yuc(s));
+	};
+	
+	
+	/**
+	* @function module:xss-filters#uriComponentInUnQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Component
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inUnQuotedAttr()
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (unquoted) state for a URI Component.<br/>
+	* The correct order of encoders is thus: first the built-in encodeURIComponent(), then inUnQuotedAttr()
+	*
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state">HTML5 Attribute Value (Unquoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href=http://example.com/?q={{{uriComponentInUnQuotedAttr uri_component}}}>link</a>
+	* 
+	*/
+	exports.uriComponentInUnQuotedAttr = function (s) {
+	    return privFilters.yavu(privFilters.yuc(s));
+	};
+	
+	/**
+	* @function module:xss-filters#uriComponentInHTMLData
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Component
+	* @returns {string} The string s encoded by window.encodeURIComponent() and then inHTMLData()
+	*
+	* @description
+	* This filter is to be placed in HTML Data state for a URI Component.
+	*
+	* <p>Notice: The actual implementation skips inHTMLData(), since '<' is already encoded as '%3C' by encodeURIComponent().</p>
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="http://example.com/">http://example.com/?q={{{uriComponentInHTMLData uri_component}}}</a>
+	* <a href="http://example.com/">http://example.com/#{{{uriComponentInHTMLData uri_fragment}}}</a>
+	* 
+	*/
+	exports.uriComponentInHTMLData = privFilters.yuc;
+	
+	
+	/**
+	* @function module:xss-filters#uriComponentInHTMLComment
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Component
+	* @returns {string} The string s encoded by window.encodeURIComponent(), and finally inHTMLComment()
+	*
+	* @description
+	* This filter is to be placed in HTML Comment state for a URI Component.
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#data-state">HTML5 Data State</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#comment-state">HTML5 Comment State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <!-- http://example.com/?q={{{uriComponentInHTMLComment uri_component}}} -->
+	* <!-- http://example.com/#{{{uriComponentInHTMLComment uri_fragment}}} -->
+	*/
+	exports.uriComponentInHTMLComment = function (s) {
+	    return privFilters.yc(privFilters.yuc(s));
+	};
+	
+	
+	// uriFragmentInSingleQuotedAttr
+	// added yubl on top of uriComponentInAttr 
+	// Rationale: given pattern like this: <a href='{{{uriFragmentInSingleQuotedAttr s}}}'>
+	//            developer may expect s is always prefixed with #, but an attacker can abuse it with 'javascript:alert(1)'
+	
+	/**
+	* @function module:xss-filters#uriFragmentInSingleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Fragment
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (single-quoted) state for a URI Fragment.<br/>
+	* The correct order of encoders is thus: first window.encodeURIComponent(), then inSingleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(single-quoted)-state">HTML5 Attribute Value (Single-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href='http://example.com/#{{{uriFragmentInSingleQuotedAttr uri_fragment}}}'>link</a>
+	* 
+	*/
+	exports.uriFragmentInSingleQuotedAttr = function (s) {
+	    return privFilters.yubl(privFilters.yavs(privFilters.yuc(s)));
+	};
+	
+	// uriFragmentInDoubleQuotedAttr
+	// added yubl on top of uriComponentInAttr 
+	// Rationale: given pattern like this: <a href="{{{uriFragmentInDoubleQuotedAttr s}}}">
+	//            developer may expect s is always prefixed with #, but an attacker can abuse it with 'javascript:alert(1)'
+	
+	/**
+	* @function module:xss-filters#uriFragmentInDoubleQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Fragment
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (double-quoted) state for a URI Fragment.<br/>
+	* The correct order of encoders is thus: first window.encodeURIComponent(), then inDoubleQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(double-quoted)-state">HTML5 Attribute Value (Double-Quoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href="http://example.com/#{{{uriFragmentInDoubleQuotedAttr uri_fragment}}}">link</a>
+	* 
+	*/
+	exports.uriFragmentInDoubleQuotedAttr = function (s) {
+	    return privFilters.yubl(privFilters.yavd(privFilters.yuc(s)));
+	};
+	
+	// uriFragmentInUnQuotedAttr
+	// added yubl on top of uriComponentInAttr 
+	// Rationale: given pattern like this: <a href={{{uriFragmentInUnQuotedAttr s}}}>
+	//            developer may expect s is always prefixed with #, but an attacker can abuse it with 'javascript:alert(1)'
+	
+	/**
+	* @function module:xss-filters#uriFragmentInUnQuotedAttr
+	*
+	* @param {string} s - An untrusted user input, supposedly a URI Fragment
+	* @returns {string} The string s encoded first by window.encodeURIComponent(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* @description
+	* This filter is to be placed in HTML Attribute Value (unquoted) state for a URI Fragment.<br/>
+	* The correct order of encoders is thus: first the built-in encodeURIComponent(), then inUnQuotedAttr(), and finally prefix the resulted string with 'x-' if it begins with 'javascript:' or 'vbscript:' that could possibly lead to script execution
+	*
+	* <ul>
+	* <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent | MDN</a></li>
+	* <li><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></li>
+	* <li><a href="https://html.spec.whatwg.org/multipage/syntax.html#attribute-value-(unquoted)-state">HTML5 Attribute Value (Unquoted) State</a></li>
+	* </ul>
+	*
+	* @example
+	* // output context to be applied by this filter.
+	* <a href=http://example.com/#{{{uriFragmentInUnQuotedAttr uri_fragment}}}>link</a>
+	* 
+	*/
+	exports.uriFragmentInUnQuotedAttr = function (s) {
+	    return privFilters.yubl(privFilters.yavu(privFilters.yuc(s)));
+	};
+	
+	
+	/**
+	* @function module:xss-filters#uriFragmentInHTMLData
+	* @description This is an alias of {@link module:xss-filters#uriComponentInHTMLData}
+	* 
+	* @alias module:xss-filters#uriComponentInHTMLData
+	*/
+	exports.uriFragmentInHTMLData = exports.uriComponentInHTMLData;
+	
+	/**
+	* @function module:xss-filters#uriFragmentInHTMLComment
+	* @description This is an alias of {@link module:xss-filters#uriComponentInHTMLComment}
+	* 
+	* @alias module:xss-filters#uriComponentInHTMLComment
+	*/
+	exports.uriFragmentInHTMLComment = exports.uriComponentInHTMLComment;
+
+
+/***/ },
+/* 570 */
+/***/ function(module, exports) {
+
+	/*!
+	 * pascalcase <https://github.com/jonschlinkert/pascalcase>
+	 *
+	 * Copyright (c) 2015, Jon Schlinkert.
+	 * Licensed under the MIT License.
+	 */
+	
+	function pascalcase(str) {
+	  if (typeof str !== 'string') {
+	    throw new TypeError('expected a string.');
+	  }
+	  str = str.replace(/([A-Z])/g, ' $1');
+	  if (str.length === 1) { return str.toUpperCase(); }
+	  str = str.replace(/^[\W_]+|[\W_]+$/g, '').toLowerCase();
+	  str = str.charAt(0).toUpperCase() + str.slice(1);
+	  return str.replace(/[\W_]+(\w|$)/g, function (_, ch) {
+	    return ch.toUpperCase();
+	  });
+	}
+	
+	module.exports = pascalcase;
+
+
+/***/ },
+/* 571 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _githubColors = __webpack_require__(572);
+	
+	var _githubColors2 = _interopRequireDefault(_githubColors);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DEFAULT_BACKGROUND_COLOR = '#CCC';
+	
+	function backgroundColor(languageName) {
+	  var languageData = _githubColors2.default.get(languageName);
+	  return 'color' in languageData ? languageData.color : DEFAULT_BACKGROUND_COLOR;
+	}
+	
+	exports.default = backgroundColor;
+
+/***/ },
+/* 572 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	/*!
+	 * GitHubColors
+	 *
+	 * @name GitHubColors
+	 * @function
+	 * @return {undefined}
+	 */
+	function GitHubColors() {
+	    this.colors = null;
+	    this.extensions = null;
+	}
+	
+	/**
+	 * init
+	 * Inits the GitHub extensions/colors.
+	 *
+	 * @name init
+	 * @function
+	 * @param {Boolean} ext If `true`, the extensions will be initialized.
+	 * @return {Object} The `extensions` or `colors` object.
+	 */
+	GitHubColors.prototype.init = function (ext) {
+	    if (ext) {
+	        return this.extensions = this.extensions || __webpack_require__(573);
+	    }
+	
+	    return this.colors = this.colors || __webpack_require__(574);
+	};
+	
+	/**
+	 * get
+	 * Gets the color object for the provided language.
+	 *
+	 * @name get
+	 * @function
+	 * @param {String} lang The language to get the color for.
+	 * @param {Boolean} handleOthers If `false` and the color is not found `null` will be returned. Otherwise a gray color will be returned.
+	 * @return {Object|null} The color that was found.
+	 */
+	GitHubColors.prototype.get = function (lang, handleOthers) {
+	    this.init();
+	    var found = this.colors[lang];
+	    return found || (handleOthers === false ? null : {
+	        color: "#ccc"
+	    });
+	};
+	
+	/**
+	 * ext
+	 * Get the color object for the provided extension.
+	 *
+	 * @name ext
+	 * @function
+	 * @param {String} ext The extension to get the color for.
+	 * @param {Boolean} handleOthers If `false` and the color is not found `null` will be returned. Otherwise a gray color will be returned.
+	 * @return {Object|null} The color that was found.
+	 */
+	GitHubColors.prototype.ext = function (ext, handleOthers) {
+	    this.init(true);
+	    var found = this.extensions[ext];
+	    return found || (handleOthers === false ? null : {
+	        color: "#ccc"
+	    });
+	};
+	
+	module.exports = new GitHubColors();
+
+/***/ },
+/* 573 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"1": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"2": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"3": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"4": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"5": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"6": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"7": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"8": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"9": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"bsl": {
+			"extensions": [
+				".bsl",
+				".os"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#814CCC",
+			"tm_scope": "source.bsl",
+			"ace_mode": "text"
+		},
+		"os": {
+			"extensions": [
+				".bsl",
+				".os"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#814CCC",
+			"tm_scope": "source.bsl",
+			"ace_mode": "text"
+		},
+		"abap": {
+			"extensions": [
+				".abap"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E8274B",
+			"ace_mode": "abap"
+		},
+		"ags": {
+			"extensions": [
+				".asc",
+				".ash"
+			],
+			"aliases": [
+				"ags"
+			],
+			"type": "programming",
+			"color": "#B9D9FF",
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"asc": {
+			"extensions": [
+				".asc",
+				".pub"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ash": {
+			"extensions": [
+				".asc",
+				".ash"
+			],
+			"aliases": [
+				"ags"
+			],
+			"type": "programming",
+			"color": "#B9D9FF",
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"ampl": {
+			"extensions": [
+				".ampl",
+				".mod"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E6EFBB",
+			"tm_scope": "source.ampl",
+			"ace_mode": "text"
+		},
+		"mod": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"g4": {
+			"extensions": [
+				".g4"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#9DC3FF",
+			"ace_mode": "text"
+		},
+		"apib": {
+			"extensions": [
+				".apib"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#2ACCA8",
+			"ace_mode": "markdown",
+			"tm_scope": "text.html.markdown.source.gfm.apib"
+		},
+		"apl": {
+			"extensions": [
+				".apl",
+				".dyalog"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5A8164",
+			"interpreters": [
+				"apl",
+				"aplx",
+				"dyalog"
+			],
+			"tm_scope": "source.apl",
+			"ace_mode": "text"
+		},
+		"dyalog": {
+			"extensions": [
+				".apl",
+				".dyalog"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5A8164",
+			"interpreters": [
+				"apl",
+				"aplx",
+				"dyalog"
+			],
+			"tm_scope": "source.apl",
+			"ace_mode": "text"
+		},
+		"asn": {
+			"extensions": [
+				".asn",
+				".asn1"
+			],
+			"aliases": [],
+			"type": "data",
+			"color": "#aeead0",
+			"tm_scope": "source.asn",
+			"ace_mode": "text"
+		},
+		"asn1": {
+			"extensions": [
+				".asn",
+				".asn1"
+			],
+			"aliases": [],
+			"type": "data",
+			"color": "#aeead0",
+			"tm_scope": "source.asn",
+			"ace_mode": "text"
+		},
+		"aspx": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"aspx-vb": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"asp": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"asax": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"ascx": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"ashx": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"asmx": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"axd": {
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"ace_mode": "text"
+		},
+		"ats2": {
+			"extensions": [
+				".dats",
+				".hats",
+				".sats"
+			],
+			"aliases": [
+				"ats2"
+			],
+			"type": "programming",
+			"color": "#1ac620",
+			"tm_scope": "source.ats",
+			"ace_mode": "ocaml"
+		},
+		"dats": {
+			"extensions": [
+				".dats",
+				".hats",
+				".sats"
+			],
+			"aliases": [
+				"ats2"
+			],
+			"type": "programming",
+			"color": "#1ac620",
+			"tm_scope": "source.ats",
+			"ace_mode": "ocaml"
+		},
+		"hats": {
+			"extensions": [
+				".dats",
+				".hats",
+				".sats"
+			],
+			"aliases": [
+				"ats2"
+			],
+			"type": "programming",
+			"color": "#1ac620",
+			"tm_scope": "source.ats",
+			"ace_mode": "ocaml"
+		},
+		"sats": {
+			"extensions": [
+				".dats",
+				".hats",
+				".sats"
+			],
+			"aliases": [
+				"ats2"
+			],
+			"type": "programming",
+			"color": "#1ac620",
+			"tm_scope": "source.ats",
+			"ace_mode": "ocaml"
+		},
+		"actionscript 3": {
+			"extensions": [
+				".as"
+			],
+			"aliases": [
+				"actionscript 3",
+				"actionscript3",
+				"as3"
+			],
+			"type": "programming",
+			"tm_scope": "source.actionscript.3",
+			"color": "#882B0F",
+			"search_term": "as3",
+			"ace_mode": "actionscript"
+		},
+		"actionscript3": {
+			"extensions": [
+				".as"
+			],
+			"aliases": [
+				"actionscript 3",
+				"actionscript3",
+				"as3"
+			],
+			"type": "programming",
+			"tm_scope": "source.actionscript.3",
+			"color": "#882B0F",
+			"search_term": "as3",
+			"ace_mode": "actionscript"
+		},
+		"as3": {
+			"extensions": [
+				".as"
+			],
+			"aliases": [
+				"actionscript 3",
+				"actionscript3",
+				"as3"
+			],
+			"type": "programming",
+			"tm_scope": "source.actionscript.3",
+			"color": "#882B0F",
+			"search_term": "as3",
+			"ace_mode": "actionscript"
+		},
+		"as": {
+			"extensions": [
+				".as"
+			],
+			"aliases": [
+				"actionscript 3",
+				"actionscript3",
+				"as3"
+			],
+			"type": "programming",
+			"tm_scope": "source.actionscript.3",
+			"color": "#882B0F",
+			"search_term": "as3",
+			"ace_mode": "actionscript"
+		},
+		"ada95": {
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"type": "programming",
+			"color": "#02f88c",
+			"ace_mode": "ada"
+		},
+		"ada2005": {
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"type": "programming",
+			"color": "#02f88c",
+			"ace_mode": "ada"
+		},
+		"adb": {
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"type": "programming",
+			"color": "#02f88c",
+			"ace_mode": "ada"
+		},
+		"ada": {
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"type": "programming",
+			"color": "#02f88c",
+			"ace_mode": "ada"
+		},
+		"ads": {
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"type": "programming",
+			"color": "#02f88c",
+			"ace_mode": "ada"
+		},
+		"agda": {
+			"extensions": [
+				".agda"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#315665",
+			"ace_mode": "text"
+		},
+		"als": {
+			"extensions": [
+				".als"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#64C800",
+			"ace_mode": "text"
+		},
+		"abuild": {
+			"extensions": [],
+			"aliases": [
+				"abuild",
+				"apkbuild"
+			],
+			"type": "programming",
+			"group": "Shell",
+			"filenames": [
+				"APKBUILD"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"apkbuild": {
+			"extensions": [],
+			"aliases": [
+				"abuild",
+				"apkbuild"
+			],
+			"type": "programming",
+			"group": "Shell",
+			"filenames": [
+				"APKBUILD"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"aconf": {
+			"extensions": [
+				".apacheconf",
+				".vhost"
+			],
+			"aliases": [
+				"aconf",
+				"apache"
+			],
+			"type": "markup",
+			"tm_scope": "source.apache-config",
+			"ace_mode": "apache_conf"
+		},
+		"apache": {
+			"extensions": [
+				".apacheconf",
+				".vhost"
+			],
+			"aliases": [
+				"aconf",
+				"apache"
+			],
+			"type": "markup",
+			"tm_scope": "source.apache-config",
+			"ace_mode": "apache_conf"
+		},
+		"apacheconf": {
+			"extensions": [
+				".apacheconf",
+				".vhost"
+			],
+			"aliases": [
+				"aconf",
+				"apache"
+			],
+			"type": "markup",
+			"tm_scope": "source.apache-config",
+			"ace_mode": "apache_conf"
+		},
+		"vhost": {
+			"extensions": [
+				".nginxconf",
+				".vhost"
+			],
+			"aliases": [
+				"nginx configuration file"
+			],
+			"type": "markup",
+			"filenames": [
+				"nginx.conf"
+			],
+			"tm_scope": "source.nginx",
+			"ace_mode": "text",
+			"color": "#9469E9"
+		},
+		"cls": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"agc": {
+			"extensions": [
+				".agc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0B3D91",
+			"group": "Assembly",
+			"tm_scope": "source.agc",
+			"ace_mode": "assembly_x86"
+		},
+		"osascript": {
+			"extensions": [
+				".applescript",
+				".scpt"
+			],
+			"aliases": [
+				"osascript"
+			],
+			"type": "programming",
+			"interpreters": [
+				"osascript"
+			],
+			"ace_mode": "applescript",
+			"color": "#101F1F"
+		},
+		"applescript": {
+			"extensions": [
+				".applescript",
+				".scpt"
+			],
+			"aliases": [
+				"osascript"
+			],
+			"type": "programming",
+			"interpreters": [
+				"osascript"
+			],
+			"ace_mode": "applescript",
+			"color": "#101F1F"
+		},
+		"scpt": {
+			"extensions": [
+				".applescript",
+				".scpt"
+			],
+			"aliases": [
+				"osascript"
+			],
+			"type": "programming",
+			"interpreters": [
+				"osascript"
+			],
+			"ace_mode": "applescript",
+			"color": "#101F1F"
+		},
+		"arc": {
+			"extensions": [
+				".arc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#aa2afe",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ino": {
+			"extensions": [
+				".ino"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#bd79d1",
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"asciidoc": {
+			"extensions": [
+				".asciidoc",
+				".adoc",
+				".asc"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "asciidoc",
+			"wrap": true,
+			"tm_scope": "text.html.asciidoc"
+		},
+		"adoc": {
+			"extensions": [
+				".asciidoc",
+				".adoc",
+				".asc"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "asciidoc",
+			"wrap": true,
+			"tm_scope": "text.html.asciidoc"
+		},
+		"aj": {
+			"extensions": [
+				".aj"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a957b0",
+			"tm_scope": "source.aspectj",
+			"ace_mode": "text"
+		},
+		"nasm": {
+			"extensions": [
+				".asm",
+				".a51",
+				".inc",
+				".nasm"
+			],
+			"aliases": [
+				"nasm"
+			],
+			"type": "programming",
+			"color": "#6E4C13",
+			"search_term": "nasm",
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"asm": {
+			"extensions": [
+				".asm",
+				".a51",
+				".inc",
+				".nasm"
+			],
+			"aliases": [
+				"nasm"
+			],
+			"type": "programming",
+			"color": "#6E4C13",
+			"search_term": "nasm",
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"a51": {
+			"extensions": [
+				".asm",
+				".a51",
+				".inc",
+				".nasm"
+			],
+			"aliases": [
+				"nasm"
+			],
+			"type": "programming",
+			"color": "#6E4C13",
+			"search_term": "nasm",
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"inc": {
+			"extensions": [
+				".sp",
+				".inc",
+				".sma"
+			],
+			"aliases": [
+				"sourcemod"
+			],
+			"type": "programming",
+			"color": "#5c7611",
+			"tm_scope": "source.sp",
+			"ace_mode": "text"
+		},
+		"aug": {
+			"extensions": [
+				".aug"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ahk": {
+			"extensions": [
+				".ahk",
+				".ahkl"
+			],
+			"aliases": [
+				"ahk"
+			],
+			"type": "programming",
+			"color": "#6594b9",
+			"tm_scope": "source.ahk",
+			"ace_mode": "autohotkey"
+		},
+		"ahkl": {
+			"extensions": [
+				".ahk",
+				".ahkl"
+			],
+			"aliases": [
+				"ahk"
+			],
+			"type": "programming",
+			"color": "#6594b9",
+			"tm_scope": "source.ahk",
+			"ace_mode": "autohotkey"
+		},
+		"au3": {
+			"extensions": [
+				".au3"
+			],
+			"aliases": [
+				"au3",
+				"AutoIt3",
+				"AutoItScript"
+			],
+			"type": "programming",
+			"color": "#1C3552",
+			"tm_scope": "source.autoit",
+			"ace_mode": "autohotkey"
+		},
+		"AutoIt3": {
+			"extensions": [
+				".au3"
+			],
+			"aliases": [
+				"au3",
+				"AutoIt3",
+				"AutoItScript"
+			],
+			"type": "programming",
+			"color": "#1C3552",
+			"tm_scope": "source.autoit",
+			"ace_mode": "autohotkey"
+		},
+		"AutoItScript": {
+			"extensions": [
+				".au3"
+			],
+			"aliases": [
+				"au3",
+				"AutoIt3",
+				"AutoItScript"
+			],
+			"type": "programming",
+			"color": "#1C3552",
+			"tm_scope": "source.autoit",
+			"ace_mode": "autohotkey"
+		},
+		"awk": {
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"auk": {
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"gawk": {
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"mawk": {
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"nawk": {
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"bat": {
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"type": "programming",
+			"search_term": "bat",
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"batch": {
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"type": "programming",
+			"search_term": "bat",
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"dosbatch": {
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"type": "programming",
+			"search_term": "bat",
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"winbatch": {
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"type": "programming",
+			"search_term": "bat",
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"cmd": {
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"type": "programming",
+			"search_term": "bat",
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"befunge": {
+			"extensions": [
+				".befunge"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"bison": {
+			"extensions": [
+				".bison"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Yacc",
+			"tm_scope": "source.bison",
+			"ace_mode": "text",
+			"color": "#6A463F"
+		},
+		"bb": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"blade": {
+			"extensions": [
+				".blade",
+				".blade.php"
+			],
+			"aliases": [],
+			"type": "markup",
+			"group": "HTML",
+			"tm_scope": "text.html.php.blade",
+			"ace_mode": "text"
+		},
+		"blade.php": {
+			"extensions": [
+				".blade",
+				".blade.php"
+			],
+			"aliases": [],
+			"type": "markup",
+			"group": "HTML",
+			"tm_scope": "text.html.php.blade",
+			"ace_mode": "text"
+		},
+		"b3d": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"blitz3d": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"blitzplus": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"bplus": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"decls": {
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"type": "programming",
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"bmax": {
+			"extensions": [
+				".bmx"
+			],
+			"aliases": [
+				"bmax"
+			],
+			"type": "programming",
+			"color": "#cd6400",
+			"ace_mode": "text"
+		},
+		"bmx": {
+			"extensions": [
+				".bmx"
+			],
+			"aliases": [
+				"bmax"
+			],
+			"type": "programming",
+			"color": "#cd6400",
+			"ace_mode": "text"
+		},
+		"bsv": {
+			"extensions": [
+				".bsv"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.bsv",
+			"ace_mode": "verilog"
+		},
+		"boo": {
+			"extensions": [
+				".boo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#d4bec1",
+			"ace_mode": "text",
+			"tm_scope": "source.boo"
+		},
+		"b": {
+			"extensions": [
+				".b",
+				".m"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"bf": {
+			"extensions": [
+				".bf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"brs": {
+			"extensions": [
+				".brs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.brightscript",
+			"ace_mode": "text"
+		},
+		"bro": {
+			"extensions": [
+				".bro"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"c": {
+			"extensions": [
+				".c",
+				".cats",
+				".h",
+				".idc",
+				".w"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#555555",
+			"interpreters": [
+				"tcc"
+			],
+			"ace_mode": "c_cpp"
+		},
+		"cats": {
+			"extensions": [
+				".c",
+				".cats",
+				".h",
+				".idc",
+				".w"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#555555",
+			"interpreters": [
+				"tcc"
+			],
+			"ace_mode": "c_cpp"
+		},
+		"h": {
+			"extensions": [
+				".m",
+				".h"
+			],
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"ace_mode": "objectivec"
+		},
+		"idc": {
+			"extensions": [
+				".c",
+				".cats",
+				".h",
+				".idc",
+				".w"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#555555",
+			"interpreters": [
+				"tcc"
+			],
+			"ace_mode": "c_cpp"
+		},
+		"w": {
+			"extensions": [
+				".c",
+				".cats",
+				".h",
+				".idc",
+				".w"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#555555",
+			"interpreters": [
+				"tcc"
+			],
+			"ace_mode": "c_cpp"
+		},
+		"csharp": {
+			"extensions": [
+				".cs",
+				".cake",
+				".cshtml",
+				".csx"
+			],
+			"aliases": [
+				"csharp"
+			],
+			"type": "programming",
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs",
+			"search_term": "csharp",
+			"color": "#178600"
+		},
+		"cs": {
+			"extensions": [
+				".st",
+				".cs"
+			],
+			"aliases": [
+				"squeak"
+			],
+			"type": "programming",
+			"color": "#596706",
+			"ace_mode": "text"
+		},
+		"cake": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"cshtml": {
+			"extensions": [
+				".cs",
+				".cake",
+				".cshtml",
+				".csx"
+			],
+			"aliases": [
+				"csharp"
+			],
+			"type": "programming",
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs",
+			"search_term": "csharp",
+			"color": "#178600"
+		},
+		"csx": {
+			"extensions": [
+				".cs",
+				".cake",
+				".cshtml",
+				".csx"
+			],
+			"aliases": [
+				"csharp"
+			],
+			"type": "programming",
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs",
+			"search_term": "csharp",
+			"color": "#178600"
+		},
+		"cpp": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"c++": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"cc": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"cp": {
+			"extensions": [
+				".cp",
+				".cps"
+			],
+			"aliases": [
+				"delphi",
+				"objectpascal"
+			],
+			"type": "programming",
+			"color": "#B0CE4E",
+			"tm_scope": "source.pascal",
+			"ace_mode": "pascal"
+		},
+		"cxx": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"h++": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"hh": {
+			"extensions": [
+				".hh",
+				".php"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "php",
+			"tm_scope": "text.html.php",
+			"color": "#878787"
+		},
+		"hpp": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"hxx": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"inl": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"ipp": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"tcc": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"tpp": {
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			],
+			"aliases": [
+				"cpp"
+			],
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d"
+		},
+		"c-objdump": {
+			"extensions": [
+				".c-objdump"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"c2hs": {
+			"extensions": [
+				".chs"
+			],
+			"aliases": [
+				"c2hs"
+			],
+			"type": "programming",
+			"group": "Haskell",
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"chs": {
+			"extensions": [
+				".chs"
+			],
+			"aliases": [
+				"c2hs"
+			],
+			"type": "programming",
+			"group": "Haskell",
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"clp": {
+			"extensions": [
+				".clp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.clips",
+			"ace_mode": "text"
+		},
+		"cmake": {
+			"extensions": [
+				".cmake",
+				".cmake.in"
+			],
+			"aliases": [],
+			"type": "programming",
+			"filenames": [
+				"CMakeLists.txt"
+			],
+			"ace_mode": "text"
+		},
+		"cmake.in": {
+			"extensions": [
+				".cmake",
+				".cmake.in"
+			],
+			"aliases": [],
+			"type": "programming",
+			"filenames": [
+				"CMakeLists.txt"
+			],
+			"ace_mode": "text"
+		},
+		"cob": {
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "cobol"
+		},
+		"cbl": {
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "cobol"
+		},
+		"ccp": {
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "cobol"
+		},
+		"cobol": {
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "cobol"
+		},
+		"cpy": {
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "cobol"
+		},
+		"dae": {
+			"extensions": [
+				".dae"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"css": {
+			"extensions": [
+				".css"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "source.css",
+			"ace_mode": "css",
+			"color": "#563d7c"
+		},
+		"csv": {
+			"extensions": [
+				".csv"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"capnp": {
+			"extensions": [
+				".capnp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.capnp",
+			"ace_mode": "text"
+		},
+		"Carto": {
+			"extensions": [
+				".mss"
+			],
+			"aliases": [
+				"Carto"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.css.mss"
+		},
+		"mss": {
+			"extensions": [
+				".mss"
+			],
+			"aliases": [
+				"Carto"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.css.mss"
+		},
+		"ceylon": {
+			"extensions": [
+				".ceylon"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"chpl": {
+			"extensions": [
+				".chpl"
+			],
+			"aliases": [
+				"chpl"
+			],
+			"type": "programming",
+			"color": "#8dc63f",
+			"ace_mode": "text"
+		},
+		"ch": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"ck": {
+			"extensions": [
+				".ck"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.java",
+			"ace_mode": "java"
+		},
+		"cirru": {
+			"extensions": [
+				".cirru"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#ccccff",
+			"ace_mode": "cirru"
+		},
+		"clw": {
+			"extensions": [
+				".clw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#db901e",
+			"ace_mode": "text",
+			"tm_scope": "source.clarion"
+		},
+		"icl": {
+			"extensions": [
+				".icl",
+				".dcl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#3F85AF",
+			"tm_scope": "source.clean",
+			"ace_mode": "text"
+		},
+		"dcl": {
+			"extensions": [
+				".com"
+			],
+			"aliases": [
+				"dcl"
+			],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"click": {
+			"extensions": [
+				".click"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E4E6F3",
+			"tm_scope": "source.click",
+			"ace_mode": "text"
+		},
+		"clj": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"boot": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cl2": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cljc": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cljs": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cljs.hl": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cljscm": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"cljx": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"hic": {
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"coffee": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"coffee-script": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"_coffee": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"cjsx": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"cson": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"iced": {
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"cfm": {
+			"extensions": [
+				".cfm",
+				".cfml"
+			],
+			"aliases": [
+				"cfm",
+				"cfml",
+				"coldfusion html"
+			],
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfm",
+			"tm_scope": "text.html.cfm"
+		},
+		"cfml": {
+			"extensions": [
+				".cfm",
+				".cfml"
+			],
+			"aliases": [
+				"cfm",
+				"cfml",
+				"coldfusion html"
+			],
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfm",
+			"tm_scope": "text.html.cfm"
+		},
+		"coldfusion html": {
+			"extensions": [
+				".cfm",
+				".cfml"
+			],
+			"aliases": [
+				"cfm",
+				"cfml",
+				"coldfusion html"
+			],
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfm",
+			"tm_scope": "text.html.cfm"
+		},
+		"cfc": {
+			"extensions": [
+				".cfc"
+			],
+			"aliases": [
+				"cfc"
+			],
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfc",
+			"tm_scope": "source.cfscript"
+		},
+		"lisp": {
+			"extensions": [
+				".nl",
+				".lisp",
+				".lsp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"lexer": "NewLisp",
+			"color": "#87AED7",
+			"interpreters": [
+				"newlisp"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"asd": {
+			"extensions": [
+				".lisp",
+				".asd",
+				".cl",
+				".l",
+				".lsp",
+				".ny",
+				".podsl",
+				".sexp"
+			],
+			"aliases": [
+				"lisp"
+			],
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"color": "#3fb68b",
+			"interpreters": [
+				"lisp",
+				"sbcl",
+				"ccl",
+				"clisp",
+				"ecl"
+			],
+			"ace_mode": "lisp"
+		},
+		"cl": {
+			"extensions": [
+				".cl",
+				".opencl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "C",
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"l": {
+			"extensions": [
+				".l"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"picolisp",
+				"pil"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"lsp": {
+			"extensions": [
+				".nl",
+				".lisp",
+				".lsp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"lexer": "NewLisp",
+			"color": "#87AED7",
+			"interpreters": [
+				"newlisp"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"ny": {
+			"extensions": [
+				".lisp",
+				".asd",
+				".cl",
+				".l",
+				".lsp",
+				".ny",
+				".podsl",
+				".sexp"
+			],
+			"aliases": [
+				"lisp"
+			],
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"color": "#3fb68b",
+			"interpreters": [
+				"lisp",
+				"sbcl",
+				"ccl",
+				"clisp",
+				"ecl"
+			],
+			"ace_mode": "lisp"
+		},
+		"podsl": {
+			"extensions": [
+				".lisp",
+				".asd",
+				".cl",
+				".l",
+				".lsp",
+				".ny",
+				".podsl",
+				".sexp"
+			],
+			"aliases": [
+				"lisp"
+			],
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"color": "#3fb68b",
+			"interpreters": [
+				"lisp",
+				"sbcl",
+				"ccl",
+				"clisp",
+				"ecl"
+			],
+			"ace_mode": "lisp"
+		},
+		"sexp": {
+			"extensions": [
+				".lisp",
+				".asd",
+				".cl",
+				".l",
+				".lsp",
+				".ny",
+				".podsl",
+				".sexp"
+			],
+			"aliases": [
+				"lisp"
+			],
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"color": "#3fb68b",
+			"interpreters": [
+				"lisp",
+				"sbcl",
+				"ccl",
+				"clisp",
+				"ecl"
+			],
+			"ace_mode": "lisp"
+		},
+		"delphi": {
+			"extensions": [
+				".cp",
+				".cps"
+			],
+			"aliases": [
+				"delphi",
+				"objectpascal"
+			],
+			"type": "programming",
+			"color": "#B0CE4E",
+			"tm_scope": "source.pascal",
+			"ace_mode": "pascal"
+		},
+		"objectpascal": {
+			"extensions": [
+				".cp",
+				".cps"
+			],
+			"aliases": [
+				"delphi",
+				"objectpascal"
+			],
+			"type": "programming",
+			"color": "#B0CE4E",
+			"tm_scope": "source.pascal",
+			"ace_mode": "pascal"
+		},
+		"cps": {
+			"extensions": [
+				".cp",
+				".cps"
+			],
+			"aliases": [
+				"delphi",
+				"objectpascal"
+			],
+			"type": "programming",
+			"color": "#B0CE4E",
+			"tm_scope": "source.pascal",
+			"ace_mode": "pascal"
+		},
+		"coq": {
+			"extensions": [
+				".coq",
+				".v"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"v": {
+			"extensions": [
+				".v",
+				".veo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#b2b7f8",
+			"ace_mode": "verilog"
+		},
+		"c++-objdump": {
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"aliases": [
+				"c++-objdump"
+			],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"cppobjdump": {
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"aliases": [
+				"c++-objdump"
+			],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"c++objdump": {
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"aliases": [
+				"c++-objdump"
+			],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"cpp-objdump": {
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"aliases": [
+				"c++-objdump"
+			],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"cxx-objdump": {
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"aliases": [
+				"c++-objdump"
+			],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"creole": {
+			"extensions": [
+				".creole"
+			],
+			"aliases": [],
+			"type": "prose",
+			"wrap": true,
+			"tm_scope": "text.html.creole",
+			"ace_mode": "text"
+		},
+		"cr": {
+			"extensions": [
+				".cr"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#776791",
+			"ace_mode": "ruby",
+			"tm_scope": "source.crystal",
+			"interpreters": [
+				"crystal"
+			]
+		},
+		"csound-orc": {
+			"extensions": [
+				".orc",
+				".udo"
+			],
+			"aliases": [
+				"csound-orc"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound",
+			"ace_mode": "text"
+		},
+		"orc": {
+			"extensions": [
+				".orc",
+				".udo"
+			],
+			"aliases": [
+				"csound-orc"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound",
+			"ace_mode": "text"
+		},
+		"udo": {
+			"extensions": [
+				".orc",
+				".udo"
+			],
+			"aliases": [
+				"csound-orc"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound",
+			"ace_mode": "text"
+		},
+		"csound-csd": {
+			"extensions": [
+				".csd"
+			],
+			"aliases": [
+				"csound-csd"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound-document",
+			"ace_mode": "text"
+		},
+		"csd": {
+			"extensions": [
+				".csd"
+			],
+			"aliases": [
+				"csound-csd"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound-document",
+			"ace_mode": "text"
+		},
+		"csound-sco": {
+			"extensions": [
+				".sco"
+			],
+			"aliases": [
+				"csound-sco"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound-score",
+			"ace_mode": "text"
+		},
+		"sco": {
+			"extensions": [
+				".sco"
+			],
+			"aliases": [
+				"csound-sco"
+			],
+			"type": "programming",
+			"tm_scope": "source.csound-score",
+			"ace_mode": "text"
+		},
+		"gherkin": {
+			"extensions": [
+				".feature"
+			],
+			"aliases": [
+				"gherkin"
+			],
+			"type": "programming",
+			"tm_scope": "text.gherkin.feature",
+			"ace_mode": "text",
+			"color": "#5B2063"
+		},
+		"feature": {
+			"extensions": [
+				".feature"
+			],
+			"aliases": [
+				"gherkin"
+			],
+			"type": "programming",
+			"tm_scope": "text.gherkin.feature",
+			"ace_mode": "text",
+			"color": "#5B2063"
+		},
+		"cu": {
+			"extensions": [
+				".cu",
+				".cuh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.cuda-c++",
+			"ace_mode": "c_cpp",
+			"color": "#3A4E3A"
+		},
+		"cuh": {
+			"extensions": [
+				".cu",
+				".cuh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.cuda-c++",
+			"ace_mode": "c_cpp",
+			"color": "#3A4E3A"
+		},
+		"cy": {
+			"extensions": [
+				".cy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript"
+		},
+		"pyrex": {
+			"extensions": [
+				".pyx",
+				".pxd",
+				".pxi"
+			],
+			"aliases": [
+				"pyrex"
+			],
+			"type": "programming",
+			"group": "Python",
+			"ace_mode": "text"
+		},
+		"pyx": {
+			"extensions": [
+				".pyx",
+				".pxd",
+				".pxi"
+			],
+			"aliases": [
+				"pyrex"
+			],
+			"type": "programming",
+			"group": "Python",
+			"ace_mode": "text"
+		},
+		"pxd": {
+			"extensions": [
+				".pyx",
+				".pxd",
+				".pxi"
+			],
+			"aliases": [
+				"pyrex"
+			],
+			"type": "programming",
+			"group": "Python",
+			"ace_mode": "text"
+		},
+		"pxi": {
+			"extensions": [
+				".pyx",
+				".pxd",
+				".pxi"
+			],
+			"aliases": [
+				"pyrex"
+			],
+			"type": "programming",
+			"group": "Python",
+			"ace_mode": "text"
+		},
+		"d": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"di": {
+			"extensions": [
+				".d",
+				".di"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#ba595e",
+			"ace_mode": "d"
+		},
+		"d-objdump": {
+			"extensions": [
+				".d-objdump"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"com": {
+			"extensions": [
+				".com"
+			],
+			"aliases": [
+				"dcl"
+			],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"byond": {
+			"extensions": [
+				".dm"
+			],
+			"aliases": [
+				"byond"
+			],
+			"type": "programming",
+			"color": "#447265",
+			"tm_scope": "source.dm",
+			"ace_mode": "c_cpp"
+		},
+		"dm": {
+			"extensions": [
+				".dm"
+			],
+			"aliases": [
+				"byond"
+			],
+			"type": "programming",
+			"color": "#447265",
+			"tm_scope": "source.dm",
+			"ace_mode": "c_cpp"
+		},
+		"zone": {
+			"extensions": [
+				".zone",
+				".arpa"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "text.zone_file",
+			"ace_mode": "text"
+		},
+		"arpa": {
+			"extensions": [
+				".zone",
+				".arpa"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "text.zone_file",
+			"ace_mode": "text"
+		},
+		"dtrace-script": {
+			"extensions": [
+				".d"
+			],
+			"aliases": [
+				"dtrace-script"
+			],
+			"type": "programming",
+			"interpreters": [
+				"dtrace"
+			],
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"dpatch": {
+			"extensions": [
+				".darcspatch",
+				".dpatch"
+			],
+			"aliases": [
+				"dpatch"
+			],
+			"type": "data",
+			"search_term": "dpatch",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"darcspatch": {
+			"extensions": [
+				".darcspatch",
+				".dpatch"
+			],
+			"aliases": [
+				"dpatch"
+			],
+			"type": "data",
+			"search_term": "dpatch",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"dart": {
+			"extensions": [
+				".dart"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#00B4AB",
+			"interpreters": [
+				"dart"
+			],
+			"ace_mode": "dart"
+		},
+		"udiff": {
+			"extensions": [
+				".diff",
+				".patch"
+			],
+			"aliases": [
+				"udiff"
+			],
+			"type": "data",
+			"tm_scope": "source.diff",
+			"ace_mode": "diff"
+		},
+		"diff": {
+			"extensions": [
+				".diff",
+				".patch"
+			],
+			"aliases": [
+				"udiff"
+			],
+			"type": "data",
+			"tm_scope": "source.diff",
+			"ace_mode": "diff"
+		},
+		"patch": {
+			"extensions": [
+				".diff",
+				".patch"
+			],
+			"aliases": [
+				"udiff"
+			],
+			"type": "data",
+			"tm_scope": "source.diff",
+			"ace_mode": "diff"
+		},
+		"dockerfile": {
+			"extensions": [
+				".dockerfile"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.dockerfile",
+			"filenames": [
+				"Dockerfile"
+			],
+			"ace_mode": "dockerfile"
+		},
+		"djs": {
+			"extensions": [
+				".djs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cca760",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"dylan": {
+			"extensions": [
+				".dylan",
+				".dyl",
+				".intr",
+				".lid"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6c616e",
+			"ace_mode": "text"
+		},
+		"dyl": {
+			"extensions": [
+				".dylan",
+				".dyl",
+				".intr",
+				".lid"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6c616e",
+			"ace_mode": "text"
+		},
+		"intr": {
+			"extensions": [
+				".dylan",
+				".dyl",
+				".intr",
+				".lid"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6c616e",
+			"ace_mode": "text"
+		},
+		"lid": {
+			"extensions": [
+				".dylan",
+				".dyl",
+				".intr",
+				".lid"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6c616e",
+			"ace_mode": "text"
+		},
+		"E": {
+			"extensions": [
+				".E"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#ccce35",
+			"interpreters": [
+				"rune"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ecl": {
+			"extensions": [
+				".ecl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "prolog",
+			"tm_scope": "source.prolog.eclipse",
+			"ace_mode": "prolog"
+		},
+		"eclxml": {
+			"extensions": [
+				".ecl",
+				".eclxml"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8a1267",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ejs": {
+			"extensions": [
+				".ejs"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#a91e50",
+			"group": "HTML",
+			"tm_scope": "text.html.js",
+			"ace_mode": "ejs"
+		},
+		"eq": {
+			"extensions": [
+				".eq"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a78649",
+			"tm_scope": "source.cs",
+			"ace_mode": "csharp"
+		},
+		"sch": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"brd": {
+			"extensions": [
+				".sch",
+				".brd",
+				".kicad_pcb"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"epj": {
+			"extensions": [
+				".epj"
+			],
+			"aliases": [],
+			"type": "data",
+			"group": "JavaScript",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"e": {
+			"extensions": [
+				".e"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#946d57",
+			"ace_mode": "eiffel"
+		},
+		"ex": {
+			"extensions": [
+				".ex",
+				".exs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6e4a7e",
+			"ace_mode": "elixir",
+			"filenames": [
+				"mix.lock"
+			],
+			"interpreters": [
+				"elixir"
+			]
+		},
+		"exs": {
+			"extensions": [
+				".ex",
+				".exs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6e4a7e",
+			"ace_mode": "elixir",
+			"filenames": [
+				"mix.lock"
+			],
+			"interpreters": [
+				"elixir"
+			]
+		},
+		"elm": {
+			"extensions": [
+				".elm"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#60B5CC",
+			"tm_scope": "source.elm",
+			"ace_mode": "elm"
+		},
+		"elisp": {
+			"extensions": [
+				".el",
+				".emacs",
+				".emacs.desktop"
+			],
+			"aliases": [
+				"elisp",
+				"emacs"
+			],
+			"type": "programming",
+			"tm_scope": "source.emacs.lisp",
+			"color": "#c065db",
+			"filenames": [
+				".emacs",
+				".emacs.desktop",
+				".spacemacs"
+			],
+			"ace_mode": "lisp"
+		},
+		"emacs": {
+			"extensions": [
+				".el",
+				".emacs",
+				".emacs.desktop"
+			],
+			"aliases": [
+				"elisp",
+				"emacs"
+			],
+			"type": "programming",
+			"tm_scope": "source.emacs.lisp",
+			"color": "#c065db",
+			"filenames": [
+				".emacs",
+				".emacs.desktop",
+				".spacemacs"
+			],
+			"ace_mode": "lisp"
+		},
+		"el": {
+			"extensions": [
+				".el",
+				".emacs",
+				".emacs.desktop"
+			],
+			"aliases": [
+				"elisp",
+				"emacs"
+			],
+			"type": "programming",
+			"tm_scope": "source.emacs.lisp",
+			"color": "#c065db",
+			"filenames": [
+				".emacs",
+				".emacs.desktop",
+				".spacemacs"
+			],
+			"ace_mode": "lisp"
+		},
+		"emacs.desktop": {
+			"extensions": [
+				".el",
+				".emacs",
+				".emacs.desktop"
+			],
+			"aliases": [
+				"elisp",
+				"emacs"
+			],
+			"type": "programming",
+			"tm_scope": "source.emacs.lisp",
+			"color": "#c065db",
+			"filenames": [
+				".emacs",
+				".emacs.desktop",
+				".spacemacs"
+			],
+			"ace_mode": "lisp"
+		},
+		"em": {
+			"extensions": [
+				".em",
+				".emberscript"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#FFF4F3",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee"
+		},
+		"emberscript": {
+			"extensions": [
+				".em",
+				".emberscript"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#FFF4F3",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee"
+		},
+		"erl": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"app.src": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"es": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"escript": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"hrl": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"xrl": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"yrl": {
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B83998",
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"fsharp": {
+			"extensions": [
+				".fs",
+				".fsi",
+				".fsx"
+			],
+			"aliases": [
+				"fsharp"
+			],
+			"type": "programming",
+			"color": "#b845fc",
+			"search_term": "fsharp",
+			"tm_scope": "source.fsharp",
+			"ace_mode": "text"
+		},
+		"fs": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"fsi": {
+			"extensions": [
+				".fs",
+				".fsi",
+				".fsx"
+			],
+			"aliases": [
+				"fsharp"
+			],
+			"type": "programming",
+			"color": "#b845fc",
+			"search_term": "fsharp",
+			"tm_scope": "source.fsharp",
+			"ace_mode": "text"
+		},
+		"fsx": {
+			"extensions": [
+				".fs",
+				".fsi",
+				".fsx"
+			],
+			"aliases": [
+				"fsharp"
+			],
+			"type": "programming",
+			"color": "#b845fc",
+			"search_term": "fsharp",
+			"tm_scope": "source.fsharp",
+			"ace_mode": "text"
+		},
+		"fx": {
+			"extensions": [
+				".hlsl",
+				".fx",
+				".fxh",
+				".hlsli"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"flux": {
+			"extensions": [
+				".fx",
+				".flux"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#88ccff",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"f90": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"f": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"f03": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"f08": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"f77": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"f95": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"for": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"fpp": {
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#4d41b1",
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"factor": {
+			"extensions": [
+				".factor"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#636746",
+			"filenames": [
+				".factor-boot-rc",
+				".factor-rc"
+			],
+			"ace_mode": "text"
+		},
+		"fy": {
+			"extensions": [
+				".fy",
+				".fancypack"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#7b9db4",
+			"filenames": [
+				"Fakefile"
+			],
+			"ace_mode": "text"
+		},
+		"fancypack": {
+			"extensions": [
+				".fy",
+				".fancypack"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#7b9db4",
+			"filenames": [
+				"Fakefile"
+			],
+			"ace_mode": "text"
+		},
+		"fan": {
+			"extensions": [
+				".fan"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#dbded5",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"eam.fs": {
+			"extensions": [
+				".for",
+				".eam.fs"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"fth": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"4th": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"forth": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"fr": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"frt": {
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#341708",
+			"ace_mode": "forth"
+		},
+		"ftl": {
+			"extensions": [
+				".ftl"
+			],
+			"aliases": [
+				"ftl"
+			],
+			"type": "programming",
+			"color": "#0050b2",
+			"tm_scope": "text.html.ftl",
+			"ace_mode": "ftl"
+		},
+		"g": {
+			"extensions": [
+				".g",
+				".gap",
+				".gd",
+				".gi",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gap",
+			"ace_mode": "text"
+		},
+		"gco": {
+			"extensions": [
+				".g",
+				".gco",
+				".gcode"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.gcode",
+			"ace_mode": "gcode"
+		},
+		"gcode": {
+			"extensions": [
+				".g",
+				".gco",
+				".gcode"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.gcode",
+			"ace_mode": "gcode"
+		},
+		"gms": {
+			"extensions": [
+				".gms"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"gap": {
+			"extensions": [
+				".g",
+				".gap",
+				".gd",
+				".gi",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gap",
+			"ace_mode": "text"
+		},
+		"gd": {
+			"extensions": [
+				".gd"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gdscript",
+			"ace_mode": "text"
+		},
+		"gi": {
+			"extensions": [
+				".g",
+				".gap",
+				".gd",
+				".gi",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gap",
+			"ace_mode": "text"
+		},
+		"tst": {
+			"extensions": [
+				".sci",
+				".sce",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"s": {
+			"extensions": [
+				".s",
+				".ms"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Assembly",
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"ms": {
+			"extensions": [
+				".ms",
+				".mcr"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#00a6a6",
+			"tm_scope": "source.maxscript",
+			"ace_mode": "text"
+		},
+		"md": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"gdb": {
+			"extensions": [
+				".gdb",
+				".gdbinit"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gdb",
+			"ace_mode": "text"
+		},
+		"gdbinit": {
+			"extensions": [
+				".gdb",
+				".gdbinit"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.gdb",
+			"ace_mode": "text"
+		},
+		"glsl": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"fp": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"frag": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"frg": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"fsh": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"fshader": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"geo": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"geom": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"glslv": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"gshader": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"shader": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"vert": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"vrx": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"vsh": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"vshader": {
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "glsl"
+		},
+		"gml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xml+genshi": {
+			"extensions": [
+				".kid"
+			],
+			"aliases": [
+				"xml+genshi",
+				"xml+kid"
+			],
+			"type": "programming",
+			"tm_scope": "text.xml.genshi",
+			"ace_mode": "xml"
+		},
+		"xml+kid": {
+			"extensions": [
+				".kid"
+			],
+			"aliases": [
+				"xml+genshi",
+				"xml+kid"
+			],
+			"type": "programming",
+			"tm_scope": "text.xml.genshi",
+			"ace_mode": "xml"
+		},
+		"kid": {
+			"extensions": [
+				".kid"
+			],
+			"aliases": [
+				"xml+genshi",
+				"xml+kid"
+			],
+			"type": "programming",
+			"tm_scope": "text.xml.genshi",
+			"ace_mode": "xml"
+		},
+		"ebuild": {
+			"extensions": [
+				".ebuild"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Shell",
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"eclass": {
+			"extensions": [
+				".eclass"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Shell",
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"pot": {
+			"extensions": [
+				".po",
+				".pot"
+			],
+			"aliases": [
+				"pot"
+			],
+			"type": "prose",
+			"search_term": "pot",
+			"searchable": false,
+			"tm_scope": "source.po",
+			"ace_mode": "text"
+		},
+		"po": {
+			"extensions": [
+				".po",
+				".pot"
+			],
+			"aliases": [
+				"pot"
+			],
+			"type": "prose",
+			"search_term": "pot",
+			"searchable": false,
+			"tm_scope": "source.po",
+			"ace_mode": "text"
+		},
+		"glf": {
+			"extensions": [
+				".glf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#e4cc98",
+			"tm_scope": "source.tcl",
+			"ace_mode": "tcl"
+		},
+		"gp": {
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f0a9f0",
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"gnu": {
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f0a9f0",
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"gnuplot": {
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f0a9f0",
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"plot": {
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f0a9f0",
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"plt": {
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f0a9f0",
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"go": {
+			"extensions": [
+				".go"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#375eab",
+			"ace_mode": "golang"
+		},
+		"golo": {
+			"extensions": [
+				".golo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#88562A",
+			"tm_scope": "source.golo",
+			"ace_mode": "text"
+		},
+		"gs": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"gst": {
+			"extensions": [
+				".gs",
+				".gst",
+				".gsx",
+				".vark"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#82937f",
+			"tm_scope": "source.gosu.2",
+			"ace_mode": "text"
+		},
+		"gsx": {
+			"extensions": [
+				".gs",
+				".gst",
+				".gsx",
+				".vark"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#82937f",
+			"tm_scope": "source.gosu.2",
+			"ace_mode": "text"
+		},
+		"vark": {
+			"extensions": [
+				".gs",
+				".gst",
+				".gsx",
+				".vark"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#82937f",
+			"tm_scope": "source.gosu.2",
+			"ace_mode": "text"
+		},
+		"grace": {
+			"extensions": [
+				".grace"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.grace",
+			"ace_mode": "text"
+		},
+		"gradle": {
+			"extensions": [
+				".gradle"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.groovy.gradle",
+			"ace_mode": "text"
+		},
+		"gf": {
+			"extensions": [
+				".gf"
+			],
+			"aliases": [
+				"gf"
+			],
+			"type": "programming",
+			"wrap": false,
+			"searchable": true,
+			"color": "#79aa7a",
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"graphql": {
+			"extensions": [
+				".graphql"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.graphql",
+			"ace_mode": "text"
+		},
+		"dot": {
+			"extensions": [
+				".dot",
+				".gv"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.dot",
+			"ace_mode": "text"
+		},
+		"gv": {
+			"extensions": [
+				".dot",
+				".gv"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.dot",
+			"ace_mode": "text"
+		},
+		"nroff": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"troff": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"man": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"1in": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"1m": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"1x": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"3in": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"3m": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"3qt": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"3x": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"me": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"n": {
+			"extensions": [
+				".n"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#3d3c6e",
+			"ace_mode": "text"
+		},
+		"rno": {
+			"extensions": [
+				".rnh",
+				".rno"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#665a4e",
+			"tm_scope": "text.runoff",
+			"ace_mode": "text"
+		},
+		"roff": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"tmac": {
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"type": "markup",
+			"color": "#ecdebe",
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"ace_mode": "text"
+		},
+		"groovy": {
+			"extensions": [
+				".groovy",
+				".grt",
+				".gtpl",
+				".gvy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "groovy",
+			"color": "#e69f56",
+			"interpreters": [
+				"groovy"
+			],
+			"filenames": [
+				"Jenkinsfile"
+			]
+		},
+		"grt": {
+			"extensions": [
+				".groovy",
+				".grt",
+				".gtpl",
+				".gvy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "groovy",
+			"color": "#e69f56",
+			"interpreters": [
+				"groovy"
+			],
+			"filenames": [
+				"Jenkinsfile"
+			]
+		},
+		"gtpl": {
+			"extensions": [
+				".groovy",
+				".grt",
+				".gtpl",
+				".gvy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "groovy",
+			"color": "#e69f56",
+			"interpreters": [
+				"groovy"
+			],
+			"filenames": [
+				"Jenkinsfile"
+			]
+		},
+		"gvy": {
+			"extensions": [
+				".groovy",
+				".grt",
+				".gtpl",
+				".gvy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "groovy",
+			"color": "#e69f56",
+			"interpreters": [
+				"groovy"
+			],
+			"filenames": [
+				"Jenkinsfile"
+			]
+		},
+		"gsp": {
+			"extensions": [
+				".gsp"
+			],
+			"aliases": [
+				"gsp",
+				"java server page"
+			],
+			"type": "programming",
+			"group": "Groovy",
+			"tm_scope": "text.html.jsp",
+			"ace_mode": "jsp"
+		},
+		"java server page": {
+			"extensions": [
+				".gsp"
+			],
+			"aliases": [
+				"gsp",
+				"java server page"
+			],
+			"type": "programming",
+			"group": "Groovy",
+			"tm_scope": "text.html.jsp",
+			"ace_mode": "jsp"
+		},
+		"hcl": {
+			"extensions": [
+				".hcl",
+				".tf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"tm_scope": "source.ruby"
+		},
+		"tf": {
+			"extensions": [
+				".hcl",
+				".tf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"tm_scope": "source.ruby"
+		},
+		"hlsl": {
+			"extensions": [
+				".hlsl",
+				".fx",
+				".fxh",
+				".hlsli"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"fxh": {
+			"extensions": [
+				".hlsl",
+				".fx",
+				".fxh",
+				".hlsli"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"hlsli": {
+			"extensions": [
+				".hlsl",
+				".fx",
+				".fxh",
+				".hlsli"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"xhtml": {
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			],
+			"aliases": [
+				"xhtml"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23"
+		},
+		"html": {
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			],
+			"aliases": [
+				"xhtml"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23"
+		},
+		"htm": {
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			],
+			"aliases": [
+				"xhtml"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23"
+		},
+		"html.hl": {
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			],
+			"aliases": [
+				"xhtml"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23"
+		},
+		"st": {
+			"extensions": [
+				".st",
+				".cs"
+			],
+			"aliases": [
+				"squeak"
+			],
+			"type": "programming",
+			"color": "#596706",
+			"ace_mode": "text"
+		},
+		"xht": {
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			],
+			"aliases": [
+				"xhtml"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23"
+		},
+		"django": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"html+django/jinja": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"html+jinja": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"htmldjango": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"mustache": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"jinja": {
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"ace_mode": "django"
+		},
+		"ecr": {
+			"extensions": [
+				".ecr"
+			],
+			"aliases": [
+				"ecr"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.ecr",
+			"group": "HTML",
+			"ace_mode": "text"
+		},
+		"eex": {
+			"extensions": [
+				".eex"
+			],
+			"aliases": [
+				"eex"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.elixir",
+			"group": "HTML",
+			"ace_mode": "text"
+		},
+		"erb": {
+			"extensions": [
+				".erb",
+				".erb.deface"
+			],
+			"aliases": [
+				"erb"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.erb",
+			"group": "HTML",
+			"ace_mode": "text"
+		},
+		"erb.deface": {
+			"extensions": [
+				".erb",
+				".erb.deface"
+			],
+			"aliases": [
+				"erb"
+			],
+			"type": "markup",
+			"tm_scope": "text.html.erb",
+			"group": "HTML",
+			"ace_mode": "text"
+		},
+		"phtml": {
+			"extensions": [
+				".phtml"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "text.html.php",
+			"group": "HTML",
+			"ace_mode": "php"
+		},
+		"http": {
+			"extensions": [
+				".http"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.httpspec",
+			"ace_mode": "text"
+		},
+		"php": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"haml": {
+			"extensions": [
+				".haml",
+				".haml.deface"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"ace_mode": "haml",
+			"color": "#ECE2A9"
+		},
+		"haml.deface": {
+			"extensions": [
+				".haml",
+				".haml.deface"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"ace_mode": "haml",
+			"color": "#ECE2A9"
+		},
+		"hbs": {
+			"extensions": [
+				".handlebars",
+				".hbs"
+			],
+			"aliases": [
+				"hbs",
+				"htmlbars"
+			],
+			"type": "markup",
+			"color": "#01a9d6",
+			"group": "HTML",
+			"tm_scope": "text.html.handlebars",
+			"ace_mode": "handlebars"
+		},
+		"htmlbars": {
+			"extensions": [
+				".handlebars",
+				".hbs"
+			],
+			"aliases": [
+				"hbs",
+				"htmlbars"
+			],
+			"type": "markup",
+			"color": "#01a9d6",
+			"group": "HTML",
+			"tm_scope": "text.html.handlebars",
+			"ace_mode": "handlebars"
+		},
+		"handlebars": {
+			"extensions": [
+				".handlebars",
+				".hbs"
+			],
+			"aliases": [
+				"hbs",
+				"htmlbars"
+			],
+			"type": "markup",
+			"color": "#01a9d6",
+			"group": "HTML",
+			"tm_scope": "text.html.handlebars",
+			"ace_mode": "handlebars"
+		},
+		"hb": {
+			"extensions": [
+				".hb"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0e60e3",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"hs": {
+			"extensions": [
+				".hs",
+				".hsc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#29b544",
+			"interpreters": [
+				"runhaskell"
+			],
+			"ace_mode": "haskell"
+		},
+		"hsc": {
+			"extensions": [
+				".hs",
+				".hsc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#29b544",
+			"interpreters": [
+				"runhaskell"
+			],
+			"ace_mode": "haskell"
+		},
+		"hx": {
+			"extensions": [
+				".hx",
+				".hxsl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "haxe",
+			"color": "#df7900",
+			"tm_scope": "source.haxe.2"
+		},
+		"hxsl": {
+			"extensions": [
+				".hx",
+				".hxsl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "haxe",
+			"color": "#df7900",
+			"tm_scope": "source.haxe.2"
+		},
+		"hylang": {
+			"extensions": [
+				".hy"
+			],
+			"aliases": [
+				"hylang"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#7790B2",
+			"tm_scope": "source.hy"
+		},
+		"hy": {
+			"extensions": [
+				".hy"
+			],
+			"aliases": [
+				"hylang"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#7790B2",
+			"tm_scope": "source.hy"
+		},
+		"pro": {
+			"extensions": [
+				".pro",
+				".pri"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"qmake"
+			],
+			"ace_mode": "text"
+		},
+		"dlm": {
+			"extensions": [
+				".pro",
+				".dlm"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a3522f",
+			"ace_mode": "text"
+		},
+		"igor": {
+			"extensions": [
+				".ipf"
+			],
+			"aliases": [
+				"igor",
+				"igorpro"
+			],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"igorpro": {
+			"extensions": [
+				".ipf"
+			],
+			"aliases": [
+				"igor",
+				"igorpro"
+			],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ipf": {
+			"extensions": [
+				".ipf"
+			],
+			"aliases": [
+				"igor",
+				"igorpro"
+			],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"dosini": {
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"aliases": [
+				"dosini"
+			],
+			"type": "data",
+			"tm_scope": "source.ini",
+			"ace_mode": "ini"
+		},
+		"ini": {
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"aliases": [
+				"dosini"
+			],
+			"type": "data",
+			"tm_scope": "source.ini",
+			"ace_mode": "ini"
+		},
+		"cfg": {
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"aliases": [
+				"dosini"
+			],
+			"type": "data",
+			"tm_scope": "source.ini",
+			"ace_mode": "ini"
+		},
+		"prefs": {
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"aliases": [
+				"dosini"
+			],
+			"type": "data",
+			"tm_scope": "source.ini",
+			"ace_mode": "ini"
+		},
+		"properties": {
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"aliases": [
+				"dosini"
+			],
+			"type": "data",
+			"tm_scope": "source.ini",
+			"ace_mode": "ini"
+		},
+		"irc": {
+			"extensions": [
+				".irclog",
+				".weechatlog"
+			],
+			"aliases": [
+				"irc",
+				"irc logs"
+			],
+			"type": "data",
+			"search_term": "irc",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"irc logs": {
+			"extensions": [
+				".irclog",
+				".weechatlog"
+			],
+			"aliases": [
+				"irc",
+				"irc logs"
+			],
+			"type": "data",
+			"search_term": "irc",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"irclog": {
+			"extensions": [
+				".irclog",
+				".weechatlog"
+			],
+			"aliases": [
+				"irc",
+				"irc logs"
+			],
+			"type": "data",
+			"search_term": "irc",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"weechatlog": {
+			"extensions": [
+				".irclog",
+				".weechatlog"
+			],
+			"aliases": [
+				"irc",
+				"irc logs"
+			],
+			"type": "data",
+			"search_term": "irc",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"idr": {
+			"extensions": [
+				".idr",
+				".lidr"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.idris"
+		},
+		"lidr": {
+			"extensions": [
+				".idr",
+				".lidr"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.idris"
+		},
+		"i7": {
+			"extensions": [
+				".ni",
+				".i7x"
+			],
+			"aliases": [
+				"i7",
+				"inform7"
+			],
+			"type": "programming",
+			"wrap": true,
+			"tm_scope": "source.inform7",
+			"ace_mode": "text"
+		},
+		"inform7": {
+			"extensions": [
+				".ni",
+				".i7x"
+			],
+			"aliases": [
+				"i7",
+				"inform7"
+			],
+			"type": "programming",
+			"wrap": true,
+			"tm_scope": "source.inform7",
+			"ace_mode": "text"
+		},
+		"ni": {
+			"extensions": [
+				".ni",
+				".i7x"
+			],
+			"aliases": [
+				"i7",
+				"inform7"
+			],
+			"type": "programming",
+			"wrap": true,
+			"tm_scope": "source.inform7",
+			"ace_mode": "text"
+		},
+		"i7x": {
+			"extensions": [
+				".ni",
+				".i7x"
+			],
+			"aliases": [
+				"i7",
+				"inform7"
+			],
+			"type": "programming",
+			"wrap": true,
+			"tm_scope": "source.inform7",
+			"ace_mode": "text"
+		},
+		"iss": {
+			"extensions": [
+				".iss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"io": {
+			"extensions": [
+				".io"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a9188d",
+			"interpreters": [
+				"io"
+			],
+			"ace_mode": "io"
+		},
+		"ik": {
+			"extensions": [
+				".ik"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#078193",
+			"interpreters": [
+				"ioke"
+			],
+			"ace_mode": "text"
+		},
+		"thy": {
+			"extensions": [
+				".thy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#FEFE00",
+			"tm_scope": "source.isabelle.theory",
+			"ace_mode": "text"
+		},
+		"ijs": {
+			"extensions": [
+				".ijs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#9EEDFF",
+			"interpreters": [
+				"jconsole"
+			],
+			"tm_scope": "source.j",
+			"ace_mode": "text"
+		},
+		"flex": {
+			"extensions": [
+				".l",
+				".lex"
+			],
+			"aliases": [
+				"flex"
+			],
+			"type": "programming",
+			"color": "#DBCA00",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"jflex": {
+			"extensions": [
+				".flex",
+				".jflex"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#DBCA00",
+			"group": "Lex",
+			"tm_scope": "source.jflex",
+			"ace_mode": "text"
+		},
+		"json": {
+			"extensions": [
+				".json",
+				".geojson",
+				".JSON-tmLanguage",
+				".topojson"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.json",
+			"group": "JavaScript",
+			"ace_mode": "json",
+			"searchable": false,
+			"filenames": [
+				".arcconfig",
+				".jshintrc",
+				"composer.lock",
+				"mcmod.info"
+			]
+		},
+		"geojson": {
+			"extensions": [
+				".json",
+				".geojson",
+				".JSON-tmLanguage",
+				".topojson"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.json",
+			"group": "JavaScript",
+			"ace_mode": "json",
+			"searchable": false,
+			"filenames": [
+				".arcconfig",
+				".jshintrc",
+				"composer.lock",
+				"mcmod.info"
+			]
+		},
+		"JSON-tmLanguage": {
+			"extensions": [
+				".json",
+				".geojson",
+				".JSON-tmLanguage",
+				".topojson"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.json",
+			"group": "JavaScript",
+			"ace_mode": "json",
+			"searchable": false,
+			"filenames": [
+				".arcconfig",
+				".jshintrc",
+				"composer.lock",
+				"mcmod.info"
+			]
+		},
+		"topojson": {
+			"extensions": [
+				".json",
+				".geojson",
+				".JSON-tmLanguage",
+				".topojson"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.json",
+			"group": "JavaScript",
+			"ace_mode": "json",
+			"searchable": false,
+			"filenames": [
+				".arcconfig",
+				".jshintrc",
+				"composer.lock",
+				"mcmod.info"
+			]
+		},
+		"json5": {
+			"extensions": [
+				".json5"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript"
+		},
+		"jsonld": {
+			"extensions": [
+				".jsonld"
+			],
+			"aliases": [],
+			"type": "data",
+			"group": "JavaScript",
+			"ace_mode": "javascript",
+			"tm_scope": "source.js"
+		},
+		"jq": {
+			"extensions": [
+				".jq"
+			],
+			"aliases": [],
+			"color": "#40d47e",
+			"type": "programming",
+			"ace_mode": "jsoniq",
+			"tm_scope": "source.jq"
+		},
+		"jsx": {
+			"extensions": [
+				".jsx"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "JavaScript",
+			"tm_scope": "source.js.jsx",
+			"ace_mode": "javascript"
+		},
+		"jade": {
+			"extensions": [
+				".jade",
+				".pug"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"tm_scope": "text.jade",
+			"ace_mode": "jade"
+		},
+		"pug": {
+			"extensions": [
+				".jade",
+				".pug"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"tm_scope": "text.jade",
+			"ace_mode": "jade"
+		},
+		"j": {
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"type": "programming",
+			"color": "#ff0c5a",
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"java": {
+			"extensions": [
+				".java"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "java",
+			"color": "#b07219"
+		},
+		"jsp": {
+			"extensions": [
+				".jsp"
+			],
+			"aliases": [
+				"jsp"
+			],
+			"type": "programming",
+			"group": "Java",
+			"search_term": "jsp",
+			"tm_scope": "text.html.jsp",
+			"ace_mode": "jsp"
+		},
+		"js": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"node": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"_js": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"bones": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"es6": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jake": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jsb": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jscad": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jsfl": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jsm": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jss": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"njs": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"pac": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sjs": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"ssjs": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-build": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-commands": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-completions": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-keymap": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-macro": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-menu": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-mousemap": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-project": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-settings": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-theme": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime-workspace": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime_metrics": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"sublime_session": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"xsjs": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"xsjslib": {
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"aliases": [
+				"js",
+				"node"
+			],
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"jl": {
+			"extensions": [
+				".jl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a270ba",
+			"ace_mode": "julia"
+		},
+		"IPython Notebook": {
+			"extensions": [
+				".ipynb"
+			],
+			"aliases": [
+				"IPython Notebook"
+			],
+			"type": "markup",
+			"ace_mode": "json",
+			"tm_scope": "source.json",
+			"color": "#DA5B0B",
+			"filenames": [
+				"Notebook"
+			]
+		},
+		"ipynb": {
+			"extensions": [
+				".ipynb"
+			],
+			"aliases": [
+				"IPython Notebook"
+			],
+			"type": "markup",
+			"ace_mode": "json",
+			"tm_scope": "source.json",
+			"color": "#DA5B0B",
+			"filenames": [
+				"Notebook"
+			]
+		},
+		"krl": {
+			"extensions": [
+				".krl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#28431f",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"kicad_pcb": {
+			"extensions": [
+				".sch",
+				".brd",
+				".kicad_pcb"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"kit": {
+			"extensions": [
+				".kit"
+			],
+			"aliases": [],
+			"type": "markup",
+			"ace_mode": "html",
+			"tm_scope": "text.html.basic"
+		},
+		"kt": {
+			"extensions": [
+				".kt",
+				".ktm",
+				".kts"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#F18E33",
+			"tm_scope": "source.Kotlin",
+			"ace_mode": "text"
+		},
+		"ktm": {
+			"extensions": [
+				".kt",
+				".ktm",
+				".kts"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#F18E33",
+			"tm_scope": "source.Kotlin",
+			"ace_mode": "text"
+		},
+		"kts": {
+			"extensions": [
+				".kt",
+				".ktm",
+				".kts"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#F18E33",
+			"tm_scope": "source.Kotlin",
+			"ace_mode": "text"
+		},
+		"lfe": {
+			"extensions": [
+				".lfe"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#004200",
+			"group": "Erlang",
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"ll": {
+			"extensions": [
+				".ll"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#185619"
+		},
+		"lol": {
+			"extensions": [
+				".lol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cc9900",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"lsl": {
+			"extensions": [
+				".lsl",
+				".lslp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lsl",
+			"interpreters": [
+				"lsl"
+			],
+			"color": "#3d9970"
+		},
+		"lslp": {
+			"extensions": [
+				".lsl",
+				".lslp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lsl",
+			"interpreters": [
+				"lsl"
+			],
+			"color": "#3d9970"
+		},
+		"lvproj": {
+			"extensions": [
+				".lvproj"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"lassoscript": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"lasso": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"las": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"lasso8": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"lasso9": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"ldml": {
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"aliases": [
+				"lassoscript"
+			],
+			"type": "programming",
+			"color": "#999999",
+			"tm_scope": "file.lasso",
+			"ace_mode": "text"
+		},
+		"latte": {
+			"extensions": [
+				".latte"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#A8FF97",
+			"group": "HTML",
+			"tm_scope": "text.html.smarty",
+			"ace_mode": "smarty"
+		},
+		"lean": {
+			"extensions": [
+				".lean",
+				".hlean"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"hlean": {
+			"extensions": [
+				".lean",
+				".hlean"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"less": {
+			"extensions": [
+				".less"
+			],
+			"aliases": [],
+			"type": "markup",
+			"group": "CSS",
+			"tm_scope": "source.css.less",
+			"ace_mode": "less",
+			"color": "#A1D9A1"
+		},
+		"lex": {
+			"extensions": [
+				".l",
+				".lex"
+			],
+			"aliases": [
+				"flex"
+			],
+			"type": "programming",
+			"color": "#DBCA00",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ly": {
+			"extensions": [
+				".ly",
+				".ily"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"ily": {
+			"extensions": [
+				".ly",
+				".ily"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"m": {
+			"extensions": [
+				".m",
+				".h"
+			],
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"ace_mode": "objectivec"
+		},
+		"ld": {
+			"extensions": [
+				".ld",
+				".lds"
+			],
+			"aliases": [],
+			"type": "data",
+			"filenames": [
+				"ld.script"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"lds": {
+			"extensions": [
+				".ld",
+				".lds"
+			],
+			"aliases": [],
+			"type": "data",
+			"filenames": [
+				"ld.script"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"liquid": {
+			"extensions": [
+				".liquid"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "text.html.liquid",
+			"ace_mode": "liquid"
+		},
+		"lagda": {
+			"extensions": [
+				".lagda"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Agda",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"litcoffee": {
+			"extensions": [
+				".litcoffee"
+			],
+			"aliases": [
+				"litcoffee"
+			],
+			"type": "programming",
+			"tm_scope": "source.litcoffee",
+			"group": "CoffeeScript",
+			"ace_mode": "text",
+			"wrap": true,
+			"search_term": "litcoffee"
+		},
+		"lhaskell": {
+			"extensions": [
+				".lhs"
+			],
+			"aliases": [
+				"lhaskell",
+				"lhs"
+			],
+			"type": "programming",
+			"group": "Haskell",
+			"search_term": "lhs",
+			"tm_scope": "text.tex.latex.haskell",
+			"ace_mode": "text"
+		},
+		"lhs": {
+			"extensions": [
+				".lhs"
+			],
+			"aliases": [
+				"lhaskell",
+				"lhs"
+			],
+			"type": "programming",
+			"group": "Haskell",
+			"search_term": "lhs",
+			"tm_scope": "text.tex.latex.haskell",
+			"ace_mode": "text"
+		},
+		"live-script": {
+			"extensions": [
+				".ls",
+				"._ls"
+			],
+			"aliases": [
+				"live-script",
+				"ls"
+			],
+			"type": "programming",
+			"color": "#499886",
+			"filenames": [
+				"Slakefile"
+			],
+			"ace_mode": "livescript"
+		},
+		"ls": {
+			"extensions": [
+				".ls"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.loomscript",
+			"ace_mode": "text"
+		},
+		"_ls": {
+			"extensions": [
+				".ls",
+				"._ls"
+			],
+			"aliases": [
+				"live-script",
+				"ls"
+			],
+			"type": "programming",
+			"color": "#499886",
+			"filenames": [
+				"Slakefile"
+			],
+			"ace_mode": "livescript"
+		},
+		"xm": {
+			"extensions": [
+				".xm",
+				".x",
+				".xi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.logos"
+		},
+		"x": {
+			"extensions": [
+				".xm",
+				".x",
+				".xi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.logos"
+		},
+		"xi": {
+			"extensions": [
+				".xm",
+				".x",
+				".xi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.logos"
+		},
+		"lgt": {
+			"extensions": [
+				".lgt",
+				".logtalk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"logtalk": {
+			"extensions": [
+				".lgt",
+				".logtalk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"lookml": {
+			"extensions": [
+				".lookml"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "yaml",
+			"color": "#652B81",
+			"tm_scope": "source.yaml"
+		},
+		"lua": {
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"fcgi": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"nse": {
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"pd_lua": {
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"rbxs": {
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"wlua": {
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"mumps": {
+			"extensions": [
+				".mumps",
+				".m"
+			],
+			"aliases": [
+				"mumps"
+			],
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"m4": {
+			"extensions": [
+				".m4"
+			],
+			"aliases": [
+				"autoconf"
+			],
+			"type": "programming",
+			"group": "M4",
+			"filenames": [
+				"configure.ac"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"autoconf": {
+			"extensions": [
+				".m4"
+			],
+			"aliases": [
+				"autoconf"
+			],
+			"type": "programming",
+			"group": "M4",
+			"filenames": [
+				"configure.ac"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"mcr": {
+			"extensions": [
+				".ms",
+				".mcr"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#00a6a6",
+			"tm_scope": "source.maxscript",
+			"ace_mode": "text"
+		},
+		"mtml": {
+			"extensions": [
+				".mtml"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#b7e1f4",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html"
+		},
+		"muf": {
+			"extensions": [
+				".muf",
+				".m"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Forth",
+			"tm_scope": "none",
+			"ace_mode": "forth"
+		},
+		"bsdmake": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"make": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"mf": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"mak": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"mk": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"mkfile": {
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"type": "programming",
+			"color": "#427819",
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"mako": {
+			"extensions": [
+				".mako",
+				".mao"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.html.mako",
+			"ace_mode": "text"
+		},
+		"mao": {
+			"extensions": [
+				".mako",
+				".mao"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.html.mako",
+			"ace_mode": "text"
+		},
+		"markdown": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"mkd": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"mkdn": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"mkdown": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"ron": {
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"tm_scope": "source.gfm"
+		},
+		"mask": {
+			"extensions": [
+				".mask"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#f97732",
+			"ace_mode": "mask",
+			"tm_scope": "source.mask"
+		},
+		"mma": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"mathematica": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"cdf": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"ma": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"mt": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"nb": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"nbp": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"wl": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"wlt": {
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"octave": {
+			"extensions": [
+				".matlab",
+				".m"
+			],
+			"aliases": [
+				"octave"
+			],
+			"type": "programming",
+			"color": "#bb92ac",
+			"ace_mode": "matlab"
+		},
+		"matlab": {
+			"extensions": [
+				".matlab",
+				".m"
+			],
+			"aliases": [
+				"octave"
+			],
+			"type": "programming",
+			"color": "#bb92ac",
+			"ace_mode": "matlab"
+		},
+		"max/msp": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"maxmsp": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"maxpat": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"maxhelp": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"maxproj": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"mxt": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"pat": {
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"type": "programming",
+			"color": "#c4a79c",
+			"search_term": "max/msp",
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"mediawiki": {
+			"extensions": [
+				".mediawiki",
+				".wiki"
+			],
+			"aliases": [],
+			"type": "prose",
+			"wrap": true,
+			"tm_scope": "text.html.mediawiki",
+			"ace_mode": "text"
+		},
+		"wiki": {
+			"extensions": [
+				".mediawiki",
+				".wiki"
+			],
+			"aliases": [],
+			"type": "prose",
+			"wrap": true,
+			"tm_scope": "text.html.mediawiki",
+			"ace_mode": "text"
+		},
+		"moo": {
+			"extensions": [
+				".moo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"metal": {
+			"extensions": [
+				".metal"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8f14e9",
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"minid": {
+			"extensions": [
+				".minid"
+			],
+			"aliases": [],
+			"type": "programming",
+			"searchable": false,
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"druby": {
+			"extensions": [
+				".druby",
+				".duby",
+				".mir",
+				".mirah"
+			],
+			"aliases": [],
+			"type": "programming",
+			"search_term": "mirah",
+			"color": "#c7a938",
+			"tm_scope": "source.ruby",
+			"ace_mode": "ruby"
+		},
+		"duby": {
+			"extensions": [
+				".druby",
+				".duby",
+				".mir",
+				".mirah"
+			],
+			"aliases": [],
+			"type": "programming",
+			"search_term": "mirah",
+			"color": "#c7a938",
+			"tm_scope": "source.ruby",
+			"ace_mode": "ruby"
+		},
+		"mir": {
+			"extensions": [
+				".druby",
+				".duby",
+				".mir",
+				".mirah"
+			],
+			"aliases": [],
+			"type": "programming",
+			"search_term": "mirah",
+			"color": "#c7a938",
+			"tm_scope": "source.ruby",
+			"ace_mode": "ruby"
+		},
+		"mirah": {
+			"extensions": [
+				".druby",
+				".duby",
+				".mir",
+				".mirah"
+			],
+			"aliases": [],
+			"type": "programming",
+			"search_term": "mirah",
+			"color": "#c7a938",
+			"tm_scope": "source.ruby",
+			"ace_mode": "ruby"
+		},
+		"mo": {
+			"extensions": [
+				".mo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.modelica",
+			"ace_mode": "text"
+		},
+		"mms": {
+			"extensions": [
+				".mms",
+				".mmk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"filenames": [
+				"descrip.mmk",
+				"descrip.mms"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"mmk": {
+			"extensions": [
+				".mms",
+				".mmk"
+			],
+			"aliases": [],
+			"type": "programming",
+			"filenames": [
+				"descrip.mmk",
+				"descrip.mms"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"monkey": {
+			"extensions": [
+				".monkey"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.monkey"
+		},
+		"moon": {
+			"extensions": [
+				".moon"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"moon"
+			],
+			"ace_mode": "text"
+		},
+		"myt": {
+			"extensions": [
+				".myt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ncl": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"nl": {
+			"extensions": [
+				".nl",
+				".lisp",
+				".lsp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"lexer": "NewLisp",
+			"color": "#87AED7",
+			"interpreters": [
+				"newlisp"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"nsi": {
+			"extensions": [
+				".nsi",
+				".nsh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"nsh": {
+			"extensions": [
+				".nsi",
+				".nsh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"axs": {
+			"extensions": [
+				".axs",
+				".axi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0aa0ff",
+			"tm_scope": "source.netlinx",
+			"ace_mode": "text"
+		},
+		"axi": {
+			"extensions": [
+				".axs",
+				".axi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0aa0ff",
+			"tm_scope": "source.netlinx",
+			"ace_mode": "text"
+		},
+		"axs.erb": {
+			"extensions": [
+				".axs.erb",
+				".axi.erb"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#747faa",
+			"tm_scope": "source.netlinx.erb",
+			"ace_mode": "text"
+		},
+		"axi.erb": {
+			"extensions": [
+				".axs.erb",
+				".axi.erb"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#747faa",
+			"tm_scope": "source.netlinx.erb",
+			"ace_mode": "text"
+		},
+		"nlogo": {
+			"extensions": [
+				".nlogo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#ff6375",
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"nginx configuration file": {
+			"extensions": [
+				".nginxconf",
+				".vhost"
+			],
+			"aliases": [
+				"nginx configuration file"
+			],
+			"type": "markup",
+			"filenames": [
+				"nginx.conf"
+			],
+			"tm_scope": "source.nginx",
+			"ace_mode": "text",
+			"color": "#9469E9"
+		},
+		"nginxconf": {
+			"extensions": [
+				".nginxconf",
+				".vhost"
+			],
+			"aliases": [
+				"nginx configuration file"
+			],
+			"type": "markup",
+			"filenames": [
+				"nginx.conf"
+			],
+			"tm_scope": "source.nginx",
+			"ace_mode": "text",
+			"color": "#9469E9"
+		},
+		"nim": {
+			"extensions": [
+				".nim",
+				".nimrod"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#37775b",
+			"ace_mode": "text",
+			"tm_scope": "source.nim"
+		},
+		"nimrod": {
+			"extensions": [
+				".nim",
+				".nimrod"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#37775b",
+			"ace_mode": "text",
+			"tm_scope": "source.nim"
+		},
+		"ninja": {
+			"extensions": [
+				".ninja"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.ninja",
+			"ace_mode": "text"
+		},
+		"nit": {
+			"extensions": [
+				".nit"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#009917",
+			"tm_scope": "source.nit",
+			"ace_mode": "text"
+		},
+		"nixos": {
+			"extensions": [
+				".nix"
+			],
+			"aliases": [
+				"nixos"
+			],
+			"type": "programming",
+			"color": "#7e7eff",
+			"tm_scope": "source.nix",
+			"ace_mode": "nix"
+		},
+		"nix": {
+			"extensions": [
+				".nix"
+			],
+			"aliases": [
+				"nixos"
+			],
+			"type": "programming",
+			"color": "#7e7eff",
+			"tm_scope": "source.nix",
+			"ace_mode": "nix"
+		},
+		"nush": {
+			"extensions": [
+				".nu"
+			],
+			"aliases": [
+				"nush"
+			],
+			"type": "programming",
+			"color": "#c9df40",
+			"filenames": [
+				"Nukefile"
+			],
+			"tm_scope": "source.nu",
+			"ace_mode": "scheme",
+			"interpreters": [
+				"nush"
+			]
+		},
+		"nu": {
+			"extensions": [
+				".nu"
+			],
+			"aliases": [
+				"nush"
+			],
+			"type": "programming",
+			"color": "#c9df40",
+			"filenames": [
+				"Nukefile"
+			],
+			"tm_scope": "source.nu",
+			"ace_mode": "scheme",
+			"interpreters": [
+				"nush"
+			]
+		},
+		"numpy": {
+			"extensions": [
+				".numpy",
+				".numpyw",
+				".numsc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Python",
+			"tm_scope": "none",
+			"ace_mode": "text",
+			"color": "#9C8AF9"
+		},
+		"numpyw": {
+			"extensions": [
+				".numpy",
+				".numpyw",
+				".numsc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Python",
+			"tm_scope": "none",
+			"ace_mode": "text",
+			"color": "#9C8AF9"
+		},
+		"numsc": {
+			"extensions": [
+				".numpy",
+				".numpyw",
+				".numsc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Python",
+			"tm_scope": "none",
+			"ace_mode": "text",
+			"color": "#9C8AF9"
+		},
+		"ml": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"eliom": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"eliomi": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"ml4": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"mli": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"mll": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"mly": {
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"objdump": {
+			"extensions": [
+				".objdump"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"obj-c": {
+			"extensions": [
+				".m",
+				".h"
+			],
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"ace_mode": "objectivec"
+		},
+		"objc": {
+			"extensions": [
+				".m",
+				".h"
+			],
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"ace_mode": "objectivec"
+		},
+		"objectivec": {
+			"extensions": [
+				".m",
+				".h"
+			],
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"ace_mode": "objectivec"
+		},
+		"obj-c++": {
+			"extensions": [
+				".mm"
+			],
+			"aliases": [
+				"obj-c++",
+				"objc++",
+				"objectivec++"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc++",
+			"color": "#6866fb",
+			"ace_mode": "objectivec"
+		},
+		"objc++": {
+			"extensions": [
+				".mm"
+			],
+			"aliases": [
+				"obj-c++",
+				"objc++",
+				"objectivec++"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc++",
+			"color": "#6866fb",
+			"ace_mode": "objectivec"
+		},
+		"objectivec++": {
+			"extensions": [
+				".mm"
+			],
+			"aliases": [
+				"obj-c++",
+				"objc++",
+				"objectivec++"
+			],
+			"type": "programming",
+			"tm_scope": "source.objc++",
+			"color": "#6866fb",
+			"ace_mode": "objectivec"
+		},
+		"mm": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"obj-j": {
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"type": "programming",
+			"color": "#ff0c5a",
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"objectivej": {
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"type": "programming",
+			"color": "#ff0c5a",
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"objj": {
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"type": "programming",
+			"color": "#ff0c5a",
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"sj": {
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"type": "programming",
+			"color": "#ff0c5a",
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"omgrofl": {
+			"extensions": [
+				".omgrofl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cabbff",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"opa": {
+			"extensions": [
+				".opa"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"opal": {
+			"extensions": [
+				".opal"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f7ede0",
+			"tm_scope": "source.opal",
+			"ace_mode": "text"
+		},
+		"opencl": {
+			"extensions": [
+				".cl",
+				".opencl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "C",
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"progress": {
+			"extensions": [
+				".p",
+				".cls"
+			],
+			"aliases": [
+				"progress",
+				"openedge",
+				"abl"
+			],
+			"type": "programming",
+			"tm_scope": "source.abl",
+			"ace_mode": "text"
+		},
+		"openedge": {
+			"extensions": [
+				".p",
+				".cls"
+			],
+			"aliases": [
+				"progress",
+				"openedge",
+				"abl"
+			],
+			"type": "programming",
+			"tm_scope": "source.abl",
+			"ace_mode": "text"
+		},
+		"abl": {
+			"extensions": [
+				".p",
+				".cls"
+			],
+			"aliases": [
+				"progress",
+				"openedge",
+				"abl"
+			],
+			"type": "programming",
+			"tm_scope": "source.abl",
+			"ace_mode": "text"
+		},
+		"p": {
+			"extensions": [
+				".p",
+				".cls"
+			],
+			"aliases": [
+				"progress",
+				"openedge",
+				"abl"
+			],
+			"type": "programming",
+			"tm_scope": "source.abl",
+			"ace_mode": "text"
+		},
+		"openrc": {
+			"extensions": [],
+			"aliases": [
+				"openrc"
+			],
+			"type": "programming",
+			"group": "Shell",
+			"interpreters": [
+				"openrc-run"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"scad": {
+			"extensions": [
+				".scad"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "scad"
+		},
+		"org": {
+			"extensions": [
+				".org"
+			],
+			"aliases": [],
+			"type": "prose",
+			"wrap": true,
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ox": {
+			"extensions": [
+				".ox",
+				".oxh",
+				".oxo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.ox",
+			"ace_mode": "text"
+		},
+		"oxh": {
+			"extensions": [
+				".ox",
+				".oxh",
+				".oxo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.ox",
+			"ace_mode": "text"
+		},
+		"oxo": {
+			"extensions": [
+				".ox",
+				".oxh",
+				".oxo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.ox",
+			"ace_mode": "text"
+		},
+		"oxygene": {
+			"extensions": [
+				".oxygene"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cdd0e3",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"oz": {
+			"extensions": [
+				".oz"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#fab738",
+			"tm_scope": "source.oz",
+			"ace_mode": "text"
+		},
+		"pwn": {
+			"extensions": [
+				".pwn",
+				".inc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#dbb284",
+			"tm_scope": "source.pawn",
+			"ace_mode": "text"
+		},
+		"aw": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"ctp": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"php3": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"php4": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"php5": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"phps": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"phpt": {
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"aliases": [
+				"inc"
+			],
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			]
+		},
+		"pls": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"pck": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"pkb": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"pks": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"plb": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"plsql": {
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8"
+		},
+		"sql": {
+			"extensions": [
+				".sql",
+				".db2"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "source.sql"
+		},
+		"pov-ray": {
+			"extensions": [
+				".pov",
+				".inc"
+			],
+			"aliases": [
+				"pov-ray",
+				"povray"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"povray": {
+			"extensions": [
+				".pov",
+				".inc"
+			],
+			"aliases": [
+				"pov-ray",
+				"povray"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"pov": {
+			"extensions": [
+				".pov",
+				".inc"
+			],
+			"aliases": [
+				"pov-ray",
+				"povray"
+			],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"pan": {
+			"extensions": [
+				".pan"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cc0000",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"psc": {
+			"extensions": [
+				".psc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#6600cc",
+			"tm_scope": "source.papyrus.skyrim",
+			"ace_mode": "text"
+		},
+		"parrot": {
+			"extensions": [
+				".parrot"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#f3ca0a",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pasm": {
+			"extensions": [
+				".pasm"
+			],
+			"aliases": [
+				"pasm"
+			],
+			"group": "Parrot",
+			"type": "programming",
+			"interpreters": [
+				"parrot"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pir": {
+			"extensions": [
+				".pir"
+			],
+			"aliases": [
+				"pir"
+			],
+			"group": "Parrot",
+			"tm_scope": "source.parrot.pir",
+			"type": "programming",
+			"interpreters": [
+				"parrot"
+			],
+			"ace_mode": "text"
+		},
+		"pas": {
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E3F171",
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"dfm": {
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E3F171",
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"dpr": {
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E3F171",
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"lpr": {
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E3F171",
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"pascal": {
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#E3F171",
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"pp": {
+			"extensions": [
+				".pp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#302B6D",
+			"filenames": [
+				"Modulefile"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.puppet"
+		},
+		"pl": {
+			"extensions": [
+				".pl",
+				".pro",
+				".prolog",
+				".yap"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#74283c",
+			"interpreters": [
+				"swipl",
+				"yap"
+			],
+			"tm_scope": "source.prolog",
+			"ace_mode": "prolog"
+		},
+		"al": {
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"interpreters": [
+				"perl"
+			]
+		},
+		"cgi": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"perl": {
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"interpreters": [
+				"perl"
+			]
+		},
+		"ph": {
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"interpreters": [
+				"perl"
+			]
+		},
+		"plx": {
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"interpreters": [
+				"perl"
+			]
+		},
+		"pm": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"pod": {
+			"extensions": [
+				".pod"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "perl",
+			"wrap": true,
+			"tm_scope": "none"
+		},
+		"psgi": {
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"interpreters": [
+				"perl"
+			]
+		},
+		"t": {
+			"extensions": [
+				".t",
+				".tu"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cf142b",
+			"tm_scope": "source.turing",
+			"ace_mode": "text"
+		},
+		"6pl": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"6pm": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"nqp": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"p6": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"p6l": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"p6m": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"pl6": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"pm6": {
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0000fb",
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"pkl": {
+			"extensions": [
+				".pkl"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pig": {
+			"extensions": [
+				".pig"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#fcd7de",
+			"tm_scope": "source.pig_latin",
+			"ace_mode": "text"
+		},
+		"pike": {
+			"extensions": [
+				".pike",
+				".pmod"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#005390",
+			"interpreters": [
+				"pike"
+			],
+			"ace_mode": "text"
+		},
+		"pmod": {
+			"extensions": [
+				".pike",
+				".pmod"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#005390",
+			"interpreters": [
+				"pike"
+			],
+			"ace_mode": "text"
+		},
+		"pogo": {
+			"extensions": [
+				".pogo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#d80074",
+			"tm_scope": "source.pogoscript",
+			"ace_mode": "text"
+		},
+		"pony": {
+			"extensions": [
+				".pony"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.pony",
+			"ace_mode": "text"
+		},
+		"postscr": {
+			"extensions": [
+				".ps",
+				".eps"
+			],
+			"aliases": [
+				"postscr"
+			],
+			"type": "markup",
+			"color": "#da291c",
+			"tm_scope": "source.postscript",
+			"ace_mode": "text"
+		},
+		"ps": {
+			"extensions": [
+				".ps",
+				".eps"
+			],
+			"aliases": [
+				"postscr"
+			],
+			"type": "markup",
+			"color": "#da291c",
+			"tm_scope": "source.postscript",
+			"ace_mode": "text"
+		},
+		"eps": {
+			"extensions": [
+				".ps",
+				".eps"
+			],
+			"aliases": [
+				"postscr"
+			],
+			"type": "markup",
+			"color": "#da291c",
+			"tm_scope": "source.postscript",
+			"ace_mode": "text"
+		},
+		"pbt": {
+			"extensions": [
+				".pbt",
+				".sra",
+				".sru",
+				".srw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8f0f8d",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"sra": {
+			"extensions": [
+				".pbt",
+				".sra",
+				".sru",
+				".srw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8f0f8d",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"sru": {
+			"extensions": [
+				".pbt",
+				".sra",
+				".sru",
+				".srw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8f0f8d",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"srw": {
+			"extensions": [
+				".pbt",
+				".sra",
+				".sru",
+				".srw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#8f0f8d",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"posh": {
+			"extensions": [
+				".ps1",
+				".psd1",
+				".psm1"
+			],
+			"aliases": [
+				"posh"
+			],
+			"type": "programming",
+			"ace_mode": "powershell"
+		},
+		"ps1": {
+			"extensions": [
+				".ps1",
+				".psd1",
+				".psm1"
+			],
+			"aliases": [
+				"posh"
+			],
+			"type": "programming",
+			"ace_mode": "powershell"
+		},
+		"psd1": {
+			"extensions": [
+				".ps1",
+				".psd1",
+				".psm1"
+			],
+			"aliases": [
+				"posh"
+			],
+			"type": "programming",
+			"ace_mode": "powershell"
+		},
+		"psm1": {
+			"extensions": [
+				".ps1",
+				".psd1",
+				".psm1"
+			],
+			"aliases": [
+				"posh"
+			],
+			"type": "programming",
+			"ace_mode": "powershell"
+		},
+		"pde": {
+			"extensions": [
+				".pde"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0096D8",
+			"ace_mode": "text"
+		},
+		"prolog": {
+			"extensions": [
+				".pl",
+				".pro",
+				".prolog",
+				".yap"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#74283c",
+			"interpreters": [
+				"swipl",
+				"yap"
+			],
+			"tm_scope": "source.prolog",
+			"ace_mode": "prolog"
+		},
+		"yap": {
+			"extensions": [
+				".pl",
+				".pro",
+				".prolog",
+				".yap"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#74283c",
+			"interpreters": [
+				"swipl",
+				"yap"
+			],
+			"tm_scope": "source.prolog",
+			"ace_mode": "prolog"
+		},
+		"spin": {
+			"extensions": [
+				".spin"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#7fa2a7",
+			"tm_scope": "source.spin",
+			"ace_mode": "text"
+		},
+		"protobuf": {
+			"extensions": [
+				".proto"
+			],
+			"aliases": [
+				"protobuf",
+				"Protocol Buffers"
+			],
+			"type": "markup",
+			"tm_scope": "source.protobuf",
+			"ace_mode": "protobuf"
+		},
+		"Protocol Buffers": {
+			"extensions": [
+				".proto"
+			],
+			"aliases": [
+				"protobuf",
+				"Protocol Buffers"
+			],
+			"type": "markup",
+			"tm_scope": "source.protobuf",
+			"ace_mode": "protobuf"
+		},
+		"proto": {
+			"extensions": [
+				".proto"
+			],
+			"aliases": [
+				"protobuf",
+				"Protocol Buffers"
+			],
+			"type": "markup",
+			"tm_scope": "source.protobuf",
+			"ace_mode": "protobuf"
+		},
+		"pub": {
+			"extensions": [
+				".asc",
+				".pub"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pd": {
+			"extensions": [
+				".pd"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#91de79",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pb": {
+			"extensions": [
+				".pb",
+				".pbi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5a6986",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"pbi": {
+			"extensions": [
+				".pb",
+				".pbi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5a6986",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"purs": {
+			"extensions": [
+				".purs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1D222D",
+			"tm_scope": "source.purescript",
+			"ace_mode": "haskell"
+		},
+		"rusthon": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"py": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"bzl": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"gyp": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"lmi": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"pyde": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"pyp": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"pyt": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"pyw": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"rpy": {
+			"extensions": [
+				".rpy"
+			],
+			"aliases": [
+				"renpy"
+			],
+			"type": "programming",
+			"color": "#ff7f7f",
+			"tm_scope": "source.renpy",
+			"ace_mode": "python"
+		},
+		"spec": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"tac": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"wsgi": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"xpy": {
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"aliases": [
+				"rusthon"
+			],
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			]
+		},
+		"pytb": {
+			"extensions": [
+				".pytb"
+			],
+			"aliases": [],
+			"type": "data",
+			"group": "Python",
+			"searchable": false,
+			"tm_scope": "text.python.traceback",
+			"ace_mode": "text"
+		},
+		"qml": {
+			"extensions": [
+				".qml",
+				".qbs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#44a51c",
+			"tm_scope": "source.qml",
+			"ace_mode": "text"
+		},
+		"qbs": {
+			"extensions": [
+				".qml",
+				".qbs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#44a51c",
+			"tm_scope": "source.qml",
+			"ace_mode": "text"
+		},
+		"pri": {
+			"extensions": [
+				".pro",
+				".pri"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"qmake"
+			],
+			"ace_mode": "text"
+		},
+		"R": {
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"type": "programming",
+			"color": "#198CE7",
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"Rscript": {
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"type": "programming",
+			"color": "#198CE7",
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"splus": {
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"type": "programming",
+			"color": "#198CE7",
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"r": {
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#358a5b",
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"rd": {
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"type": "programming",
+			"color": "#198CE7",
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"rsx": {
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"type": "programming",
+			"color": "#198CE7",
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"raml": {
+			"extensions": [
+				".raml"
+			],
+			"aliases": [],
+			"type": "markup",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml",
+			"color": "#77d9fb"
+		},
+		"rdoc": {
+			"extensions": [
+				".rdoc"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "rdoc",
+			"wrap": true,
+			"tm_scope": "text.rdoc"
+		},
+		"rbbas": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"rbfrm": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"rbmnu": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"rbres": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"rbtbar": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"rbuistate": {
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"arexx": {
+			"extensions": [
+				".rexx",
+				".pprx",
+				".rex"
+			],
+			"aliases": [
+				"arexx"
+			],
+			"type": "programming",
+			"tm_scope": "source.rexx",
+			"ace_mode": "text"
+		},
+		"rexx": {
+			"extensions": [
+				".rexx",
+				".pprx",
+				".rex"
+			],
+			"aliases": [
+				"arexx"
+			],
+			"type": "programming",
+			"tm_scope": "source.rexx",
+			"ace_mode": "text"
+		},
+		"pprx": {
+			"extensions": [
+				".rexx",
+				".pprx",
+				".rex"
+			],
+			"aliases": [
+				"arexx"
+			],
+			"type": "programming",
+			"tm_scope": "source.rexx",
+			"ace_mode": "text"
+		},
+		"rex": {
+			"extensions": [
+				".rexx",
+				".pprx",
+				".rex"
+			],
+			"aliases": [
+				"arexx"
+			],
+			"type": "programming",
+			"tm_scope": "source.rexx",
+			"ace_mode": "text"
+		},
+		"html+ruby": {
+			"extensions": [
+				".rhtml"
+			],
+			"aliases": [
+				"html+ruby"
+			],
+			"type": "markup",
+			"group": "HTML",
+			"tm_scope": "text.html.erb",
+			"ace_mode": "rhtml"
+		},
+		"rhtml": {
+			"extensions": [
+				".rhtml"
+			],
+			"aliases": [
+				"html+ruby"
+			],
+			"type": "markup",
+			"group": "HTML",
+			"tm_scope": "text.html.erb",
+			"ace_mode": "rhtml"
+		},
+		"rmd": {
+			"extensions": [
+				".rmd"
+			],
+			"aliases": [],
+			"type": "prose",
+			"wrap": true,
+			"ace_mode": "markdown",
+			"tm_scope": "source.gfm"
+		},
+		"specfile": {
+			"extensions": [
+				".spec"
+			],
+			"aliases": [
+				"specfile"
+			],
+			"type": "data",
+			"tm_scope": "source.rpm-spec",
+			"ace_mode": "text"
+		},
+		"rnh": {
+			"extensions": [
+				".rnh",
+				".rno"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#665a4e",
+			"tm_scope": "text.runoff",
+			"ace_mode": "text"
+		},
+		"rkt": {
+			"extensions": [
+				".rkt",
+				".rktd",
+				".rktl",
+				".scrbl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#22228f",
+			"interpreters": [
+				"racket"
+			],
+			"tm_scope": "source.racket",
+			"ace_mode": "lisp"
+		},
+		"rktd": {
+			"extensions": [
+				".rkt",
+				".rktd",
+				".rktl",
+				".scrbl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#22228f",
+			"interpreters": [
+				"racket"
+			],
+			"tm_scope": "source.racket",
+			"ace_mode": "lisp"
+		},
+		"rktl": {
+			"extensions": [
+				".rkt",
+				".rktd",
+				".rktl",
+				".scrbl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#22228f",
+			"interpreters": [
+				"racket"
+			],
+			"tm_scope": "source.racket",
+			"ace_mode": "lisp"
+		},
+		"scrbl": {
+			"extensions": [
+				".rkt",
+				".rktd",
+				".rktl",
+				".scrbl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#22228f",
+			"interpreters": [
+				"racket"
+			],
+			"tm_scope": "source.racket",
+			"ace_mode": "lisp"
+		},
+		"ragel-rb": {
+			"extensions": [
+				".rl"
+			],
+			"aliases": [
+				"ragel-rb",
+				"ragel-ruby"
+			],
+			"type": "programming",
+			"color": "#9d5200",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ragel-ruby": {
+			"extensions": [
+				".rl"
+			],
+			"aliases": [
+				"ragel-rb",
+				"ragel-ruby"
+			],
+			"type": "programming",
+			"color": "#9d5200",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"rl": {
+			"extensions": [
+				".rl"
+			],
+			"aliases": [
+				"ragel-rb",
+				"ragel-ruby"
+			],
+			"type": "programming",
+			"color": "#9d5200",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"raw": {
+			"extensions": [
+				".raw"
+			],
+			"aliases": [
+				"raw"
+			],
+			"type": "data",
+			"search_term": "raw",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"reb": {
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#358a5b",
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"r2": {
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#358a5b",
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"r3": {
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#358a5b",
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"rebol": {
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#358a5b",
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"red/system": {
+			"extensions": [
+				".red",
+				".reds"
+			],
+			"aliases": [
+				"red/system"
+			],
+			"type": "programming",
+			"color": "#f50000",
+			"tm_scope": "source.red",
+			"ace_mode": "text"
+		},
+		"red": {
+			"extensions": [
+				".red",
+				".reds"
+			],
+			"aliases": [
+				"red/system"
+			],
+			"type": "programming",
+			"color": "#f50000",
+			"tm_scope": "source.red",
+			"ace_mode": "text"
+		},
+		"reds": {
+			"extensions": [
+				".red",
+				".reds"
+			],
+			"aliases": [
+				"red/system"
+			],
+			"type": "programming",
+			"color": "#f50000",
+			"tm_scope": "source.red",
+			"ace_mode": "text"
+		},
+		"cw": {
+			"extensions": [
+				".cw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"renpy": {
+			"extensions": [
+				".rpy"
+			],
+			"aliases": [
+				"renpy"
+			],
+			"type": "programming",
+			"color": "#ff7f7f",
+			"tm_scope": "source.renpy",
+			"ace_mode": "python"
+		},
+		"rs": {
+			"extensions": [
+				".rs",
+				".rs.in"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#dea584",
+			"ace_mode": "rust"
+		},
+		"rsh": {
+			"extensions": [
+				".rs",
+				".rsh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"robot": {
+			"extensions": [
+				".robot"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.robot",
+			"ace_mode": "text"
+		},
+		"rg": {
+			"extensions": [
+				".rg"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#cc0088",
+			"tm_scope": "source.clojure"
+		},
+		"jruby": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"macruby": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rake": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rb": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rbx": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"builder": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"gemspec": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"god": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"irbrc": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"jbuilder": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"mspec": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"pluginspec": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"podspec": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rabl": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rbuild": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rbw": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"ru": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"ruby": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"thor": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"watchr": {
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"rs.in": {
+			"extensions": [
+				".rs",
+				".rs.in"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#dea584",
+			"ace_mode": "rust"
+		},
+		"sas": {
+			"extensions": [
+				".sas"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#B34936",
+			"tm_scope": "source.sas",
+			"ace_mode": "text"
+		},
+		"scss": {
+			"extensions": [
+				".scss"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "source.scss",
+			"group": "CSS",
+			"ace_mode": "scss",
+			"color": "#CF649A"
+		},
+		"smt2": {
+			"extensions": [
+				".smt2",
+				".smt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"boolector",
+				"cvc4",
+				"mathsat5",
+				"opensmt",
+				"smtinterpol",
+				"smt-rat",
+				"stp",
+				"verit",
+				"yices2",
+				"z3"
+			],
+			"tm_scope": "source.smt",
+			"ace_mode": "text"
+		},
+		"smt": {
+			"extensions": [
+				".smt2",
+				".smt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"interpreters": [
+				"boolector",
+				"cvc4",
+				"mathsat5",
+				"opensmt",
+				"smtinterpol",
+				"smt-rat",
+				"stp",
+				"verit",
+				"yices2",
+				"z3"
+			],
+			"tm_scope": "source.smt",
+			"ace_mode": "text"
+		},
+		"sparql": {
+			"extensions": [
+				".sparql",
+				".rq"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sparql",
+			"ace_mode": "text"
+		},
+		"rq": {
+			"extensions": [
+				".sparql",
+				".rq"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sparql",
+			"ace_mode": "text"
+		},
+		"sqf": {
+			"extensions": [
+				".sqf",
+				".hqf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#3F3F3F",
+			"tm_scope": "source.sqf",
+			"ace_mode": "text"
+		},
+		"hqf": {
+			"extensions": [
+				".sqf",
+				".hqf"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#3F3F3F",
+			"tm_scope": "source.sqf",
+			"ace_mode": "text"
+		},
+		"cql": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"ddl": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"prc": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"tab": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"udf": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"viw": {
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql"
+		},
+		"db2": {
+			"extensions": [
+				".sql",
+				".db2"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "source.sql"
+		},
+		"srt": {
+			"extensions": [
+				".srt"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "text",
+			"tm_scope": "text.srt"
+		},
+		"ston": {
+			"extensions": [
+				".ston"
+			],
+			"aliases": [],
+			"type": "data",
+			"group": "Smalltalk",
+			"tm_scope": "source.smalltalk",
+			"ace_mode": "text"
+		},
+		"svg": {
+			"extensions": [
+				".svg"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"sage": {
+			"extensions": [
+				".sage",
+				".sagews"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Python",
+			"tm_scope": "source.python",
+			"ace_mode": "python"
+		},
+		"sagews": {
+			"extensions": [
+				".sage",
+				".sagews"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Python",
+			"tm_scope": "source.python",
+			"ace_mode": "python"
+		},
+		"saltstate": {
+			"extensions": [
+				".sls"
+			],
+			"aliases": [
+				"saltstate",
+				"salt"
+			],
+			"type": "programming",
+			"color": "#646464",
+			"tm_scope": "source.yaml.salt",
+			"ace_mode": "yaml"
+		},
+		"salt": {
+			"extensions": [
+				".sls"
+			],
+			"aliases": [
+				"saltstate",
+				"salt"
+			],
+			"type": "programming",
+			"color": "#646464",
+			"tm_scope": "source.yaml.salt",
+			"ace_mode": "yaml"
+		},
+		"sls": {
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1e4aec",
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"sass": {
+			"extensions": [
+				".sass"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "source.sass",
+			"group": "CSS",
+			"ace_mode": "sass",
+			"color": "#CF649A"
+		},
+		"scala": {
+			"extensions": [
+				".scala",
+				".sbt",
+				".sc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "scala",
+			"color": "#c22d40",
+			"interpreters": [
+				"scala"
+			]
+		},
+		"sbt": {
+			"extensions": [
+				".scala",
+				".sbt",
+				".sc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "scala",
+			"color": "#c22d40",
+			"interpreters": [
+				"scala"
+			]
+		},
+		"sc": {
+			"extensions": [
+				".sc",
+				".scd"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#46390b",
+			"interpreters": [
+				"sclang",
+				"scsynth"
+			],
+			"tm_scope": "source.supercollider",
+			"ace_mode": "text"
+		},
+		"scaml": {
+			"extensions": [
+				".scaml"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"tm_scope": "source.scaml",
+			"ace_mode": "text"
+		},
+		"scm": {
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1e4aec",
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"sld": {
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1e4aec",
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"sps": {
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1e4aec",
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"ss": {
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1e4aec",
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"sci": {
+			"extensions": [
+				".sci",
+				".sce",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"sce": {
+			"extensions": [
+				".sci",
+				".sce",
+				".tst"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"self": {
+			"extensions": [
+				".self"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#0579aa",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"sh": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"shell-script": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"bash": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"zsh": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"bats": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"command": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"ksh": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"sh.in": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"tmux": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"tool": {
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"bash session": {
+			"extensions": [
+				".sh-session"
+			],
+			"aliases": [
+				"bash session",
+				"console"
+			],
+			"type": "programming",
+			"tm_scope": "text.shell-session",
+			"ace_mode": "sh"
+		},
+		"console": {
+			"extensions": [
+				".sh-session"
+			],
+			"aliases": [
+				"bash session",
+				"console"
+			],
+			"type": "programming",
+			"tm_scope": "text.shell-session",
+			"ace_mode": "sh"
+		},
+		"sh-session": {
+			"extensions": [
+				".sh-session"
+			],
+			"aliases": [
+				"bash session",
+				"console"
+			],
+			"type": "programming",
+			"tm_scope": "text.shell-session",
+			"ace_mode": "sh"
+		},
+		"shen": {
+			"extensions": [
+				".shen"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#120F14",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"sl": {
+			"extensions": [
+				".sl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#007eff",
+			"tm_scope": "text.html.slash",
+			"ace_mode": "text"
+		},
+		"slim": {
+			"extensions": [
+				".slim"
+			],
+			"aliases": [],
+			"group": "HTML",
+			"type": "markup",
+			"color": "#ff8f77",
+			"tm_scope": "text.slim",
+			"ace_mode": "text"
+		},
+		"smali": {
+			"extensions": [
+				".smali"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text",
+			"tm_scope": "source.smali"
+		},
+		"squeak": {
+			"extensions": [
+				".st",
+				".cs"
+			],
+			"aliases": [
+				"squeak"
+			],
+			"type": "programming",
+			"color": "#596706",
+			"ace_mode": "text"
+		},
+		"tpl": {
+			"extensions": [
+				".tpl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "smarty",
+			"tm_scope": "text.html.smarty"
+		},
+		"sourcemod": {
+			"extensions": [
+				".sp",
+				".inc",
+				".sma"
+			],
+			"aliases": [
+				"sourcemod"
+			],
+			"type": "programming",
+			"color": "#5c7611",
+			"tm_scope": "source.sp",
+			"ace_mode": "text"
+		},
+		"sp": {
+			"extensions": [
+				".sp",
+				".inc",
+				".sma"
+			],
+			"aliases": [
+				"sourcemod"
+			],
+			"type": "programming",
+			"color": "#5c7611",
+			"tm_scope": "source.sp",
+			"ace_mode": "text"
+		},
+		"sma": {
+			"extensions": [
+				".sp",
+				".inc",
+				".sma"
+			],
+			"aliases": [
+				"sourcemod"
+			],
+			"type": "programming",
+			"color": "#5c7611",
+			"tm_scope": "source.sp",
+			"ace_mode": "text"
+		},
+		"nut": {
+			"extensions": [
+				".nut"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#800000",
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"stan": {
+			"extensions": [
+				".stan"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#b2011d",
+			"ace_mode": "text",
+			"tm_scope": "source.stan"
+		},
+		"sml": {
+			"extensions": [
+				".ML",
+				".fun",
+				".sig",
+				".sml"
+			],
+			"aliases": [
+				"sml"
+			],
+			"type": "programming",
+			"color": "#dc566d",
+			"tm_scope": "source.ml",
+			"ace_mode": "text"
+		},
+		"ML": {
+			"extensions": [
+				".ML",
+				".fun",
+				".sig",
+				".sml"
+			],
+			"aliases": [
+				"sml"
+			],
+			"type": "programming",
+			"color": "#dc566d",
+			"tm_scope": "source.ml",
+			"ace_mode": "text"
+		},
+		"fun": {
+			"extensions": [
+				".ML",
+				".fun",
+				".sig",
+				".sml"
+			],
+			"aliases": [
+				"sml"
+			],
+			"type": "programming",
+			"color": "#dc566d",
+			"tm_scope": "source.ml",
+			"ace_mode": "text"
+		},
+		"sig": {
+			"extensions": [
+				".ML",
+				".fun",
+				".sig",
+				".sml"
+			],
+			"aliases": [
+				"sml"
+			],
+			"type": "programming",
+			"color": "#dc566d",
+			"tm_scope": "source.ml",
+			"ace_mode": "text"
+		},
+		"do": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"ado": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"doh": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"ihlp": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"mata": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"matah": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"sthlp": {
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"styl": {
+			"extensions": [
+				".styl"
+			],
+			"aliases": [],
+			"type": "markup",
+			"group": "CSS",
+			"tm_scope": "source.stylus",
+			"ace_mode": "stylus"
+		},
+		"scd": {
+			"extensions": [
+				".sc",
+				".scd"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#46390b",
+			"interpreters": [
+				"sclang",
+				"scsynth"
+			],
+			"tm_scope": "source.supercollider",
+			"ace_mode": "text"
+		},
+		"swift": {
+			"extensions": [
+				".swift"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#ffac45",
+			"ace_mode": "text"
+		},
+		"sv": {
+			"extensions": [
+				".sv",
+				".svh",
+				".vh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#DAE1C2",
+			"ace_mode": "verilog"
+		},
+		"svh": {
+			"extensions": [
+				".sv",
+				".svh",
+				".vh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#DAE1C2",
+			"ace_mode": "verilog"
+		},
+		"vh": {
+			"extensions": [
+				".sv",
+				".svh",
+				".vh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#DAE1C2",
+			"ace_mode": "verilog"
+		},
+		"tla": {
+			"extensions": [
+				".tla"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.tla",
+			"ace_mode": "text"
+		},
+		"toml": {
+			"extensions": [
+				".toml"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.toml",
+			"ace_mode": "toml"
+		},
+		"txl": {
+			"extensions": [
+				".txl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.txl",
+			"ace_mode": "text"
+		},
+		"tcl": {
+			"extensions": [
+				".tcl",
+				".adp",
+				".tm"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#e4cc98",
+			"interpreters": [
+				"tclsh",
+				"wish"
+			],
+			"ace_mode": "tcl"
+		},
+		"adp": {
+			"extensions": [
+				".tcl",
+				".adp",
+				".tm"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#e4cc98",
+			"interpreters": [
+				"tclsh",
+				"wish"
+			],
+			"ace_mode": "tcl"
+		},
+		"tm": {
+			"extensions": [
+				".tcl",
+				".adp",
+				".tm"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#e4cc98",
+			"interpreters": [
+				"tclsh",
+				"wish"
+			],
+			"ace_mode": "tcl"
+		},
+		"tcsh": {
+			"extensions": [
+				".tcsh",
+				".csh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Shell",
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"csh": {
+			"extensions": [
+				".tcsh",
+				".csh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Shell",
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"latex": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"tex": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"aux": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"bbx": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"bib": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"cbx": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"dtx": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"ins": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"lbx": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"ltx": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"mkii": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"mkiv": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"mkvi": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"sty": {
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			],
+			"aliases": [
+				"latex"
+			],
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true
+		},
+		"toc": {
+			"extensions": [
+				".toc"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.toc",
+			"ace_mode": "text"
+		},
+		"tea": {
+			"extensions": [
+				".tea"
+			],
+			"aliases": [],
+			"type": "markup",
+			"tm_scope": "source.tea",
+			"ace_mode": "text"
+		},
+		"fundamental": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"txt": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"no": {
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"aliases": [
+				"fundamental"
+			],
+			"type": "prose",
+			"wrap": true,
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"textile": {
+			"extensions": [
+				".textile"
+			],
+			"aliases": [],
+			"type": "prose",
+			"ace_mode": "textile",
+			"wrap": true,
+			"tm_scope": "none"
+		},
+		"thrift": {
+			"extensions": [
+				".thrift"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.thrift",
+			"ace_mode": "text"
+		},
+		"tu": {
+			"extensions": [
+				".t",
+				".tu"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#cf142b",
+			"tm_scope": "source.turing",
+			"ace_mode": "text"
+		},
+		"ttl": {
+			"extensions": [
+				".ttl"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.turtle",
+			"ace_mode": "text"
+		},
+		"twig": {
+			"extensions": [
+				".twig"
+			],
+			"aliases": [],
+			"type": "markup",
+			"group": "HTML",
+			"tm_scope": "text.html.twig",
+			"ace_mode": "twig"
+		},
+		"ts": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tsx": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"upc": {
+			"extensions": [
+				".upc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "C",
+			"ace_mode": "c_cpp",
+			"color": "#4e3617",
+			"tm_scope": "source.c"
+		},
+		"anim": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"asset": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"mat": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"meta": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"prefab": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"unity": {
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml"
+		},
+		"uno": {
+			"extensions": [
+				".uno"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs"
+		},
+		"uc": {
+			"extensions": [
+				".uc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#a54c4d",
+			"tm_scope": "source.java",
+			"ace_mode": "java"
+		},
+		"Ur/Web": {
+			"extensions": [
+				".ur",
+				".urs"
+			],
+			"aliases": [
+				"Ur/Web",
+				"Ur"
+			],
+			"type": "programming",
+			"tm_scope": "source.ur",
+			"ace_mode": "text"
+		},
+		"Ur": {
+			"extensions": [
+				".ur",
+				".urs"
+			],
+			"aliases": [
+				"Ur/Web",
+				"Ur"
+			],
+			"type": "programming",
+			"tm_scope": "source.ur",
+			"ace_mode": "text"
+		},
+		"ur": {
+			"extensions": [
+				".ur",
+				".urs"
+			],
+			"aliases": [
+				"Ur/Web",
+				"Ur"
+			],
+			"type": "programming",
+			"tm_scope": "source.ur",
+			"ace_mode": "text"
+		},
+		"urs": {
+			"extensions": [
+				".ur",
+				".urs"
+			],
+			"aliases": [
+				"Ur/Web",
+				"Ur"
+			],
+			"type": "programming",
+			"tm_scope": "source.ur",
+			"ace_mode": "text"
+		},
+		"vcl": {
+			"extensions": [
+				".vcl"
+			],
+			"aliases": [],
+			"group": "Perl",
+			"type": "programming",
+			"tm_scope": "source.varnish.vcl",
+			"ace_mode": "text"
+		},
+		"vhdl": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vhd": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vhf": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vhi": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vho": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vhs": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vht": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vhw": {
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#adb2cb",
+			"ace_mode": "vhdl"
+		},
+		"vala": {
+			"extensions": [
+				".vala",
+				".vapi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#fbe5cd",
+			"ace_mode": "vala"
+		},
+		"vapi": {
+			"extensions": [
+				".vala",
+				".vapi"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#fbe5cd",
+			"ace_mode": "vala"
+		},
+		"veo": {
+			"extensions": [
+				".v",
+				".veo"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#b2b7f8",
+			"ace_mode": "verilog"
+		},
+		"vim": {
+			"extensions": [
+				".vim"
+			],
+			"aliases": [
+				"vim",
+				"nvim"
+			],
+			"type": "programming",
+			"color": "#199f4b",
+			"search_term": "vim",
+			"filenames": [
+				".nvimrc",
+				".vimrc",
+				"_vimrc",
+				"gvimrc",
+				"nvimrc",
+				"vimrc"
+			],
+			"ace_mode": "text"
+		},
+		"nvim": {
+			"extensions": [
+				".vim"
+			],
+			"aliases": [
+				"vim",
+				"nvim"
+			],
+			"type": "programming",
+			"color": "#199f4b",
+			"search_term": "vim",
+			"filenames": [
+				".nvimrc",
+				".vimrc",
+				"_vimrc",
+				"gvimrc",
+				"nvimrc",
+				"vimrc"
+			],
+			"ace_mode": "text"
+		},
+		"vb.net": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"vbnet": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"vb": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"bas": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"frm": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"frx": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"vba": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"vbhtml": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"vbs": {
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"type": "programming",
+			"color": "#945db7",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"volt": {
+			"extensions": [
+				".volt"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#1F1F1F",
+			"tm_scope": "source.d",
+			"ace_mode": "d"
+		},
+		"vue": {
+			"extensions": [
+				".vue"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#2c3e50",
+			"tm_scope": "text.html.vue",
+			"ace_mode": "html"
+		},
+		"mtl": {
+			"extensions": [
+				".mtl"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.wavefront.mtl",
+			"ace_mode": "text"
+		},
+		"obj": {
+			"extensions": [
+				".obj"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.wavefront.obj",
+			"ace_mode": "text"
+		},
+		"owl": {
+			"extensions": [
+				".owl"
+			],
+			"aliases": [],
+			"type": "markup",
+			"color": "#9cc9dd",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"webidl": {
+			"extensions": [
+				".webidl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.webidl",
+			"ace_mode": "text"
+		},
+		"xten": {
+			"extensions": [
+				".x10"
+			],
+			"aliases": [
+				"xten"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#4B6BEF",
+			"tm_scope": "source.x10"
+		},
+		"x10": {
+			"extensions": [
+				".x10"
+			],
+			"aliases": [
+				"xten"
+			],
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#4B6BEF",
+			"tm_scope": "source.x10"
+		},
+		"xc": {
+			"extensions": [
+				".xc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#99DA07",
+			"tm_scope": "source.xc",
+			"ace_mode": "c_cpp"
+		},
+		"rss": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xsd": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"wsdl": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ant": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"axml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"builds": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ccxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"clixml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"cproject": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"csl": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"csproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ct": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"dita": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ditamap": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ditaval": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"dll.config": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"dotsettings": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"filters": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"fsproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"fxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"glade": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"grxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"iml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ivy": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"jelly": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"jsproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"kml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"launch": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"mdpolicy": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"mxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"nproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"nuspec": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"odd": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"osm": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"pkgproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"plist": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"props": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ps1xml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"psc1": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"pt": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"rdf": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"resx": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"scxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"sfproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"srdf": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"storyboard": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"stTheme": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"sublime-snippet": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"targets": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tmCommand": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tmLanguage": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tmPreferences": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tmSnippet": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"tmTheme": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ui": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"urdf": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"ux": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"vbproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"vcxproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"vssettings": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"vxml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"wsf": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"wxi": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"wxl": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"wxs": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"x3d": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xacro": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xaml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xib": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xlf": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xliff": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xmi": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xml.dist": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xproj": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xul": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"zcml": {
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"type": "data",
+			"ace_mode": "xml",
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"xsp-config": {
+			"extensions": [
+				".xsp-config",
+				".xsp.metadata"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "xml"
+		},
+		"xsp.metadata": {
+			"extensions": [
+				".xsp-config",
+				".xsp.metadata"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "xml"
+		},
+		"xpl": {
+			"extensions": [
+				".xpl",
+				".xproc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"xproc": {
+			"extensions": [
+				".xpl",
+				".xproc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"xquery": {
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5232e7",
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"xq": {
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5232e7",
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"xql": {
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5232e7",
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"xqm": {
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5232e7",
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"xqy": {
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#5232e7",
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"xs": {
+			"extensions": [
+				".xs"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"xsl": {
+			"extensions": [
+				".xslt",
+				".xsl"
+			],
+			"aliases": [
+				"xsl"
+			],
+			"type": "programming",
+			"tm_scope": "text.xml.xsl",
+			"ace_mode": "xml",
+			"color": "#EB8CEB"
+		},
+		"xslt": {
+			"extensions": [
+				".xslt",
+				".xsl"
+			],
+			"aliases": [
+				"xsl"
+			],
+			"type": "programming",
+			"tm_scope": "text.xml.xsl",
+			"ace_mode": "xml",
+			"color": "#EB8CEB"
+		},
+		"xojo_code": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xojo_menu": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xojo_report": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xojo_script": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xojo_toolbar": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xojo_window": {
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"xtend": {
+			"extensions": [
+				".xtend"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"yml": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"reek": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"rviz": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"sublime-syntax": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"syntax": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"yaml": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"yaml-tmlanguage": {
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"aliases": [
+				"yml"
+			],
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"yang": {
+			"extensions": [
+				".yang"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.yang",
+			"ace_mode": "text"
+		},
+		"y": {
+			"extensions": [
+				".y",
+				".yacc",
+				".yy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.bison",
+			"ace_mode": "text",
+			"color": "#4B6C4B"
+		},
+		"yacc": {
+			"extensions": [
+				".y",
+				".yacc",
+				".yy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.bison",
+			"ace_mode": "text",
+			"color": "#4B6C4B"
+		},
+		"yy": {
+			"extensions": [
+				".y",
+				".yacc",
+				".yy"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "source.bison",
+			"ace_mode": "text",
+			"color": "#4B6C4B"
+		},
+		"zep": {
+			"extensions": [
+				".zep"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#118f9e",
+			"tm_scope": "source.php.zephir",
+			"ace_mode": "php"
+		},
+		"zimpl": {
+			"extensions": [
+				".zimpl",
+				".zmpl",
+				".zpl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"zmpl": {
+			"extensions": [
+				".zimpl",
+				".zmpl",
+				".zpl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"zpl": {
+			"extensions": [
+				".zimpl",
+				".zmpl",
+				".zpl"
+			],
+			"aliases": [],
+			"type": "programming",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"desktop": {
+			"extensions": [
+				".desktop",
+				".desktop.in"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.desktop",
+			"ace_mode": "text"
+		},
+		"desktop.in": {
+			"extensions": [
+				".desktop",
+				".desktop.in"
+			],
+			"aliases": [],
+			"type": "data",
+			"tm_scope": "source.desktop",
+			"ace_mode": "text"
+		},
+		"ec": {
+			"extensions": [
+				".ec",
+				".eh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#913960",
+			"search_term": "ec",
+			"tm_scope": "source.c.ec",
+			"ace_mode": "text"
+		},
+		"eh": {
+			"extensions": [
+				".ec",
+				".eh"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#913960",
+			"search_term": "ec",
+			"tm_scope": "source.c.ec",
+			"ace_mode": "text"
+		},
+		"edn": {
+			"extensions": [
+				".edn"
+			],
+			"aliases": [],
+			"type": "data",
+			"ace_mode": "clojure",
+			"tm_scope": "source.clojure"
+		},
+		"fish": {
+			"extensions": [
+				".fish"
+			],
+			"aliases": [],
+			"type": "programming",
+			"group": "Shell",
+			"interpreters": [
+				"fish"
+			],
+			"tm_scope": "source.fish",
+			"ace_mode": "text"
+		},
+		"mu": {
+			"extensions": [
+				".mu"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "text"
+		},
+		"nc": {
+			"extensions": [
+				".nc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#94B0C7",
+			"ace_mode": "text",
+			"tm_scope": "source.nesc"
+		},
+		"ooc": {
+			"extensions": [
+				".ooc"
+			],
+			"aliases": [],
+			"type": "programming",
+			"color": "#b0b77e",
+			"ace_mode": "text"
+		},
+		"rst": {
+			"extensions": [
+				".rst",
+				".rest",
+				".rest.txt",
+				".rst.txt"
+			],
+			"aliases": [
+				"rst"
+			],
+			"type": "prose",
+			"wrap": true,
+			"search_term": "rst",
+			"ace_mode": "text"
+		},
+		"rest": {
+			"extensions": [
+				".rst",
+				".rest",
+				".rest.txt",
+				".rst.txt"
+			],
+			"aliases": [
+				"rst"
+			],
+			"type": "prose",
+			"wrap": true,
+			"search_term": "rst",
+			"ace_mode": "text"
+		},
+		"rest.txt": {
+			"extensions": [
+				".rst",
+				".rest",
+				".rest.txt",
+				".rst.txt"
+			],
+			"aliases": [
+				"rst"
+			],
+			"type": "prose",
+			"wrap": true,
+			"search_term": "rst",
+			"ace_mode": "text"
+		},
+		"rst.txt": {
+			"extensions": [
+				".rst",
+				".rest",
+				".rest.txt",
+				".rst.txt"
+			],
+			"aliases": [
+				"rst"
+			],
+			"type": "prose",
+			"wrap": true,
+			"search_term": "rst",
+			"ace_mode": "text"
+		},
+		"wisp": {
+			"extensions": [
+				".wisp"
+			],
+			"aliases": [],
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#7582D1",
+			"tm_scope": "source.clojure"
+		},
+		"advpl": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"clipper": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"foxpro": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"prg": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"prw": {
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"type": "programming",
+			"color": "#403a40",
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		}
+	};
+
+/***/ },
+/* 574 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"1C Enterprise": {
+			"type": "programming",
+			"color": "#814CCC",
+			"extensions": [
+				".bsl",
+				".os"
+			],
+			"tm_scope": "source.bsl",
+			"ace_mode": "text"
+		},
+		"ABAP": {
+			"type": "programming",
+			"color": "#E8274B",
+			"extensions": [
+				".abap"
+			],
+			"ace_mode": "abap"
+		},
+		"AGS Script": {
+			"type": "programming",
+			"color": "#B9D9FF",
+			"aliases": [
+				"ags"
+			],
+			"extensions": [
+				".asc",
+				".ash"
+			],
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"AMPL": {
+			"type": "programming",
+			"color": "#E6EFBB",
+			"extensions": [
+				".ampl",
+				".mod"
+			],
+			"tm_scope": "source.ampl",
+			"ace_mode": "text"
+		},
+		"ANTLR": {
+			"type": "programming",
+			"color": "#9DC3FF",
+			"extensions": [
+				".g4"
+			],
+			"ace_mode": "text"
+		},
+		"API Blueprint": {
+			"type": "markup",
+			"color": "#2ACCA8",
+			"ace_mode": "markdown",
+			"extensions": [
+				".apib"
+			],
+			"tm_scope": "text.html.markdown.source.gfm.apib"
+		},
+		"APL": {
+			"type": "programming",
+			"color": "#5A8164",
+			"extensions": [
+				".apl",
+				".dyalog"
+			],
+			"interpreters": [
+				"apl",
+				"aplx",
+				"dyalog"
+			],
+			"tm_scope": "source.apl",
+			"ace_mode": "text"
+		},
+		"ASN.1": {
+			"type": "data",
+			"color": "#aeead0",
+			"extensions": [
+				".asn",
+				".asn1"
+			],
+			"tm_scope": "source.asn",
+			"ace_mode": "text"
+		},
+		"ASP": {
+			"type": "programming",
+			"color": "#6a40fd",
+			"search_term": "aspx-vb",
+			"tm_scope": "text.html.asp",
+			"aliases": [
+				"aspx",
+				"aspx-vb"
+			],
+			"extensions": [
+				".asp",
+				".asax",
+				".ascx",
+				".ashx",
+				".asmx",
+				".aspx",
+				".axd"
+			],
+			"ace_mode": "text"
+		},
+		"ATS": {
+			"type": "programming",
+			"color": "#1ac620",
+			"aliases": [
+				"ats2"
+			],
+			"extensions": [
+				".dats",
+				".hats",
+				".sats"
+			],
+			"tm_scope": "source.ats",
+			"ace_mode": "ocaml"
+		},
+		"ActionScript": {
+			"type": "programming",
+			"tm_scope": "source.actionscript.3",
+			"color": "#882B0F",
+			"search_term": "as3",
+			"aliases": [
+				"actionscript 3",
+				"actionscript3",
+				"as3"
+			],
+			"extensions": [
+				".as"
+			],
+			"ace_mode": "actionscript"
+		},
+		"Ada": {
+			"type": "programming",
+			"color": "#02f88c",
+			"extensions": [
+				".adb",
+				".ada",
+				".ads"
+			],
+			"aliases": [
+				"ada95",
+				"ada2005"
+			],
+			"ace_mode": "ada"
+		},
+		"Agda": {
+			"type": "programming",
+			"color": "#315665",
+			"extensions": [
+				".agda"
+			],
+			"ace_mode": "text"
+		},
+		"Alloy": {
+			"type": "programming",
+			"color": "#64C800",
+			"extensions": [
+				".als"
+			],
+			"ace_mode": "text"
+		},
+		"Alpine Abuild": {
+			"type": "programming",
+			"group": "Shell",
+			"aliases": [
+				"abuild",
+				"apkbuild"
+			],
+			"filenames": [
+				"APKBUILD"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"Ant Build System": {
+			"type": "data",
+			"tm_scope": "text.xml.ant",
+			"filenames": [
+				"ant.xml",
+				"build.xml"
+			],
+			"ace_mode": "xml"
+		},
+		"ApacheConf": {
+			"type": "markup",
+			"aliases": [
+				"aconf",
+				"apache"
+			],
+			"extensions": [
+				".apacheconf",
+				".vhost"
+			],
+			"tm_scope": "source.apache-config",
+			"ace_mode": "apache_conf"
+		},
+		"Apex": {
+			"type": "programming",
+			"extensions": [
+				".cls"
+			],
+			"tm_scope": "source.java",
+			"ace_mode": "java"
+		},
+		"Apollo Guidance Computer": {
+			"type": "programming",
+			"color": "#0B3D91",
+			"group": "Assembly",
+			"extensions": [
+				".agc"
+			],
+			"tm_scope": "source.agc",
+			"ace_mode": "assembly_x86"
+		},
+		"AppleScript": {
+			"type": "programming",
+			"aliases": [
+				"osascript"
+			],
+			"extensions": [
+				".applescript",
+				".scpt"
+			],
+			"interpreters": [
+				"osascript"
+			],
+			"ace_mode": "applescript",
+			"color": "#101F1F"
+		},
+		"Arc": {
+			"type": "programming",
+			"color": "#aa2afe",
+			"extensions": [
+				".arc"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Arduino": {
+			"type": "programming",
+			"color": "#bd79d1",
+			"extensions": [
+				".ino"
+			],
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"AsciiDoc": {
+			"type": "prose",
+			"ace_mode": "asciidoc",
+			"wrap": true,
+			"extensions": [
+				".asciidoc",
+				".adoc",
+				".asc"
+			],
+			"tm_scope": "text.html.asciidoc"
+		},
+		"AspectJ": {
+			"type": "programming",
+			"color": "#a957b0",
+			"extensions": [
+				".aj"
+			],
+			"tm_scope": "source.aspectj",
+			"ace_mode": "text"
+		},
+		"Assembly": {
+			"type": "programming",
+			"color": "#6E4C13",
+			"search_term": "nasm",
+			"aliases": [
+				"nasm"
+			],
+			"extensions": [
+				".asm",
+				".a51",
+				".inc",
+				".nasm"
+			],
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"Augeas": {
+			"type": "programming",
+			"extensions": [
+				".aug"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"AutoHotkey": {
+			"type": "programming",
+			"color": "#6594b9",
+			"aliases": [
+				"ahk"
+			],
+			"extensions": [
+				".ahk",
+				".ahkl"
+			],
+			"tm_scope": "source.ahk",
+			"ace_mode": "autohotkey"
+		},
+		"AutoIt": {
+			"type": "programming",
+			"color": "#1C3552",
+			"aliases": [
+				"au3",
+				"AutoIt3",
+				"AutoItScript"
+			],
+			"extensions": [
+				".au3"
+			],
+			"tm_scope": "source.autoit",
+			"ace_mode": "autohotkey"
+		},
+		"Awk": {
+			"type": "programming",
+			"extensions": [
+				".awk",
+				".auk",
+				".gawk",
+				".mawk",
+				".nawk"
+			],
+			"interpreters": [
+				"awk",
+				"gawk",
+				"mawk",
+				"nawk"
+			],
+			"ace_mode": "text"
+		},
+		"Batchfile": {
+			"type": "programming",
+			"search_term": "bat",
+			"aliases": [
+				"bat",
+				"batch",
+				"dosbatch",
+				"winbatch"
+			],
+			"extensions": [
+				".bat",
+				".cmd"
+			],
+			"tm_scope": "source.batchfile",
+			"ace_mode": "batchfile",
+			"color": "#C1F12E"
+		},
+		"Befunge": {
+			"type": "programming",
+			"extensions": [
+				".befunge"
+			],
+			"ace_mode": "text"
+		},
+		"Bison": {
+			"type": "programming",
+			"group": "Yacc",
+			"tm_scope": "source.bison",
+			"extensions": [
+				".bison"
+			],
+			"ace_mode": "text",
+			"color": "#6A463F"
+		},
+		"BitBake": {
+			"type": "programming",
+			"tm_scope": "none",
+			"extensions": [
+				".bb"
+			],
+			"ace_mode": "text"
+		},
+		"Blade": {
+			"type": "markup",
+			"group": "HTML",
+			"extensions": [
+				".blade",
+				".blade.php"
+			],
+			"tm_scope": "text.html.php.blade",
+			"ace_mode": "text"
+		},
+		"BlitzBasic": {
+			"type": "programming",
+			"aliases": [
+				"b3d",
+				"blitz3d",
+				"blitzplus",
+				"bplus"
+			],
+			"extensions": [
+				".bb",
+				".decls"
+			],
+			"tm_scope": "source.blitzmax",
+			"ace_mode": "text"
+		},
+		"BlitzMax": {
+			"type": "programming",
+			"color": "#cd6400",
+			"extensions": [
+				".bmx"
+			],
+			"aliases": [
+				"bmax"
+			],
+			"ace_mode": "text"
+		},
+		"Bluespec": {
+			"type": "programming",
+			"extensions": [
+				".bsv"
+			],
+			"tm_scope": "source.bsv",
+			"ace_mode": "verilog"
+		},
+		"Boo": {
+			"type": "programming",
+			"color": "#d4bec1",
+			"extensions": [
+				".boo"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.boo"
+		},
+		"Brainfuck": {
+			"type": "programming",
+			"color": "#2F2530",
+			"extensions": [
+				".b",
+				".bf"
+			],
+			"tm_scope": "source.bf",
+			"ace_mode": "text"
+		},
+		"Brightscript": {
+			"type": "programming",
+			"extensions": [
+				".brs"
+			],
+			"tm_scope": "source.brightscript",
+			"ace_mode": "text"
+		},
+		"Bro": {
+			"type": "programming",
+			"extensions": [
+				".bro"
+			],
+			"ace_mode": "text"
+		},
+		"C": {
+			"type": "programming",
+			"color": "#555555",
+			"extensions": [
+				".c",
+				".cats",
+				".h",
+				".idc",
+				".w"
+			],
+			"interpreters": [
+				"tcc"
+			],
+			"ace_mode": "c_cpp"
+		},
+		"C#": {
+			"type": "programming",
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs",
+			"search_term": "csharp",
+			"color": "#178600",
+			"aliases": [
+				"csharp"
+			],
+			"extensions": [
+				".cs",
+				".cake",
+				".cshtml",
+				".csx"
+			]
+		},
+		"C++": {
+			"type": "programming",
+			"ace_mode": "c_cpp",
+			"search_term": "cpp",
+			"color": "#f34b7d",
+			"aliases": [
+				"cpp"
+			],
+			"extensions": [
+				".cpp",
+				".c++",
+				".cc",
+				".cp",
+				".cxx",
+				".h",
+				".h++",
+				".hh",
+				".hpp",
+				".hxx",
+				".inc",
+				".inl",
+				".ipp",
+				".tcc",
+				".tpp"
+			]
+		},
+		"C-ObjDump": {
+			"type": "data",
+			"extensions": [
+				".c-objdump"
+			],
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"C2hs Haskell": {
+			"type": "programming",
+			"group": "Haskell",
+			"aliases": [
+				"c2hs"
+			],
+			"extensions": [
+				".chs"
+			],
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"CLIPS": {
+			"type": "programming",
+			"extensions": [
+				".clp"
+			],
+			"tm_scope": "source.clips",
+			"ace_mode": "text"
+		},
+		"CMake": {
+			"type": "programming",
+			"extensions": [
+				".cmake",
+				".cmake.in"
+			],
+			"filenames": [
+				"CMakeLists.txt"
+			],
+			"ace_mode": "text"
+		},
+		"COBOL": {
+			"type": "programming",
+			"extensions": [
+				".cob",
+				".cbl",
+				".ccp",
+				".cobol",
+				".cpy"
+			],
+			"ace_mode": "cobol"
+		},
+		"COLLADA": {
+			"type": "data",
+			"extensions": [
+				".dae"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"CSS": {
+			"type": "markup",
+			"tm_scope": "source.css",
+			"ace_mode": "css",
+			"color": "#563d7c",
+			"extensions": [
+				".css"
+			]
+		},
+		"CSV": {
+			"type": "data",
+			"ace_mode": "text",
+			"tm_scope": "none",
+			"extensions": [
+				".csv"
+			]
+		},
+		"Cap'n Proto": {
+			"type": "programming",
+			"tm_scope": "source.capnp",
+			"extensions": [
+				".capnp"
+			],
+			"ace_mode": "text"
+		},
+		"CartoCSS": {
+			"type": "programming",
+			"aliases": [
+				"Carto"
+			],
+			"extensions": [
+				".mss"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.css.mss"
+		},
+		"Ceylon": {
+			"type": "programming",
+			"extensions": [
+				".ceylon"
+			],
+			"ace_mode": "text"
+		},
+		"Chapel": {
+			"type": "programming",
+			"color": "#8dc63f",
+			"aliases": [
+				"chpl"
+			],
+			"extensions": [
+				".chpl"
+			],
+			"ace_mode": "text"
+		},
+		"Charity": {
+			"type": "programming",
+			"extensions": [
+				".ch"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ChucK": {
+			"type": "programming",
+			"extensions": [
+				".ck"
+			],
+			"tm_scope": "source.java",
+			"ace_mode": "java"
+		},
+		"Cirru": {
+			"type": "programming",
+			"color": "#ccccff",
+			"ace_mode": "cirru",
+			"extensions": [
+				".cirru"
+			]
+		},
+		"Clarion": {
+			"type": "programming",
+			"color": "#db901e",
+			"ace_mode": "text",
+			"extensions": [
+				".clw"
+			],
+			"tm_scope": "source.clarion"
+		},
+		"Clean": {
+			"type": "programming",
+			"color": "#3F85AF",
+			"extensions": [
+				".icl",
+				".dcl"
+			],
+			"tm_scope": "source.clean",
+			"ace_mode": "text"
+		},
+		"Click": {
+			"type": "programming",
+			"color": "#E4E6F3",
+			"extensions": [
+				".click"
+			],
+			"tm_scope": "source.click",
+			"ace_mode": "text"
+		},
+		"Clojure": {
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#db5855",
+			"extensions": [
+				".clj",
+				".boot",
+				".cl2",
+				".cljc",
+				".cljs",
+				".cljs.hl",
+				".cljscm",
+				".cljx",
+				".hic"
+			],
+			"filenames": [
+				"riemann.config"
+			]
+		},
+		"CoffeeScript": {
+			"type": "programming",
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee",
+			"color": "#244776",
+			"aliases": [
+				"coffee",
+				"coffee-script"
+			],
+			"extensions": [
+				".coffee",
+				"._coffee",
+				".cake",
+				".cjsx",
+				".cson",
+				".iced"
+			],
+			"filenames": [
+				"Cakefile"
+			],
+			"interpreters": [
+				"coffee"
+			]
+		},
+		"ColdFusion": {
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfm",
+			"aliases": [
+				"cfm",
+				"cfml",
+				"coldfusion html"
+			],
+			"extensions": [
+				".cfm",
+				".cfml"
+			],
+			"tm_scope": "text.html.cfm"
+		},
+		"ColdFusion CFC": {
+			"type": "programming",
+			"group": "ColdFusion",
+			"ace_mode": "coldfusion",
+			"color": "#ed2cd6",
+			"search_term": "cfc",
+			"aliases": [
+				"cfc"
+			],
+			"extensions": [
+				".cfc"
+			],
+			"tm_scope": "source.cfscript"
+		},
+		"Common Lisp": {
+			"type": "programming",
+			"tm_scope": "source.lisp",
+			"color": "#3fb68b",
+			"aliases": [
+				"lisp"
+			],
+			"extensions": [
+				".lisp",
+				".asd",
+				".cl",
+				".l",
+				".lsp",
+				".ny",
+				".podsl",
+				".sexp"
+			],
+			"interpreters": [
+				"lisp",
+				"sbcl",
+				"ccl",
+				"clisp",
+				"ecl"
+			],
+			"ace_mode": "lisp"
+		},
+		"Component Pascal": {
+			"type": "programming",
+			"color": "#B0CE4E",
+			"extensions": [
+				".cp",
+				".cps"
+			],
+			"tm_scope": "source.pascal",
+			"aliases": [
+				"delphi",
+				"objectpascal"
+			],
+			"ace_mode": "pascal"
+		},
+		"Cool": {
+			"type": "programming",
+			"extensions": [
+				".cl"
+			],
+			"tm_scope": "source.cool",
+			"ace_mode": "text"
+		},
+		"Coq": {
+			"type": "programming",
+			"extensions": [
+				".coq",
+				".v"
+			],
+			"ace_mode": "text"
+		},
+		"Cpp-ObjDump": {
+			"type": "data",
+			"extensions": [
+				".cppobjdump",
+				".c++-objdump",
+				".c++objdump",
+				".cpp-objdump",
+				".cxx-objdump"
+			],
+			"tm_scope": "objdump.x86asm",
+			"aliases": [
+				"c++-objdump"
+			],
+			"ace_mode": "assembly_x86"
+		},
+		"Creole": {
+			"type": "prose",
+			"wrap": true,
+			"extensions": [
+				".creole"
+			],
+			"tm_scope": "text.html.creole",
+			"ace_mode": "text"
+		},
+		"Crystal": {
+			"type": "programming",
+			"color": "#776791",
+			"extensions": [
+				".cr"
+			],
+			"ace_mode": "ruby",
+			"tm_scope": "source.crystal",
+			"interpreters": [
+				"crystal"
+			]
+		},
+		"Csound": {
+			"type": "programming",
+			"aliases": [
+				"csound-orc"
+			],
+			"extensions": [
+				".orc",
+				".udo"
+			],
+			"tm_scope": "source.csound",
+			"ace_mode": "text"
+		},
+		"Csound Document": {
+			"type": "programming",
+			"aliases": [
+				"csound-csd"
+			],
+			"extensions": [
+				".csd"
+			],
+			"tm_scope": "source.csound-document",
+			"ace_mode": "text"
+		},
+		"Csound Score": {
+			"type": "programming",
+			"aliases": [
+				"csound-sco"
+			],
+			"extensions": [
+				".sco"
+			],
+			"tm_scope": "source.csound-score",
+			"ace_mode": "text"
+		},
+		"Cucumber": {
+			"type": "programming",
+			"extensions": [
+				".feature"
+			],
+			"tm_scope": "text.gherkin.feature",
+			"aliases": [
+				"gherkin"
+			],
+			"ace_mode": "text",
+			"color": "#5B2063"
+		},
+		"Cuda": {
+			"type": "programming",
+			"extensions": [
+				".cu",
+				".cuh"
+			],
+			"tm_scope": "source.cuda-c++",
+			"ace_mode": "c_cpp",
+			"color": "#3A4E3A"
+		},
+		"Cycript": {
+			"type": "programming",
+			"extensions": [
+				".cy"
+			],
+			"tm_scope": "source.js",
+			"ace_mode": "javascript"
+		},
+		"Cython": {
+			"type": "programming",
+			"group": "Python",
+			"extensions": [
+				".pyx",
+				".pxd",
+				".pxi"
+			],
+			"aliases": [
+				"pyrex"
+			],
+			"ace_mode": "text"
+		},
+		"D": {
+			"type": "programming",
+			"color": "#ba595e",
+			"extensions": [
+				".d",
+				".di"
+			],
+			"ace_mode": "d"
+		},
+		"D-ObjDump": {
+			"type": "data",
+			"extensions": [
+				".d-objdump"
+			],
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"DIGITAL Command Language": {
+			"type": "programming",
+			"aliases": [
+				"dcl"
+			],
+			"extensions": [
+				".com"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"DM": {
+			"type": "programming",
+			"color": "#447265",
+			"extensions": [
+				".dm"
+			],
+			"aliases": [
+				"byond"
+			],
+			"tm_scope": "source.dm",
+			"ace_mode": "c_cpp"
+		},
+		"DNS Zone": {
+			"type": "data",
+			"extensions": [
+				".zone",
+				".arpa"
+			],
+			"tm_scope": "text.zone_file",
+			"ace_mode": "text"
+		},
+		"DTrace": {
+			"type": "programming",
+			"aliases": [
+				"dtrace-script"
+			],
+			"extensions": [
+				".d"
+			],
+			"interpreters": [
+				"dtrace"
+			],
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"Darcs Patch": {
+			"type": "data",
+			"search_term": "dpatch",
+			"aliases": [
+				"dpatch"
+			],
+			"extensions": [
+				".darcspatch",
+				".dpatch"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Dart": {
+			"type": "programming",
+			"color": "#00B4AB",
+			"extensions": [
+				".dart"
+			],
+			"interpreters": [
+				"dart"
+			],
+			"ace_mode": "dart"
+		},
+		"Diff": {
+			"type": "data",
+			"extensions": [
+				".diff",
+				".patch"
+			],
+			"aliases": [
+				"udiff"
+			],
+			"tm_scope": "source.diff",
+			"ace_mode": "diff"
+		},
+		"Dockerfile": {
+			"type": "data",
+			"tm_scope": "source.dockerfile",
+			"extensions": [
+				".dockerfile"
+			],
+			"filenames": [
+				"Dockerfile"
+			],
+			"ace_mode": "dockerfile"
+		},
+		"Dogescript": {
+			"type": "programming",
+			"color": "#cca760",
+			"extensions": [
+				".djs"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Dylan": {
+			"type": "programming",
+			"color": "#6c616e",
+			"extensions": [
+				".dylan",
+				".dyl",
+				".intr",
+				".lid"
+			],
+			"ace_mode": "text"
+		},
+		"E": {
+			"type": "programming",
+			"color": "#ccce35",
+			"extensions": [
+				".E"
+			],
+			"interpreters": [
+				"rune"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ECL": {
+			"type": "programming",
+			"color": "#8a1267",
+			"extensions": [
+				".ecl",
+				".eclxml"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"ECLiPSe": {
+			"type": "programming",
+			"group": "prolog",
+			"extensions": [
+				".ecl"
+			],
+			"tm_scope": "source.prolog.eclipse",
+			"ace_mode": "prolog"
+		},
+		"EJS": {
+			"type": "markup",
+			"color": "#a91e50",
+			"group": "HTML",
+			"extensions": [
+				".ejs"
+			],
+			"tm_scope": "text.html.js",
+			"ace_mode": "ejs"
+		},
+		"EQ": {
+			"type": "programming",
+			"color": "#a78649",
+			"extensions": [
+				".eq"
+			],
+			"tm_scope": "source.cs",
+			"ace_mode": "csharp"
+		},
+		"Eagle": {
+			"type": "markup",
+			"color": "#814C05",
+			"extensions": [
+				".sch",
+				".brd"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"Ecere Projects": {
+			"type": "data",
+			"group": "JavaScript",
+			"extensions": [
+				".epj"
+			],
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"Eiffel": {
+			"type": "programming",
+			"color": "#946d57",
+			"extensions": [
+				".e"
+			],
+			"ace_mode": "eiffel"
+		},
+		"Elixir": {
+			"type": "programming",
+			"color": "#6e4a7e",
+			"extensions": [
+				".ex",
+				".exs"
+			],
+			"ace_mode": "elixir",
+			"filenames": [
+				"mix.lock"
+			],
+			"interpreters": [
+				"elixir"
+			]
+		},
+		"Elm": {
+			"type": "programming",
+			"color": "#60B5CC",
+			"extensions": [
+				".elm"
+			],
+			"tm_scope": "source.elm",
+			"ace_mode": "elm"
+		},
+		"Emacs Lisp": {
+			"type": "programming",
+			"tm_scope": "source.emacs.lisp",
+			"color": "#c065db",
+			"aliases": [
+				"elisp",
+				"emacs"
+			],
+			"filenames": [
+				".emacs",
+				".emacs.desktop",
+				".spacemacs"
+			],
+			"extensions": [
+				".el",
+				".emacs",
+				".emacs.desktop"
+			],
+			"ace_mode": "lisp"
+		},
+		"EmberScript": {
+			"type": "programming",
+			"color": "#FFF4F3",
+			"extensions": [
+				".em",
+				".emberscript"
+			],
+			"tm_scope": "source.coffee",
+			"ace_mode": "coffee"
+		},
+		"Erlang": {
+			"type": "programming",
+			"color": "#B83998",
+			"extensions": [
+				".erl",
+				".app.src",
+				".es",
+				".escript",
+				".hrl",
+				".xrl",
+				".yrl"
+			],
+			"filenames": [
+				"rebar.config",
+				"rebar.config.lock",
+				"rebar.lock"
+			],
+			"ace_mode": "erlang",
+			"interpreters": [
+				"escript"
+			]
+		},
+		"F#": {
+			"type": "programming",
+			"color": "#b845fc",
+			"search_term": "fsharp",
+			"aliases": [
+				"fsharp"
+			],
+			"extensions": [
+				".fs",
+				".fsi",
+				".fsx"
+			],
+			"tm_scope": "source.fsharp",
+			"ace_mode": "text"
+		},
+		"FLUX": {
+			"type": "programming",
+			"color": "#88ccff",
+			"extensions": [
+				".fx",
+				".flux"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"FORTRAN": {
+			"type": "programming",
+			"color": "#4d41b1",
+			"extensions": [
+				".f90",
+				".f",
+				".f03",
+				".f08",
+				".f77",
+				".f95",
+				".for",
+				".fpp"
+			],
+			"tm_scope": "source.fortran.modern",
+			"ace_mode": "text"
+		},
+		"Factor": {
+			"type": "programming",
+			"color": "#636746",
+			"extensions": [
+				".factor"
+			],
+			"filenames": [
+				".factor-boot-rc",
+				".factor-rc"
+			],
+			"ace_mode": "text"
+		},
+		"Fancy": {
+			"type": "programming",
+			"color": "#7b9db4",
+			"extensions": [
+				".fy",
+				".fancypack"
+			],
+			"filenames": [
+				"Fakefile"
+			],
+			"ace_mode": "text"
+		},
+		"Fantom": {
+			"type": "programming",
+			"color": "#dbded5",
+			"extensions": [
+				".fan"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Filebench WML": {
+			"type": "programming",
+			"extensions": [
+				".f"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Filterscript": {
+			"type": "programming",
+			"group": "RenderScript",
+			"extensions": [
+				".fs"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Formatted": {
+			"type": "data",
+			"extensions": [
+				".for",
+				".eam.fs"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Forth": {
+			"type": "programming",
+			"color": "#341708",
+			"extensions": [
+				".fth",
+				".4th",
+				".f",
+				".for",
+				".forth",
+				".fr",
+				".frt",
+				".fs"
+			],
+			"ace_mode": "forth"
+		},
+		"FreeMarker": {
+			"type": "programming",
+			"color": "#0050b2",
+			"aliases": [
+				"ftl"
+			],
+			"extensions": [
+				".ftl"
+			],
+			"tm_scope": "text.html.ftl",
+			"ace_mode": "ftl"
+		},
+		"Frege": {
+			"type": "programming",
+			"color": "#00cafe",
+			"extensions": [
+				".fr"
+			],
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"G-code": {
+			"type": "data",
+			"extensions": [
+				".g",
+				".gco",
+				".gcode"
+			],
+			"tm_scope": "source.gcode",
+			"ace_mode": "gcode"
+		},
+		"GAMS": {
+			"type": "programming",
+			"extensions": [
+				".gms"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"GAP": {
+			"type": "programming",
+			"extensions": [
+				".g",
+				".gap",
+				".gd",
+				".gi",
+				".tst"
+			],
+			"tm_scope": "source.gap",
+			"ace_mode": "text"
+		},
+		"GAS": {
+			"type": "programming",
+			"group": "Assembly",
+			"extensions": [
+				".s",
+				".ms"
+			],
+			"tm_scope": "source.assembly",
+			"ace_mode": "assembly_x86"
+		},
+		"GCC Machine Description": {
+			"type": "programming",
+			"extensions": [
+				".md"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"GDB": {
+			"type": "programming",
+			"extensions": [
+				".gdb",
+				".gdbinit"
+			],
+			"tm_scope": "source.gdb",
+			"ace_mode": "text"
+		},
+		"GDScript": {
+			"type": "programming",
+			"extensions": [
+				".gd"
+			],
+			"tm_scope": "source.gdscript",
+			"ace_mode": "text"
+		},
+		"GLSL": {
+			"type": "programming",
+			"extensions": [
+				".glsl",
+				".fp",
+				".frag",
+				".frg",
+				".fs",
+				".fsh",
+				".fshader",
+				".geo",
+				".geom",
+				".glslv",
+				".gshader",
+				".shader",
+				".vert",
+				".vrx",
+				".vsh",
+				".vshader"
+			],
+			"ace_mode": "glsl"
+		},
+		"Game Maker Language": {
+			"type": "programming",
+			"color": "#8fb200",
+			"extensions": [
+				".gml"
+			],
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"Genshi": {
+			"type": "programming",
+			"extensions": [
+				".kid"
+			],
+			"tm_scope": "text.xml.genshi",
+			"aliases": [
+				"xml+genshi",
+				"xml+kid"
+			],
+			"ace_mode": "xml"
+		},
+		"Gentoo Ebuild": {
+			"type": "programming",
+			"group": "Shell",
+			"extensions": [
+				".ebuild"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"Gentoo Eclass": {
+			"type": "programming",
+			"group": "Shell",
+			"extensions": [
+				".eclass"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"Gettext Catalog": {
+			"type": "prose",
+			"search_term": "pot",
+			"searchable": false,
+			"aliases": [
+				"pot"
+			],
+			"extensions": [
+				".po",
+				".pot"
+			],
+			"tm_scope": "source.po",
+			"ace_mode": "text"
+		},
+		"Glyph": {
+			"type": "programming",
+			"color": "#e4cc98",
+			"extensions": [
+				".glf"
+			],
+			"tm_scope": "source.tcl",
+			"ace_mode": "tcl"
+		},
+		"Gnuplot": {
+			"type": "programming",
+			"color": "#f0a9f0",
+			"extensions": [
+				".gp",
+				".gnu",
+				".gnuplot",
+				".plot",
+				".plt"
+			],
+			"interpreters": [
+				"gnuplot"
+			],
+			"ace_mode": "text"
+		},
+		"Go": {
+			"type": "programming",
+			"color": "#375eab",
+			"extensions": [
+				".go"
+			],
+			"ace_mode": "golang"
+		},
+		"Golo": {
+			"type": "programming",
+			"color": "#88562A",
+			"extensions": [
+				".golo"
+			],
+			"tm_scope": "source.golo",
+			"ace_mode": "text"
+		},
+		"Gosu": {
+			"type": "programming",
+			"color": "#82937f",
+			"extensions": [
+				".gs",
+				".gst",
+				".gsx",
+				".vark"
+			],
+			"tm_scope": "source.gosu.2",
+			"ace_mode": "text"
+		},
+		"Grace": {
+			"type": "programming",
+			"extensions": [
+				".grace"
+			],
+			"tm_scope": "source.grace",
+			"ace_mode": "text"
+		},
+		"Gradle": {
+			"type": "data",
+			"extensions": [
+				".gradle"
+			],
+			"tm_scope": "source.groovy.gradle",
+			"ace_mode": "text"
+		},
+		"Grammatical Framework": {
+			"type": "programming",
+			"aliases": [
+				"gf"
+			],
+			"wrap": false,
+			"extensions": [
+				".gf"
+			],
+			"searchable": true,
+			"color": "#79aa7a",
+			"tm_scope": "source.haskell",
+			"ace_mode": "haskell"
+		},
+		"Graph Modeling Language": {
+			"type": "data",
+			"extensions": [
+				".gml"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"GraphQL": {
+			"type": "data",
+			"extensions": [
+				".graphql"
+			],
+			"tm_scope": "source.graphql",
+			"ace_mode": "text"
+		},
+		"Graphviz (DOT)": {
+			"type": "data",
+			"tm_scope": "source.dot",
+			"extensions": [
+				".dot",
+				".gv"
+			],
+			"ace_mode": "text"
+		},
+		"Groff": {
+			"type": "markup",
+			"color": "#ecdebe",
+			"extensions": [
+				".man",
+				".1",
+				".1in",
+				".1m",
+				".1x",
+				".2",
+				".3",
+				".3in",
+				".3m",
+				".3qt",
+				".3x",
+				".4",
+				".5",
+				".6",
+				".7",
+				".8",
+				".9",
+				".l",
+				".me",
+				".ms",
+				".n",
+				".rno",
+				".roff",
+				".tmac"
+			],
+			"filenames": [
+				"mmn",
+				"mmt"
+			],
+			"tm_scope": "text.roff",
+			"aliases": [
+				"nroff",
+				"troff"
+			],
+			"ace_mode": "text"
+		},
+		"Groovy": {
+			"type": "programming",
+			"ace_mode": "groovy",
+			"color": "#e69f56",
+			"extensions": [
+				".groovy",
+				".grt",
+				".gtpl",
+				".gvy"
+			],
+			"interpreters": [
+				"groovy"
+			],
+			"filenames": [
+				"Jenkinsfile"
+			]
+		},
+		"Groovy Server Pages": {
+			"type": "programming",
+			"group": "Groovy",
+			"aliases": [
+				"gsp",
+				"java server page"
+			],
+			"extensions": [
+				".gsp"
+			],
+			"tm_scope": "text.html.jsp",
+			"ace_mode": "jsp"
+		},
+		"HCL": {
+			"type": "programming",
+			"extensions": [
+				".hcl",
+				".tf"
+			],
+			"ace_mode": "ruby",
+			"tm_scope": "source.ruby"
+		},
+		"HLSL": {
+			"type": "programming",
+			"extensions": [
+				".hlsl",
+				".fx",
+				".fxh",
+				".hlsli"
+			],
+			"ace_mode": "text",
+			"tm_scope": "none"
+		},
+		"HTML": {
+			"type": "markup",
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html",
+			"color": "#e44b23",
+			"aliases": [
+				"xhtml"
+			],
+			"extensions": [
+				".html",
+				".htm",
+				".html.hl",
+				".inc",
+				".st",
+				".xht",
+				".xhtml"
+			]
+		},
+		"HTML+Django": {
+			"type": "markup",
+			"tm_scope": "text.html.django",
+			"group": "HTML",
+			"extensions": [
+				".mustache",
+				".jinja"
+			],
+			"aliases": [
+				"django",
+				"html+django/jinja",
+				"html+jinja",
+				"htmldjango"
+			],
+			"ace_mode": "django"
+		},
+		"HTML+ECR": {
+			"type": "markup",
+			"tm_scope": "text.html.ecr",
+			"group": "HTML",
+			"aliases": [
+				"ecr"
+			],
+			"extensions": [
+				".ecr"
+			],
+			"ace_mode": "text"
+		},
+		"HTML+EEX": {
+			"type": "markup",
+			"tm_scope": "text.html.elixir",
+			"group": "HTML",
+			"aliases": [
+				"eex"
+			],
+			"extensions": [
+				".eex"
+			],
+			"ace_mode": "text"
+		},
+		"HTML+ERB": {
+			"type": "markup",
+			"tm_scope": "text.html.erb",
+			"group": "HTML",
+			"aliases": [
+				"erb"
+			],
+			"extensions": [
+				".erb",
+				".erb.deface"
+			],
+			"ace_mode": "text"
+		},
+		"HTML+PHP": {
+			"type": "markup",
+			"tm_scope": "text.html.php",
+			"group": "HTML",
+			"extensions": [
+				".phtml"
+			],
+			"ace_mode": "php"
+		},
+		"HTTP": {
+			"type": "data",
+			"extensions": [
+				".http"
+			],
+			"tm_scope": "source.httpspec",
+			"ace_mode": "text"
+		},
+		"Hack": {
+			"type": "programming",
+			"ace_mode": "php",
+			"extensions": [
+				".hh",
+				".php"
+			],
+			"tm_scope": "text.html.php",
+			"color": "#878787"
+		},
+		"Haml": {
+			"group": "HTML",
+			"type": "markup",
+			"extensions": [
+				".haml",
+				".haml.deface"
+			],
+			"ace_mode": "haml",
+			"color": "#ECE2A9"
+		},
+		"Handlebars": {
+			"type": "markup",
+			"color": "#01a9d6",
+			"group": "HTML",
+			"aliases": [
+				"hbs",
+				"htmlbars"
+			],
+			"extensions": [
+				".handlebars",
+				".hbs"
+			],
+			"tm_scope": "text.html.handlebars",
+			"ace_mode": "handlebars"
+		},
+		"Harbour": {
+			"type": "programming",
+			"color": "#0e60e3",
+			"extensions": [
+				".hb"
+			],
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		},
+		"Haskell": {
+			"type": "programming",
+			"color": "#29b544",
+			"extensions": [
+				".hs",
+				".hsc"
+			],
+			"interpreters": [
+				"runhaskell"
+			],
+			"ace_mode": "haskell"
+		},
+		"Haxe": {
+			"type": "programming",
+			"ace_mode": "haxe",
+			"color": "#df7900",
+			"extensions": [
+				".hx",
+				".hxsl"
+			],
+			"tm_scope": "source.haxe.2"
+		},
+		"Hy": {
+			"type": "programming",
+			"ace_mode": "text",
+			"color": "#7790B2",
+			"extensions": [
+				".hy"
+			],
+			"aliases": [
+				"hylang"
+			],
+			"tm_scope": "source.hy"
+		},
+		"HyPhy": {
+			"type": "programming",
+			"ace_mode": "text",
+			"extensions": [
+				".bf"
+			],
+			"tm_scope": "none"
+		},
+		"IDL": {
+			"type": "programming",
+			"color": "#a3522f",
+			"extensions": [
+				".pro",
+				".dlm"
+			],
+			"ace_mode": "text"
+		},
+		"IGOR Pro": {
+			"type": "programming",
+			"extensions": [
+				".ipf"
+			],
+			"aliases": [
+				"igor",
+				"igorpro"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"INI": {
+			"type": "data",
+			"extensions": [
+				".ini",
+				".cfg",
+				".prefs",
+				".pro",
+				".properties"
+			],
+			"tm_scope": "source.ini",
+			"aliases": [
+				"dosini"
+			],
+			"ace_mode": "ini"
+		},
+		"IRC log": {
+			"type": "data",
+			"search_term": "irc",
+			"aliases": [
+				"irc",
+				"irc logs"
+			],
+			"extensions": [
+				".irclog",
+				".weechatlog"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Idris": {
+			"type": "programming",
+			"extensions": [
+				".idr",
+				".lidr"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.idris"
+		},
+		"Inform 7": {
+			"type": "programming",
+			"wrap": true,
+			"extensions": [
+				".ni",
+				".i7x"
+			],
+			"tm_scope": "source.inform7",
+			"aliases": [
+				"i7",
+				"inform7"
+			],
+			"ace_mode": "text"
+		},
+		"Inno Setup": {
+			"type": "programming",
+			"extensions": [
+				".iss"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Io": {
+			"type": "programming",
+			"color": "#a9188d",
+			"extensions": [
+				".io"
+			],
+			"interpreters": [
+				"io"
+			],
+			"ace_mode": "io"
+		},
+		"Ioke": {
+			"type": "programming",
+			"color": "#078193",
+			"extensions": [
+				".ik"
+			],
+			"interpreters": [
+				"ioke"
+			],
+			"ace_mode": "text"
+		},
+		"Isabelle": {
+			"type": "programming",
+			"color": "#FEFE00",
+			"extensions": [
+				".thy"
+			],
+			"tm_scope": "source.isabelle.theory",
+			"ace_mode": "text"
+		},
+		"Isabelle ROOT": {
+			"type": "programming",
+			"group": "Isabelle",
+			"filenames": [
+				"ROOT"
+			],
+			"tm_scope": "source.isabelle.root",
+			"ace_mode": "text"
+		},
+		"J": {
+			"type": "programming",
+			"color": "#9EEDFF",
+			"extensions": [
+				".ijs"
+			],
+			"interpreters": [
+				"jconsole"
+			],
+			"tm_scope": "source.j",
+			"ace_mode": "text"
+		},
+		"JFlex": {
+			"type": "programming",
+			"color": "#DBCA00",
+			"group": "Lex",
+			"extensions": [
+				".flex",
+				".jflex"
+			],
+			"tm_scope": "source.jflex",
+			"ace_mode": "text"
+		},
+		"JSON": {
+			"type": "data",
+			"tm_scope": "source.json",
+			"group": "JavaScript",
+			"ace_mode": "json",
+			"searchable": false,
+			"extensions": [
+				".json",
+				".geojson",
+				".JSON-tmLanguage",
+				".topojson"
+			],
+			"filenames": [
+				".arcconfig",
+				".jshintrc",
+				"composer.lock",
+				"mcmod.info"
+			]
+		},
+		"JSON5": {
+			"type": "data",
+			"extensions": [
+				".json5"
+			],
+			"tm_scope": "source.js",
+			"ace_mode": "javascript"
+		},
+		"JSONLD": {
+			"type": "data",
+			"group": "JavaScript",
+			"ace_mode": "javascript",
+			"extensions": [
+				".jsonld"
+			],
+			"tm_scope": "source.js"
+		},
+		"JSONiq": {
+			"color": "#40d47e",
+			"type": "programming",
+			"ace_mode": "jsoniq",
+			"extensions": [
+				".jq"
+			],
+			"tm_scope": "source.jq"
+		},
+		"JSX": {
+			"type": "programming",
+			"group": "JavaScript",
+			"extensions": [
+				".jsx"
+			],
+			"tm_scope": "source.js.jsx",
+			"ace_mode": "javascript"
+		},
+		"Jade": {
+			"group": "HTML",
+			"type": "markup",
+			"extensions": [
+				".jade",
+				".pug"
+			],
+			"tm_scope": "text.jade",
+			"ace_mode": "jade"
+		},
+		"Jasmin": {
+			"type": "programming",
+			"ace_mode": "java",
+			"extensions": [
+				".j"
+			],
+			"tm_scope": "source.jasmin"
+		},
+		"Java": {
+			"type": "programming",
+			"ace_mode": "java",
+			"color": "#b07219",
+			"extensions": [
+				".java"
+			]
+		},
+		"Java Server Pages": {
+			"type": "programming",
+			"group": "Java",
+			"search_term": "jsp",
+			"aliases": [
+				"jsp"
+			],
+			"extensions": [
+				".jsp"
+			],
+			"tm_scope": "text.html.jsp",
+			"ace_mode": "jsp"
+		},
+		"JavaScript": {
+			"type": "programming",
+			"tm_scope": "source.js",
+			"ace_mode": "javascript",
+			"color": "#f1e05a",
+			"aliases": [
+				"js",
+				"node"
+			],
+			"extensions": [
+				".js",
+				"._js",
+				".bones",
+				".es",
+				".es6",
+				".frag",
+				".gs",
+				".jake",
+				".jsb",
+				".jscad",
+				".jsfl",
+				".jsm",
+				".jss",
+				".njs",
+				".pac",
+				".sjs",
+				".ssjs",
+				".sublime-build",
+				".sublime-commands",
+				".sublime-completions",
+				".sublime-keymap",
+				".sublime-macro",
+				".sublime-menu",
+				".sublime-mousemap",
+				".sublime-project",
+				".sublime-settings",
+				".sublime-theme",
+				".sublime-workspace",
+				".sublime_metrics",
+				".sublime_session",
+				".xsjs",
+				".xsjslib"
+			],
+			"filenames": [
+				"Jakefile"
+			],
+			"interpreters": [
+				"node"
+			]
+		},
+		"Julia": {
+			"type": "programming",
+			"extensions": [
+				".jl"
+			],
+			"color": "#a270ba",
+			"ace_mode": "julia"
+		},
+		"Jupyter Notebook": {
+			"type": "markup",
+			"ace_mode": "json",
+			"tm_scope": "source.json",
+			"color": "#DA5B0B",
+			"extensions": [
+				".ipynb"
+			],
+			"filenames": [
+				"Notebook"
+			],
+			"aliases": [
+				"IPython Notebook"
+			]
+		},
+		"KRL": {
+			"type": "programming",
+			"color": "#28431f",
+			"extensions": [
+				".krl"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"KiCad": {
+			"type": "programming",
+			"extensions": [
+				".sch",
+				".brd",
+				".kicad_pcb"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Kit": {
+			"type": "markup",
+			"ace_mode": "html",
+			"extensions": [
+				".kit"
+			],
+			"tm_scope": "text.html.basic"
+		},
+		"Kotlin": {
+			"type": "programming",
+			"color": "#F18E33",
+			"extensions": [
+				".kt",
+				".ktm",
+				".kts"
+			],
+			"tm_scope": "source.Kotlin",
+			"ace_mode": "text"
+		},
+		"LFE": {
+			"type": "programming",
+			"extensions": [
+				".lfe"
+			],
+			"color": "#004200",
+			"group": "Erlang",
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"LLVM": {
+			"type": "programming",
+			"extensions": [
+				".ll"
+			],
+			"ace_mode": "text",
+			"color": "#185619"
+		},
+		"LOLCODE": {
+			"type": "programming",
+			"extensions": [
+				".lol"
+			],
+			"color": "#cc9900",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"LSL": {
+			"type": "programming",
+			"ace_mode": "lsl",
+			"extensions": [
+				".lsl",
+				".lslp"
+			],
+			"interpreters": [
+				"lsl"
+			],
+			"color": "#3d9970"
+		},
+		"LabVIEW": {
+			"type": "programming",
+			"extensions": [
+				".lvproj"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"Lasso": {
+			"type": "programming",
+			"color": "#999999",
+			"extensions": [
+				".lasso",
+				".las",
+				".lasso8",
+				".lasso9",
+				".ldml"
+			],
+			"tm_scope": "file.lasso",
+			"aliases": [
+				"lassoscript"
+			],
+			"ace_mode": "text"
+		},
+		"Latte": {
+			"type": "markup",
+			"color": "#A8FF97",
+			"group": "HTML",
+			"extensions": [
+				".latte"
+			],
+			"tm_scope": "text.html.smarty",
+			"ace_mode": "smarty"
+		},
+		"Lean": {
+			"type": "programming",
+			"extensions": [
+				".lean",
+				".hlean"
+			],
+			"ace_mode": "text"
+		},
+		"Less": {
+			"type": "markup",
+			"group": "CSS",
+			"extensions": [
+				".less"
+			],
+			"tm_scope": "source.css.less",
+			"ace_mode": "less",
+			"color": "#A1D9A1"
+		},
+		"Lex": {
+			"type": "programming",
+			"color": "#DBCA00",
+			"aliases": [
+				"flex"
+			],
+			"extensions": [
+				".l",
+				".lex"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"LilyPond": {
+			"type": "programming",
+			"extensions": [
+				".ly",
+				".ily"
+			],
+			"ace_mode": "text"
+		},
+		"Limbo": {
+			"type": "programming",
+			"extensions": [
+				".b",
+				".m"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Linker Script": {
+			"type": "data",
+			"extensions": [
+				".ld",
+				".lds"
+			],
+			"filenames": [
+				"ld.script"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Linux Kernel Module": {
+			"type": "data",
+			"extensions": [
+				".mod"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Liquid": {
+			"type": "markup",
+			"extensions": [
+				".liquid"
+			],
+			"tm_scope": "text.html.liquid",
+			"ace_mode": "liquid"
+		},
+		"Literate Agda": {
+			"type": "programming",
+			"group": "Agda",
+			"extensions": [
+				".lagda"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Literate CoffeeScript": {
+			"type": "programming",
+			"tm_scope": "source.litcoffee",
+			"group": "CoffeeScript",
+			"ace_mode": "text",
+			"wrap": true,
+			"search_term": "litcoffee",
+			"aliases": [
+				"litcoffee"
+			],
+			"extensions": [
+				".litcoffee"
+			]
+		},
+		"Literate Haskell": {
+			"type": "programming",
+			"group": "Haskell",
+			"search_term": "lhs",
+			"aliases": [
+				"lhaskell",
+				"lhs"
+			],
+			"extensions": [
+				".lhs"
+			],
+			"tm_scope": "text.tex.latex.haskell",
+			"ace_mode": "text"
+		},
+		"LiveScript": {
+			"type": "programming",
+			"color": "#499886",
+			"aliases": [
+				"live-script",
+				"ls"
+			],
+			"extensions": [
+				".ls",
+				"._ls"
+			],
+			"filenames": [
+				"Slakefile"
+			],
+			"ace_mode": "livescript"
+		},
+		"Logos": {
+			"type": "programming",
+			"extensions": [
+				".xm",
+				".x",
+				".xi"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.logos"
+		},
+		"Logtalk": {
+			"type": "programming",
+			"extensions": [
+				".lgt",
+				".logtalk"
+			],
+			"ace_mode": "text"
+		},
+		"LookML": {
+			"type": "programming",
+			"ace_mode": "yaml",
+			"color": "#652B81",
+			"extensions": [
+				".lookml"
+			],
+			"tm_scope": "source.yaml"
+		},
+		"LoomScript": {
+			"type": "programming",
+			"extensions": [
+				".ls"
+			],
+			"tm_scope": "source.loomscript",
+			"ace_mode": "text"
+		},
+		"Lua": {
+			"type": "programming",
+			"ace_mode": "lua",
+			"color": "#000080",
+			"extensions": [
+				".lua",
+				".fcgi",
+				".nse",
+				".pd_lua",
+				".rbxs",
+				".wlua"
+			],
+			"interpreters": [
+				"lua"
+			]
+		},
+		"M": {
+			"type": "programming",
+			"aliases": [
+				"mumps"
+			],
+			"extensions": [
+				".mumps",
+				".m"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"M4": {
+			"type": "programming",
+			"extensions": [
+				".m4"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"M4Sugar": {
+			"type": "programming",
+			"group": "M4",
+			"aliases": [
+				"autoconf"
+			],
+			"extensions": [
+				".m4"
+			],
+			"filenames": [
+				"configure.ac"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"MAXScript": {
+			"type": "programming",
+			"color": "#00a6a6",
+			"extensions": [
+				".ms",
+				".mcr"
+			],
+			"tm_scope": "source.maxscript",
+			"ace_mode": "text"
+		},
+		"MTML": {
+			"type": "markup",
+			"color": "#b7e1f4",
+			"extensions": [
+				".mtml"
+			],
+			"tm_scope": "text.html.basic",
+			"ace_mode": "html"
+		},
+		"MUF": {
+			"type": "programming",
+			"group": "Forth",
+			"extensions": [
+				".muf",
+				".m"
+			],
+			"tm_scope": "none",
+			"ace_mode": "forth"
+		},
+		"Makefile": {
+			"type": "programming",
+			"color": "#427819",
+			"aliases": [
+				"bsdmake",
+				"make",
+				"mf"
+			],
+			"extensions": [
+				".mak",
+				".d",
+				".mk",
+				".mkfile"
+			],
+			"filenames": [
+				"BSDmakefile",
+				"GNUmakefile",
+				"Kbuild",
+				"Makefile",
+				"Makefile.am",
+				"Makefile.frag",
+				"Makefile.in",
+				"Makefile.inc",
+				"makefile",
+				"makefile.sco",
+				"mkfile"
+			],
+			"interpreters": [
+				"make"
+			],
+			"ace_mode": "makefile"
+		},
+		"Mako": {
+			"type": "programming",
+			"extensions": [
+				".mako",
+				".mao"
+			],
+			"tm_scope": "text.html.mako",
+			"ace_mode": "text"
+		},
+		"Markdown": {
+			"type": "prose",
+			"ace_mode": "markdown",
+			"wrap": true,
+			"extensions": [
+				".md",
+				".markdown",
+				".mkd",
+				".mkdn",
+				".mkdown",
+				".ron"
+			],
+			"tm_scope": "source.gfm"
+		},
+		"Mask": {
+			"type": "markup",
+			"color": "#f97732",
+			"ace_mode": "mask",
+			"extensions": [
+				".mask"
+			],
+			"tm_scope": "source.mask"
+		},
+		"Mathematica": {
+			"type": "programming",
+			"extensions": [
+				".mathematica",
+				".cdf",
+				".m",
+				".ma",
+				".mt",
+				".nb",
+				".nbp",
+				".wl",
+				".wlt"
+			],
+			"aliases": [
+				"mma"
+			],
+			"ace_mode": "text"
+		},
+		"Matlab": {
+			"type": "programming",
+			"color": "#bb92ac",
+			"aliases": [
+				"octave"
+			],
+			"extensions": [
+				".matlab",
+				".m"
+			],
+			"ace_mode": "matlab"
+		},
+		"Maven POM": {
+			"type": "data",
+			"tm_scope": "text.xml.pom",
+			"filenames": [
+				"pom.xml"
+			],
+			"ace_mode": "xml"
+		},
+		"Max": {
+			"type": "programming",
+			"color": "#c4a79c",
+			"aliases": [
+				"max/msp",
+				"maxmsp"
+			],
+			"search_term": "max/msp",
+			"extensions": [
+				".maxpat",
+				".maxhelp",
+				".maxproj",
+				".mxt",
+				".pat"
+			],
+			"tm_scope": "source.json",
+			"ace_mode": "json"
+		},
+		"MediaWiki": {
+			"type": "prose",
+			"wrap": true,
+			"extensions": [
+				".mediawiki",
+				".wiki"
+			],
+			"tm_scope": "text.html.mediawiki",
+			"ace_mode": "text"
+		},
+		"Mercury": {
+			"type": "programming",
+			"color": "#ff2b2b",
+			"ace_mode": "prolog",
+			"interpreters": [
+				"mmi"
+			],
+			"extensions": [
+				".m",
+				".moo"
+			],
+			"tm_scope": "source.mercury"
+		},
+		"Metal": {
+			"type": "programming",
+			"color": "#8f14e9",
+			"extensions": [
+				".metal"
+			],
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"MiniD": {
+			"type": "programming",
+			"searchable": false,
+			"extensions": [
+				".minid"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Mirah": {
+			"type": "programming",
+			"search_term": "mirah",
+			"color": "#c7a938",
+			"extensions": [
+				".druby",
+				".duby",
+				".mir",
+				".mirah"
+			],
+			"tm_scope": "source.ruby",
+			"ace_mode": "ruby"
+		},
+		"Modelica": {
+			"type": "programming",
+			"extensions": [
+				".mo"
+			],
+			"tm_scope": "source.modelica",
+			"ace_mode": "text"
+		},
+		"Modula-2": {
+			"type": "programming",
+			"extensions": [
+				".mod"
+			],
+			"tm_scope": "source.modula2",
+			"ace_mode": "text"
+		},
+		"Module Management System": {
+			"type": "programming",
+			"extensions": [
+				".mms",
+				".mmk"
+			],
+			"filenames": [
+				"descrip.mmk",
+				"descrip.mms"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Monkey": {
+			"type": "programming",
+			"extensions": [
+				".monkey"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.monkey"
+		},
+		"Moocode": {
+			"type": "programming",
+			"extensions": [
+				".moo"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"MoonScript": {
+			"type": "programming",
+			"extensions": [
+				".moon"
+			],
+			"interpreters": [
+				"moon"
+			],
+			"ace_mode": "text"
+		},
+		"Myghty": {
+			"type": "programming",
+			"extensions": [
+				".myt"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"NCL": {
+			"type": "programming",
+			"color": "#28431f",
+			"extensions": [
+				".ncl"
+			],
+			"tm_scope": "source.ncl",
+			"ace_mode": "text"
+		},
+		"NL": {
+			"type": "data",
+			"extensions": [
+				".nl"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"NSIS": {
+			"type": "programming",
+			"extensions": [
+				".nsi",
+				".nsh"
+			],
+			"ace_mode": "text"
+		},
+		"Nemerle": {
+			"type": "programming",
+			"color": "#3d3c6e",
+			"extensions": [
+				".n"
+			],
+			"ace_mode": "text"
+		},
+		"NetLinx": {
+			"type": "programming",
+			"color": "#0aa0ff",
+			"extensions": [
+				".axs",
+				".axi"
+			],
+			"tm_scope": "source.netlinx",
+			"ace_mode": "text"
+		},
+		"NetLinx+ERB": {
+			"type": "programming",
+			"color": "#747faa",
+			"extensions": [
+				".axs.erb",
+				".axi.erb"
+			],
+			"tm_scope": "source.netlinx.erb",
+			"ace_mode": "text"
+		},
+		"NetLogo": {
+			"type": "programming",
+			"color": "#ff6375",
+			"extensions": [
+				".nlogo"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"NewLisp": {
+			"type": "programming",
+			"lexer": "NewLisp",
+			"color": "#87AED7",
+			"extensions": [
+				".nl",
+				".lisp",
+				".lsp"
+			],
+			"interpreters": [
+				"newlisp"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"Nginx": {
+			"type": "markup",
+			"extensions": [
+				".nginxconf",
+				".vhost"
+			],
+			"filenames": [
+				"nginx.conf"
+			],
+			"tm_scope": "source.nginx",
+			"aliases": [
+				"nginx configuration file"
+			],
+			"ace_mode": "text",
+			"color": "#9469E9"
+		},
+		"Nimrod": {
+			"type": "programming",
+			"color": "#37775b",
+			"extensions": [
+				".nim",
+				".nimrod"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.nim"
+		},
+		"Ninja": {
+			"type": "data",
+			"tm_scope": "source.ninja",
+			"extensions": [
+				".ninja"
+			],
+			"ace_mode": "text"
+		},
+		"Nit": {
+			"type": "programming",
+			"color": "#009917",
+			"extensions": [
+				".nit"
+			],
+			"tm_scope": "source.nit",
+			"ace_mode": "text"
+		},
+		"Nix": {
+			"type": "programming",
+			"color": "#7e7eff",
+			"extensions": [
+				".nix"
+			],
+			"aliases": [
+				"nixos"
+			],
+			"tm_scope": "source.nix",
+			"ace_mode": "nix"
+		},
+		"Nu": {
+			"type": "programming",
+			"color": "#c9df40",
+			"aliases": [
+				"nush"
+			],
+			"extensions": [
+				".nu"
+			],
+			"filenames": [
+				"Nukefile"
+			],
+			"tm_scope": "source.nu",
+			"ace_mode": "scheme",
+			"interpreters": [
+				"nush"
+			]
+		},
+		"NumPy": {
+			"type": "programming",
+			"group": "Python",
+			"extensions": [
+				".numpy",
+				".numpyw",
+				".numsc"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text",
+			"color": "#9C8AF9"
+		},
+		"OCaml": {
+			"type": "programming",
+			"ace_mode": "ocaml",
+			"color": "#3be133",
+			"extensions": [
+				".ml",
+				".eliom",
+				".eliomi",
+				".ml4",
+				".mli",
+				".mll",
+				".mly"
+			],
+			"interpreters": [
+				"ocaml",
+				"ocamlrun",
+				"ocamlscript"
+			],
+			"tm_scope": "source.ocaml"
+		},
+		"ObjDump": {
+			"type": "data",
+			"extensions": [
+				".objdump"
+			],
+			"tm_scope": "objdump.x86asm",
+			"ace_mode": "assembly_x86"
+		},
+		"Objective-C": {
+			"type": "programming",
+			"tm_scope": "source.objc",
+			"color": "#438eff",
+			"aliases": [
+				"obj-c",
+				"objc",
+				"objectivec"
+			],
+			"extensions": [
+				".m",
+				".h"
+			],
+			"ace_mode": "objectivec"
+		},
+		"Objective-C++": {
+			"type": "programming",
+			"tm_scope": "source.objc++",
+			"color": "#6866fb",
+			"aliases": [
+				"obj-c++",
+				"objc++",
+				"objectivec++"
+			],
+			"extensions": [
+				".mm"
+			],
+			"ace_mode": "objectivec"
+		},
+		"Objective-J": {
+			"type": "programming",
+			"color": "#ff0c5a",
+			"aliases": [
+				"obj-j",
+				"objectivej",
+				"objj"
+			],
+			"extensions": [
+				".j",
+				".sj"
+			],
+			"tm_scope": "source.js.objj",
+			"ace_mode": "text"
+		},
+		"Omgrofl": {
+			"type": "programming",
+			"extensions": [
+				".omgrofl"
+			],
+			"color": "#cabbff",
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Opa": {
+			"type": "programming",
+			"extensions": [
+				".opa"
+			],
+			"ace_mode": "text"
+		},
+		"Opal": {
+			"type": "programming",
+			"color": "#f7ede0",
+			"extensions": [
+				".opal"
+			],
+			"tm_scope": "source.opal",
+			"ace_mode": "text"
+		},
+		"OpenCL": {
+			"type": "programming",
+			"group": "C",
+			"extensions": [
+				".cl",
+				".opencl"
+			],
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"OpenEdge ABL": {
+			"type": "programming",
+			"aliases": [
+				"progress",
+				"openedge",
+				"abl"
+			],
+			"extensions": [
+				".p",
+				".cls"
+			],
+			"tm_scope": "source.abl",
+			"ace_mode": "text"
+		},
+		"OpenRC runscript": {
+			"type": "programming",
+			"group": "Shell",
+			"aliases": [
+				"openrc"
+			],
+			"interpreters": [
+				"openrc-run"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"OpenSCAD": {
+			"type": "programming",
+			"extensions": [
+				".scad"
+			],
+			"tm_scope": "none",
+			"ace_mode": "scad"
+		},
+		"Org": {
+			"type": "prose",
+			"wrap": true,
+			"extensions": [
+				".org"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Ox": {
+			"type": "programming",
+			"extensions": [
+				".ox",
+				".oxh",
+				".oxo"
+			],
+			"tm_scope": "source.ox",
+			"ace_mode": "text"
+		},
+		"Oxygene": {
+			"type": "programming",
+			"color": "#cdd0e3",
+			"extensions": [
+				".oxygene"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Oz": {
+			"type": "programming",
+			"color": "#fab738",
+			"extensions": [
+				".oz"
+			],
+			"tm_scope": "source.oz",
+			"ace_mode": "text"
+		},
+		"PAWN": {
+			"type": "programming",
+			"color": "#dbb284",
+			"extensions": [
+				".pwn",
+				".inc"
+			],
+			"tm_scope": "source.pawn",
+			"ace_mode": "text"
+		},
+		"PHP": {
+			"type": "programming",
+			"tm_scope": "text.html.php",
+			"ace_mode": "php",
+			"color": "#4F5D95",
+			"extensions": [
+				".php",
+				".aw",
+				".ctp",
+				".fcgi",
+				".inc",
+				".php3",
+				".php4",
+				".php5",
+				".phps",
+				".phpt"
+			],
+			"filenames": [
+				"Phakefile"
+			],
+			"interpreters": [
+				"php"
+			],
+			"aliases": [
+				"inc"
+			]
+		},
+		"PLSQL": {
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "none",
+			"color": "#dad8d8",
+			"extensions": [
+				".pls",
+				".pck",
+				".pkb",
+				".pks",
+				".plb",
+				".plsql",
+				".sql"
+			]
+		},
+		"PLpgSQL": {
+			"type": "programming",
+			"ace_mode": "pgsql",
+			"tm_scope": "source.sql",
+			"extensions": [
+				".sql"
+			]
+		},
+		"POV-Ray SDL": {
+			"type": "programming",
+			"aliases": [
+				"pov-ray",
+				"povray"
+			],
+			"extensions": [
+				".pov",
+				".inc"
+			],
+			"ace_mode": "text"
+		},
+		"Pan": {
+			"type": "programming",
+			"color": "#cc0000",
+			"extensions": [
+				".pan"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Papyrus": {
+			"type": "programming",
+			"color": "#6600cc",
+			"extensions": [
+				".psc"
+			],
+			"tm_scope": "source.papyrus.skyrim",
+			"ace_mode": "text"
+		},
+		"Parrot": {
+			"type": "programming",
+			"color": "#f3ca0a",
+			"extensions": [
+				".parrot"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Parrot Assembly": {
+			"group": "Parrot",
+			"type": "programming",
+			"aliases": [
+				"pasm"
+			],
+			"extensions": [
+				".pasm"
+			],
+			"interpreters": [
+				"parrot"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Parrot Internal Representation": {
+			"group": "Parrot",
+			"tm_scope": "source.parrot.pir",
+			"type": "programming",
+			"aliases": [
+				"pir"
+			],
+			"extensions": [
+				".pir"
+			],
+			"interpreters": [
+				"parrot"
+			],
+			"ace_mode": "text"
+		},
+		"Pascal": {
+			"type": "programming",
+			"color": "#E3F171",
+			"extensions": [
+				".pas",
+				".dfm",
+				".dpr",
+				".inc",
+				".lpr",
+				".pascal",
+				".pp"
+			],
+			"interpreters": [
+				"instantfpc"
+			],
+			"ace_mode": "pascal"
+		},
+		"Perl": {
+			"type": "programming",
+			"tm_scope": "source.perl",
+			"ace_mode": "perl",
+			"color": "#0298c3",
+			"extensions": [
+				".pl",
+				".al",
+				".cgi",
+				".fcgi",
+				".perl",
+				".ph",
+				".plx",
+				".pm",
+				".pod",
+				".psgi",
+				".t"
+			],
+			"interpreters": [
+				"perl"
+			]
+		},
+		"Perl6": {
+			"type": "programming",
+			"color": "#0000fb",
+			"extensions": [
+				".6pl",
+				".6pm",
+				".nqp",
+				".p6",
+				".p6l",
+				".p6m",
+				".pl",
+				".pl6",
+				".pm",
+				".pm6",
+				".t"
+			],
+			"filenames": [
+				"Rexfile"
+			],
+			"interpreters": [
+				"perl6"
+			],
+			"tm_scope": "source.perl6fe",
+			"ace_mode": "perl"
+		},
+		"Pickle": {
+			"type": "data",
+			"extensions": [
+				".pkl"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"PicoLisp": {
+			"type": "programming",
+			"extensions": [
+				".l"
+			],
+			"interpreters": [
+				"picolisp",
+				"pil"
+			],
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp"
+		},
+		"PigLatin": {
+			"type": "programming",
+			"color": "#fcd7de",
+			"extensions": [
+				".pig"
+			],
+			"tm_scope": "source.pig_latin",
+			"ace_mode": "text"
+		},
+		"Pike": {
+			"type": "programming",
+			"color": "#005390",
+			"extensions": [
+				".pike",
+				".pmod"
+			],
+			"interpreters": [
+				"pike"
+			],
+			"ace_mode": "text"
+		},
+		"Pod": {
+			"type": "prose",
+			"ace_mode": "perl",
+			"wrap": true,
+			"extensions": [
+				".pod"
+			],
+			"tm_scope": "none"
+		},
+		"PogoScript": {
+			"type": "programming",
+			"color": "#d80074",
+			"extensions": [
+				".pogo"
+			],
+			"tm_scope": "source.pogoscript",
+			"ace_mode": "text"
+		},
+		"Pony": {
+			"type": "programming",
+			"extensions": [
+				".pony"
+			],
+			"tm_scope": "source.pony",
+			"ace_mode": "text"
+		},
+		"PostScript": {
+			"type": "markup",
+			"color": "#da291c",
+			"extensions": [
+				".ps",
+				".eps"
+			],
+			"tm_scope": "source.postscript",
+			"aliases": [
+				"postscr"
+			],
+			"ace_mode": "text"
+		},
+		"PowerBuilder": {
+			"type": "programming",
+			"color": "#8f0f8d",
+			"extensions": [
+				".pbt",
+				".sra",
+				".sru",
+				".srw"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"PowerShell": {
+			"type": "programming",
+			"ace_mode": "powershell",
+			"aliases": [
+				"posh"
+			],
+			"extensions": [
+				".ps1",
+				".psd1",
+				".psm1"
+			]
+		},
+		"Processing": {
+			"type": "programming",
+			"color": "#0096D8",
+			"extensions": [
+				".pde"
+			],
+			"ace_mode": "text"
+		},
+		"Prolog": {
+			"type": "programming",
+			"color": "#74283c",
+			"extensions": [
+				".pl",
+				".pro",
+				".prolog",
+				".yap"
+			],
+			"interpreters": [
+				"swipl",
+				"yap"
+			],
+			"tm_scope": "source.prolog",
+			"ace_mode": "prolog"
+		},
+		"Propeller Spin": {
+			"type": "programming",
+			"color": "#7fa2a7",
+			"extensions": [
+				".spin"
+			],
+			"tm_scope": "source.spin",
+			"ace_mode": "text"
+		},
+		"Protocol Buffer": {
+			"type": "markup",
+			"aliases": [
+				"protobuf",
+				"Protocol Buffers"
+			],
+			"extensions": [
+				".proto"
+			],
+			"tm_scope": "source.protobuf",
+			"ace_mode": "protobuf"
+		},
+		"Public Key": {
+			"type": "data",
+			"extensions": [
+				".asc",
+				".pub"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Puppet": {
+			"type": "programming",
+			"color": "#302B6D",
+			"extensions": [
+				".pp"
+			],
+			"filenames": [
+				"Modulefile"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.puppet"
+		},
+		"Pure Data": {
+			"type": "programming",
+			"color": "#91de79",
+			"extensions": [
+				".pd"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"PureBasic": {
+			"type": "programming",
+			"color": "#5a6986",
+			"extensions": [
+				".pb",
+				".pbi"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"PureScript": {
+			"type": "programming",
+			"color": "#1D222D",
+			"extensions": [
+				".purs"
+			],
+			"tm_scope": "source.purescript",
+			"ace_mode": "haskell"
+		},
+		"Python": {
+			"type": "programming",
+			"ace_mode": "python",
+			"color": "#3572A5",
+			"extensions": [
+				".py",
+				".bzl",
+				".cgi",
+				".fcgi",
+				".gyp",
+				".lmi",
+				".pyde",
+				".pyp",
+				".pyt",
+				".pyw",
+				".rpy",
+				".spec",
+				".tac",
+				".wsgi",
+				".xpy"
+			],
+			"filenames": [
+				"BUCK",
+				"BUILD",
+				"SConscript",
+				"SConstruct",
+				"Snakefile",
+				"wscript"
+			],
+			"interpreters": [
+				"python",
+				"python2",
+				"python3"
+			],
+			"aliases": [
+				"rusthon"
+			]
+		},
+		"Python traceback": {
+			"type": "data",
+			"group": "Python",
+			"searchable": false,
+			"extensions": [
+				".pytb"
+			],
+			"tm_scope": "text.python.traceback",
+			"ace_mode": "text"
+		},
+		"QML": {
+			"type": "programming",
+			"color": "#44a51c",
+			"extensions": [
+				".qml",
+				".qbs"
+			],
+			"tm_scope": "source.qml",
+			"ace_mode": "text"
+		},
+		"QMake": {
+			"type": "programming",
+			"extensions": [
+				".pro",
+				".pri"
+			],
+			"interpreters": [
+				"qmake"
+			],
+			"ace_mode": "text"
+		},
+		"R": {
+			"type": "programming",
+			"color": "#198CE7",
+			"aliases": [
+				"R",
+				"Rscript",
+				"splus"
+			],
+			"extensions": [
+				".r",
+				".rd",
+				".rsx"
+			],
+			"filenames": [
+				".Rprofile"
+			],
+			"interpreters": [
+				"Rscript"
+			],
+			"ace_mode": "r"
+		},
+		"RAML": {
+			"type": "markup",
+			"ace_mode": "yaml",
+			"tm_scope": "source.yaml",
+			"color": "#77d9fb",
+			"extensions": [
+				".raml"
+			]
+		},
+		"RDoc": {
+			"type": "prose",
+			"ace_mode": "rdoc",
+			"wrap": true,
+			"extensions": [
+				".rdoc"
+			],
+			"tm_scope": "text.rdoc"
+		},
+		"REALbasic": {
+			"type": "programming",
+			"extensions": [
+				".rbbas",
+				".rbfrm",
+				".rbmnu",
+				".rbres",
+				".rbtbar",
+				".rbuistate"
+			],
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"REXX": {
+			"type": "programming",
+			"aliases": [
+				"arexx"
+			],
+			"extensions": [
+				".rexx",
+				".pprx",
+				".rex"
+			],
+			"tm_scope": "source.rexx",
+			"ace_mode": "text"
+		},
+		"RHTML": {
+			"type": "markup",
+			"group": "HTML",
+			"extensions": [
+				".rhtml"
+			],
+			"tm_scope": "text.html.erb",
+			"aliases": [
+				"html+ruby"
+			],
+			"ace_mode": "rhtml"
+		},
+		"RMarkdown": {
+			"type": "prose",
+			"wrap": true,
+			"ace_mode": "markdown",
+			"extensions": [
+				".rmd"
+			],
+			"tm_scope": "source.gfm"
+		},
+		"RPM Spec": {
+			"type": "data",
+			"tm_scope": "source.rpm-spec",
+			"extensions": [
+				".spec"
+			],
+			"aliases": [
+				"specfile"
+			],
+			"ace_mode": "text"
+		},
+		"RUNOFF": {
+			"type": "markup",
+			"color": "#665a4e",
+			"extensions": [
+				".rnh",
+				".rno"
+			],
+			"tm_scope": "text.runoff",
+			"ace_mode": "text"
+		},
+		"Racket": {
+			"type": "programming",
+			"color": "#22228f",
+			"extensions": [
+				".rkt",
+				".rktd",
+				".rktl",
+				".scrbl"
+			],
+			"interpreters": [
+				"racket"
+			],
+			"tm_scope": "source.racket",
+			"ace_mode": "lisp"
+		},
+		"Ragel in Ruby Host": {
+			"type": "programming",
+			"color": "#9d5200",
+			"extensions": [
+				".rl"
+			],
+			"aliases": [
+				"ragel-rb",
+				"ragel-ruby"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Raw token data": {
+			"type": "data",
+			"search_term": "raw",
+			"aliases": [
+				"raw"
+			],
+			"extensions": [
+				".raw"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Rebol": {
+			"type": "programming",
+			"color": "#358a5b",
+			"extensions": [
+				".reb",
+				".r",
+				".r2",
+				".r3",
+				".rebol"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.rebol"
+		},
+		"Red": {
+			"type": "programming",
+			"color": "#f50000",
+			"extensions": [
+				".red",
+				".reds"
+			],
+			"aliases": [
+				"red/system"
+			],
+			"tm_scope": "source.red",
+			"ace_mode": "text"
+		},
+		"Redcode": {
+			"type": "programming",
+			"extensions": [
+				".cw"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Ren'Py": {
+			"type": "programming",
+			"aliases": [
+				"renpy"
+			],
+			"color": "#ff7f7f",
+			"extensions": [
+				".rpy"
+			],
+			"tm_scope": "source.renpy",
+			"ace_mode": "python"
+		},
+		"RenderScript": {
+			"type": "programming",
+			"extensions": [
+				".rs",
+				".rsh"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"RobotFramework": {
+			"type": "programming",
+			"extensions": [
+				".robot"
+			],
+			"tm_scope": "text.robot",
+			"ace_mode": "text"
+		},
+		"Rouge": {
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#cc0088",
+			"extensions": [
+				".rg"
+			],
+			"tm_scope": "source.clojure"
+		},
+		"Ruby": {
+			"type": "programming",
+			"ace_mode": "ruby",
+			"color": "#701516",
+			"aliases": [
+				"jruby",
+				"macruby",
+				"rake",
+				"rb",
+				"rbx"
+			],
+			"extensions": [
+				".rb",
+				".builder",
+				".fcgi",
+				".gemspec",
+				".god",
+				".irbrc",
+				".jbuilder",
+				".mspec",
+				".pluginspec",
+				".podspec",
+				".rabl",
+				".rake",
+				".rbuild",
+				".rbw",
+				".rbx",
+				".ru",
+				".ruby",
+				".spec",
+				".thor",
+				".watchr"
+			],
+			"interpreters": [
+				"ruby",
+				"macruby",
+				"rake",
+				"jruby",
+				"rbx"
+			],
+			"filenames": [
+				".pryrc",
+				"Appraisals",
+				"Berksfile",
+				"Brewfile",
+				"Buildfile",
+				"Deliverfile",
+				"Fastfile",
+				"Gemfile",
+				"Gemfile.lock",
+				"Guardfile",
+				"Jarfile",
+				"Mavenfile",
+				"Podfile",
+				"Puppetfile",
+				"Snapfile",
+				"Thorfile",
+				"Vagrantfile",
+				"buildfile"
+			]
+		},
+		"Rust": {
+			"type": "programming",
+			"color": "#dea584",
+			"extensions": [
+				".rs",
+				".rs.in"
+			],
+			"ace_mode": "rust"
+		},
+		"SAS": {
+			"type": "programming",
+			"color": "#B34936",
+			"extensions": [
+				".sas"
+			],
+			"tm_scope": "source.sas",
+			"ace_mode": "text"
+		},
+		"SCSS": {
+			"type": "markup",
+			"tm_scope": "source.scss",
+			"group": "CSS",
+			"ace_mode": "scss",
+			"extensions": [
+				".scss"
+			],
+			"color": "#CF649A"
+		},
+		"SMT": {
+			"type": "programming",
+			"extensions": [
+				".smt2",
+				".smt"
+			],
+			"interpreters": [
+				"boolector",
+				"cvc4",
+				"mathsat5",
+				"opensmt",
+				"smtinterpol",
+				"smt-rat",
+				"stp",
+				"verit",
+				"yices2",
+				"z3"
+			],
+			"tm_scope": "source.smt",
+			"ace_mode": "text"
+		},
+		"SPARQL": {
+			"type": "data",
+			"tm_scope": "source.sparql",
+			"ace_mode": "text",
+			"extensions": [
+				".sparql",
+				".rq"
+			]
+		},
+		"SQF": {
+			"type": "programming",
+			"color": "#3F3F3F",
+			"extensions": [
+				".sqf",
+				".hqf"
+			],
+			"tm_scope": "source.sqf",
+			"ace_mode": "text"
+		},
+		"SQL": {
+			"type": "data",
+			"tm_scope": "source.sql",
+			"ace_mode": "sql",
+			"extensions": [
+				".sql",
+				".cql",
+				".ddl",
+				".inc",
+				".prc",
+				".tab",
+				".udf",
+				".viw"
+			]
+		},
+		"SQLPL": {
+			"type": "programming",
+			"ace_mode": "sql",
+			"tm_scope": "source.sql",
+			"extensions": [
+				".sql",
+				".db2"
+			]
+		},
+		"SRecode Template": {
+			"type": "markup",
+			"color": "#348a34",
+			"tm_scope": "source.lisp",
+			"ace_mode": "lisp",
+			"extensions": [
+				".srt"
+			]
+		},
+		"STON": {
+			"type": "data",
+			"group": "Smalltalk",
+			"extensions": [
+				".ston"
+			],
+			"tm_scope": "source.smalltalk",
+			"ace_mode": "text"
+		},
+		"SVG": {
+			"type": "data",
+			"extensions": [
+				".svg"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"Sage": {
+			"type": "programming",
+			"group": "Python",
+			"extensions": [
+				".sage",
+				".sagews"
+			],
+			"tm_scope": "source.python",
+			"ace_mode": "python"
+		},
+		"SaltStack": {
+			"type": "programming",
+			"color": "#646464",
+			"aliases": [
+				"saltstate",
+				"salt"
+			],
+			"extensions": [
+				".sls"
+			],
+			"tm_scope": "source.yaml.salt",
+			"ace_mode": "yaml"
+		},
+		"Sass": {
+			"type": "markup",
+			"tm_scope": "source.sass",
+			"group": "CSS",
+			"extensions": [
+				".sass"
+			],
+			"ace_mode": "sass",
+			"color": "#CF649A"
+		},
+		"Scala": {
+			"type": "programming",
+			"ace_mode": "scala",
+			"color": "#c22d40",
+			"extensions": [
+				".scala",
+				".sbt",
+				".sc"
+			],
+			"interpreters": [
+				"scala"
+			]
+		},
+		"Scaml": {
+			"group": "HTML",
+			"type": "markup",
+			"extensions": [
+				".scaml"
+			],
+			"tm_scope": "source.scaml",
+			"ace_mode": "text"
+		},
+		"Scheme": {
+			"type": "programming",
+			"color": "#1e4aec",
+			"extensions": [
+				".scm",
+				".sld",
+				".sls",
+				".sps",
+				".ss"
+			],
+			"interpreters": [
+				"guile",
+				"bigloo",
+				"chicken",
+				"csi",
+				"gosh",
+				"r6rs"
+			],
+			"ace_mode": "scheme"
+		},
+		"Scilab": {
+			"type": "programming",
+			"extensions": [
+				".sci",
+				".sce",
+				".tst"
+			],
+			"ace_mode": "text"
+		},
+		"Self": {
+			"type": "programming",
+			"color": "#0579aa",
+			"extensions": [
+				".self"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Shell": {
+			"type": "programming",
+			"search_term": "bash",
+			"color": "#89e051",
+			"aliases": [
+				"sh",
+				"shell-script",
+				"bash",
+				"zsh"
+			],
+			"extensions": [
+				".sh",
+				".bash",
+				".bats",
+				".cgi",
+				".command",
+				".fcgi",
+				".ksh",
+				".sh.in",
+				".tmux",
+				".tool",
+				".zsh"
+			],
+			"filenames": [
+				".bash_history",
+				".bash_logout",
+				".bash_profile",
+				".bashrc",
+				"PKGBUILD",
+				"gradlew"
+			],
+			"interpreters": [
+				"bash",
+				"rc",
+				"sh",
+				"zsh"
+			],
+			"ace_mode": "sh"
+		},
+		"ShellSession": {
+			"type": "programming",
+			"extensions": [
+				".sh-session"
+			],
+			"aliases": [
+				"bash session",
+				"console"
+			],
+			"tm_scope": "text.shell-session",
+			"ace_mode": "sh"
+		},
+		"Shen": {
+			"type": "programming",
+			"color": "#120F14",
+			"extensions": [
+				".shen"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Slash": {
+			"type": "programming",
+			"color": "#007eff",
+			"extensions": [
+				".sl"
+			],
+			"tm_scope": "text.html.slash",
+			"ace_mode": "text"
+		},
+		"Slim": {
+			"group": "HTML",
+			"type": "markup",
+			"color": "#ff8f77",
+			"extensions": [
+				".slim"
+			],
+			"tm_scope": "text.slim",
+			"ace_mode": "text"
+		},
+		"Smali": {
+			"type": "programming",
+			"extensions": [
+				".smali"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.smali"
+		},
+		"Smalltalk": {
+			"type": "programming",
+			"color": "#596706",
+			"extensions": [
+				".st",
+				".cs"
+			],
+			"aliases": [
+				"squeak"
+			],
+			"ace_mode": "text"
+		},
+		"Smarty": {
+			"type": "programming",
+			"extensions": [
+				".tpl"
+			],
+			"ace_mode": "smarty",
+			"tm_scope": "text.html.smarty"
+		},
+		"SourcePawn": {
+			"type": "programming",
+			"color": "#5c7611",
+			"aliases": [
+				"sourcemod"
+			],
+			"extensions": [
+				".sp",
+				".inc",
+				".sma"
+			],
+			"tm_scope": "source.sp",
+			"ace_mode": "text"
+		},
+		"Squirrel": {
+			"type": "programming",
+			"color": "#800000",
+			"extensions": [
+				".nut"
+			],
+			"tm_scope": "source.c++",
+			"ace_mode": "c_cpp"
+		},
+		"Stan": {
+			"type": "programming",
+			"color": "#b2011d",
+			"extensions": [
+				".stan"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.stan"
+		},
+		"Standard ML": {
+			"type": "programming",
+			"color": "#dc566d",
+			"aliases": [
+				"sml"
+			],
+			"extensions": [
+				".ML",
+				".fun",
+				".sig",
+				".sml"
+			],
+			"tm_scope": "source.ml",
+			"ace_mode": "text"
+		},
+		"Stata": {
+			"type": "programming",
+			"extensions": [
+				".do",
+				".ado",
+				".doh",
+				".ihlp",
+				".mata",
+				".matah",
+				".sthlp"
+			],
+			"ace_mode": "text"
+		},
+		"Stylus": {
+			"type": "markup",
+			"group": "CSS",
+			"extensions": [
+				".styl"
+			],
+			"tm_scope": "source.stylus",
+			"ace_mode": "stylus"
+		},
+		"SubRip Text": {
+			"type": "data",
+			"extensions": [
+				".srt"
+			],
+			"ace_mode": "text",
+			"tm_scope": "text.srt"
+		},
+		"SuperCollider": {
+			"type": "programming",
+			"color": "#46390b",
+			"extensions": [
+				".sc",
+				".scd"
+			],
+			"interpreters": [
+				"sclang",
+				"scsynth"
+			],
+			"tm_scope": "source.supercollider",
+			"ace_mode": "text"
+		},
+		"Swift": {
+			"type": "programming",
+			"color": "#ffac45",
+			"extensions": [
+				".swift"
+			],
+			"ace_mode": "text"
+		},
+		"SystemVerilog": {
+			"type": "programming",
+			"color": "#DAE1C2",
+			"extensions": [
+				".sv",
+				".svh",
+				".vh"
+			],
+			"ace_mode": "verilog"
+		},
+		"TLA": {
+			"type": "programming",
+			"extensions": [
+				".tla"
+			],
+			"tm_scope": "source.tla",
+			"ace_mode": "text"
+		},
+		"TOML": {
+			"type": "data",
+			"extensions": [
+				".toml"
+			],
+			"tm_scope": "source.toml",
+			"ace_mode": "toml"
+		},
+		"TXL": {
+			"type": "programming",
+			"extensions": [
+				".txl"
+			],
+			"tm_scope": "source.txl",
+			"ace_mode": "text"
+		},
+		"Tcl": {
+			"type": "programming",
+			"color": "#e4cc98",
+			"extensions": [
+				".tcl",
+				".adp",
+				".tm"
+			],
+			"interpreters": [
+				"tclsh",
+				"wish"
+			],
+			"ace_mode": "tcl"
+		},
+		"Tcsh": {
+			"type": "programming",
+			"group": "Shell",
+			"extensions": [
+				".tcsh",
+				".csh"
+			],
+			"tm_scope": "source.shell",
+			"ace_mode": "sh"
+		},
+		"TeX": {
+			"type": "markup",
+			"color": "#3D6117",
+			"ace_mode": "tex",
+			"wrap": true,
+			"aliases": [
+				"latex"
+			],
+			"extensions": [
+				".tex",
+				".aux",
+				".bbx",
+				".bib",
+				".cbx",
+				".cls",
+				".dtx",
+				".ins",
+				".lbx",
+				".ltx",
+				".mkii",
+				".mkiv",
+				".mkvi",
+				".sty",
+				".toc"
+			]
+		},
+		"Tea": {
+			"type": "markup",
+			"extensions": [
+				".tea"
+			],
+			"tm_scope": "source.tea",
+			"ace_mode": "text"
+		},
+		"Terra": {
+			"type": "programming",
+			"extensions": [
+				".t"
+			],
+			"color": "#00004c",
+			"ace_mode": "lua",
+			"interpreters": [
+				"lua"
+			]
+		},
+		"Text": {
+			"type": "prose",
+			"wrap": true,
+			"aliases": [
+				"fundamental"
+			],
+			"extensions": [
+				".txt",
+				".fr",
+				".nb",
+				".ncl",
+				".no"
+			],
+			"filenames": [
+				"COPYING",
+				"INSTALL",
+				"LICENSE",
+				"NEWS",
+				"README.1ST",
+				"README.me",
+				"click.me",
+				"delete.me",
+				"keep.me",
+				"read.me",
+				"test.me"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"Textile": {
+			"type": "prose",
+			"ace_mode": "textile",
+			"wrap": true,
+			"extensions": [
+				".textile"
+			],
+			"tm_scope": "none"
+		},
+		"Thrift": {
+			"type": "programming",
+			"tm_scope": "source.thrift",
+			"extensions": [
+				".thrift"
+			],
+			"ace_mode": "text"
+		},
+		"Turing": {
+			"type": "programming",
+			"color": "#cf142b",
+			"extensions": [
+				".t",
+				".tu"
+			],
+			"tm_scope": "source.turing",
+			"ace_mode": "text"
+		},
+		"Turtle": {
+			"type": "data",
+			"extensions": [
+				".ttl"
+			],
+			"tm_scope": "source.turtle",
+			"ace_mode": "text"
+		},
+		"Twig": {
+			"type": "markup",
+			"group": "HTML",
+			"extensions": [
+				".twig"
+			],
+			"tm_scope": "text.html.twig",
+			"ace_mode": "twig"
+		},
+		"TypeScript": {
+			"type": "programming",
+			"color": "#2b7489",
+			"aliases": [
+				"ts"
+			],
+			"extensions": [
+				".ts",
+				".tsx"
+			],
+			"tm_scope": "source.ts",
+			"ace_mode": "typescript"
+		},
+		"Unified Parallel C": {
+			"type": "programming",
+			"group": "C",
+			"ace_mode": "c_cpp",
+			"color": "#4e3617",
+			"extensions": [
+				".upc"
+			],
+			"tm_scope": "source.c"
+		},
+		"Unity3D Asset": {
+			"type": "data",
+			"ace_mode": "yaml",
+			"extensions": [
+				".anim",
+				".asset",
+				".mat",
+				".meta",
+				".prefab",
+				".unity"
+			],
+			"tm_scope": "source.yaml"
+		},
+		"Uno": {
+			"type": "programming",
+			"extensions": [
+				".uno"
+			],
+			"ace_mode": "csharp",
+			"tm_scope": "source.cs"
+		},
+		"UnrealScript": {
+			"type": "programming",
+			"color": "#a54c4d",
+			"extensions": [
+				".uc"
+			],
+			"tm_scope": "source.java",
+			"ace_mode": "java"
+		},
+		"UrWeb": {
+			"type": "programming",
+			"aliases": [
+				"Ur/Web",
+				"Ur"
+			],
+			"extensions": [
+				".ur",
+				".urs"
+			],
+			"tm_scope": "source.ur",
+			"ace_mode": "text"
+		},
+		"VCL": {
+			"group": "Perl",
+			"type": "programming",
+			"extensions": [
+				".vcl"
+			],
+			"tm_scope": "source.varnish.vcl",
+			"ace_mode": "text"
+		},
+		"VHDL": {
+			"type": "programming",
+			"color": "#adb2cb",
+			"extensions": [
+				".vhdl",
+				".vhd",
+				".vhf",
+				".vhi",
+				".vho",
+				".vhs",
+				".vht",
+				".vhw"
+			],
+			"ace_mode": "vhdl"
+		},
+		"Vala": {
+			"type": "programming",
+			"color": "#fbe5cd",
+			"extensions": [
+				".vala",
+				".vapi"
+			],
+			"ace_mode": "vala"
+		},
+		"Verilog": {
+			"type": "programming",
+			"color": "#b2b7f8",
+			"extensions": [
+				".v",
+				".veo"
+			],
+			"ace_mode": "verilog"
+		},
+		"VimL": {
+			"type": "programming",
+			"color": "#199f4b",
+			"search_term": "vim",
+			"aliases": [
+				"vim",
+				"nvim"
+			],
+			"extensions": [
+				".vim"
+			],
+			"filenames": [
+				".nvimrc",
+				".vimrc",
+				"_vimrc",
+				"gvimrc",
+				"nvimrc",
+				"vimrc"
+			],
+			"ace_mode": "text"
+		},
+		"Visual Basic": {
+			"type": "programming",
+			"color": "#945db7",
+			"extensions": [
+				".vb",
+				".bas",
+				".cls",
+				".frm",
+				".frx",
+				".vba",
+				".vbhtml",
+				".vbs"
+			],
+			"tm_scope": "source.vbnet",
+			"aliases": [
+				"vb.net",
+				"vbnet"
+			],
+			"ace_mode": "text"
+		},
+		"Volt": {
+			"type": "programming",
+			"color": "#1F1F1F",
+			"extensions": [
+				".volt"
+			],
+			"tm_scope": "source.d",
+			"ace_mode": "d"
+		},
+		"Vue": {
+			"type": "markup",
+			"color": "#2c3e50",
+			"extensions": [
+				".vue"
+			],
+			"tm_scope": "text.html.vue",
+			"ace_mode": "html"
+		},
+		"Wavefront Material": {
+			"type": "data",
+			"extensions": [
+				".mtl"
+			],
+			"tm_scope": "source.wavefront.mtl",
+			"ace_mode": "text"
+		},
+		"Wavefront Object": {
+			"type": "data",
+			"extensions": [
+				".obj"
+			],
+			"tm_scope": "source.wavefront.obj",
+			"ace_mode": "text"
+		},
+		"Web Ontology Language": {
+			"type": "markup",
+			"color": "#9cc9dd",
+			"extensions": [
+				".owl"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"WebIDL": {
+			"type": "programming",
+			"extensions": [
+				".webidl"
+			],
+			"tm_scope": "source.webidl",
+			"ace_mode": "text"
+		},
+		"World of Warcraft Addon Data": {
+			"type": "data",
+			"extensions": [
+				".toc"
+			],
+			"tm_scope": "source.toc",
+			"ace_mode": "text"
+		},
+		"X10": {
+			"type": "programming",
+			"aliases": [
+				"xten"
+			],
+			"ace_mode": "text",
+			"extensions": [
+				".x10"
+			],
+			"color": "#4B6BEF",
+			"tm_scope": "source.x10"
+		},
+		"XC": {
+			"type": "programming",
+			"color": "#99DA07",
+			"extensions": [
+				".xc"
+			],
+			"tm_scope": "source.xc",
+			"ace_mode": "c_cpp"
+		},
+		"XML": {
+			"type": "data",
+			"ace_mode": "xml",
+			"aliases": [
+				"rss",
+				"xsd",
+				"wsdl"
+			],
+			"extensions": [
+				".xml",
+				".ant",
+				".axml",
+				".builds",
+				".ccxml",
+				".clixml",
+				".cproject",
+				".csl",
+				".csproj",
+				".ct",
+				".dita",
+				".ditamap",
+				".ditaval",
+				".dll.config",
+				".dotsettings",
+				".filters",
+				".fsproj",
+				".fxml",
+				".glade",
+				".gml",
+				".grxml",
+				".iml",
+				".ivy",
+				".jelly",
+				".jsproj",
+				".kml",
+				".launch",
+				".mdpolicy",
+				".mm",
+				".mod",
+				".mxml",
+				".nproj",
+				".nuspec",
+				".odd",
+				".osm",
+				".pkgproj",
+				".plist",
+				".pluginspec",
+				".props",
+				".ps1xml",
+				".psc1",
+				".pt",
+				".rdf",
+				".resx",
+				".rss",
+				".sch",
+				".scxml",
+				".sfproj",
+				".srdf",
+				".storyboard",
+				".stTheme",
+				".sublime-snippet",
+				".targets",
+				".tmCommand",
+				".tml",
+				".tmLanguage",
+				".tmPreferences",
+				".tmSnippet",
+				".tmTheme",
+				".ts",
+				".tsx",
+				".ui",
+				".urdf",
+				".ux",
+				".vbproj",
+				".vcxproj",
+				".vssettings",
+				".vxml",
+				".wsdl",
+				".wsf",
+				".wxi",
+				".wxl",
+				".wxs",
+				".x3d",
+				".xacro",
+				".xaml",
+				".xib",
+				".xlf",
+				".xliff",
+				".xmi",
+				".xml.dist",
+				".xproj",
+				".xsd",
+				".xul",
+				".zcml"
+			],
+			"filenames": [
+				".classpath",
+				".project",
+				"App.config",
+				"NuGet.config",
+				"Settings.StyleCop",
+				"Web.Debug.config",
+				"Web.Release.config",
+				"Web.config",
+				"packages.config"
+			]
+		},
+		"XPages": {
+			"type": "programming",
+			"extensions": [
+				".xsp-config",
+				".xsp.metadata"
+			],
+			"tm_scope": "none",
+			"ace_mode": "xml"
+		},
+		"XProc": {
+			"type": "programming",
+			"extensions": [
+				".xpl",
+				".xproc"
+			],
+			"tm_scope": "text.xml",
+			"ace_mode": "xml"
+		},
+		"XQuery": {
+			"type": "programming",
+			"color": "#5232e7",
+			"extensions": [
+				".xquery",
+				".xq",
+				".xql",
+				".xqm",
+				".xqy"
+			],
+			"ace_mode": "xquery",
+			"tm_scope": "source.xq"
+		},
+		"XS": {
+			"type": "programming",
+			"extensions": [
+				".xs"
+			],
+			"tm_scope": "source.c",
+			"ace_mode": "c_cpp"
+		},
+		"XSLT": {
+			"type": "programming",
+			"aliases": [
+				"xsl"
+			],
+			"extensions": [
+				".xslt",
+				".xsl"
+			],
+			"tm_scope": "text.xml.xsl",
+			"ace_mode": "xml",
+			"color": "#EB8CEB"
+		},
+		"Xojo": {
+			"type": "programming",
+			"extensions": [
+				".xojo_code",
+				".xojo_menu",
+				".xojo_report",
+				".xojo_script",
+				".xojo_toolbar",
+				".xojo_window"
+			],
+			"tm_scope": "source.vbnet",
+			"ace_mode": "text"
+		},
+		"Xtend": {
+			"type": "programming",
+			"extensions": [
+				".xtend"
+			],
+			"ace_mode": "text"
+		},
+		"YAML": {
+			"type": "data",
+			"tm_scope": "source.yaml",
+			"aliases": [
+				"yml"
+			],
+			"extensions": [
+				".yml",
+				".reek",
+				".rviz",
+				".sublime-syntax",
+				".syntax",
+				".yaml",
+				".yaml-tmlanguage"
+			],
+			"filenames": [
+				".clang-format"
+			],
+			"ace_mode": "yaml"
+		},
+		"YANG": {
+			"type": "data",
+			"extensions": [
+				".yang"
+			],
+			"tm_scope": "source.yang",
+			"ace_mode": "text"
+		},
+		"Yacc": {
+			"type": "programming",
+			"extensions": [
+				".y",
+				".yacc",
+				".yy"
+			],
+			"tm_scope": "source.bison",
+			"ace_mode": "text",
+			"color": "#4B6C4B"
+		},
+		"Zephir": {
+			"type": "programming",
+			"color": "#118f9e",
+			"extensions": [
+				".zep"
+			],
+			"tm_scope": "source.php.zephir",
+			"ace_mode": "php"
+		},
+		"Zimpl": {
+			"type": "programming",
+			"extensions": [
+				".zimpl",
+				".zmpl",
+				".zpl"
+			],
+			"tm_scope": "none",
+			"ace_mode": "text"
+		},
+		"desktop": {
+			"type": "data",
+			"extensions": [
+				".desktop",
+				".desktop.in"
+			],
+			"tm_scope": "source.desktop",
+			"ace_mode": "text"
+		},
+		"eC": {
+			"type": "programming",
+			"color": "#913960",
+			"search_term": "ec",
+			"extensions": [
+				".ec",
+				".eh"
+			],
+			"tm_scope": "source.c.ec",
+			"ace_mode": "text"
+		},
+		"edn": {
+			"type": "data",
+			"ace_mode": "clojure",
+			"extensions": [
+				".edn"
+			],
+			"tm_scope": "source.clojure"
+		},
+		"fish": {
+			"type": "programming",
+			"group": "Shell",
+			"interpreters": [
+				"fish"
+			],
+			"extensions": [
+				".fish"
+			],
+			"tm_scope": "source.fish",
+			"ace_mode": "text"
+		},
+		"mupad": {
+			"type": "programming",
+			"extensions": [
+				".mu"
+			],
+			"ace_mode": "text"
+		},
+		"nesC": {
+			"type": "programming",
+			"color": "#94B0C7",
+			"extensions": [
+				".nc"
+			],
+			"ace_mode": "text",
+			"tm_scope": "source.nesc"
+		},
+		"ooc": {
+			"type": "programming",
+			"color": "#b0b77e",
+			"extensions": [
+				".ooc"
+			],
+			"ace_mode": "text"
+		},
+		"reStructuredText": {
+			"type": "prose",
+			"wrap": true,
+			"search_term": "rst",
+			"aliases": [
+				"rst"
+			],
+			"extensions": [
+				".rst",
+				".rest",
+				".rest.txt",
+				".rst.txt"
+			],
+			"ace_mode": "text"
+		},
+		"wisp": {
+			"type": "programming",
+			"ace_mode": "clojure",
+			"color": "#7582D1",
+			"extensions": [
+				".wisp"
+			],
+			"tm_scope": "source.clojure"
+		},
+		"xBase": {
+			"type": "programming",
+			"color": "#403a40",
+			"aliases": [
+				"advpl",
+				"clipper",
+				"foxpro"
+			],
+			"extensions": [
+				".prg",
+				".ch",
+				".prw"
+			],
+			"tm_scope": "source.harbour",
+			"ace_mode": "text"
+		}
+	};
+
+/***/ },
+/* 575 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _defineProperty2 = __webpack_require__(332);
+	
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	
+	var _ACTION_HANDLERS;
+	
+	exports.clearRepoDetailPage = clearRepoDetailPage;
+	exports.default = moduleReducer;
+	
+	var _types = __webpack_require__(336);
+	
+	var _reduxImmutablejs = __webpack_require__(337);
+	
+	var _immutable = __webpack_require__(339);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function clearRepoDetailPage() {
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.CLEAR_REPO_DETAIL_PAGE });
+	  };
+	}
+	
+	var initialState = (0, _immutable.fromJS)({
+	  startPosition: { top: 0, left: 0, right: 0 },
+	  repoData: {},
+	
+	  loadFailed: false,
+	  repo: {},
+	  readme: '',
+	  contribs: [],
+	  contents: [],
+	  languages: []
+	});
+	
+	// ------------------------------------
+	// Action Handlers
+	// ------------------------------------
+	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.DETAIL_TRANSITION_DATA, function (state, action) {
+	  return state.merge({
+	    startPosition: action.startPosition,
+	    repoData: action.repoData
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.REPO_DETAIL_REQUEST_PAGE_FAILED, function (state, action) {
+	  return state.merge({
+	    loadFailed: true
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.REPO_DETAIL_RECEIVED_ALL, function (state, action) {
+	  var _action$data = action.data;
+	  var repo = _action$data.repo;
+	  var readme = _action$data.readme;
+	  var contribs = _action$data.contribs;
+	  var contents = _action$data.contents;
+	  var languages = _action$data.languages;
+	
+	
+	  return state.merge({
+	    loadFailed: false,
+	    repo: repo,
+	    readme: readme,
+	    contribs: contribs,
+	    contents: contents,
+	    languages: languages
+	  });
+	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLEAR_REPO_DETAIL_PAGE, function (state, action) {
+	  return state.merge({
+	    loadFailed: false,
+	    repo: {},
+	    readme: '',
+	    contribs: [],
+	    contents: [],
+	    languages: []
+	  });
+	}), _ACTION_HANDLERS);
+	
+	// ------------------------------------
+	// Reducer
+	// ------------------------------------
+	function moduleReducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
+	
+	  var handler = ACTION_HANDLERS[action.type];
+	
+	  return handler ? handler(state, action) : state;
+	}
+
+/***/ },
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39197,11 +80217,11 @@ webpackJsonp([0],[
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _style = __webpack_require__(579);
+	var _style = __webpack_require__(577);
 	
 	var _style2 = _interopRequireDefault(_style);
 	
-	var _errorStackParser = __webpack_require__(580);
+	var _errorStackParser = __webpack_require__(578);
 	
 	var _errorStackParser2 = _interopRequireDefault(_errorStackParser);
 	
@@ -39209,7 +80229,7 @@ webpackJsonp([0],[
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _lib = __webpack_require__(582);
+	var _lib = __webpack_require__(580);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39580,7 +80600,7 @@ webpackJsonp([0],[
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 579 */
+/* 577 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39628,7 +80648,7 @@ webpackJsonp([0],[
 	exports.default = _DefaultExportValue;
 
 /***/ },
-/* 580 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
@@ -39637,7 +80657,7 @@ webpackJsonp([0],[
 	
 	    /* istanbul ignore next */
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(581)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(579)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports === 'object') {
 	        module.exports = factory(require('stackframe'));
 	    } else {
@@ -39851,7 +80871,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 581 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -39964,7 +80984,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 582 */
+/* 580 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40171,7 +81191,7 @@ webpackJsonp([0],[
 	exports.default = _RewireAPI__;
 
 /***/ },
-/* 583 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__resourceQuery, module) {/*eslint-env browser*/
@@ -40186,7 +81206,7 @@ webpackJsonp([0],[
 	  warn: true
 	};
 	if (true) {
-	  var querystring = __webpack_require__(584);
+	  var querystring = __webpack_require__(582);
 	  var overrides = querystring.parse(__resourceQuery.slice(1));
 	  if (overrides.path) options.path = overrides.path;
 	  if (overrides.timeout) options.timeout = overrides.timeout;
@@ -40268,11 +81288,11 @@ webpackJsonp([0],[
 	}
 	
 	function createReporter() {
-	  var strip = __webpack_require__(587);
+	  var strip = __webpack_require__(585);
 	
 	  var overlay;
 	  if (typeof document !== 'undefined' && options.overlay) {
-	    overlay = __webpack_require__(589);
+	    overlay = __webpack_require__(587);
 	  }
 	
 	  return {
@@ -40294,7 +81314,7 @@ webpackJsonp([0],[
 	  };
 	}
 	
-	var processUpdate = __webpack_require__(595);
+	var processUpdate = __webpack_require__(593);
 	
 	var customHandler;
 	var subscribeAllHandler;
@@ -40344,17 +81364,17 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, "?path=https://ruanhaojian.github.io/Github-Explorer-Demo/__webpack_hmr", __webpack_require__(525)(module)))
 
 /***/ },
-/* 584 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.decode = exports.parse = __webpack_require__(585);
-	exports.encode = exports.stringify = __webpack_require__(586);
+	exports.decode = exports.parse = __webpack_require__(583);
+	exports.encode = exports.stringify = __webpack_require__(584);
 
 
 /***/ },
-/* 585 */
+/* 583 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -40440,7 +81460,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 586 */
+/* 584 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -40510,11 +81530,11 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 587 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var ansiRegex = __webpack_require__(588)();
+	var ansiRegex = __webpack_require__(586)();
 	
 	module.exports = function (str) {
 		return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -40522,7 +81542,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 588 */
+/* 586 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40532,7 +81552,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 589 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*eslint-env browser*/
@@ -40559,7 +81579,7 @@ webpackJsonp([0],[
 	  clientOverlay.style[key] = styles[key];
 	}
 	
-	var ansiHTML = __webpack_require__(590);
+	var ansiHTML = __webpack_require__(588);
 	var colors = {
 	  reset: ['transparent', 'transparent'],
 	  black: '181818',
@@ -40574,7 +81594,7 @@ webpackJsonp([0],[
 	};
 	ansiHTML.setColors(colors);
 	
-	var Entities = __webpack_require__(591).AllHtmlEntities;
+	var Entities = __webpack_require__(589).AllHtmlEntities;
 	var entities = new Entities();
 	
 	exports.showProblems =
@@ -40615,7 +81635,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 590 */
+/* 588 */
 /***/ function(module, exports) {
 
 	module.exports = ansiHTML;
@@ -40789,19 +81809,19 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 591 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  XmlEntities: __webpack_require__(592),
-	  Html4Entities: __webpack_require__(593),
-	  Html5Entities: __webpack_require__(594),
-	  AllHtmlEntities: __webpack_require__(594)
+	  XmlEntities: __webpack_require__(590),
+	  Html4Entities: __webpack_require__(591),
+	  Html5Entities: __webpack_require__(592),
+	  AllHtmlEntities: __webpack_require__(592)
 	};
 
 
 /***/ },
-/* 592 */
+/* 590 */
 /***/ function(module, exports) {
 
 	var ALPHA_INDEX = {
@@ -40962,7 +81982,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 593 */
+/* 591 */
 /***/ function(module, exports) {
 
 	var HTML_ALPHA = ['apos', 'nbsp', 'iexcl', 'cent', 'pound', 'curren', 'yen', 'brvbar', 'sect', 'uml', 'copy', 'ordf', 'laquo', 'not', 'shy', 'reg', 'macr', 'deg', 'plusmn', 'sup2', 'sup3', 'acute', 'micro', 'para', 'middot', 'cedil', 'sup1', 'ordm', 'raquo', 'frac14', 'frac12', 'frac34', 'iquest', 'Agrave', 'Aacute', 'Acirc', 'Atilde', 'Auml', 'Aring', 'Aelig', 'Ccedil', 'Egrave', 'Eacute', 'Ecirc', 'Euml', 'Igrave', 'Iacute', 'Icirc', 'Iuml', 'ETH', 'Ntilde', 'Ograve', 'Oacute', 'Ocirc', 'Otilde', 'Ouml', 'times', 'Oslash', 'Ugrave', 'Uacute', 'Ucirc', 'Uuml', 'Yacute', 'THORN', 'szlig', 'agrave', 'aacute', 'acirc', 'atilde', 'auml', 'aring', 'aelig', 'ccedil', 'egrave', 'eacute', 'ecirc', 'euml', 'igrave', 'iacute', 'icirc', 'iuml', 'eth', 'ntilde', 'ograve', 'oacute', 'ocirc', 'otilde', 'ouml', 'divide', 'Oslash', 'ugrave', 'uacute', 'ucirc', 'uuml', 'yacute', 'thorn', 'yuml', 'quot', 'amp', 'lt', 'gt', 'oelig', 'oelig', 'scaron', 'scaron', 'yuml', 'circ', 'tilde', 'ensp', 'emsp', 'thinsp', 'zwnj', 'zwj', 'lrm', 'rlm', 'ndash', 'mdash', 'lsquo', 'rsquo', 'sbquo', 'ldquo', 'rdquo', 'bdquo', 'dagger', 'dagger', 'permil', 'lsaquo', 'rsaquo', 'euro', 'fnof', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigmaf', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'thetasym', 'upsih', 'piv', 'bull', 'hellip', 'prime', 'prime', 'oline', 'frasl', 'weierp', 'image', 'real', 'trade', 'alefsym', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'crarr', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'forall', 'part', 'exist', 'empty', 'nabla', 'isin', 'notin', 'ni', 'prod', 'sum', 'minus', 'lowast', 'radic', 'prop', 'infin', 'ang', 'and', 'or', 'cap', 'cup', 'int', 'there4', 'sim', 'cong', 'asymp', 'ne', 'equiv', 'le', 'ge', 'sub', 'sup', 'nsub', 'sube', 'supe', 'oplus', 'otimes', 'perp', 'sdot', 'lceil', 'rceil', 'lfloor', 'rfloor', 'lang', 'rang', 'loz', 'spades', 'clubs', 'hearts', 'diams'];
@@ -41115,7 +82135,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 594 */
+/* 592 */
 /***/ function(module, exports) {
 
 	var ENTITIES = [['Aacute', [193]], ['aacute', [225]], ['Abreve', [258]], ['abreve', [259]], ['ac', [8766]], ['acd', [8767]], ['acE', [8766, 819]], ['Acirc', [194]], ['acirc', [226]], ['acute', [180]], ['Acy', [1040]], ['acy', [1072]], ['AElig', [198]], ['aelig', [230]], ['af', [8289]], ['Afr', [120068]], ['afr', [120094]], ['Agrave', [192]], ['agrave', [224]], ['alefsym', [8501]], ['aleph', [8501]], ['Alpha', [913]], ['alpha', [945]], ['Amacr', [256]], ['amacr', [257]], ['amalg', [10815]], ['amp', [38]], ['AMP', [38]], ['andand', [10837]], ['And', [10835]], ['and', [8743]], ['andd', [10844]], ['andslope', [10840]], ['andv', [10842]], ['ang', [8736]], ['ange', [10660]], ['angle', [8736]], ['angmsdaa', [10664]], ['angmsdab', [10665]], ['angmsdac', [10666]], ['angmsdad', [10667]], ['angmsdae', [10668]], ['angmsdaf', [10669]], ['angmsdag', [10670]], ['angmsdah', [10671]], ['angmsd', [8737]], ['angrt', [8735]], ['angrtvb', [8894]], ['angrtvbd', [10653]], ['angsph', [8738]], ['angst', [197]], ['angzarr', [9084]], ['Aogon', [260]], ['aogon', [261]], ['Aopf', [120120]], ['aopf', [120146]], ['apacir', [10863]], ['ap', [8776]], ['apE', [10864]], ['ape', [8778]], ['apid', [8779]], ['apos', [39]], ['ApplyFunction', [8289]], ['approx', [8776]], ['approxeq', [8778]], ['Aring', [197]], ['aring', [229]], ['Ascr', [119964]], ['ascr', [119990]], ['Assign', [8788]], ['ast', [42]], ['asymp', [8776]], ['asympeq', [8781]], ['Atilde', [195]], ['atilde', [227]], ['Auml', [196]], ['auml', [228]], ['awconint', [8755]], ['awint', [10769]], ['backcong', [8780]], ['backepsilon', [1014]], ['backprime', [8245]], ['backsim', [8765]], ['backsimeq', [8909]], ['Backslash', [8726]], ['Barv', [10983]], ['barvee', [8893]], ['barwed', [8965]], ['Barwed', [8966]], ['barwedge', [8965]], ['bbrk', [9141]], ['bbrktbrk', [9142]], ['bcong', [8780]], ['Bcy', [1041]], ['bcy', [1073]], ['bdquo', [8222]], ['becaus', [8757]], ['because', [8757]], ['Because', [8757]], ['bemptyv', [10672]], ['bepsi', [1014]], ['bernou', [8492]], ['Bernoullis', [8492]], ['Beta', [914]], ['beta', [946]], ['beth', [8502]], ['between', [8812]], ['Bfr', [120069]], ['bfr', [120095]], ['bigcap', [8898]], ['bigcirc', [9711]], ['bigcup', [8899]], ['bigodot', [10752]], ['bigoplus', [10753]], ['bigotimes', [10754]], ['bigsqcup', [10758]], ['bigstar', [9733]], ['bigtriangledown', [9661]], ['bigtriangleup', [9651]], ['biguplus', [10756]], ['bigvee', [8897]], ['bigwedge', [8896]], ['bkarow', [10509]], ['blacklozenge', [10731]], ['blacksquare', [9642]], ['blacktriangle', [9652]], ['blacktriangledown', [9662]], ['blacktriangleleft', [9666]], ['blacktriangleright', [9656]], ['blank', [9251]], ['blk12', [9618]], ['blk14', [9617]], ['blk34', [9619]], ['block', [9608]], ['bne', [61, 8421]], ['bnequiv', [8801, 8421]], ['bNot', [10989]], ['bnot', [8976]], ['Bopf', [120121]], ['bopf', [120147]], ['bot', [8869]], ['bottom', [8869]], ['bowtie', [8904]], ['boxbox', [10697]], ['boxdl', [9488]], ['boxdL', [9557]], ['boxDl', [9558]], ['boxDL', [9559]], ['boxdr', [9484]], ['boxdR', [9554]], ['boxDr', [9555]], ['boxDR', [9556]], ['boxh', [9472]], ['boxH', [9552]], ['boxhd', [9516]], ['boxHd', [9572]], ['boxhD', [9573]], ['boxHD', [9574]], ['boxhu', [9524]], ['boxHu', [9575]], ['boxhU', [9576]], ['boxHU', [9577]], ['boxminus', [8863]], ['boxplus', [8862]], ['boxtimes', [8864]], ['boxul', [9496]], ['boxuL', [9563]], ['boxUl', [9564]], ['boxUL', [9565]], ['boxur', [9492]], ['boxuR', [9560]], ['boxUr', [9561]], ['boxUR', [9562]], ['boxv', [9474]], ['boxV', [9553]], ['boxvh', [9532]], ['boxvH', [9578]], ['boxVh', [9579]], ['boxVH', [9580]], ['boxvl', [9508]], ['boxvL', [9569]], ['boxVl', [9570]], ['boxVL', [9571]], ['boxvr', [9500]], ['boxvR', [9566]], ['boxVr', [9567]], ['boxVR', [9568]], ['bprime', [8245]], ['breve', [728]], ['Breve', [728]], ['brvbar', [166]], ['bscr', [119991]], ['Bscr', [8492]], ['bsemi', [8271]], ['bsim', [8765]], ['bsime', [8909]], ['bsolb', [10693]], ['bsol', [92]], ['bsolhsub', [10184]], ['bull', [8226]], ['bullet', [8226]], ['bump', [8782]], ['bumpE', [10926]], ['bumpe', [8783]], ['Bumpeq', [8782]], ['bumpeq', [8783]], ['Cacute', [262]], ['cacute', [263]], ['capand', [10820]], ['capbrcup', [10825]], ['capcap', [10827]], ['cap', [8745]], ['Cap', [8914]], ['capcup', [10823]], ['capdot', [10816]], ['CapitalDifferentialD', [8517]], ['caps', [8745, 65024]], ['caret', [8257]], ['caron', [711]], ['Cayleys', [8493]], ['ccaps', [10829]], ['Ccaron', [268]], ['ccaron', [269]], ['Ccedil', [199]], ['ccedil', [231]], ['Ccirc', [264]], ['ccirc', [265]], ['Cconint', [8752]], ['ccups', [10828]], ['ccupssm', [10832]], ['Cdot', [266]], ['cdot', [267]], ['cedil', [184]], ['Cedilla', [184]], ['cemptyv', [10674]], ['cent', [162]], ['centerdot', [183]], ['CenterDot', [183]], ['cfr', [120096]], ['Cfr', [8493]], ['CHcy', [1063]], ['chcy', [1095]], ['check', [10003]], ['checkmark', [10003]], ['Chi', [935]], ['chi', [967]], ['circ', [710]], ['circeq', [8791]], ['circlearrowleft', [8634]], ['circlearrowright', [8635]], ['circledast', [8859]], ['circledcirc', [8858]], ['circleddash', [8861]], ['CircleDot', [8857]], ['circledR', [174]], ['circledS', [9416]], ['CircleMinus', [8854]], ['CirclePlus', [8853]], ['CircleTimes', [8855]], ['cir', [9675]], ['cirE', [10691]], ['cire', [8791]], ['cirfnint', [10768]], ['cirmid', [10991]], ['cirscir', [10690]], ['ClockwiseContourIntegral', [8754]], ['CloseCurlyDoubleQuote', [8221]], ['CloseCurlyQuote', [8217]], ['clubs', [9827]], ['clubsuit', [9827]], ['colon', [58]], ['Colon', [8759]], ['Colone', [10868]], ['colone', [8788]], ['coloneq', [8788]], ['comma', [44]], ['commat', [64]], ['comp', [8705]], ['compfn', [8728]], ['complement', [8705]], ['complexes', [8450]], ['cong', [8773]], ['congdot', [10861]], ['Congruent', [8801]], ['conint', [8750]], ['Conint', [8751]], ['ContourIntegral', [8750]], ['copf', [120148]], ['Copf', [8450]], ['coprod', [8720]], ['Coproduct', [8720]], ['copy', [169]], ['COPY', [169]], ['copysr', [8471]], ['CounterClockwiseContourIntegral', [8755]], ['crarr', [8629]], ['cross', [10007]], ['Cross', [10799]], ['Cscr', [119966]], ['cscr', [119992]], ['csub', [10959]], ['csube', [10961]], ['csup', [10960]], ['csupe', [10962]], ['ctdot', [8943]], ['cudarrl', [10552]], ['cudarrr', [10549]], ['cuepr', [8926]], ['cuesc', [8927]], ['cularr', [8630]], ['cularrp', [10557]], ['cupbrcap', [10824]], ['cupcap', [10822]], ['CupCap', [8781]], ['cup', [8746]], ['Cup', [8915]], ['cupcup', [10826]], ['cupdot', [8845]], ['cupor', [10821]], ['cups', [8746, 65024]], ['curarr', [8631]], ['curarrm', [10556]], ['curlyeqprec', [8926]], ['curlyeqsucc', [8927]], ['curlyvee', [8910]], ['curlywedge', [8911]], ['curren', [164]], ['curvearrowleft', [8630]], ['curvearrowright', [8631]], ['cuvee', [8910]], ['cuwed', [8911]], ['cwconint', [8754]], ['cwint', [8753]], ['cylcty', [9005]], ['dagger', [8224]], ['Dagger', [8225]], ['daleth', [8504]], ['darr', [8595]], ['Darr', [8609]], ['dArr', [8659]], ['dash', [8208]], ['Dashv', [10980]], ['dashv', [8867]], ['dbkarow', [10511]], ['dblac', [733]], ['Dcaron', [270]], ['dcaron', [271]], ['Dcy', [1044]], ['dcy', [1076]], ['ddagger', [8225]], ['ddarr', [8650]], ['DD', [8517]], ['dd', [8518]], ['DDotrahd', [10513]], ['ddotseq', [10871]], ['deg', [176]], ['Del', [8711]], ['Delta', [916]], ['delta', [948]], ['demptyv', [10673]], ['dfisht', [10623]], ['Dfr', [120071]], ['dfr', [120097]], ['dHar', [10597]], ['dharl', [8643]], ['dharr', [8642]], ['DiacriticalAcute', [180]], ['DiacriticalDot', [729]], ['DiacriticalDoubleAcute', [733]], ['DiacriticalGrave', [96]], ['DiacriticalTilde', [732]], ['diam', [8900]], ['diamond', [8900]], ['Diamond', [8900]], ['diamondsuit', [9830]], ['diams', [9830]], ['die', [168]], ['DifferentialD', [8518]], ['digamma', [989]], ['disin', [8946]], ['div', [247]], ['divide', [247]], ['divideontimes', [8903]], ['divonx', [8903]], ['DJcy', [1026]], ['djcy', [1106]], ['dlcorn', [8990]], ['dlcrop', [8973]], ['dollar', [36]], ['Dopf', [120123]], ['dopf', [120149]], ['Dot', [168]], ['dot', [729]], ['DotDot', [8412]], ['doteq', [8784]], ['doteqdot', [8785]], ['DotEqual', [8784]], ['dotminus', [8760]], ['dotplus', [8724]], ['dotsquare', [8865]], ['doublebarwedge', [8966]], ['DoubleContourIntegral', [8751]], ['DoubleDot', [168]], ['DoubleDownArrow', [8659]], ['DoubleLeftArrow', [8656]], ['DoubleLeftRightArrow', [8660]], ['DoubleLeftTee', [10980]], ['DoubleLongLeftArrow', [10232]], ['DoubleLongLeftRightArrow', [10234]], ['DoubleLongRightArrow', [10233]], ['DoubleRightArrow', [8658]], ['DoubleRightTee', [8872]], ['DoubleUpArrow', [8657]], ['DoubleUpDownArrow', [8661]], ['DoubleVerticalBar', [8741]], ['DownArrowBar', [10515]], ['downarrow', [8595]], ['DownArrow', [8595]], ['Downarrow', [8659]], ['DownArrowUpArrow', [8693]], ['DownBreve', [785]], ['downdownarrows', [8650]], ['downharpoonleft', [8643]], ['downharpoonright', [8642]], ['DownLeftRightVector', [10576]], ['DownLeftTeeVector', [10590]], ['DownLeftVectorBar', [10582]], ['DownLeftVector', [8637]], ['DownRightTeeVector', [10591]], ['DownRightVectorBar', [10583]], ['DownRightVector', [8641]], ['DownTeeArrow', [8615]], ['DownTee', [8868]], ['drbkarow', [10512]], ['drcorn', [8991]], ['drcrop', [8972]], ['Dscr', [119967]], ['dscr', [119993]], ['DScy', [1029]], ['dscy', [1109]], ['dsol', [10742]], ['Dstrok', [272]], ['dstrok', [273]], ['dtdot', [8945]], ['dtri', [9663]], ['dtrif', [9662]], ['duarr', [8693]], ['duhar', [10607]], ['dwangle', [10662]], ['DZcy', [1039]], ['dzcy', [1119]], ['dzigrarr', [10239]], ['Eacute', [201]], ['eacute', [233]], ['easter', [10862]], ['Ecaron', [282]], ['ecaron', [283]], ['Ecirc', [202]], ['ecirc', [234]], ['ecir', [8790]], ['ecolon', [8789]], ['Ecy', [1069]], ['ecy', [1101]], ['eDDot', [10871]], ['Edot', [278]], ['edot', [279]], ['eDot', [8785]], ['ee', [8519]], ['efDot', [8786]], ['Efr', [120072]], ['efr', [120098]], ['eg', [10906]], ['Egrave', [200]], ['egrave', [232]], ['egs', [10902]], ['egsdot', [10904]], ['el', [10905]], ['Element', [8712]], ['elinters', [9191]], ['ell', [8467]], ['els', [10901]], ['elsdot', [10903]], ['Emacr', [274]], ['emacr', [275]], ['empty', [8709]], ['emptyset', [8709]], ['EmptySmallSquare', [9723]], ['emptyv', [8709]], ['EmptyVerySmallSquare', [9643]], ['emsp13', [8196]], ['emsp14', [8197]], ['emsp', [8195]], ['ENG', [330]], ['eng', [331]], ['ensp', [8194]], ['Eogon', [280]], ['eogon', [281]], ['Eopf', [120124]], ['eopf', [120150]], ['epar', [8917]], ['eparsl', [10723]], ['eplus', [10865]], ['epsi', [949]], ['Epsilon', [917]], ['epsilon', [949]], ['epsiv', [1013]], ['eqcirc', [8790]], ['eqcolon', [8789]], ['eqsim', [8770]], ['eqslantgtr', [10902]], ['eqslantless', [10901]], ['Equal', [10869]], ['equals', [61]], ['EqualTilde', [8770]], ['equest', [8799]], ['Equilibrium', [8652]], ['equiv', [8801]], ['equivDD', [10872]], ['eqvparsl', [10725]], ['erarr', [10609]], ['erDot', [8787]], ['escr', [8495]], ['Escr', [8496]], ['esdot', [8784]], ['Esim', [10867]], ['esim', [8770]], ['Eta', [919]], ['eta', [951]], ['ETH', [208]], ['eth', [240]], ['Euml', [203]], ['euml', [235]], ['euro', [8364]], ['excl', [33]], ['exist', [8707]], ['Exists', [8707]], ['expectation', [8496]], ['exponentiale', [8519]], ['ExponentialE', [8519]], ['fallingdotseq', [8786]], ['Fcy', [1060]], ['fcy', [1092]], ['female', [9792]], ['ffilig', [64259]], ['fflig', [64256]], ['ffllig', [64260]], ['Ffr', [120073]], ['ffr', [120099]], ['filig', [64257]], ['FilledSmallSquare', [9724]], ['FilledVerySmallSquare', [9642]], ['fjlig', [102, 106]], ['flat', [9837]], ['fllig', [64258]], ['fltns', [9649]], ['fnof', [402]], ['Fopf', [120125]], ['fopf', [120151]], ['forall', [8704]], ['ForAll', [8704]], ['fork', [8916]], ['forkv', [10969]], ['Fouriertrf', [8497]], ['fpartint', [10765]], ['frac12', [189]], ['frac13', [8531]], ['frac14', [188]], ['frac15', [8533]], ['frac16', [8537]], ['frac18', [8539]], ['frac23', [8532]], ['frac25', [8534]], ['frac34', [190]], ['frac35', [8535]], ['frac38', [8540]], ['frac45', [8536]], ['frac56', [8538]], ['frac58', [8541]], ['frac78', [8542]], ['frasl', [8260]], ['frown', [8994]], ['fscr', [119995]], ['Fscr', [8497]], ['gacute', [501]], ['Gamma', [915]], ['gamma', [947]], ['Gammad', [988]], ['gammad', [989]], ['gap', [10886]], ['Gbreve', [286]], ['gbreve', [287]], ['Gcedil', [290]], ['Gcirc', [284]], ['gcirc', [285]], ['Gcy', [1043]], ['gcy', [1075]], ['Gdot', [288]], ['gdot', [289]], ['ge', [8805]], ['gE', [8807]], ['gEl', [10892]], ['gel', [8923]], ['geq', [8805]], ['geqq', [8807]], ['geqslant', [10878]], ['gescc', [10921]], ['ges', [10878]], ['gesdot', [10880]], ['gesdoto', [10882]], ['gesdotol', [10884]], ['gesl', [8923, 65024]], ['gesles', [10900]], ['Gfr', [120074]], ['gfr', [120100]], ['gg', [8811]], ['Gg', [8921]], ['ggg', [8921]], ['gimel', [8503]], ['GJcy', [1027]], ['gjcy', [1107]], ['gla', [10917]], ['gl', [8823]], ['glE', [10898]], ['glj', [10916]], ['gnap', [10890]], ['gnapprox', [10890]], ['gne', [10888]], ['gnE', [8809]], ['gneq', [10888]], ['gneqq', [8809]], ['gnsim', [8935]], ['Gopf', [120126]], ['gopf', [120152]], ['grave', [96]], ['GreaterEqual', [8805]], ['GreaterEqualLess', [8923]], ['GreaterFullEqual', [8807]], ['GreaterGreater', [10914]], ['GreaterLess', [8823]], ['GreaterSlantEqual', [10878]], ['GreaterTilde', [8819]], ['Gscr', [119970]], ['gscr', [8458]], ['gsim', [8819]], ['gsime', [10894]], ['gsiml', [10896]], ['gtcc', [10919]], ['gtcir', [10874]], ['gt', [62]], ['GT', [62]], ['Gt', [8811]], ['gtdot', [8919]], ['gtlPar', [10645]], ['gtquest', [10876]], ['gtrapprox', [10886]], ['gtrarr', [10616]], ['gtrdot', [8919]], ['gtreqless', [8923]], ['gtreqqless', [10892]], ['gtrless', [8823]], ['gtrsim', [8819]], ['gvertneqq', [8809, 65024]], ['gvnE', [8809, 65024]], ['Hacek', [711]], ['hairsp', [8202]], ['half', [189]], ['hamilt', [8459]], ['HARDcy', [1066]], ['hardcy', [1098]], ['harrcir', [10568]], ['harr', [8596]], ['hArr', [8660]], ['harrw', [8621]], ['Hat', [94]], ['hbar', [8463]], ['Hcirc', [292]], ['hcirc', [293]], ['hearts', [9829]], ['heartsuit', [9829]], ['hellip', [8230]], ['hercon', [8889]], ['hfr', [120101]], ['Hfr', [8460]], ['HilbertSpace', [8459]], ['hksearow', [10533]], ['hkswarow', [10534]], ['hoarr', [8703]], ['homtht', [8763]], ['hookleftarrow', [8617]], ['hookrightarrow', [8618]], ['hopf', [120153]], ['Hopf', [8461]], ['horbar', [8213]], ['HorizontalLine', [9472]], ['hscr', [119997]], ['Hscr', [8459]], ['hslash', [8463]], ['Hstrok', [294]], ['hstrok', [295]], ['HumpDownHump', [8782]], ['HumpEqual', [8783]], ['hybull', [8259]], ['hyphen', [8208]], ['Iacute', [205]], ['iacute', [237]], ['ic', [8291]], ['Icirc', [206]], ['icirc', [238]], ['Icy', [1048]], ['icy', [1080]], ['Idot', [304]], ['IEcy', [1045]], ['iecy', [1077]], ['iexcl', [161]], ['iff', [8660]], ['ifr', [120102]], ['Ifr', [8465]], ['Igrave', [204]], ['igrave', [236]], ['ii', [8520]], ['iiiint', [10764]], ['iiint', [8749]], ['iinfin', [10716]], ['iiota', [8489]], ['IJlig', [306]], ['ijlig', [307]], ['Imacr', [298]], ['imacr', [299]], ['image', [8465]], ['ImaginaryI', [8520]], ['imagline', [8464]], ['imagpart', [8465]], ['imath', [305]], ['Im', [8465]], ['imof', [8887]], ['imped', [437]], ['Implies', [8658]], ['incare', [8453]], ['in', [8712]], ['infin', [8734]], ['infintie', [10717]], ['inodot', [305]], ['intcal', [8890]], ['int', [8747]], ['Int', [8748]], ['integers', [8484]], ['Integral', [8747]], ['intercal', [8890]], ['Intersection', [8898]], ['intlarhk', [10775]], ['intprod', [10812]], ['InvisibleComma', [8291]], ['InvisibleTimes', [8290]], ['IOcy', [1025]], ['iocy', [1105]], ['Iogon', [302]], ['iogon', [303]], ['Iopf', [120128]], ['iopf', [120154]], ['Iota', [921]], ['iota', [953]], ['iprod', [10812]], ['iquest', [191]], ['iscr', [119998]], ['Iscr', [8464]], ['isin', [8712]], ['isindot', [8949]], ['isinE', [8953]], ['isins', [8948]], ['isinsv', [8947]], ['isinv', [8712]], ['it', [8290]], ['Itilde', [296]], ['itilde', [297]], ['Iukcy', [1030]], ['iukcy', [1110]], ['Iuml', [207]], ['iuml', [239]], ['Jcirc', [308]], ['jcirc', [309]], ['Jcy', [1049]], ['jcy', [1081]], ['Jfr', [120077]], ['jfr', [120103]], ['jmath', [567]], ['Jopf', [120129]], ['jopf', [120155]], ['Jscr', [119973]], ['jscr', [119999]], ['Jsercy', [1032]], ['jsercy', [1112]], ['Jukcy', [1028]], ['jukcy', [1108]], ['Kappa', [922]], ['kappa', [954]], ['kappav', [1008]], ['Kcedil', [310]], ['kcedil', [311]], ['Kcy', [1050]], ['kcy', [1082]], ['Kfr', [120078]], ['kfr', [120104]], ['kgreen', [312]], ['KHcy', [1061]], ['khcy', [1093]], ['KJcy', [1036]], ['kjcy', [1116]], ['Kopf', [120130]], ['kopf', [120156]], ['Kscr', [119974]], ['kscr', [120000]], ['lAarr', [8666]], ['Lacute', [313]], ['lacute', [314]], ['laemptyv', [10676]], ['lagran', [8466]], ['Lambda', [923]], ['lambda', [955]], ['lang', [10216]], ['Lang', [10218]], ['langd', [10641]], ['langle', [10216]], ['lap', [10885]], ['Laplacetrf', [8466]], ['laquo', [171]], ['larrb', [8676]], ['larrbfs', [10527]], ['larr', [8592]], ['Larr', [8606]], ['lArr', [8656]], ['larrfs', [10525]], ['larrhk', [8617]], ['larrlp', [8619]], ['larrpl', [10553]], ['larrsim', [10611]], ['larrtl', [8610]], ['latail', [10521]], ['lAtail', [10523]], ['lat', [10923]], ['late', [10925]], ['lates', [10925, 65024]], ['lbarr', [10508]], ['lBarr', [10510]], ['lbbrk', [10098]], ['lbrace', [123]], ['lbrack', [91]], ['lbrke', [10635]], ['lbrksld', [10639]], ['lbrkslu', [10637]], ['Lcaron', [317]], ['lcaron', [318]], ['Lcedil', [315]], ['lcedil', [316]], ['lceil', [8968]], ['lcub', [123]], ['Lcy', [1051]], ['lcy', [1083]], ['ldca', [10550]], ['ldquo', [8220]], ['ldquor', [8222]], ['ldrdhar', [10599]], ['ldrushar', [10571]], ['ldsh', [8626]], ['le', [8804]], ['lE', [8806]], ['LeftAngleBracket', [10216]], ['LeftArrowBar', [8676]], ['leftarrow', [8592]], ['LeftArrow', [8592]], ['Leftarrow', [8656]], ['LeftArrowRightArrow', [8646]], ['leftarrowtail', [8610]], ['LeftCeiling', [8968]], ['LeftDoubleBracket', [10214]], ['LeftDownTeeVector', [10593]], ['LeftDownVectorBar', [10585]], ['LeftDownVector', [8643]], ['LeftFloor', [8970]], ['leftharpoondown', [8637]], ['leftharpoonup', [8636]], ['leftleftarrows', [8647]], ['leftrightarrow', [8596]], ['LeftRightArrow', [8596]], ['Leftrightarrow', [8660]], ['leftrightarrows', [8646]], ['leftrightharpoons', [8651]], ['leftrightsquigarrow', [8621]], ['LeftRightVector', [10574]], ['LeftTeeArrow', [8612]], ['LeftTee', [8867]], ['LeftTeeVector', [10586]], ['leftthreetimes', [8907]], ['LeftTriangleBar', [10703]], ['LeftTriangle', [8882]], ['LeftTriangleEqual', [8884]], ['LeftUpDownVector', [10577]], ['LeftUpTeeVector', [10592]], ['LeftUpVectorBar', [10584]], ['LeftUpVector', [8639]], ['LeftVectorBar', [10578]], ['LeftVector', [8636]], ['lEg', [10891]], ['leg', [8922]], ['leq', [8804]], ['leqq', [8806]], ['leqslant', [10877]], ['lescc', [10920]], ['les', [10877]], ['lesdot', [10879]], ['lesdoto', [10881]], ['lesdotor', [10883]], ['lesg', [8922, 65024]], ['lesges', [10899]], ['lessapprox', [10885]], ['lessdot', [8918]], ['lesseqgtr', [8922]], ['lesseqqgtr', [10891]], ['LessEqualGreater', [8922]], ['LessFullEqual', [8806]], ['LessGreater', [8822]], ['lessgtr', [8822]], ['LessLess', [10913]], ['lesssim', [8818]], ['LessSlantEqual', [10877]], ['LessTilde', [8818]], ['lfisht', [10620]], ['lfloor', [8970]], ['Lfr', [120079]], ['lfr', [120105]], ['lg', [8822]], ['lgE', [10897]], ['lHar', [10594]], ['lhard', [8637]], ['lharu', [8636]], ['lharul', [10602]], ['lhblk', [9604]], ['LJcy', [1033]], ['ljcy', [1113]], ['llarr', [8647]], ['ll', [8810]], ['Ll', [8920]], ['llcorner', [8990]], ['Lleftarrow', [8666]], ['llhard', [10603]], ['lltri', [9722]], ['Lmidot', [319]], ['lmidot', [320]], ['lmoustache', [9136]], ['lmoust', [9136]], ['lnap', [10889]], ['lnapprox', [10889]], ['lne', [10887]], ['lnE', [8808]], ['lneq', [10887]], ['lneqq', [8808]], ['lnsim', [8934]], ['loang', [10220]], ['loarr', [8701]], ['lobrk', [10214]], ['longleftarrow', [10229]], ['LongLeftArrow', [10229]], ['Longleftarrow', [10232]], ['longleftrightarrow', [10231]], ['LongLeftRightArrow', [10231]], ['Longleftrightarrow', [10234]], ['longmapsto', [10236]], ['longrightarrow', [10230]], ['LongRightArrow', [10230]], ['Longrightarrow', [10233]], ['looparrowleft', [8619]], ['looparrowright', [8620]], ['lopar', [10629]], ['Lopf', [120131]], ['lopf', [120157]], ['loplus', [10797]], ['lotimes', [10804]], ['lowast', [8727]], ['lowbar', [95]], ['LowerLeftArrow', [8601]], ['LowerRightArrow', [8600]], ['loz', [9674]], ['lozenge', [9674]], ['lozf', [10731]], ['lpar', [40]], ['lparlt', [10643]], ['lrarr', [8646]], ['lrcorner', [8991]], ['lrhar', [8651]], ['lrhard', [10605]], ['lrm', [8206]], ['lrtri', [8895]], ['lsaquo', [8249]], ['lscr', [120001]], ['Lscr', [8466]], ['lsh', [8624]], ['Lsh', [8624]], ['lsim', [8818]], ['lsime', [10893]], ['lsimg', [10895]], ['lsqb', [91]], ['lsquo', [8216]], ['lsquor', [8218]], ['Lstrok', [321]], ['lstrok', [322]], ['ltcc', [10918]], ['ltcir', [10873]], ['lt', [60]], ['LT', [60]], ['Lt', [8810]], ['ltdot', [8918]], ['lthree', [8907]], ['ltimes', [8905]], ['ltlarr', [10614]], ['ltquest', [10875]], ['ltri', [9667]], ['ltrie', [8884]], ['ltrif', [9666]], ['ltrPar', [10646]], ['lurdshar', [10570]], ['luruhar', [10598]], ['lvertneqq', [8808, 65024]], ['lvnE', [8808, 65024]], ['macr', [175]], ['male', [9794]], ['malt', [10016]], ['maltese', [10016]], ['Map', [10501]], ['map', [8614]], ['mapsto', [8614]], ['mapstodown', [8615]], ['mapstoleft', [8612]], ['mapstoup', [8613]], ['marker', [9646]], ['mcomma', [10793]], ['Mcy', [1052]], ['mcy', [1084]], ['mdash', [8212]], ['mDDot', [8762]], ['measuredangle', [8737]], ['MediumSpace', [8287]], ['Mellintrf', [8499]], ['Mfr', [120080]], ['mfr', [120106]], ['mho', [8487]], ['micro', [181]], ['midast', [42]], ['midcir', [10992]], ['mid', [8739]], ['middot', [183]], ['minusb', [8863]], ['minus', [8722]], ['minusd', [8760]], ['minusdu', [10794]], ['MinusPlus', [8723]], ['mlcp', [10971]], ['mldr', [8230]], ['mnplus', [8723]], ['models', [8871]], ['Mopf', [120132]], ['mopf', [120158]], ['mp', [8723]], ['mscr', [120002]], ['Mscr', [8499]], ['mstpos', [8766]], ['Mu', [924]], ['mu', [956]], ['multimap', [8888]], ['mumap', [8888]], ['nabla', [8711]], ['Nacute', [323]], ['nacute', [324]], ['nang', [8736, 8402]], ['nap', [8777]], ['napE', [10864, 824]], ['napid', [8779, 824]], ['napos', [329]], ['napprox', [8777]], ['natural', [9838]], ['naturals', [8469]], ['natur', [9838]], ['nbsp', [160]], ['nbump', [8782, 824]], ['nbumpe', [8783, 824]], ['ncap', [10819]], ['Ncaron', [327]], ['ncaron', [328]], ['Ncedil', [325]], ['ncedil', [326]], ['ncong', [8775]], ['ncongdot', [10861, 824]], ['ncup', [10818]], ['Ncy', [1053]], ['ncy', [1085]], ['ndash', [8211]], ['nearhk', [10532]], ['nearr', [8599]], ['neArr', [8663]], ['nearrow', [8599]], ['ne', [8800]], ['nedot', [8784, 824]], ['NegativeMediumSpace', [8203]], ['NegativeThickSpace', [8203]], ['NegativeThinSpace', [8203]], ['NegativeVeryThinSpace', [8203]], ['nequiv', [8802]], ['nesear', [10536]], ['nesim', [8770, 824]], ['NestedGreaterGreater', [8811]], ['NestedLessLess', [8810]], ['nexist', [8708]], ['nexists', [8708]], ['Nfr', [120081]], ['nfr', [120107]], ['ngE', [8807, 824]], ['nge', [8817]], ['ngeq', [8817]], ['ngeqq', [8807, 824]], ['ngeqslant', [10878, 824]], ['nges', [10878, 824]], ['nGg', [8921, 824]], ['ngsim', [8821]], ['nGt', [8811, 8402]], ['ngt', [8815]], ['ngtr', [8815]], ['nGtv', [8811, 824]], ['nharr', [8622]], ['nhArr', [8654]], ['nhpar', [10994]], ['ni', [8715]], ['nis', [8956]], ['nisd', [8954]], ['niv', [8715]], ['NJcy', [1034]], ['njcy', [1114]], ['nlarr', [8602]], ['nlArr', [8653]], ['nldr', [8229]], ['nlE', [8806, 824]], ['nle', [8816]], ['nleftarrow', [8602]], ['nLeftarrow', [8653]], ['nleftrightarrow', [8622]], ['nLeftrightarrow', [8654]], ['nleq', [8816]], ['nleqq', [8806, 824]], ['nleqslant', [10877, 824]], ['nles', [10877, 824]], ['nless', [8814]], ['nLl', [8920, 824]], ['nlsim', [8820]], ['nLt', [8810, 8402]], ['nlt', [8814]], ['nltri', [8938]], ['nltrie', [8940]], ['nLtv', [8810, 824]], ['nmid', [8740]], ['NoBreak', [8288]], ['NonBreakingSpace', [160]], ['nopf', [120159]], ['Nopf', [8469]], ['Not', [10988]], ['not', [172]], ['NotCongruent', [8802]], ['NotCupCap', [8813]], ['NotDoubleVerticalBar', [8742]], ['NotElement', [8713]], ['NotEqual', [8800]], ['NotEqualTilde', [8770, 824]], ['NotExists', [8708]], ['NotGreater', [8815]], ['NotGreaterEqual', [8817]], ['NotGreaterFullEqual', [8807, 824]], ['NotGreaterGreater', [8811, 824]], ['NotGreaterLess', [8825]], ['NotGreaterSlantEqual', [10878, 824]], ['NotGreaterTilde', [8821]], ['NotHumpDownHump', [8782, 824]], ['NotHumpEqual', [8783, 824]], ['notin', [8713]], ['notindot', [8949, 824]], ['notinE', [8953, 824]], ['notinva', [8713]], ['notinvb', [8951]], ['notinvc', [8950]], ['NotLeftTriangleBar', [10703, 824]], ['NotLeftTriangle', [8938]], ['NotLeftTriangleEqual', [8940]], ['NotLess', [8814]], ['NotLessEqual', [8816]], ['NotLessGreater', [8824]], ['NotLessLess', [8810, 824]], ['NotLessSlantEqual', [10877, 824]], ['NotLessTilde', [8820]], ['NotNestedGreaterGreater', [10914, 824]], ['NotNestedLessLess', [10913, 824]], ['notni', [8716]], ['notniva', [8716]], ['notnivb', [8958]], ['notnivc', [8957]], ['NotPrecedes', [8832]], ['NotPrecedesEqual', [10927, 824]], ['NotPrecedesSlantEqual', [8928]], ['NotReverseElement', [8716]], ['NotRightTriangleBar', [10704, 824]], ['NotRightTriangle', [8939]], ['NotRightTriangleEqual', [8941]], ['NotSquareSubset', [8847, 824]], ['NotSquareSubsetEqual', [8930]], ['NotSquareSuperset', [8848, 824]], ['NotSquareSupersetEqual', [8931]], ['NotSubset', [8834, 8402]], ['NotSubsetEqual', [8840]], ['NotSucceeds', [8833]], ['NotSucceedsEqual', [10928, 824]], ['NotSucceedsSlantEqual', [8929]], ['NotSucceedsTilde', [8831, 824]], ['NotSuperset', [8835, 8402]], ['NotSupersetEqual', [8841]], ['NotTilde', [8769]], ['NotTildeEqual', [8772]], ['NotTildeFullEqual', [8775]], ['NotTildeTilde', [8777]], ['NotVerticalBar', [8740]], ['nparallel', [8742]], ['npar', [8742]], ['nparsl', [11005, 8421]], ['npart', [8706, 824]], ['npolint', [10772]], ['npr', [8832]], ['nprcue', [8928]], ['nprec', [8832]], ['npreceq', [10927, 824]], ['npre', [10927, 824]], ['nrarrc', [10547, 824]], ['nrarr', [8603]], ['nrArr', [8655]], ['nrarrw', [8605, 824]], ['nrightarrow', [8603]], ['nRightarrow', [8655]], ['nrtri', [8939]], ['nrtrie', [8941]], ['nsc', [8833]], ['nsccue', [8929]], ['nsce', [10928, 824]], ['Nscr', [119977]], ['nscr', [120003]], ['nshortmid', [8740]], ['nshortparallel', [8742]], ['nsim', [8769]], ['nsime', [8772]], ['nsimeq', [8772]], ['nsmid', [8740]], ['nspar', [8742]], ['nsqsube', [8930]], ['nsqsupe', [8931]], ['nsub', [8836]], ['nsubE', [10949, 824]], ['nsube', [8840]], ['nsubset', [8834, 8402]], ['nsubseteq', [8840]], ['nsubseteqq', [10949, 824]], ['nsucc', [8833]], ['nsucceq', [10928, 824]], ['nsup', [8837]], ['nsupE', [10950, 824]], ['nsupe', [8841]], ['nsupset', [8835, 8402]], ['nsupseteq', [8841]], ['nsupseteqq', [10950, 824]], ['ntgl', [8825]], ['Ntilde', [209]], ['ntilde', [241]], ['ntlg', [8824]], ['ntriangleleft', [8938]], ['ntrianglelefteq', [8940]], ['ntriangleright', [8939]], ['ntrianglerighteq', [8941]], ['Nu', [925]], ['nu', [957]], ['num', [35]], ['numero', [8470]], ['numsp', [8199]], ['nvap', [8781, 8402]], ['nvdash', [8876]], ['nvDash', [8877]], ['nVdash', [8878]], ['nVDash', [8879]], ['nvge', [8805, 8402]], ['nvgt', [62, 8402]], ['nvHarr', [10500]], ['nvinfin', [10718]], ['nvlArr', [10498]], ['nvle', [8804, 8402]], ['nvlt', [60, 8402]], ['nvltrie', [8884, 8402]], ['nvrArr', [10499]], ['nvrtrie', [8885, 8402]], ['nvsim', [8764, 8402]], ['nwarhk', [10531]], ['nwarr', [8598]], ['nwArr', [8662]], ['nwarrow', [8598]], ['nwnear', [10535]], ['Oacute', [211]], ['oacute', [243]], ['oast', [8859]], ['Ocirc', [212]], ['ocirc', [244]], ['ocir', [8858]], ['Ocy', [1054]], ['ocy', [1086]], ['odash', [8861]], ['Odblac', [336]], ['odblac', [337]], ['odiv', [10808]], ['odot', [8857]], ['odsold', [10684]], ['OElig', [338]], ['oelig', [339]], ['ofcir', [10687]], ['Ofr', [120082]], ['ofr', [120108]], ['ogon', [731]], ['Ograve', [210]], ['ograve', [242]], ['ogt', [10689]], ['ohbar', [10677]], ['ohm', [937]], ['oint', [8750]], ['olarr', [8634]], ['olcir', [10686]], ['olcross', [10683]], ['oline', [8254]], ['olt', [10688]], ['Omacr', [332]], ['omacr', [333]], ['Omega', [937]], ['omega', [969]], ['Omicron', [927]], ['omicron', [959]], ['omid', [10678]], ['ominus', [8854]], ['Oopf', [120134]], ['oopf', [120160]], ['opar', [10679]], ['OpenCurlyDoubleQuote', [8220]], ['OpenCurlyQuote', [8216]], ['operp', [10681]], ['oplus', [8853]], ['orarr', [8635]], ['Or', [10836]], ['or', [8744]], ['ord', [10845]], ['order', [8500]], ['orderof', [8500]], ['ordf', [170]], ['ordm', [186]], ['origof', [8886]], ['oror', [10838]], ['orslope', [10839]], ['orv', [10843]], ['oS', [9416]], ['Oscr', [119978]], ['oscr', [8500]], ['Oslash', [216]], ['oslash', [248]], ['osol', [8856]], ['Otilde', [213]], ['otilde', [245]], ['otimesas', [10806]], ['Otimes', [10807]], ['otimes', [8855]], ['Ouml', [214]], ['ouml', [246]], ['ovbar', [9021]], ['OverBar', [8254]], ['OverBrace', [9182]], ['OverBracket', [9140]], ['OverParenthesis', [9180]], ['para', [182]], ['parallel', [8741]], ['par', [8741]], ['parsim', [10995]], ['parsl', [11005]], ['part', [8706]], ['PartialD', [8706]], ['Pcy', [1055]], ['pcy', [1087]], ['percnt', [37]], ['period', [46]], ['permil', [8240]], ['perp', [8869]], ['pertenk', [8241]], ['Pfr', [120083]], ['pfr', [120109]], ['Phi', [934]], ['phi', [966]], ['phiv', [981]], ['phmmat', [8499]], ['phone', [9742]], ['Pi', [928]], ['pi', [960]], ['pitchfork', [8916]], ['piv', [982]], ['planck', [8463]], ['planckh', [8462]], ['plankv', [8463]], ['plusacir', [10787]], ['plusb', [8862]], ['pluscir', [10786]], ['plus', [43]], ['plusdo', [8724]], ['plusdu', [10789]], ['pluse', [10866]], ['PlusMinus', [177]], ['plusmn', [177]], ['plussim', [10790]], ['plustwo', [10791]], ['pm', [177]], ['Poincareplane', [8460]], ['pointint', [10773]], ['popf', [120161]], ['Popf', [8473]], ['pound', [163]], ['prap', [10935]], ['Pr', [10939]], ['pr', [8826]], ['prcue', [8828]], ['precapprox', [10935]], ['prec', [8826]], ['preccurlyeq', [8828]], ['Precedes', [8826]], ['PrecedesEqual', [10927]], ['PrecedesSlantEqual', [8828]], ['PrecedesTilde', [8830]], ['preceq', [10927]], ['precnapprox', [10937]], ['precneqq', [10933]], ['precnsim', [8936]], ['pre', [10927]], ['prE', [10931]], ['precsim', [8830]], ['prime', [8242]], ['Prime', [8243]], ['primes', [8473]], ['prnap', [10937]], ['prnE', [10933]], ['prnsim', [8936]], ['prod', [8719]], ['Product', [8719]], ['profalar', [9006]], ['profline', [8978]], ['profsurf', [8979]], ['prop', [8733]], ['Proportional', [8733]], ['Proportion', [8759]], ['propto', [8733]], ['prsim', [8830]], ['prurel', [8880]], ['Pscr', [119979]], ['pscr', [120005]], ['Psi', [936]], ['psi', [968]], ['puncsp', [8200]], ['Qfr', [120084]], ['qfr', [120110]], ['qint', [10764]], ['qopf', [120162]], ['Qopf', [8474]], ['qprime', [8279]], ['Qscr', [119980]], ['qscr', [120006]], ['quaternions', [8461]], ['quatint', [10774]], ['quest', [63]], ['questeq', [8799]], ['quot', [34]], ['QUOT', [34]], ['rAarr', [8667]], ['race', [8765, 817]], ['Racute', [340]], ['racute', [341]], ['radic', [8730]], ['raemptyv', [10675]], ['rang', [10217]], ['Rang', [10219]], ['rangd', [10642]], ['range', [10661]], ['rangle', [10217]], ['raquo', [187]], ['rarrap', [10613]], ['rarrb', [8677]], ['rarrbfs', [10528]], ['rarrc', [10547]], ['rarr', [8594]], ['Rarr', [8608]], ['rArr', [8658]], ['rarrfs', [10526]], ['rarrhk', [8618]], ['rarrlp', [8620]], ['rarrpl', [10565]], ['rarrsim', [10612]], ['Rarrtl', [10518]], ['rarrtl', [8611]], ['rarrw', [8605]], ['ratail', [10522]], ['rAtail', [10524]], ['ratio', [8758]], ['rationals', [8474]], ['rbarr', [10509]], ['rBarr', [10511]], ['RBarr', [10512]], ['rbbrk', [10099]], ['rbrace', [125]], ['rbrack', [93]], ['rbrke', [10636]], ['rbrksld', [10638]], ['rbrkslu', [10640]], ['Rcaron', [344]], ['rcaron', [345]], ['Rcedil', [342]], ['rcedil', [343]], ['rceil', [8969]], ['rcub', [125]], ['Rcy', [1056]], ['rcy', [1088]], ['rdca', [10551]], ['rdldhar', [10601]], ['rdquo', [8221]], ['rdquor', [8221]], ['rdsh', [8627]], ['real', [8476]], ['realine', [8475]], ['realpart', [8476]], ['reals', [8477]], ['Re', [8476]], ['rect', [9645]], ['reg', [174]], ['REG', [174]], ['ReverseElement', [8715]], ['ReverseEquilibrium', [8651]], ['ReverseUpEquilibrium', [10607]], ['rfisht', [10621]], ['rfloor', [8971]], ['rfr', [120111]], ['Rfr', [8476]], ['rHar', [10596]], ['rhard', [8641]], ['rharu', [8640]], ['rharul', [10604]], ['Rho', [929]], ['rho', [961]], ['rhov', [1009]], ['RightAngleBracket', [10217]], ['RightArrowBar', [8677]], ['rightarrow', [8594]], ['RightArrow', [8594]], ['Rightarrow', [8658]], ['RightArrowLeftArrow', [8644]], ['rightarrowtail', [8611]], ['RightCeiling', [8969]], ['RightDoubleBracket', [10215]], ['RightDownTeeVector', [10589]], ['RightDownVectorBar', [10581]], ['RightDownVector', [8642]], ['RightFloor', [8971]], ['rightharpoondown', [8641]], ['rightharpoonup', [8640]], ['rightleftarrows', [8644]], ['rightleftharpoons', [8652]], ['rightrightarrows', [8649]], ['rightsquigarrow', [8605]], ['RightTeeArrow', [8614]], ['RightTee', [8866]], ['RightTeeVector', [10587]], ['rightthreetimes', [8908]], ['RightTriangleBar', [10704]], ['RightTriangle', [8883]], ['RightTriangleEqual', [8885]], ['RightUpDownVector', [10575]], ['RightUpTeeVector', [10588]], ['RightUpVectorBar', [10580]], ['RightUpVector', [8638]], ['RightVectorBar', [10579]], ['RightVector', [8640]], ['ring', [730]], ['risingdotseq', [8787]], ['rlarr', [8644]], ['rlhar', [8652]], ['rlm', [8207]], ['rmoustache', [9137]], ['rmoust', [9137]], ['rnmid', [10990]], ['roang', [10221]], ['roarr', [8702]], ['robrk', [10215]], ['ropar', [10630]], ['ropf', [120163]], ['Ropf', [8477]], ['roplus', [10798]], ['rotimes', [10805]], ['RoundImplies', [10608]], ['rpar', [41]], ['rpargt', [10644]], ['rppolint', [10770]], ['rrarr', [8649]], ['Rrightarrow', [8667]], ['rsaquo', [8250]], ['rscr', [120007]], ['Rscr', [8475]], ['rsh', [8625]], ['Rsh', [8625]], ['rsqb', [93]], ['rsquo', [8217]], ['rsquor', [8217]], ['rthree', [8908]], ['rtimes', [8906]], ['rtri', [9657]], ['rtrie', [8885]], ['rtrif', [9656]], ['rtriltri', [10702]], ['RuleDelayed', [10740]], ['ruluhar', [10600]], ['rx', [8478]], ['Sacute', [346]], ['sacute', [347]], ['sbquo', [8218]], ['scap', [10936]], ['Scaron', [352]], ['scaron', [353]], ['Sc', [10940]], ['sc', [8827]], ['sccue', [8829]], ['sce', [10928]], ['scE', [10932]], ['Scedil', [350]], ['scedil', [351]], ['Scirc', [348]], ['scirc', [349]], ['scnap', [10938]], ['scnE', [10934]], ['scnsim', [8937]], ['scpolint', [10771]], ['scsim', [8831]], ['Scy', [1057]], ['scy', [1089]], ['sdotb', [8865]], ['sdot', [8901]], ['sdote', [10854]], ['searhk', [10533]], ['searr', [8600]], ['seArr', [8664]], ['searrow', [8600]], ['sect', [167]], ['semi', [59]], ['seswar', [10537]], ['setminus', [8726]], ['setmn', [8726]], ['sext', [10038]], ['Sfr', [120086]], ['sfr', [120112]], ['sfrown', [8994]], ['sharp', [9839]], ['SHCHcy', [1065]], ['shchcy', [1097]], ['SHcy', [1064]], ['shcy', [1096]], ['ShortDownArrow', [8595]], ['ShortLeftArrow', [8592]], ['shortmid', [8739]], ['shortparallel', [8741]], ['ShortRightArrow', [8594]], ['ShortUpArrow', [8593]], ['shy', [173]], ['Sigma', [931]], ['sigma', [963]], ['sigmaf', [962]], ['sigmav', [962]], ['sim', [8764]], ['simdot', [10858]], ['sime', [8771]], ['simeq', [8771]], ['simg', [10910]], ['simgE', [10912]], ['siml', [10909]], ['simlE', [10911]], ['simne', [8774]], ['simplus', [10788]], ['simrarr', [10610]], ['slarr', [8592]], ['SmallCircle', [8728]], ['smallsetminus', [8726]], ['smashp', [10803]], ['smeparsl', [10724]], ['smid', [8739]], ['smile', [8995]], ['smt', [10922]], ['smte', [10924]], ['smtes', [10924, 65024]], ['SOFTcy', [1068]], ['softcy', [1100]], ['solbar', [9023]], ['solb', [10692]], ['sol', [47]], ['Sopf', [120138]], ['sopf', [120164]], ['spades', [9824]], ['spadesuit', [9824]], ['spar', [8741]], ['sqcap', [8851]], ['sqcaps', [8851, 65024]], ['sqcup', [8852]], ['sqcups', [8852, 65024]], ['Sqrt', [8730]], ['sqsub', [8847]], ['sqsube', [8849]], ['sqsubset', [8847]], ['sqsubseteq', [8849]], ['sqsup', [8848]], ['sqsupe', [8850]], ['sqsupset', [8848]], ['sqsupseteq', [8850]], ['square', [9633]], ['Square', [9633]], ['SquareIntersection', [8851]], ['SquareSubset', [8847]], ['SquareSubsetEqual', [8849]], ['SquareSuperset', [8848]], ['SquareSupersetEqual', [8850]], ['SquareUnion', [8852]], ['squarf', [9642]], ['squ', [9633]], ['squf', [9642]], ['srarr', [8594]], ['Sscr', [119982]], ['sscr', [120008]], ['ssetmn', [8726]], ['ssmile', [8995]], ['sstarf', [8902]], ['Star', [8902]], ['star', [9734]], ['starf', [9733]], ['straightepsilon', [1013]], ['straightphi', [981]], ['strns', [175]], ['sub', [8834]], ['Sub', [8912]], ['subdot', [10941]], ['subE', [10949]], ['sube', [8838]], ['subedot', [10947]], ['submult', [10945]], ['subnE', [10955]], ['subne', [8842]], ['subplus', [10943]], ['subrarr', [10617]], ['subset', [8834]], ['Subset', [8912]], ['subseteq', [8838]], ['subseteqq', [10949]], ['SubsetEqual', [8838]], ['subsetneq', [8842]], ['subsetneqq', [10955]], ['subsim', [10951]], ['subsub', [10965]], ['subsup', [10963]], ['succapprox', [10936]], ['succ', [8827]], ['succcurlyeq', [8829]], ['Succeeds', [8827]], ['SucceedsEqual', [10928]], ['SucceedsSlantEqual', [8829]], ['SucceedsTilde', [8831]], ['succeq', [10928]], ['succnapprox', [10938]], ['succneqq', [10934]], ['succnsim', [8937]], ['succsim', [8831]], ['SuchThat', [8715]], ['sum', [8721]], ['Sum', [8721]], ['sung', [9834]], ['sup1', [185]], ['sup2', [178]], ['sup3', [179]], ['sup', [8835]], ['Sup', [8913]], ['supdot', [10942]], ['supdsub', [10968]], ['supE', [10950]], ['supe', [8839]], ['supedot', [10948]], ['Superset', [8835]], ['SupersetEqual', [8839]], ['suphsol', [10185]], ['suphsub', [10967]], ['suplarr', [10619]], ['supmult', [10946]], ['supnE', [10956]], ['supne', [8843]], ['supplus', [10944]], ['supset', [8835]], ['Supset', [8913]], ['supseteq', [8839]], ['supseteqq', [10950]], ['supsetneq', [8843]], ['supsetneqq', [10956]], ['supsim', [10952]], ['supsub', [10964]], ['supsup', [10966]], ['swarhk', [10534]], ['swarr', [8601]], ['swArr', [8665]], ['swarrow', [8601]], ['swnwar', [10538]], ['szlig', [223]], ['Tab', [9]], ['target', [8982]], ['Tau', [932]], ['tau', [964]], ['tbrk', [9140]], ['Tcaron', [356]], ['tcaron', [357]], ['Tcedil', [354]], ['tcedil', [355]], ['Tcy', [1058]], ['tcy', [1090]], ['tdot', [8411]], ['telrec', [8981]], ['Tfr', [120087]], ['tfr', [120113]], ['there4', [8756]], ['therefore', [8756]], ['Therefore', [8756]], ['Theta', [920]], ['theta', [952]], ['thetasym', [977]], ['thetav', [977]], ['thickapprox', [8776]], ['thicksim', [8764]], ['ThickSpace', [8287, 8202]], ['ThinSpace', [8201]], ['thinsp', [8201]], ['thkap', [8776]], ['thksim', [8764]], ['THORN', [222]], ['thorn', [254]], ['tilde', [732]], ['Tilde', [8764]], ['TildeEqual', [8771]], ['TildeFullEqual', [8773]], ['TildeTilde', [8776]], ['timesbar', [10801]], ['timesb', [8864]], ['times', [215]], ['timesd', [10800]], ['tint', [8749]], ['toea', [10536]], ['topbot', [9014]], ['topcir', [10993]], ['top', [8868]], ['Topf', [120139]], ['topf', [120165]], ['topfork', [10970]], ['tosa', [10537]], ['tprime', [8244]], ['trade', [8482]], ['TRADE', [8482]], ['triangle', [9653]], ['triangledown', [9663]], ['triangleleft', [9667]], ['trianglelefteq', [8884]], ['triangleq', [8796]], ['triangleright', [9657]], ['trianglerighteq', [8885]], ['tridot', [9708]], ['trie', [8796]], ['triminus', [10810]], ['TripleDot', [8411]], ['triplus', [10809]], ['trisb', [10701]], ['tritime', [10811]], ['trpezium', [9186]], ['Tscr', [119983]], ['tscr', [120009]], ['TScy', [1062]], ['tscy', [1094]], ['TSHcy', [1035]], ['tshcy', [1115]], ['Tstrok', [358]], ['tstrok', [359]], ['twixt', [8812]], ['twoheadleftarrow', [8606]], ['twoheadrightarrow', [8608]], ['Uacute', [218]], ['uacute', [250]], ['uarr', [8593]], ['Uarr', [8607]], ['uArr', [8657]], ['Uarrocir', [10569]], ['Ubrcy', [1038]], ['ubrcy', [1118]], ['Ubreve', [364]], ['ubreve', [365]], ['Ucirc', [219]], ['ucirc', [251]], ['Ucy', [1059]], ['ucy', [1091]], ['udarr', [8645]], ['Udblac', [368]], ['udblac', [369]], ['udhar', [10606]], ['ufisht', [10622]], ['Ufr', [120088]], ['ufr', [120114]], ['Ugrave', [217]], ['ugrave', [249]], ['uHar', [10595]], ['uharl', [8639]], ['uharr', [8638]], ['uhblk', [9600]], ['ulcorn', [8988]], ['ulcorner', [8988]], ['ulcrop', [8975]], ['ultri', [9720]], ['Umacr', [362]], ['umacr', [363]], ['uml', [168]], ['UnderBar', [95]], ['UnderBrace', [9183]], ['UnderBracket', [9141]], ['UnderParenthesis', [9181]], ['Union', [8899]], ['UnionPlus', [8846]], ['Uogon', [370]], ['uogon', [371]], ['Uopf', [120140]], ['uopf', [120166]], ['UpArrowBar', [10514]], ['uparrow', [8593]], ['UpArrow', [8593]], ['Uparrow', [8657]], ['UpArrowDownArrow', [8645]], ['updownarrow', [8597]], ['UpDownArrow', [8597]], ['Updownarrow', [8661]], ['UpEquilibrium', [10606]], ['upharpoonleft', [8639]], ['upharpoonright', [8638]], ['uplus', [8846]], ['UpperLeftArrow', [8598]], ['UpperRightArrow', [8599]], ['upsi', [965]], ['Upsi', [978]], ['upsih', [978]], ['Upsilon', [933]], ['upsilon', [965]], ['UpTeeArrow', [8613]], ['UpTee', [8869]], ['upuparrows', [8648]], ['urcorn', [8989]], ['urcorner', [8989]], ['urcrop', [8974]], ['Uring', [366]], ['uring', [367]], ['urtri', [9721]], ['Uscr', [119984]], ['uscr', [120010]], ['utdot', [8944]], ['Utilde', [360]], ['utilde', [361]], ['utri', [9653]], ['utrif', [9652]], ['uuarr', [8648]], ['Uuml', [220]], ['uuml', [252]], ['uwangle', [10663]], ['vangrt', [10652]], ['varepsilon', [1013]], ['varkappa', [1008]], ['varnothing', [8709]], ['varphi', [981]], ['varpi', [982]], ['varpropto', [8733]], ['varr', [8597]], ['vArr', [8661]], ['varrho', [1009]], ['varsigma', [962]], ['varsubsetneq', [8842, 65024]], ['varsubsetneqq', [10955, 65024]], ['varsupsetneq', [8843, 65024]], ['varsupsetneqq', [10956, 65024]], ['vartheta', [977]], ['vartriangleleft', [8882]], ['vartriangleright', [8883]], ['vBar', [10984]], ['Vbar', [10987]], ['vBarv', [10985]], ['Vcy', [1042]], ['vcy', [1074]], ['vdash', [8866]], ['vDash', [8872]], ['Vdash', [8873]], ['VDash', [8875]], ['Vdashl', [10982]], ['veebar', [8891]], ['vee', [8744]], ['Vee', [8897]], ['veeeq', [8794]], ['vellip', [8942]], ['verbar', [124]], ['Verbar', [8214]], ['vert', [124]], ['Vert', [8214]], ['VerticalBar', [8739]], ['VerticalLine', [124]], ['VerticalSeparator', [10072]], ['VerticalTilde', [8768]], ['VeryThinSpace', [8202]], ['Vfr', [120089]], ['vfr', [120115]], ['vltri', [8882]], ['vnsub', [8834, 8402]], ['vnsup', [8835, 8402]], ['Vopf', [120141]], ['vopf', [120167]], ['vprop', [8733]], ['vrtri', [8883]], ['Vscr', [119985]], ['vscr', [120011]], ['vsubnE', [10955, 65024]], ['vsubne', [8842, 65024]], ['vsupnE', [10956, 65024]], ['vsupne', [8843, 65024]], ['Vvdash', [8874]], ['vzigzag', [10650]], ['Wcirc', [372]], ['wcirc', [373]], ['wedbar', [10847]], ['wedge', [8743]], ['Wedge', [8896]], ['wedgeq', [8793]], ['weierp', [8472]], ['Wfr', [120090]], ['wfr', [120116]], ['Wopf', [120142]], ['wopf', [120168]], ['wp', [8472]], ['wr', [8768]], ['wreath', [8768]], ['Wscr', [119986]], ['wscr', [120012]], ['xcap', [8898]], ['xcirc', [9711]], ['xcup', [8899]], ['xdtri', [9661]], ['Xfr', [120091]], ['xfr', [120117]], ['xharr', [10231]], ['xhArr', [10234]], ['Xi', [926]], ['xi', [958]], ['xlarr', [10229]], ['xlArr', [10232]], ['xmap', [10236]], ['xnis', [8955]], ['xodot', [10752]], ['Xopf', [120143]], ['xopf', [120169]], ['xoplus', [10753]], ['xotime', [10754]], ['xrarr', [10230]], ['xrArr', [10233]], ['Xscr', [119987]], ['xscr', [120013]], ['xsqcup', [10758]], ['xuplus', [10756]], ['xutri', [9651]], ['xvee', [8897]], ['xwedge', [8896]], ['Yacute', [221]], ['yacute', [253]], ['YAcy', [1071]], ['yacy', [1103]], ['Ycirc', [374]], ['ycirc', [375]], ['Ycy', [1067]], ['ycy', [1099]], ['yen', [165]], ['Yfr', [120092]], ['yfr', [120118]], ['YIcy', [1031]], ['yicy', [1111]], ['Yopf', [120144]], ['yopf', [120170]], ['Yscr', [119988]], ['yscr', [120014]], ['YUcy', [1070]], ['yucy', [1102]], ['yuml', [255]], ['Yuml', [376]], ['Zacute', [377]], ['zacute', [378]], ['Zcaron', [381]], ['zcaron', [382]], ['Zcy', [1047]], ['zcy', [1079]], ['Zdot', [379]], ['zdot', [380]], ['zeetrf', [8488]], ['ZeroWidthSpace', [8203]], ['Zeta', [918]], ['zeta', [950]], ['zfr', [120119]], ['Zfr', [8488]], ['ZHcy', [1046]], ['zhcy', [1078]], ['zigrarr', [8669]], ['zopf', [120171]], ['Zopf', [8484]], ['Zscr', [119989]], ['zscr', [120015]], ['zwj', [8205]], ['zwnj', [8204]]];
@@ -41311,7 +82331,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 595 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41450,4 +82470,4 @@ webpackJsonp([0],[
 
 /***/ }
 ]);
-//# sourceMappingURL=app.97f8e458683d63ba1436.js.map
+//# sourceMappingURL=app.75a3e023438987c1b087.js.map
