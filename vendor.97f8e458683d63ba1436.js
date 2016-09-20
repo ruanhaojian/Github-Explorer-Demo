@@ -88,7 +88,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c9550d49886c3ded97a8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "97f8e458683d63ba1436"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -623,7 +623,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://10.15.115.211:3000/";
+/******/ 	__webpack_require__.p = "https://ruanhaojian.github.io/Github-Explorer-Demo/";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -20837,4 +20837,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=vendor.c9550d49886c3ded97a8.js.map
+//# sourceMappingURL=vendor.97f8e458683d63ba1436.js.map

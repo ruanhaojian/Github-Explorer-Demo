@@ -18730,7 +18730,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -18751,48 +18751,44 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    profile: {},
-	    repos: []
+	  profile: {},
+	  repos: []
 	});
 	
 	function clearUserPage() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.CLEAR_USER_PAGE });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.CLEAR_USER_PAGE });
+	  };
 	}
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_PROFILE_RECEIVED, function (state, action) {
-	
-	    return state.merge({
-	        profile: action.data
-	    });
+	  return state.merge({
+	    profile: action.data
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USER_PROFILE_REPOS_RECEIVED, function (state, action) {
-	
-	    return state.merge({
-	        repos: action.data
-	    });
+	  return state.merge({
+	    repos: action.data
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLEAR_USER_PAGE, function (state, action) {
-	
-	    return state.merge({
-	        profile: {},
-	        repos: []
-	    });
+	  return state.merge({
+	    profile: {},
+	    repos: []
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function counterReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24096,7 +24092,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24116,60 +24112,56 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    showLoading: false,
-	    doneLoading: true,
-	    loadFailed: false
+	  showLoading: false,
+	  doneLoading: true,
+	  loadFailed: false
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TRIGGER_LOAD_ANIMATION, function (state, action) {
-	
-	    return state.merge({
-	        showLoading: true,
-	        doneLoading: false,
-	        loadFailed: false
-	    });
+	  return state.merge({
+	    showLoading: true,
+	    doneLoading: false,
+	    loadFailed: false
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TRIGGER_LOAD_ANIMATION_DONE, function (state, action) {
-	
-	    return state.merge({
-	        showLoading: true,
-	        doneLoading: true,
-	        loadFailed: false
-	    });
+	  return state.merge({
+	    showLoading: true,
+	    doneLoading: true,
+	    loadFailed: false
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TRIGGER_LOAD_ANIMATION_HIDE, function (state, action) {
-	
-	    return state.merge({
-	        showLoading: false,
-	        doneLoading: false,
-	        loadFailed: false
-	    });
+	  return state.merge({
+	    showLoading: false,
+	    doneLoading: false,
+	    loadFailed: false
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TRIGGER_LOAD_ANIMATION_FAILED, function (state, action) {
-	
-	    return state.merge({
-	        showLoading: true,
-	        doneLoading: false,
-	        loadFailed: true
-	    });
+	  return state.merge({
+	    showLoading: true,
+	    doneLoading: false,
+	    loadFailed: true
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TRIGGER_LOAD_ANIMATION_RESET, function (state, action) {
-	    return state.merge({
-	        showLoading: false,
-	        doneLoading: false,
-	        loadFailed: false
-	    });
+	  return state.merge({
+	    showLoading: false,
+	    doneLoading: false,
+	    loadFailed: false
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function loadingBlockReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24179,7 +24171,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24199,38 +24191,36 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    open: false
+	  open: false
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.TOGGLE_NAV_MENU, function (state, action) {
-	    return state.merge({
-	        open: !state.toJS().open
-	    });
+	  return state.merge({
+	    open: !state.toJS().open
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.OPEN_NAV_MENU, function (state, action) {
-	
-	    return state.merge({
-	        open: true
-	    });
+	  return state.merge({
+	    open: true
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLOSE_NAV_MENU, function (state, action) {
-	
-	    return state.merge({
-	        open: false
-	    });
+	  return state.merge({
+	    open: false
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24240,7 +24230,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24260,39 +24250,36 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    full: false
+	  full: false
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.FULL_NAV_MENU, function (state, action) {
-	
-	    return state.merge({
-	        full: true
-	    });
+	  return state.merge({
+	    full: true
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLOSE_NAV_MENU, function (state, action) {
-	
-	    return state.merge({
-	        full: false
-	    });
+	  return state.merge({
+	    full: false
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.OPEN_NAV_MENU, function (state, action) {
-	
-	    return state.merge({
-	        full: false
-	    });
+	  return state.merge({
+	    full: false
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24302,7 +24289,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24322,34 +24309,34 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    users: [],
-	    searching: true
+	  users: [],
+	  searching: true
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USERS_RECEIVED, function (state, action) {
-	    return state.merge({
-	        users: action.data,
-	        searching: false
-	    });
+	  return state.merge({
+	    users: action.data,
+	    searching: false
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.USERS_REQUEST, function (state, action) {
-	    return state.merge({
-	        searching: true
-	    });
+	  return state.merge({
+	    searching: true
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24359,7 +24346,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24383,67 +24370,62 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function openNavMenu() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.OPEN_NAV_MENU });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.OPEN_NAV_MENU });
+	  };
 	}
 	function closeNavMenu() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.CLOSE_NAV_MENU });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.CLOSE_NAV_MENU });
+	  };
 	}
 	function fullNavMenu() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.FULL_NAV_MENU });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.FULL_NAV_MENU });
+	  };
 	}
 	function updateCoreData(scrollTop) {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({
-	            type: _types.UPDATE_CORE_DATA,
-	            scrollTop: scrollTop
-	        });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({
+	      type: _types.UPDATE_CORE_DATA,
+	      scrollTop: scrollTop
+	    });
+	  };
 	}
 	
 	var initialState = (0, _immutable.fromJS)({
-	    backActionCount: 0,
-	    backRoute: '/',
-	    // router: '/',
-	    // children: document.createElement('div')
-	    scrollTop: 0
+	  backActionCount: 0,
+	  backRoute: '/',
+	  // router: '/',
+	  // children: document.createElement('div')
+	  scrollTop: 0
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.BACK_BUTTON, function (state, action) {
-	
-	    return state.merge({
-	        backActionCount: state.toJS().backActionCount + 1,
-	        backRoute: action.backRoute
-	    });
+	  return state.merge({
+	    backActionCount: state.toJS().backActionCount + 1,
+	    backRoute: action.backRoute
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.UPDATE_CORE_DATA, function (state, action) {
-	    // console.log('ssfsfsefsef====> ' + action.scrollTop)
-	    return state.merge({
-	        scrollTop: action.scrollTop
-	    });
+	  // console.log('ssfsfsefsef====> ' + action.scrollTop)
+	  return state.merge({
+	    scrollTop: action.scrollTop
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -24528,7 +24510,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -24547,38 +24529,37 @@ webpackJsonp([0],[
 	
 	// export function clearUserReposPage() {
 	//     return (dispatch,getState)=>{
-	//        
+	//
 	//         return dispatch({type: CLEAR_USER_REPOS_PAGE});
-	//        
+	//
 	//     }
 	// }
 	
 	var initialState = (0, _immutable.fromJS)({
-	    startPosition: { top: 0, left: 0, right: 0 },
-	    repoData: {}
+	  startPosition: { top: 0, left: 0, right: 0 },
+	  repoData: {}
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (0, _defineProperty3.default)({}, _types.DETAIL_TRANSITION_DATA, function (state, action) {
-	
-	    return state.merge({
-	        startPosition: action.startPosition,
-	        repoData: action.repoData
-	    });
+	  return state.merge({
+	    startPosition: action.startPosition,
+	    repoData: action.repoData
+	  });
 	});
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ },
@@ -25775,7 +25756,6 @@ webpackJsonp([0],[
 	//   ]
 	// })
 	
-	
 	/*  Note: childRoutes can be chunked or otherwise loaded programmatically
 	    using getChildRoutes with the following signature:
 	
@@ -25824,7 +25804,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -25838,18 +25818,17 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    closeNavMenu: _CoreLayout.closeNavMenu,
-	    updateCoreData: _CoreLayout.updateCoreData
+	  closeNavMenu: _CoreLayout.closeNavMenu,
+	  updateCoreData: _CoreLayout.updateCoreData
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
+	  // console.log('---->')
+	  // console.dir(state)
 	
-	    // console.log('---->')
-	    // console.dir(state)
-	
-	    return {
-	        coreLayoutReducer: state.coreLayoutReducer.toJS()
-	    };
+	  return {
+	    coreLayoutReducer: state.coreLayoutReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_CoreLayout3.default);
@@ -25861,7 +25840,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -25919,79 +25898,79 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var CoreLayout = function (_React$Component) {
-	    (0, _inherits3.default)(CoreLayout, _React$Component);
+	  (0, _inherits3.default)(CoreLayout, _React$Component);
 	
-	    function CoreLayout() {
-	        (0, _classCallCheck3.default)(this, CoreLayout);
-	        return (0, _possibleConstructorReturn3.default)(this, (CoreLayout.__proto__ || (0, _getPrototypeOf2.default)(CoreLayout)).apply(this, arguments));
+	  function CoreLayout() {
+	    (0, _classCallCheck3.default)(this, CoreLayout);
+	    return (0, _possibleConstructorReturn3.default)(this, (CoreLayout.__proto__ || (0, _getPrototypeOf2.default)(CoreLayout)).apply(this, arguments));
+	  }
+	
+	  (0, _createClass3.default)(CoreLayout, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _fastclick2.default.attach(document.body);
 	    }
-	
-	    (0, _createClass3.default)(CoreLayout, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	
-	            _fastclick2.default.attach(document.body);
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var coreLayoutReducer = nextProps.coreLayoutReducer;
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      var coreLayoutReducer = nextProps.coreLayoutReducer;
 	
 	
-	            if (coreLayoutReducer.backActionCount > this.props.coreLayoutReducer.backActionCount) {
-	                var path = (0, _routes.matchParams)(coreLayoutReducer.backRoute, this.props.params);
-	                this.context.router.push(path);
-	            }
+	      if (coreLayoutReducer.backActionCount > this.props.coreLayoutReducer.backActionCount) {
+	        var path = (0, _routes.matchParams)(coreLayoutReducer.backRoute, this.props.params);
+	        this.context.router.push(path);
+	      }
 	
-	            // this.props.updateCoreData(
-	            //     document.getElementById('scroll-section').scrollTop)
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _props = this.props;
-	            var children = _props.children;
-	            var routes = _props.routes;
-	            var closeNavMenu = _props.closeNavMenu;
+	      // this.props.updateCoreData(
+	      //     document.getElementById('scroll-section').scrollTop)
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var children = _props.children;
+	      var routes = _props.routes;
+	      var closeNavMenu = _props.closeNavMenu;
 	
 	
-	            return _react2.default.createElement(
-	                'div',
-	                { style: { overflow: 'hidden', height: '100%', width: '100%' } },
-	                _react2.default.createElement(_MenuOpenStateHandler2.default, null),
-	                _react2.default.createElement(_MenuFullStateHandler2.default, null),
-	                _react2.default.createElement('div', {
-	                    id: 'menu-overlay',
-	                    onClick: closeNavMenu
-	                }),
-	                _react2.default.createElement(_NavMenu2.default, null),
-	                _react2.default.createElement(
-	                    _MainContent2.default,
-	                    {
-	                        route: routes[routes.length - 1].path,
-	                        location: routes.location
-	                    },
-	                    children
-	                )
-	            );
-	        }
-	    }]);
-	    return CoreLayout;
+	      return _react2.default.createElement(
+	        'div',
+	        { style: { overflow: 'hidden', height: '100%', width: '100%' } },
+	        _react2.default.createElement(_MenuOpenStateHandler2.default, null),
+	        _react2.default.createElement(_MenuFullStateHandler2.default, null),
+	        _react2.default.createElement('div', {
+	          id: 'menu-overlay',
+	          onClick: closeNavMenu
+	        }),
+	        _react2.default.createElement(_NavMenu2.default, null),
+	        _react2.default.createElement(
+	          _MainContent2.default,
+	          {
+	            route: routes[routes.length - 1].path,
+	            location: routes.location
+	          },
+	          children
+	        )
+	      );
+	    }
+	  }]);
+	  return CoreLayout;
 	}(_react2.default.Component);
 	
 	CoreLayout.propTypes = {
-	    children: _react2.default.PropTypes.element.isRequired,
-	    routes: _react2.default.PropTypes.array.isRequired,
-	    closeNavMenu: _react2.default.PropTypes.func.isRequired,
-	    coreLayoutReducer: _react2.default.PropTypes.object.isRequired
+	  children: _react2.default.PropTypes.element.isRequired,
+	  routes: _react2.default.PropTypes.array.isRequired,
+	  closeNavMenu: _react2.default.PropTypes.func.isRequired,
+	  coreLayoutReducer: _react2.default.PropTypes.object.isRequired
+	  // updateCoreData: React.PropTypes.func.isRequired,
 	};
 	
 	
 	CoreLayout.contextTypes = {
-	    router: _react2.default.PropTypes.object.isRequired
+	  router: _react2.default.PropTypes.object.isRequired
 	};
 	exports.default = CoreLayout;
 	
@@ -26050,7 +26029,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -26068,18 +26047,17 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    closeNavMenu: _CoreLayout.closeNavMenu,
-	    fullNavMenu: _CoreLayout.fullNavMenu,
-	    openNavMenu: _CoreLayout.openNavMenu,
-	    getUsers: _user.getUsers,
-	    clearUserPage: _UserPage.clearUserPage
+	  closeNavMenu: _CoreLayout.closeNavMenu,
+	  fullNavMenu: _CoreLayout.fullNavMenu,
+	  openNavMenu: _CoreLayout.openNavMenu,
+	  getUsers: _user.getUsers,
+	  clearUserPage: _UserPage.clearUserPage
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return {
-	        navMenuReducer: state.navMenuReducer.toJS()
-	    };
+	  return {
+	    navMenuReducer: state.navMenuReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_NavMenu2.default);
@@ -26091,7 +26069,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -26141,211 +26119,208 @@ webpackJsonp([0],[
 	// import classes from './NavMenu.scss'
 	
 	var NavMenu = function (_React$Component) {
-	    (0, _inherits3.default)(NavMenu, _React$Component);
+	  (0, _inherits3.default)(NavMenu, _React$Component);
 	
-	    function NavMenu() {
-	        (0, _classCallCheck3.default)(this, NavMenu);
+	  function NavMenu() {
+	    (0, _classCallCheck3.default)(this, NavMenu);
 	
-	        var _this2 = (0, _possibleConstructorReturn3.default)(this, (NavMenu.__proto__ || (0, _getPrototypeOf2.default)(NavMenu)).call(this));
+	    var _this2 = (0, _possibleConstructorReturn3.default)(this, (NavMenu.__proto__ || (0, _getPrototypeOf2.default)(NavMenu)).call(this));
 	
-	        _this2.state = {
-	            searchText: ''
-	        };
+	    _this2.state = {
+	      searchText: ''
+	    };
 	
-	        _this2.wait = false;
+	    _this2.wait = false;
 	
-	        // this.obsSearchTextChange = new Rx.Subject();
+	    // this.obsSearchTextChange = new Rx.Subject();
 	
-	        _this2.onSearchTextChange = _this2.onSearchTextChange.bind(_this2);
-	        return _this2;
+	    _this2.onSearchTextChange = _this2.onSearchTextChange.bind(_this2);
+	    return _this2;
+	  }
+	
+	  (0, _createClass3.default)(NavMenu, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.navMenuReducer.users != this.props.navMenuReducer.users || nextProps.navMenuReducer.searching != this.props.navMenuReducer.searching || nextState.searchText != this.state.searchText;
 	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this = this;
 	
-	    (0, _createClass3.default)(NavMenu, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
+	      this.props.getUsers();
 	
-	            return nextProps.navMenuReducer.users != this.props.navMenuReducer.users || nextProps.navMenuReducer.searching != this.props.navMenuReducer.searching || nextState.searchText != this.state.searchText;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	
-	            var _this = this;
-	
-	            this.props.getUsers();
-	
-	            this.refs.userList.addEventListener('scroll', function () {
-	                _this.lastScrollTop = _this.refs.userList.scrollTop;
-	                if (_this.wait === false) {
-	                    window.requestAnimationFrame(function () {
-	                        if (_this.lastScrollTop > 0) {
-	                            _this.refs.searchBar.classList.add('dark-bg');
-	                        } else {
-	                            _this.refs.searchBar.classList.remove('dark-bg');
-	                        }
-	                        _this.wait = false;
-	                    });
-	                    _this.wait = true;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
-	    }, {
-	        key: 'onSearchTextChange',
-	        value: function onSearchTextChange(e) {
-	            this.setState({
-	                searchText: e.target.value
-	            });
-	
-	            var _this = this;
-	
-	            if (!this.props.navMenuReducer.searching) {
-	                this.searchTimer && clearTimeout(this.searchTimer);
-	                this.searchTimer = setTimeout(function () {
-	                    _this.props.getUsers(_this.state.searchText);
-	                }, 1000);
+	      this.refs.userList.addEventListener('scroll', function () {
+	        _this.lastScrollTop = _this.refs.userList.scrollTop;
+	        if (_this.wait === false) {
+	          window.requestAnimationFrame(function () {
+	            if (_this.lastScrollTop > 0) {
+	              _this.refs.searchBar.classList.add('dark-bg');
+	            } else {
+	              _this.refs.searchBar.classList.remove('dark-bg');
 	            }
+	            _this.wait = false;
+	          });
+	          _this.wait = true;
 	        }
-	    }, {
-	        key: 'userClick',
-	        value: function userClick(path) {
-	            var _this3 = this;
+	      });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'onSearchTextChange',
+	    value: function onSearchTextChange(e) {
+	      this.setState({
+	        searchText: e.target.value
+	      });
 	
-	            // action.onNext({ name: ACTIONS.CLOSE_NAV_MENU });
-	            this.props.closeNavMenu();
-	            // Wait for animation done, we don't want to overheat the CPU
-	            setTimeout(function () {
-	                // this.props.clearUserPage()
-	                _this3.context.router.push(path);
-	            }, 300);
-	        }
-	    }, {
-	        key: 'cancelClick',
-	        value: function cancelClick() {
+	      var _this = this;
 	
-	            this.setState({ searchText: '' });
-	            this.props.openNavMenu();
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this4 = this;
+	      if (!this.props.navMenuReducer.searching) {
+	        this.searchTimer && clearTimeout(this.searchTimer);
+	        this.searchTimer = setTimeout(function () {
+	          _this.props.getUsers(_this.state.searchText);
+	        }, 1000);
+	      }
+	    }
+	  }, {
+	    key: 'userClick',
+	    value: function userClick(path) {
+	      var _this3 = this;
 	
-	            var _props$navMenuReducer = this.props.navMenuReducer;
-	            var users = _props$navMenuReducer.users;
-	            var searching = _props$navMenuReducer.searching;
-	            var _props = this.props;
-	            var fullNavMenu = _props.fullNavMenu;
-	            var getUsers = _props.getUsers;
+	      // action.onNext({ name: ACTIONS.CLOSE_NAV_MENU });
+	      this.props.closeNavMenu();
+	      // Wait for animation done, we don't want to overheat the CPU
+	      setTimeout(function () {
+	        // this.props.clearUserPage()
+	        _this3.context.router.push(path);
+	      }, 300);
+	    }
+	  }, {
+	    key: 'cancelClick',
+	    value: function cancelClick() {
+	      this.setState({ searchText: '' });
+	      this.props.openNavMenu();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+	
+	      var _props$navMenuReducer = this.props.navMenuReducer;
+	      var users = _props$navMenuReducer.users;
+	      var searching = _props$navMenuReducer.searching;
+	      var _props = this.props;
+	      var fullNavMenu = _props.fullNavMenu;
+	      var getUsers = _props.getUsers;
 	
 	
-	            return _react2.default.createElement(
-	                'div',
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          id: 'nav-menu',
+	          className: (0, _classnames2.default)({ open: this.props.open })
+	        },
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            id: 'search-bar',
+	            ref: 'searchBar'
+	          },
+	          _react2.default.createElement(_SearchInput2.default, {
+	            onFocus: fullNavMenu,
+	            onChange: this.onSearchTextChange,
+	            value: this.state.searchText,
+	            placeholder: 'Search by username…',
+	            onSearch: function onSearch() {
+	              return getUsers(_this4.state.searchText);
+	            }
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              id: 'cancel-button',
+	              className: (0, _classnames2.default)({ show: this.props.full }),
+	              onClick: this.cancelClick.bind(this)
+	            },
+	            'Cancel'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            id: 'user-list',
+	            ref: 'userList'
+	          },
+	          searching ? _react2.default.createElement(
+	            'div',
+	            { id: 'loading' },
+	            _react2.default.createElement('div', { className: 'loading' })
+	          ) : _react2.default.createElement(
+	            _reactAddonsCssTransitionGroup2.default,
+	            {
+	              transitionName: 'list',
+	              transitionAppear: true,
+	              transitionAppearTimeout: 500,
+	              transitionEnterTimeout: 500,
+	              transitionLeaveTimeout: 500
+	            },
+	            users.length ? users.map(function (user) {
+	              return _react2.default.createElement(
+	                'a',
 	                {
-	                    id: 'nav-menu',
-	                    className: (0, _classnames2.default)({ open: this.props.open })
+	                  key: user.id,
+	                  className: 'user-item',
+	                  onClick: function onClick() {
+	                    return _this4.userClick('/user/' + user.login);
+	                  }
 	                },
+	                _react2.default.createElement(_Image2.default, {
+	                  className: 'user-avatar',
+	                  src: 'https://avatars.githubusercontent.com/u/' + user.id.split('-')[1]
+	                }),
 	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'user-info' },
+	                  _react2.default.createElement(
 	                    'div',
-	                    {
-	                        id: 'search-bar',
-	                        ref: 'searchBar'
-	                    },
-	                    _react2.default.createElement(_SearchInput2.default, {
-	                        onFocus: fullNavMenu,
-	                        onChange: this.onSearchTextChange,
-	                        value: this.state.searchText,
-	                        placeholder: 'Search by username…',
-	                        onSearch: function onSearch() {
-	                            return getUsers(_this4.state.searchText);
-	                        }
-	                    }),
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            id: 'cancel-button',
-	                            className: (0, _classnames2.default)({ show: this.props.full }),
-	                            onClick: this.cancelClick.bind(this)
-	                        },
-	                        'Cancel'
-	                    )
-	                ),
-	                _react2.default.createElement(
+	                    { className: 'fullname' },
+	                    user.fullname || user.login
+	                  ),
+	                  _react2.default.createElement(
 	                    'div',
-	                    {
-	                        id: 'user-list',
-	                        ref: 'userList'
-	                    },
-	                    searching ? _react2.default.createElement(
-	                        'div',
-	                        { id: 'loading' },
-	                        _react2.default.createElement('div', { className: 'loading' })
-	                    ) : _react2.default.createElement(
-	                        _reactAddonsCssTransitionGroup2.default,
-	                        {
-	                            transitionName: 'list',
-	                            transitionAppear: true,
-	                            transitionAppearTimeout: 500,
-	                            transitionEnterTimeout: 500,
-	                            transitionLeaveTimeout: 500
-	                        },
-	                        users.length ? users.map(function (user) {
-	                            return _react2.default.createElement(
-	                                'a',
-	                                {
-	                                    key: user.id,
-	                                    className: 'user-item',
-	                                    onClick: function onClick() {
-	                                        return _this4.userClick('/user/' + user.login);
-	                                    }
-	                                },
-	                                _react2.default.createElement(_Image2.default, {
-	                                    className: 'user-avatar',
-	                                    src: 'https://avatars.githubusercontent.com/u/' + user.id.split('-')[1]
-	                                }),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'user-info' },
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'fullname' },
-	                                        user.fullname || user.login
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'username' },
-	                                        user.login || user.fullname
-	                                    )
-	                                )
-	                            );
-	                        }) : _react2.default.createElement(
-	                            'div',
-	                            { className: 'empty-data' },
-	                            'Hmm.. that user cannot be found on GitHub.'
-	                        )
-	                    )
+	                    { className: 'username' },
+	                    user.login || user.fullname
+	                  )
 	                )
-	            );
-	        }
-	    }]);
-	    return NavMenu;
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'Hmm.. that user cannot be found on GitHub.'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return NavMenu;
 	}(_react2.default.Component);
 	
 	NavMenu.propTypes = {
-	    navMenuReducer: _react2.default.PropTypes.object.isRequired,
-	    getUsers: _react2.default.PropTypes.func.isRequired,
-	    fullNavMenu: _react2.default.PropTypes.func.isRequired,
-	    openNavMenu: _react2.default.PropTypes.func.isRequired,
-	    closeNavMenu: _react2.default.PropTypes.func.isRequired,
-	    clearUserPage: _react2.default.PropTypes.func.isRequired
+	  navMenuReducer: _react2.default.PropTypes.object.isRequired,
+	  getUsers: _react2.default.PropTypes.func.isRequired,
+	  fullNavMenu: _react2.default.PropTypes.func.isRequired,
+	  openNavMenu: _react2.default.PropTypes.func.isRequired,
+	  closeNavMenu: _react2.default.PropTypes.func.isRequired,
+	  clearUserPage: _react2.default.PropTypes.func.isRequired
 	};
 	exports.default = NavMenu;
 	
 	
 	NavMenu.contextTypes = {
-	    router: _react2.default.PropTypes.object.isRequired
+	  router: _react2.default.PropTypes.object.isRequired
 	};
 
 /***/ },
@@ -27323,7 +27298,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -27359,71 +27334,70 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Image = function (_React$Component) {
-	    (0, _inherits3.default)(Image, _React$Component);
+	  (0, _inherits3.default)(Image, _React$Component);
 	
-	    function Image() {
-	        (0, _classCallCheck3.default)(this, Image);
+	  function Image() {
+	    (0, _classCallCheck3.default)(this, Image);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (Image.__proto__ || (0, _getPrototypeOf2.default)(Image)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (Image.__proto__ || (0, _getPrototypeOf2.default)(Image)).call(this));
 	
-	        _this.state = {
-	            loaded: false
-	        };
-	        _this.onImageLoad = _this.onImageLoad.bind(_this);
-	        return _this;
+	    _this.state = {
+	      loaded: false
+	    };
+	    _this.onImageLoad = _this.onImageLoad.bind(_this);
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(Image, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.src) {
+	        this.img = new window.Image();
+	        this.img.onload = this.onImageLoad;
+	        this.img.src = this.props.src;
+	      }
 	    }
-	
-	    (0, _createClass3.default)(Image, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            if (this.props.src) {
-	                this.img = new window.Image();
-	                this.img.onload = this.onImageLoad;
-	                this.img.src = this.props.src;
-	            }
-	        }
-	    }, {
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	
-	            return nextProps.src != this.props.src || nextState.loaded != this.state.loaded;
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            if (this.props.src !== nextProps.src) {
-	                this.img = new window.Image();
-	                this.img.onload = this.onImageLoad;
-	                this.img.src = nextProps.src;
-	                this.setState({ loaded: false });
-	            }
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            if (this.img) {
-	                this.img.onload = function () {};
-	            }
-	        }
-	    }, {
-	        key: 'onImageLoad',
-	        value: function onImageLoad() {
-	            this.setState({ loaded: true });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement('div', {
-	                id: this.props.id,
-	                className: (0, _classnames2.default)(this.props.className, ' image-fade'),
-	                style: this.state.loaded ? {
-	                    backgroundImage: 'url(\'' + this.props.src + '\')',
-	                    opacity: 1
-	                } : {}
-	            });
-	        }
-	    }]);
-	    return Image;
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.src != this.props.src || nextState.loaded != this.state.loaded;
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (this.props.src !== nextProps.src) {
+	        this.img = new window.Image();
+	        this.img.onload = this.onImageLoad;
+	        this.img.src = nextProps.src;
+	        this.setState({ loaded: false });
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      if (this.img) {
+	        this.img.onload = function () {};
+	      }
+	    }
+	  }, {
+	    key: 'onImageLoad',
+	    value: function onImageLoad() {
+	      this.setState({ loaded: true });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', {
+	        id: this.props.id,
+	        className: (0, _classnames2.default)(this.props.className, ' image-fade'),
+	        style: this.state.loaded ? {
+	          backgroundImage: 'url(\'' + this.props.src + '\')',
+	          opacity: 1
+	        } : {}
+	      });
+	    }
+	  }]);
+	  return Image;
 	}(_react2.default.Component);
 	
 	exports.default = Image;
@@ -27518,7 +27492,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _keys = __webpack_require__(347);
@@ -27557,157 +27531,149 @@ webpackJsonp([0],[
 	var REPO_PER_PAGE = 10;
 	
 	function getRandomUser() {
-	    return function (dispatch, getState) {
+	  return function (dispatch, getState) {
+	    // dispatch({type: types.TRIGGER_LOAD_ANIMATION})
 	
-	        // dispatch({type: types.TRIGGER_LOAD_ANIMATION})
-	
-	        return _api2.default.getRandomUser();
-	    };
+	    return _api2.default.getRandomUser();
+	  };
 	}
 	
 	function getUserProfile(username) {
-	    return function (dispatch, getState) {
-	
-	        return _api2.default.getUserProfile(username).then(function (profile) {
-	            return dispatch({ type: types.USER_PROFILE_RECEIVED, data: profile });
-	        });
-	    };
+	  return function (dispatch, getState) {
+	    return _api2.default.getUserProfile(username).then(function (profile) {
+	      return dispatch({ type: types.USER_PROFILE_RECEIVED, data: profile });
+	    });
+	  };
 	}
 	
 	function getUserProfileRepos(username) {
-	    return function (dispatch, getState) {
-	
-	        return _api2.default.getUserProfileRepos(username).then(function (data) {
-	            return dispatch({ type: types.USER_PROFILE_REPOS_RECEIVED, data: data.items });
-	        }).then(function () {
-	
-	            dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
-	            setTimeout(function () {
-	                dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
-	            }, 600);
-	        }).catch(function () {
-	            dispatch({ type: types.TRIGGER_LOAD_ANIMATION_FAILED });
-	        });
-	    };
+	  return function (dispatch, getState) {
+	    return _api2.default.getUserProfileRepos(username).then(function (data) {
+	      return dispatch({ type: types.USER_PROFILE_REPOS_RECEIVED, data: data.items });
+	    }).then(function () {
+	      dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
+	      setTimeout(function () {
+	        dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
+	      }, 600);
+	    }).catch(function () {
+	      dispatch({ type: types.TRIGGER_LOAD_ANIMATION_FAILED });
+	    });
+	  };
 	}
 	
 	function getUsers(keyword) {
-	    return function (dispatch, getState) {
+	  return function (dispatch, getState) {
+	    dispatch({ type: types.USERS_REQUEST });
 	
-	        dispatch({ type: types.USERS_REQUEST });
-	
-	        return _api2.default.getUsers(keyword).then(function (data) {
-	            return data.users.slice(0, 15);
-	        }).then(function (users) {
-	            dispatch({ type: types.USERS_RECEIVED, data: users });
-	        });
-	    };
+	    return _api2.default.getUsers(keyword).then(function (data) {
+	      return data.users.slice(0, 15);
+	    }).then(function (users) {
+	      dispatch({ type: types.USERS_RECEIVED, data: users });
+	    });
+	  };
 	}
 	
 	function searchUserRepos(user, keyword, page) {
-	    return function (dispatch, getState) {
+	  return function (dispatch, getState) {
+	    dispatch({ type: types.TRIGGER_LOAD_ANIMATION });
+	    dispatch({ type: types.USER_REPOS_REQUEST, page: page });
 	
-	        dispatch({ type: types.TRIGGER_LOAD_ANIMATION });
-	        dispatch({ type: types.USER_REPOS_REQUEST, page: page });
-	
-	        return _api2.default.searchUserRepos(user, keyword, page).then(function (data) {
-	            if (+page > 1) {
-	                dispatch({
-	                    type: types.USER_REPOS_NEXT_PAGE_RECEIVED,
-	                    data: { page: page, repos: data.items }
-	                });
-	            } else {
-	                dispatch({
-	                    type: types.USER_REPOS_RECEIVED,
-	                    data: data.items
-	                });
-	            }
-	            if (data.items.length < REPO_PER_PAGE) {
-	                dispatch({
-	                    type: types.USER_REPOS_COMPLETE
-	                });
-	            }
-	
-	            dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
-	            setTimeout(function () {
-	                dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
-	            }, 600);
+	    return _api2.default.searchUserRepos(user, keyword, page).then(function (data) {
+	      if (+page > 1) {
+	        dispatch({
+	          type: types.USER_REPOS_NEXT_PAGE_RECEIVED,
+	          data: { page: page, repos: data.items }
 	        });
-	    };
+	      } else {
+	        dispatch({
+	          type: types.USER_REPOS_RECEIVED,
+	          data: data.items
+	        });
+	      }
+	      if (data.items.length < REPO_PER_PAGE) {
+	        dispatch({
+	          type: types.USER_REPOS_COMPLETE
+	        });
+	      }
+	
+	      dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
+	      setTimeout(function () {
+	        dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
+	      }, 600);
+	    });
+	  };
 	}
 	
 	_promise2.default.prototype.done = function (onFulfilled, onRejected) {
-	    this.then(onFulfilled, onRejected).catch(function (reason) {
-	        // 抛出一个全局错误
-	        setTimeout(function () {
-	            throw reason;
-	        }, 0);
-	    });
+	  this.then(onFulfilled, onRejected).catch(function (reason) {
+	    // 抛出一个全局错误
+	    setTimeout(function () {
+	      throw reason;
+	    }, 0);
+	  });
 	};
 	
 	function getRepoPageDetail(username, repoName) {
-	    return function (dispatch, getState) {
+	  return function (dispatch, getState) {
+	    dispatch({ type: types.TRIGGER_LOAD_ANIMATION });
 	
-	        dispatch({ type: types.TRIGGER_LOAD_ANIMATION });
+	    return _promise2.default.all([_api2.default.getRepoDetail(username, repoName), _api2.default.getRepoReadme(username, repoName), _api2.default.getRepoContents(username, repoName), _api2.default.getRepoContribs(username, repoName), _api2.default.getRepoLanguages(username, repoName)]).then(function (_ref) {
+	      var _ref2 = (0, _slicedToArray3.default)(_ref, 5);
 	
-	        return _promise2.default.all([_api2.default.getRepoDetail(username, repoName), _api2.default.getRepoReadme(username, repoName), _api2.default.getRepoContents(username, repoName), _api2.default.getRepoContribs(username, repoName), _api2.default.getRepoLanguages(username, repoName)]).then(function (_ref) {
-	            var _ref2 = (0, _slicedToArray3.default)(_ref, 5);
+	      var repo = _ref2[0];
+	      var readmeData = _ref2[1];
+	      var contents = _ref2[2];
+	      var contris = _ref2[3];
+	      var languages = _ref2[4];
 	
-	            var repo = _ref2[0];
-	            var readmeData = _ref2[1];
-	            var contents = _ref2[2];
-	            var contris = _ref2[3];
-	            var languages = _ref2[4];
+	      var readme = readmeData.content || '';
+	      readme = _jsBase.Base64.decode(readme.replace(/\s/g, ''));
 	
+	      contents.sort(function (a, b) {
+	        return a.type.localeCompare(b.type);
+	      });
 	
-	            var readme = readmeData.content || '';
-	            readme = _jsBase.Base64.decode(readme.replace(/\s/g, ''));
+	      var newLanguages = (0, _keys2.default)(languages).map(function (key) {
+	        return { name: key, value: languages[key] };
+	      });
 	
-	            contents.sort(function (a, b) {
-	                return a.type.localeCompare(b.type);
-	            });
+	      var total = 0;
+	      if (newLanguages.length === 0) {
+	        total = 0;
+	      } else if (newLanguages.length === 1) {
+	        total = newLanguages[0].value;
+	      } else {
+	        total = newLanguages.reduce(function (a, b) {
+	          return { value: a.value + b.value };
+	        }).value;
+	      }
 	
-	            var newLanguages = (0, _keys2.default)(languages).map(function (key) {
-	                return { name: key, value: languages[key] };
-	            });
+	      var nl = newLanguages.map(function (a) {
+	        return {
+	          name: a.name,
+	          value: Math.round(1000 * a.value / total) / 10
+	        };
+	      });
 	
-	            var total = 0;
-	            if (newLanguages.length === 0) {
-	                total = 0;
-	            } else if (newLanguages.length === 1) {
-	                total = newLanguages[0].value;
-	            } else {
-	                total = newLanguages.reduce(function (a, b) {
-	                    return { value: a.value + b.value };
-	                }).value;
-	            }
-	
-	            var nl = newLanguages.map(function (a) {
-	                return {
-	                    name: a.name,
-	                    value: Math.round(1000 * a.value / total) / 10
-	                };
-	            });
-	
-	            dispatch({
-	                type: types.REPO_DETAIL_RECEIVED_ALL,
-	                data: {
-	                    repo: repo,
-	                    readme: readme,
-	                    contents: contents,
-	                    contris: contris,
-	                    languages: nl
-	                }
-	            });
-	        }).then(function () {
-	            dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
-	            setTimeout(function () {
-	                dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
-	            }, 600);
-	        }).catch(function (error) {
-	            dispatch({ type: types.REPO_DETAIL_REQUEST_PAGE_FAILED });
-	        });
-	    };
+	      dispatch({
+	        type: types.REPO_DETAIL_RECEIVED_ALL,
+	        data: {
+	          repo: repo,
+	          readme: readme,
+	          contents: contents,
+	          contris: contris,
+	          languages: nl
+	        }
+	      });
+	    }).then(function () {
+	      dispatch({ type: types.TRIGGER_LOAD_ANIMATION_DONE });
+	      setTimeout(function () {
+	        dispatch({ type: types.TRIGGER_LOAD_ANIMATION_HIDE });
+	      }, 600);
+	    }).catch(function (error) {
+	      dispatch({ type: types.REPO_DETAIL_REQUEST_PAGE_FAILED });
+	    });
+	  };
 	}
 	
 	// export function getRandomUser() {
@@ -28572,7 +28538,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	      value: true
 	});
 	exports.apiFactory = undefined;
 	
@@ -28588,55 +28554,55 @@ webpackJsonp([0],[
 	var REPO_PER_PAGE = 10;
 	
 	var api = function api(url) {
-	    return fetch(url, {
-	        headers: {
-	            Authorization: 'token ' + TOKEN
-	        }
-	    }).then(function (response) {
-	        return response.json();
-	    }).then(function (data) {
-	        if (data.errors) {
-	            // action.onNext({ name: ACTION_TYPES.REQUEST_FAILED, data });
-	            return _promise2.default.reject(data);
-	        }
-	        return data;
-	    }).catch(function () {
-	        // action.onNext({ name: ACTION_TYPES.REQUEST_FAILED, data: [...args] });
-	        return _promise2.default.reject.apply(_promise2.default, arguments);
-	    });
+	      return fetch(url, {
+	            headers: {
+	                  Authorization: 'token ' + TOKEN
+	            }
+	      }).then(function (response) {
+	            return response.json();
+	      }).then(function (data) {
+	            if (data.errors) {
+	                  // action.onNext({ name: ACTION_TYPES.REQUEST_FAILED, data });
+	                  return _promise2.default.reject(data);
+	            }
+	            return data;
+	      }).catch(function () {
+	            // action.onNext({ name: ACTION_TYPES.REQUEST_FAILED, data: [...args] });
+	            return _promise2.default.reject.apply(_promise2.default, arguments);
+	      });
 	};
 	
 	var apiFactory = exports.apiFactory = {
-	    getRandomUser: function getRandomUser() {
-	        return api('https://api.github.com/search/users?q=type:user&page=1&per_page=1');
-	    },
-	    getUserProfile: function getUserProfile(username) {
-	        return api('https://api.github.com/users/' + username);
-	    },
-	    getUserProfileRepos: function getUserProfileRepos(username) {
-	        return api('https://api.github.com/search/repositories' + ('?q=user:' + username + '&sort=stars&page=1&per_page=' + REPO_PER_PAGE));
-	    },
-	    getUsers: function getUsers(keyword) {
-	        return api('https://api.github.com/legacy/user/search/' + ((keyword || Math.random().toString(36).split('')[2]) + '%20sort:followers'));
-	    },
-	    searchUserRepos: function searchUserRepos(user, keyword, page) {
-	        return api('https://api.github.com/search/repositories' + ('?q=' + keyword + '%20user:' + user + '&sort=updated&page=' + page + '&per_page=' + REPO_PER_PAGE));
-	    },
-	    getRepoDetail: function getRepoDetail(username, repoName) {
-	        return api('https://api.github.com/repos/' + username + '/' + repoName);
-	    },
-	    getRepoReadme: function getRepoReadme(username, repoName) {
-	        return api('https://api.github.com/repos/' + username + '/' + repoName + '/readme');
-	    },
-	    getRepoContents: function getRepoContents(username, repoName) {
-	        return api('https://api.github.com/repos/' + username + '/' + repoName + '/contents');
-	    },
-	    getRepoContribs: function getRepoContribs(username, repoName) {
-	        return api('https://api.github.com/repos/' + username + '/' + repoName + '/contributors');
-	    },
-	    getRepoLanguages: function getRepoLanguages(username, repoName) {
-	        return api('https://api.github.com/repos/' + username + '/' + repoName + '/languages');
-	    }
+	      getRandomUser: function getRandomUser() {
+	            return api('https://api.github.com/search/users?q=type:user&page=1&per_page=1');
+	      },
+	      getUserProfile: function getUserProfile(username) {
+	            return api('https://api.github.com/users/' + username);
+	      },
+	      getUserProfileRepos: function getUserProfileRepos(username) {
+	            return api('https://api.github.com/search/repositories' + ('?q=user:' + username + '&sort=stars&page=1&per_page=' + REPO_PER_PAGE));
+	      },
+	      getUsers: function getUsers(keyword) {
+	            return api('https://api.github.com/legacy/user/search/' + ((keyword || Math.random().toString(36).split('')[2]) + '%20sort:followers'));
+	      },
+	      searchUserRepos: function searchUserRepos(user, keyword, page) {
+	            return api('https://api.github.com/search/repositories' + ('?q=' + keyword + '%20user:' + user + '&sort=updated&page=' + page + '&per_page=' + REPO_PER_PAGE));
+	      },
+	      getRepoDetail: function getRepoDetail(username, repoName) {
+	            return api('https://api.github.com/repos/' + username + '/' + repoName);
+	      },
+	      getRepoReadme: function getRepoReadme(username, repoName) {
+	            return api('https://api.github.com/repos/' + username + '/' + repoName + '/readme');
+	      },
+	      getRepoContents: function getRepoContents(username, repoName) {
+	            return api('https://api.github.com/repos/' + username + '/' + repoName + '/contents');
+	      },
+	      getRepoContribs: function getRepoContribs(username, repoName) {
+	            return api('https://api.github.com/repos/' + username + '/' + repoName + '/contributors');
+	      },
+	      getRepoLanguages: function getRepoLanguages(username, repoName) {
+	            return api('https://api.github.com/repos/' + username + '/' + repoName + '/languages');
+	      }
 	
 	};
 
@@ -31316,7 +31282,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -31330,10 +31296,9 @@ webpackJsonp([0],[
 	var mapDispatchToProps = {};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return {
-	        mainContentReducer: state.mainContentReducer.toJS()
-	    };
+	  return {
+	    mainContentReducer: state.mainContentReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_MainContent2.default);
@@ -31345,7 +31310,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -31403,108 +31368,107 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var MainContent = function (_React$Component) {
-	    (0, _inherits3.default)(MainContent, _React$Component);
+	  (0, _inherits3.default)(MainContent, _React$Component);
 	
-	    function MainContent() {
-	        (0, _classCallCheck3.default)(this, MainContent);
+	  function MainContent() {
+	    (0, _classCallCheck3.default)(this, MainContent);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (MainContent.__proto__ || (0, _getPrototypeOf2.default)(MainContent)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (MainContent.__proto__ || (0, _getPrototypeOf2.default)(MainContent)).call(this));
 	
-	        _this.state = {
-	            scrollTop: 0,
-	            toast: null };
+	    _this.state = {
+	      scrollTop: 0,
+	      toast: null // object shape: { message: 'example', timeout: 3000, button: <Example /> }
+	    };
 	
-	        _this.onPageLoad = _this.onPageLoad.bind(_this);
-	        return _this;
+	    _this.onPageLoad = _this.onPageLoad.bind(_this);
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(MainContent, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.mainContentReducer != this.props.mainContentReducer || nextProps.open != this.props.open || nextProps.route != this.props.route || nextState.scrollTop != this.state.scrollTop;
 	    }
-	
-	    (0, _createClass3.default)(MainContent, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
-	    }, {
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	
-	            return nextProps.mainContentReducer != this.props.mainContentReducer || nextProps.open != this.props.open || nextProps.route != this.props.route || nextState.scrollTop != this.state.scrollTop;
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(next) {
-	
-	            // We only need to update the scrollTop when page change
-	            if (next.open === this.props.open) {
-	                this.setState({
-	                    // Caution: this force layout
-	                    scrollTop: document.getElementById('scroll-section').scrollTop //this.refs.scrollSection.scrollTop || 
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'onPageLoad',
-	        value: function onPageLoad() {
-	            // Caution: this force layout
-	            this.refs.scrollSection.scrollTop = 0;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _props$mainContentRed = this.props.mainContentReducer;
-	            var startPosition = _props$mainContentRed.startPosition;
-	            var repoData = _props$mainContentRed.repoData;
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(next) {
+	      // We only need to update the scrollTop when page change
+	      if (next.open === this.props.open) {
+	        this.setState({
+	          // Caution: this force layout
+	          scrollTop: document.getElementById('scroll-section').scrollTop // this.refs.scrollSection.scrollTop ||
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'onPageLoad',
+	    value: function onPageLoad() {
+	      // Caution: this force layout
+	      this.refs.scrollSection.scrollTop = 0;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props$mainContentRed = this.props.mainContentReducer;
+	      var startPosition = _props$mainContentRed.startPosition;
+	      var repoData = _props$mainContentRed.repoData;
 	
 	
-	            return _react2.default.createElement(
-	                'div',
-	                {
-	                    id: 'main-content',
-	                    className: (0, _classnames2.default)({
-	                        open: this.props.open,
-	                        full: this.props.full
-	                    })
-	                },
-	                this.state.toast ? _react2.default.createElement(
-	                    _reactAddonsCssTransitionGroup2.default,
-	                    {
-	                        transitionName: 'list',
-	                        transitionAppear: true,
-	                        transitionAppearTimeout: 500,
-	                        transitionEnterTimeout: 500,
-	                        transitionLeaveTimeout: 500
-	                    },
-	                    _react2.default.createElement(_Toast2.default, { toast: this.state.toast })
-	                ) : null,
-	                _react2.default.createElement(_Header2.default, { route: this.props.route }),
-	                _react2.default.createElement(
-	                    'div',
-	                    {
-	                        id: 'scroll-section',
-	                        ref: 'scrollSection'
-	                    },
-	                    _react2.default.createElement(
-	                        _reactRouterPageTransition2.default,
-	                        {
-	                            timeout: 300,
-	                            onLoad: this.onPageLoad,
-	                            data: {
-	                                scrollTop: this.state.scrollTop,
-	                                detailPageData: {
-	                                    startPosition: startPosition,
-	                                    repoData: repoData
-	                                }
-	                            }
-	                        },
-	                        this.props.children
-	                    ),
-	                    _react2.default.createElement(_Footer2.default, null)
-	                )
-	            );
-	        }
-	    }]);
-	    return MainContent;
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          id: 'main-content',
+	          className: (0, _classnames2.default)({
+	            open: this.props.open,
+	            full: this.props.full
+	          })
+	        },
+	        this.state.toast ? _react2.default.createElement(
+	          _reactAddonsCssTransitionGroup2.default,
+	          {
+	            transitionName: 'list',
+	            transitionAppear: true,
+	            transitionAppearTimeout: 500,
+	            transitionEnterTimeout: 500,
+	            transitionLeaveTimeout: 500
+	          },
+	          _react2.default.createElement(_Toast2.default, { toast: this.state.toast })
+	        ) : null,
+	        _react2.default.createElement(_Header2.default, { route: this.props.route }),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            id: 'scroll-section',
+	            ref: 'scrollSection'
+	          },
+	          _react2.default.createElement(
+	            _reactRouterPageTransition2.default,
+	            {
+	              timeout: 300,
+	              onLoad: this.onPageLoad,
+	              data: {
+	                scrollTop: this.state.scrollTop,
+	                detailPageData: {
+	                  startPosition: startPosition,
+	                  repoData: repoData
+	                }
+	              }
+	            },
+	            this.props.children
+	          ),
+	          _react2.default.createElement(_Footer2.default, null)
+	        )
+	      );
+	    }
+	  }]);
+	  return MainContent;
 	}(_react2.default.Component);
 	
 	MainContent.propsTypes = {
-	    mainContentReducer: _react2.default.PropTypes.object.isRequired
+	  mainContentReducer: _react2.default.PropTypes.object.isRequired
 	
 	};
 	exports.default = MainContent;
@@ -31534,7 +31498,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -31548,13 +31512,12 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    toggleNavMenu: _Header.toggleNavMenu,
-	    backButton: _Header.backButton
+	  toggleNavMenu: _Header.toggleNavMenu,
+	  backButton: _Header.backButton
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return state.loadingBlockReducer.toJS();
+	  return state.loadingBlockReducer.toJS();
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Header3.default);
@@ -31566,7 +31529,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.toggleNavMenu = toggleNavMenu;
 	exports.backButton = backButton;
@@ -31578,46 +31541,40 @@ webpackJsonp([0],[
 	var _types = __webpack_require__(336);
 	
 	function toggleNavMenu() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.TOGGLE_NAV_MENU });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.TOGGLE_NAV_MENU });
+	  };
 	}
 	function backButton(backRoute) {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.BACK_BUTTON, backRoute: backRoute });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.BACK_BUTTON, backRoute: backRoute });
+	  };
 	}
 	
 	function triggerLoadAnimation() {
-	    return function (dispatch, getState) {
+	  return function (dispatch, getState) {
+	    dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_RESET });
+	    setTimeout(function () {
+	      return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION });
+	    }, 100);
 	
-	        dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_RESET });
-	        setTimeout(function () {
-	            return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION });
-	        }, 100);
-	
-	        // return dispatch({type: TRIGGER_LOAD_ANIMATION})
-	    };
+	    // return dispatch({type: TRIGGER_LOAD_ANIMATION})
+	  };
 	}
 	function triggerLoadAnimationDone() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_DONE });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_DONE });
+	  };
 	}
 	function triggerLoadAnimationHide() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_HIDE });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_HIDE });
+	  };
 	}
 	function triggerLoadAnimationFailed() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_FAILED });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.TRIGGER_LOAD_ANIMATION_FAILED });
+	  };
 	}
 
 /***/ },
@@ -31627,7 +31584,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -31681,178 +31638,175 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Header = function (_React$Component) {
-	    (0, _inherits3.default)(Header, _React$Component);
+	  (0, _inherits3.default)(Header, _React$Component);
 	
-	    function Header() {
-	        var _ref;
+	  function Header() {
+	    var _ref;
 	
-	        (0, _classCallCheck3.default)(this, Header);
+	    (0, _classCallCheck3.default)(this, Header);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
-	
-	        var _this2 = (0, _possibleConstructorReturn3.default)(this, (_ref = Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).call.apply(_ref, [this].concat(args)));
-	
-	        _this2.state = {
-	            isUserPage: false
-	        };
-	        _this2.shouldShowBackBtn = _this2.shouldShowBackBtn.bind(_this2);
-	        _this2.click = _this2.click.bind(_this2);
-	        _this2.isUserPage = _this2.isUserPage.bind(_this2);
-	        return _this2;
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
 	
-	    (0, _createClass3.default)(Header, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
+	    var _this2 = (0, _possibleConstructorReturn3.default)(this, (_ref = Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).call.apply(_ref, [this].concat(args)));
 	
-	            if (this.isUserPage(this.props.route)) {
-	                this.mountHeaderChange();
-	            }
+	    _this2.state = {
+	      isUserPage: false
+	    };
+	    _this2.shouldShowBackBtn = _this2.shouldShowBackBtn.bind(_this2);
+	    _this2.click = _this2.click.bind(_this2);
+	    _this2.isUserPage = _this2.isUserPage.bind(_this2);
+	    return _this2;
+	  }
+	
+	  (0, _createClass3.default)(Header, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.isUserPage(this.props.route)) {
+	        this.mountHeaderChange();
+	      }
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (!this.isUserPage(nextProps.route)) {
+	        this.unmountHeaderChange();
+	      } else {
+	        this.mountHeaderChange();
+	      }
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.showLoading != this.props.showLoading || nextProps.doneLoading != this.props.doneLoading || nextProps.loadFailed != this.props.loadFailed || nextProps.open != this.props.open || nextProps.route != this.props.route;
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.unmountHeaderChange();
+	    }
+	  }, {
+	    key: 'unmountHeaderChange',
+	    value: function unmountHeaderChange() {
+	      this.refs.header.classList.remove('transparent');
+	      // this.refs.header.removeEventListener('scroll')
+	    }
+	  }, {
+	    key: 'mountHeaderChange',
+	    value: function mountHeaderChange() {
+	      this.unmountHeaderChange(); // Make sure there is no multiple mount
+	      this.refs.header.classList.add('transparent');
+	      this.scrollSection = document.getElementById('scroll-section');
+	      this.wait = false;
+	
+	      var _this = this;
+	      this.scrollSection.addEventListener('scroll', function () {
+	        if (!_this.state.isUserPage) {
+	          return false;
 	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            if (!this.isUserPage(nextProps.route)) {
-	                this.unmountHeaderChange();
+	
+	        _this.lastScrollTop = _this.scrollSection.scrollTop;
+	        if (_this.wait === false) {
+	          window.requestAnimationFrame(function () {
+	            // Access direct to the DOM for better scrolling performance
+	            if (_this.lastScrollTop === 0) {
+	              _this.refs.header.classList.add('transparent');
 	            } else {
-	                this.mountHeaderChange();
+	              _this.refs.header.classList.remove('transparent');
 	            }
+	            _this.wait = false;
+	          });
+	          _this.wait = true;
 	        }
-	    }, {
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
+	      });
+	    }
+	  }, {
+	    key: 'isUserPage',
+	    value: function isUserPage(route) {
+	      var isUserPage = route === undefined || // React Router returns undefined on root?
+	      route === _routes.ROUTES.USER_DETAIL || route === _routes.ROUTES.HOME;
 	
-	            return nextProps.showLoading != this.props.showLoading || nextProps.doneLoading != this.props.doneLoading || nextProps.loadFailed != this.props.loadFailed || nextProps.open != this.props.open || nextProps.route != this.props.route;
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            this.unmountHeaderChange();
-	        }
-	    }, {
-	        key: 'unmountHeaderChange',
-	        value: function unmountHeaderChange() {
-	            this.refs.header.classList.remove('transparent');
-	            // this.refs.header.removeEventListener('scroll')
-	        }
-	    }, {
-	        key: 'mountHeaderChange',
-	        value: function mountHeaderChange() {
-	            this.unmountHeaderChange(); // Make sure there is no multiple mount
-	            this.refs.header.classList.add('transparent');
-	            this.scrollSection = document.getElementById('scroll-section');
-	            this.wait = false;
+	      this.setState({
+	        isUserPage: isUserPage
+	      });
 	
-	            var _this = this;
-	            this.scrollSection.addEventListener('scroll', function () {
-	
-	                if (!_this.state.isUserPage) {
-	                    return false;
-	                }
-	
-	                _this.lastScrollTop = _this.scrollSection.scrollTop;
-	                if (_this.wait === false) {
-	                    window.requestAnimationFrame(function () {
-	                        // Access direct to the DOM for better scrolling performance
-	                        if (_this.lastScrollTop === 0) {
-	                            _this.refs.header.classList.add('transparent');
-	                        } else {
-	                            _this.refs.header.classList.remove('transparent');
-	                        }
-	                        _this.wait = false;
-	                    });
-	                    _this.wait = true;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'isUserPage',
-	        value: function isUserPage(route) {
-	            var isUserPage = route === undefined || // React Router returns undefined on root?
-	            route === _routes.ROUTES.USER_DETAIL || route === _routes.ROUTES.HOME;
-	
-	            this.setState({
-	                isUserPage: isUserPage
-	            });
-	
-	            return isUserPage;
-	        }
-	    }, {
-	        key: 'shouldShowBackBtn',
-	        value: function shouldShowBackBtn(route) {
-	            switch (route) {
-	                case _routes.ROUTES.HOME:
-	                    return false;
-	                case _routes.ROUTES.USER_DETAIL:
-	                    return false;
-	                case _routes.ROUTES.USER_REPO_LIST:
-	                    return _routes.ROUTES.USER_DETAIL;
-	                case _routes.ROUTES.REPO_DETAIL:
-	                    return _routes.ROUTES.USER_REPO_LIST;
-	                default:
-	                    return false;
-	            }
-	        }
-	    }, {
-	        key: 'click',
-	        value: function click() {
-	            // alert('BackBtn Clicked')
-	            var backRoute = this.shouldShowBackBtn(this.props.route);
-	            if (backRoute) {
-	                this.props.backButton(backRoute);
-	            } else {
-	                this.props.toggleNavMenu();
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _props = this.props;
-	            var showLoading = _props.showLoading;
-	            var doneLoading = _props.doneLoading;
-	            var loadFailed = _props.loadFailed;
+	      return isUserPage;
+	    }
+	  }, {
+	    key: 'shouldShowBackBtn',
+	    value: function shouldShowBackBtn(route) {
+	      switch (route) {
+	        case _routes.ROUTES.HOME:
+	          return false;
+	        case _routes.ROUTES.USER_DETAIL:
+	          return false;
+	        case _routes.ROUTES.USER_REPO_LIST:
+	          return _routes.ROUTES.USER_DETAIL;
+	        case _routes.ROUTES.REPO_DETAIL:
+	          return _routes.ROUTES.USER_REPO_LIST;
+	        default:
+	          return false;
+	      }
+	    }
+	  }, {
+	    key: 'click',
+	    value: function click() {
+	      // alert('BackBtn Clicked')
+	      var backRoute = this.shouldShowBackBtn(this.props.route);
+	      if (backRoute) {
+	        this.props.backButton(backRoute);
+	      } else {
+	        this.props.toggleNavMenu();
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var showLoading = _props.showLoading;
+	      var doneLoading = _props.doneLoading;
+	      var loadFailed = _props.loadFailed;
 	
 	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    {
-	                        ref: 'header',
-	                        className: (0, _classnames2.default)('header')
-	                    },
-	                    _react2.default.createElement(_HamburgerIcon2.default, {
-	                        open: this.props.open,
-	                        back: this.shouldShowBackBtn(this.props.route),
-	                        id: 'hamberger-menu',
-	                        onClick: this.click
-	                    }),
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '/' },
-	                        _react2.default.createElement('div', { id: 'brand-logo' })
-	                    ),
-	                    _react2.default.createElement('div', { id: 'notification-icon' })
-	                ),
-	                showLoading ? _react2.default.createElement(_LoadingBlock2.default, {
-	                    done: doneLoading,
-	                    failed: loadFailed
-	                }) : null
-	            );
-	        }
-	    }]);
-	    return Header;
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            ref: 'header',
+	            className: (0, _classnames2.default)('header')
+	          },
+	          _react2.default.createElement(_HamburgerIcon2.default, {
+	            open: this.props.open,
+	            back: this.shouldShowBackBtn(this.props.route),
+	            id: 'hamberger-menu',
+	            onClick: this.click
+	          }),
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            _react2.default.createElement('div', { id: 'brand-logo' })
+	          ),
+	          _react2.default.createElement('div', { id: 'notification-icon' })
+	        ),
+	        showLoading ? _react2.default.createElement(_LoadingBlock2.default, {
+	          done: doneLoading,
+	          failed: loadFailed
+	        }) : null
+	      );
+	    }
+	  }]);
+	  return Header;
 	}(_react2.default.Component);
 	
 	Header.propTypes = {
-	    showLoading: _react2.default.PropTypes.bool.isRequired,
-	    doneLoading: _react2.default.PropTypes.bool.isRequired,
-	    loadFailed: _react2.default.PropTypes.bool.isRequired,
-	    toggleNavMenu: _react2.default.PropTypes.func.isRequired,
-	    backButton: _react2.default.PropTypes.func.isRequired
+	  showLoading: _react2.default.PropTypes.bool.isRequired,
+	  doneLoading: _react2.default.PropTypes.bool.isRequired,
+	  loadFailed: _react2.default.PropTypes.bool.isRequired,
+	  toggleNavMenu: _react2.default.PropTypes.func.isRequired,
+	  backButton: _react2.default.PropTypes.func.isRequired
 	};
 	exports.default = Header;
 
@@ -31933,7 +31887,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -31969,73 +31923,70 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var LoadingBlock = function (_React$Component) {
-	    (0, _inherits3.default)(LoadingBlock, _React$Component);
+	  (0, _inherits3.default)(LoadingBlock, _React$Component);
 	
-	    function LoadingBlock() {
-	        var _ref;
+	  function LoadingBlock() {
+	    var _ref;
 	
-	        (0, _classCallCheck3.default)(this, LoadingBlock);
+	    (0, _classCallCheck3.default)(this, LoadingBlock);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
-	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = LoadingBlock.__proto__ || (0, _getPrototypeOf2.default)(LoadingBlock)).call.apply(_ref, [this].concat(args)));
-	
-	        _this.state = {
-	            one: false,
-	            two: false,
-	            three: false,
-	            failed: false
-	        };
-	
-	        return _this;
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
 	
-	    (0, _createClass3.default)(LoadingBlock, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = LoadingBlock.__proto__ || (0, _getPrototypeOf2.default)(LoadingBlock)).call.apply(_ref, [this].concat(args)));
 	
-	            this.timer = setTimeout(function () {
-	                return _this2.setState({ one: true });
-	            }, 17);
-	            this.timer = setTimeout(function () {
-	                return _this2.setState({ two: true });
-	            }, 500);
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
+	    _this.state = {
+	      one: false,
+	      two: false,
+	      three: false,
+	      failed: false
+	    };
+	    return _this;
+	  }
 	
-	            if (nextProps.done) {
-	                this.setState({ three: true });
-	            }
-	            if (nextProps.failed) {
-	                this.setState({ failed: true });
-	            }
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            this.timer && clearTimeout(this.timer);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
+	  (0, _createClass3.default)(LoadingBlock, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
 	
-	            return _react2.default.createElement('div', {
-	                id: 'loading-block',
-	                className: (0, _classnames2.default)({
-	                    one: this.state.one,
-	                    two: this.state.two,
-	                    three: this.state.three,
-	                    failed: this.state.failed
-	                })
-	            });
-	        }
-	    }]);
-	    return LoadingBlock;
+	      this.timer = setTimeout(function () {
+	        return _this2.setState({ one: true });
+	      }, 17);
+	      this.timer = setTimeout(function () {
+	        return _this2.setState({ two: true });
+	      }, 500);
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.done) {
+	        this.setState({ three: true });
+	      }
+	      if (nextProps.failed) {
+	        this.setState({ failed: true });
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.timer && clearTimeout(this.timer);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', {
+	        id: 'loading-block',
+	        className: (0, _classnames2.default)({
+	          one: this.state.one,
+	          two: this.state.two,
+	          three: this.state.three,
+	          failed: this.state.failed
+	        })
+	      });
+	    }
+	  }]);
+	  return LoadingBlock;
 	}(_react2.default.Component);
 	
 	exports.default = LoadingBlock;
@@ -32599,7 +32550,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -32611,13 +32562,12 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {};
+	  return {};
 	};
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return {
-	        menuOpenStateReducer: state.menuOpenStateReducer.toJS()
-	    };
+	  return {
+	    menuOpenStateReducer: state.menuOpenStateReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_MenuOpenStateHandler2.default);
@@ -32629,7 +32579,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -32661,43 +32611,42 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var MenuOpenStateHandler = function (_React$Component) {
-	    (0, _inherits3.default)(MenuOpenStateHandler, _React$Component);
+	  (0, _inherits3.default)(MenuOpenStateHandler, _React$Component);
 	
-	    function MenuOpenStateHandler() {
-	        (0, _classCallCheck3.default)(this, MenuOpenStateHandler);
+	  function MenuOpenStateHandler() {
+	    (0, _classCallCheck3.default)(this, MenuOpenStateHandler);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (MenuOpenStateHandler.__proto__ || (0, _getPrototypeOf2.default)(MenuOpenStateHandler)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (MenuOpenStateHandler.__proto__ || (0, _getPrototypeOf2.default)(MenuOpenStateHandler)).call(this));
 	
-	        _this.state = {};
-	        return _this;
+	    _this.state = {};
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(MenuOpenStateHandler, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.menuOpenStateReducer.open != this.props.menuOpenStateReducer.open;
 	    }
-	
-	    (0, _createClass3.default)(MenuOpenStateHandler, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	
-	            return nextProps.menuOpenStateReducer.open != this.props.menuOpenStateReducer.open;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var open = this.props.menuOpenStateReducer.open;
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var open = this.props.menuOpenStateReducer.open;
 	
 	
-	            return _react2.default.createElement('input', { type: 'checkbox', id: 'nav-menu-open-checkbox', checked: open });
-	        }
-	    }]);
-	    return MenuOpenStateHandler;
+	      return _react2.default.createElement('input', { type: 'checkbox', id: 'nav-menu-open-checkbox', checked: open });
+	    }
+	  }]);
+	  return MenuOpenStateHandler;
 	}(_react2.default.Component);
 	
 	MenuOpenStateHandler.propTypes = {
-	    menuOpenStateReducer: _react2.default.PropTypes.object.isRequired
+	  menuOpenStateReducer: _react2.default.PropTypes.object.isRequired
 	};
 	exports.default = MenuOpenStateHandler;
 
@@ -32766,7 +32715,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -32778,13 +32727,12 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return {};
+	  return {};
 	};
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return {
-	        menuFullStateReducer: state.menuFullStateReducer.toJS()
-	    };
+	  return {
+	    menuFullStateReducer: state.menuFullStateReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_MenuFullStateHandler2.default);
@@ -32796,7 +32744,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -32828,43 +32776,42 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var MenuFullStateHandler = function (_React$Component) {
-	    (0, _inherits3.default)(MenuFullStateHandler, _React$Component);
+	  (0, _inherits3.default)(MenuFullStateHandler, _React$Component);
 	
-	    function MenuFullStateHandler() {
-	        (0, _classCallCheck3.default)(this, MenuFullStateHandler);
+	  function MenuFullStateHandler() {
+	    (0, _classCallCheck3.default)(this, MenuFullStateHandler);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (MenuFullStateHandler.__proto__ || (0, _getPrototypeOf2.default)(MenuFullStateHandler)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (MenuFullStateHandler.__proto__ || (0, _getPrototypeOf2.default)(MenuFullStateHandler)).call(this));
 	
-	        _this.state = {};
-	        return _this;
+	    _this.state = {};
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(MenuFullStateHandler, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.menuFullStateReducer.full != this.props.menuFullStateReducer.full;
 	    }
-	
-	    (0, _createClass3.default)(MenuFullStateHandler, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	
-	            return nextProps.menuFullStateReducer.full != this.props.menuFullStateReducer.full;
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var full = this.props.menuFullStateReducer.full;
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var full = this.props.menuFullStateReducer.full;
 	
 	
-	            return _react2.default.createElement('input', { type: 'checkbox', id: 'nav-menu-full-checkbox', checked: full });
-	        }
-	    }]);
-	    return MenuFullStateHandler;
+	      return _react2.default.createElement('input', { type: 'checkbox', id: 'nav-menu-full-checkbox', checked: full });
+	    }
+	  }]);
+	  return MenuFullStateHandler;
 	}(_react2.default.Component);
 	
 	MenuFullStateHandler.propTypes = {
-	    menuFullStateReducer: _react2.default.PropTypes.object.isRequired
+	  menuFullStateReducer: _react2.default.PropTypes.object.isRequired
 	};
 	exports.default = MenuFullStateHandler;
 
@@ -33862,7 +33809,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -33880,20 +33827,20 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    getRandomUser: _user.getRandomUser,
-	    getUserProfile: _user.getUserProfile,
-	    getUserProfileRepos: _user.getUserProfileRepos,
-	    clearUserPage: _UserPage.clearUserPage,
-	    triggerLoadAnimation: _Header.triggerLoadAnimation,
-	    triggerLoadAnimationDone: _Header.triggerLoadAnimationDone,
-	    triggerLoadAnimationHide: _Header.triggerLoadAnimationHide,
-	    triggerLoadAnimationFailed: _Header.triggerLoadAnimationFailed
+	  getRandomUser: _user.getRandomUser,
+	  getUserProfile: _user.getUserProfile,
+	  getUserProfileRepos: _user.getUserProfileRepos,
+	  clearUserPage: _UserPage.clearUserPage,
+	  triggerLoadAnimation: _Header.triggerLoadAnimation,
+	  triggerLoadAnimationDone: _Header.triggerLoadAnimationDone,
+	  triggerLoadAnimationHide: _Header.triggerLoadAnimationHide,
+	  triggerLoadAnimationFailed: _Header.triggerLoadAnimationFailed
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        UserPageReducer: state.UserPageReducer.toJS()
-	    };
+	  return {
+	    UserPageReducer: state.UserPageReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_UserPage3.default);
@@ -33905,7 +33852,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _extends2 = __webpack_require__(293);
@@ -33955,150 +33902,148 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserPage = function (_React$Component) {
-	    (0, _inherits3.default)(UserPage, _React$Component);
+	  (0, _inherits3.default)(UserPage, _React$Component);
 	
-	    function UserPage() {
-	        (0, _classCallCheck3.default)(this, UserPage);
+	  function UserPage() {
+	    (0, _classCallCheck3.default)(this, UserPage);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (UserPage.__proto__ || (0, _getPrototypeOf2.default)(UserPage)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (UserPage.__proto__ || (0, _getPrototypeOf2.default)(UserPage)).call(this));
 	
-	        _this.state = {
-	            profile: {},
-	            repos: []
-	        };
-	        return _this;
+	    _this.state = {
+	      profile: {},
+	      repos: []
+	    };
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(UserPage, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.UserPageReducer.profile != this.props.UserPageReducer.profile || nextProps.UserPageReducer.repos != this.props.UserPageReducer.repos || nextProps.route != this.props.route;
 	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
 	
-	    (0, _createClass3.default)(UserPage, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
+	      if (this.props.UserPageReducer.profile != this.props.params.username) {
+	        this.props.clearUserPage();
+	        setTimeout(function () {
+	          _this2.loadUser(_this2.props.params.username);
+	        }, 100);
+	      } else {}
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.params.username !== this.props.params.username) {
+	        this.setState({
+	          profile: {},
+	          repos: []
+	        });
+	        this.loadUser(nextProps.params.username);
+	      } else {
+	        this.setState({
+	          profile: nextProps.UserPageReducer.profile,
+	          repos: nextProps.UserPageReducer.repos
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
 	
-	            return nextProps.UserPageReducer.profile != this.props.UserPageReducer.profile || nextProps.UserPageReducer.repos != this.props.UserPageReducer.repos || nextProps.route != this.props.route;
-	        }
-	    }, {
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {}
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+	      // this.props.clearUserPage()
 	
-	            if (this.props.UserPageReducer.profile != this.props.params.username) {
-	                this.props.clearUserPage();
-	                setTimeout(function () {
-	                    _this2.loadUser(_this2.props.params.username);
-	                }, 100);
-	            } else {}
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
+	    }
+	  }, {
+	    key: 'loadUser',
+	    value: function loadUser(username) {
+	      var _this3 = this;
 	
-	            if (nextProps.params.username !== this.props.params.username) {
-	                this.setState({
-	                    profile: {},
-	                    repos: []
-	                });
-	                this.loadUser(nextProps.params.username);
-	            } else {
-	                this.setState({
-	                    profile: nextProps.UserPageReducer.profile,
-	                    repos: nextProps.UserPageReducer.repos
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
+	      this.props.triggerLoadAnimation();
+	      if (username) {
+	        this.props.getUserProfile(username);
+	        this.props.getUserProfileRepos(username);
+	      } else {
+	        this.props.getRandomUser().then(function (data) {
+	          var user = data.items[0];
+	          _this3.props.getUserProfile(user.login);
+	          _this3.props.getUserProfileRepos(user.login);
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      // var { profile, repos } = this.props.UserPageReducer
 	
-	            // this.props.clearUserPage()
+	      var _state = this.state;
+	      var profile = _state.profile;
+	      var repos = _state.repos;
 	
-	        }
-	    }, {
-	        key: 'loadUser',
-	        value: function loadUser(username) {
-	            var _this3 = this;
+	      // console.dir(repos)
 	
-	            this.props.triggerLoadAnimation();
-	            if (username) {
-	                this.props.getUserProfile(username);
-	                this.props.getUserProfileRepos(username);
-	            } else {
-	                this.props.getRandomUser().then(function (data) {
-	                    var user = data.items[0];
-	                    _this3.props.getUserProfile(user.login);
-	                    _this3.props.getUserProfileRepos(user.login);
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            // var { profile, repos } = this.props.UserPageReducer
-	
-	            var _state = this.state;
-	            var profile = _state.profile;
-	            var repos = _state.repos;
-	
-	            // console.dir(repos)
-	
-	            return _react2.default.createElement(
-	                'div',
-	                { id: 'user-page' },
-	                _react2.default.createElement(_Profile2.default, {
-	                    profile: profile
-	                }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'repo-list' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'repo-list-header' },
-	                        'POPULAR REPOSITORIES'
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactAddonsCssTransitionGroup2.default,
-	                            {
-	                                transitionName: 'list',
-	                                transitionAppear: true,
-	                                transitionAppearTimeout: 500,
-	                                transitionEnterTimeout: 500,
-	                                transitionLeaveTimeout: 500
-	                            },
-	                            repos.map(function (repo) {
-	                                return _react2.default.createElement(_RepoItem2.default, (0, _extends3.default)({ key: repo.id }, repo));
-	                            })
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    {
-	                        to: '/user/' + profile.login + '/repos',
-	                        className: 'view-all-btn'
-	                    },
-	                    'VIEW ALL REPOS'
-	                )
-	            );
-	        }
-	    }]);
-	    return UserPage;
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'user-page' },
+	        _react2.default.createElement(_Profile2.default, {
+	          profile: profile
+	        }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'repo-list' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'repo-list-header' },
+	            'POPULAR REPOSITORIES'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              _reactAddonsCssTransitionGroup2.default,
+	              {
+	                transitionName: 'list',
+	                transitionAppear: true,
+	                transitionAppearTimeout: 500,
+	                transitionEnterTimeout: 500,
+	                transitionLeaveTimeout: 500
+	              },
+	              repos.map(function (repo) {
+	                return _react2.default.createElement(_RepoItem2.default, (0, _extends3.default)({ key: repo.id }, repo));
+	              })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          {
+	            to: '/user/' + profile.login + '/repos',
+	            className: 'view-all-btn'
+	          },
+	          'VIEW ALL REPOS'
+	        )
+	      );
+	    }
+	  }]);
+	  return UserPage;
 	}(_react2.default.Component);
 	
 	UserPage.propTypes = {
-	    UserPageReducer: _react2.default.PropTypes.object.isRequired,
-	    getRandomUser: _react2.default.PropTypes.func.isRequired,
-	    getUserProfile: _react2.default.PropTypes.func.isRequired,
-	    getUserProfileRepos: _react2.default.PropTypes.func.isRequired,
-	    clearUserPage: _react2.default.PropTypes.func.isRequired,
+	  UserPageReducer: _react2.default.PropTypes.object.isRequired,
+	  getRandomUser: _react2.default.PropTypes.func.isRequired,
+	  getUserProfile: _react2.default.PropTypes.func.isRequired,
+	  getUserProfileRepos: _react2.default.PropTypes.func.isRequired,
+	  clearUserPage: _react2.default.PropTypes.func.isRequired,
 	
-	    triggerLoadAnimation: _react2.default.PropTypes.func.isRequired,
-	    triggerLoadAnimationDone: _react2.default.PropTypes.func.isRequired,
-	    triggerLoadAnimationHide: _react2.default.PropTypes.func.isRequired,
-	    triggerLoadAnimationFailed: _react2.default.PropTypes.func.isRequired
+	  triggerLoadAnimation: _react2.default.PropTypes.func.isRequired,
+	  triggerLoadAnimationDone: _react2.default.PropTypes.func.isRequired,
+	  triggerLoadAnimationHide: _react2.default.PropTypes.func.isRequired,
+	  triggerLoadAnimationFailed: _react2.default.PropTypes.func.isRequired
 	};
 	exports.default = UserPage;
 
@@ -34208,7 +34153,6 @@ webpackJsonp([0],[
 	    }, {
 	        key: 'shouldComponentUpdate',
 	        value: function shouldComponentUpdate(nextProps, nextState) {
-	
 	            return nextProps.profile != this.props.profile;
 	        }
 	    }, {
@@ -34391,7 +34335,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _react = __webpack_require__(37);
@@ -34407,20 +34351,20 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = function (props) {
-	    return _react2.default.createElement(
-	        'span',
-	        {
-	            className: (0, _classnames2.default)({
-	                'text-holder-wrapper': props.children === undefined,
-	                center: props.center
-	            }),
-	            style: props.children === undefined ? {
-	                width: props.width,
-	                height: props.height
-	            } : {}
-	        },
-	        props.children === undefined ? _react2.default.createElement('div', { className: 'text-holder' }) : props.children
-	    );
+	  return _react2.default.createElement(
+	    'span',
+	    {
+	      className: (0, _classnames2.default)({
+	        'text-holder-wrapper': props.children === undefined,
+	        center: props.center
+	      }),
+	      style: props.children === undefined ? {
+	        width: props.width,
+	        height: props.height
+	      } : {}
+	    },
+	    props.children === undefined ? _react2.default.createElement('div', { className: 'text-holder' }) : props.children
+	  );
 	};
 
 /***/ },
@@ -34534,7 +34478,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -34548,12 +34492,11 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    detailTransitionData: _RepoItem3.detailTransitionData
+	  detailTransitionData: _RepoItem3.detailTransitionData
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return state;
+	  return state;
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RepoItem2.default);
@@ -34565,7 +34508,7 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -34607,56 +34550,56 @@ webpackJsonp([0],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var RepoItem = function (_React$Component) {
-	    (0, _inherits3.default)(RepoItem, _React$Component);
+	  (0, _inherits3.default)(RepoItem, _React$Component);
 	
-	    function RepoItem() {
-	        var _ref;
+	  function RepoItem() {
+	    var _ref;
 	
-	        (0, _classCallCheck3.default)(this, RepoItem);
+	    (0, _classCallCheck3.default)(this, RepoItem);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
-	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = RepoItem.__proto__ || (0, _getPrototypeOf2.default)(RepoItem)).call.apply(_ref, [this].concat(args)));
-	
-	        _this.click = _this.click.bind(_this);
-	        return _this;
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
 	
-	    (0, _createClass3.default)(RepoItem, [{
-	        key: 'click',
-	        value: function click() {
-	            var dom = _reactDom2.default.findDOMNode(this.refs.link);
-	            this.props.detailTransitionData(dom.getBoundingClientRect(), this.props);
-	            // action.onNext({
-	            //     name: ACTIONS.DETAIL_TRANSITION_DATA,
-	            //     data: {
-	            //         startPosition: dom.getBoundingClientRect(),
-	            //         repoData: this.props,
-	            //     },
-	            // });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactRouter.Link,
-	                {
-	                    ref: 'link',
-	                    to: '/user/' + this.props.owner.login + '/repos/' + this.props.name,
-	                    className: 'repo-item',
-	                    onClick: this.click
-	                },
-	                _react2.default.createElement(_RepoContent2.default, this.props)
-	            );
-	        }
-	    }]);
-	    return RepoItem;
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = RepoItem.__proto__ || (0, _getPrototypeOf2.default)(RepoItem)).call.apply(_ref, [this].concat(args)));
+	
+	    _this.click = _this.click.bind(_this);
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(RepoItem, [{
+	    key: 'click',
+	    value: function click() {
+	      var dom = _reactDom2.default.findDOMNode(this.refs.link);
+	      this.props.detailTransitionData(dom.getBoundingClientRect(), this.props);
+	      // action.onNext({
+	      //     name: ACTIONS.DETAIL_TRANSITION_DATA,
+	      //     data: {
+	      //         startPosition: dom.getBoundingClientRect(),
+	      //         repoData: this.props,
+	      //     },
+	      // });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactRouter.Link,
+	        {
+	          ref: 'link',
+	          to: '/user/' + this.props.owner.login + '/repos/' + this.props.name,
+	          className: 'repo-item',
+	          onClick: this.click
+	        },
+	        _react2.default.createElement(_RepoContent2.default, this.props)
+	      );
+	    }
+	  }]);
+	  return RepoItem;
 	}(_react2.default.Component);
 	
 	RepoItem.propTypes = {
-	    detailTransitionData: _react2.default.PropTypes.func.isRequired
+	  detailTransitionData: _react2.default.PropTypes.func.isRequired
 	};
 	exports.default = RepoItem;
 
@@ -39090,21 +39033,20 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.detailTransitionData = detailTransitionData;
 	
 	var _types = __webpack_require__(336);
 	
 	function detailTransitionData(startPosition, repoData) {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({
-	            type: _types.DETAIL_TRANSITION_DATA,
-	            startPosition: startPosition,
-	            repoData: repoData
-	        });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({
+	      type: _types.DETAIL_TRANSITION_DATA,
+	      startPosition: startPosition,
+	      repoData: repoData
+	    });
+	  };
 	}
 
 /***/ },
@@ -39114,38 +39056,37 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	      value: true
 	});
 	
 	var _reducers = __webpack_require__(292);
 	
 	exports.default = function (store) {
-	    return {
-	        path: '/user/:username/repos',
-	        /*  Async getComponent is only invoked when route matches   */
-	        getComponent: function getComponent(nextState, cb) {
-	            /*  Webpack - use 'require.ensure' to create a split point
-	             and embed an async module loader (jsonp) when bundling   */
-	            __webpack_require__.e/* nsure */(1, function (require) {
-	                /*  Webpack - use require callback to define
-	                 dependencies for bundling   */
-	                var RepoList = __webpack_require__(532).default;
-	                var reducer = __webpack_require__(538).default;
+	      return {
+	            path: '/user/:username/repos',
+	            /*  Async getComponent is only invoked when route matches   */
+	            getComponent: function getComponent(nextState, cb) {
+	                  /*  Webpack - use 'require.ensure' to create a split point
+	                   and embed an async module loader (jsonp) when bundling   */
+	                  __webpack_require__.e/* nsure */(1, function (require) {
+	                        /*  Webpack - use require callback to define
+	                         dependencies for bundling   */
+	                        var RepoList = __webpack_require__(532).default;
+	                        var reducer = __webpack_require__(538).default;
 	
-	                /*  Add the reducer to the store on key 'counter'  */
-	                (0, _reducers.injectReducer)(store, { key: 'repoListReducer', reducer: reducer });
+	                        /*  Add the reducer to the store on key 'counter'  */
+	                        (0, _reducers.injectReducer)(store, { key: 'repoListReducer', reducer: reducer });
 	
-	                // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
-	                // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
+	                        // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
+	                        // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
 	
+	                        /*  Return getComponent   */
+	                        cb(null, RepoList);
 	
-	                /*  Return getComponent   */
-	                cb(null, RepoList);
-	
-	                /* Webpack named bundle   */
-	            });
-	        }
-	    };
+	                        /* Webpack named bundle   */
+	                  });
+	            }
+	      };
 	};
 
 /***/ },
@@ -39162,38 +39103,37 @@ webpackJsonp([0],[
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	      value: true
 	});
 	
 	var _reducers = __webpack_require__(292);
 	
 	exports.default = function (store) {
-	    return {
-	        path: '/user/:username/repos/:repoName',
-	        /*  Async getComponent is only invoked when route matches   */
-	        getComponent: function getComponent(nextState, cb) {
-	            /*  Webpack - use 'require.ensure' to create a split point
-	             and embed an async module loader (jsonp) when bundling   */
-	            __webpack_require__.e/* nsure */(2, function (require) {
-	                /*  Webpack - use require callback to define
-	                 dependencies for bundling   */
-	                var RepoDetail = __webpack_require__(540).default;
-	                var reducer = __webpack_require__(577).default;
+	      return {
+	            path: '/user/:username/repos/:repoName',
+	            /*  Async getComponent is only invoked when route matches   */
+	            getComponent: function getComponent(nextState, cb) {
+	                  /*  Webpack - use 'require.ensure' to create a split point
+	                   and embed an async module loader (jsonp) when bundling   */
+	                  __webpack_require__.e/* nsure */(2, function (require) {
+	                        /*  Webpack - use require callback to define
+	                         dependencies for bundling   */
+	                        var RepoDetail = __webpack_require__(540).default;
+	                        var reducer = __webpack_require__(577).default;
 	
-	                /*  Add the reducer to the store on key 'counter'  */
-	                (0, _reducers.injectReducer)(store, { key: 'repoDetailReducer', reducer: reducer });
+	                        /*  Add the reducer to the store on key 'counter'  */
+	                        (0, _reducers.injectReducer)(store, { key: 'repoDetailReducer', reducer: reducer });
 	
-	                // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
-	                // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
+	                        // const reducer2 = require('../CoreLayout/modules/LoadingBlock').default
+	                        // injectReducer(store, { key: 'loadingBlockReducer', reducer2 })
 	
+	                        /*  Return getComponent   */
+	                        cb(null, RepoDetail);
 	
-	                /*  Return getComponent   */
-	                cb(null, RepoDetail);
-	
-	                /* Webpack named bundle   */
-	            });
-	        }
-	    };
+	                        /* Webpack named bundle   */
+	                  });
+	            }
+	      };
 	};
 
 /***/ },
@@ -40401,7 +40341,7 @@ webpackJsonp([0],[
 	  };
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, "?path=http://10.15.115.211:3000/__webpack_hmr", __webpack_require__(525)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, "?path=https://ruanhaojian.github.io/Github-Explorer-Demo/__webpack_hmr", __webpack_require__(525)(module)))
 
 /***/ },
 /* 584 */
@@ -41510,4 +41450,4 @@ webpackJsonp([0],[
 
 /***/ }
 ]);
-//# sourceMappingURL=app.c9550d49886c3ded97a8.js.map
+//# sourceMappingURL=app.97f8e458683d63ba1436.js.map

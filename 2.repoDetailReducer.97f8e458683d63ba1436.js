@@ -25,7 +25,7 @@ webpackJsonp([2],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _promise = __webpack_require__(442);
@@ -67,94 +67,92 @@ webpackJsonp([2],{
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var RepoDetail = function (_React$Component) {
-	    (0, _inherits3.default)(RepoDetail, _React$Component);
+	  (0, _inherits3.default)(RepoDetail, _React$Component);
 	
-	    function RepoDetail() {
-	        (0, _classCallCheck3.default)(this, RepoDetail);
+	  function RepoDetail() {
+	    (0, _classCallCheck3.default)(this, RepoDetail);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
 	
-	        _this.state = {
-	            doTransform: false,
-	            offsetTop: 0,
-	            startPosition: {
-	                top: 0,
-	                left: 0,
-	                right: 0
-	            }
-	        };
+	    _this.state = {
+	      doTransform: false,
+	      offsetTop: 0,
+	      startPosition: {
+	        top: 0,
+	        left: 0,
+	        right: 0
+	      }
+	    };
+	    return _this;
+	  }
 	
-	        return _this;
+	  (0, _createClass3.default)(RepoDetail, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {}
+	  }, {
+	    key: 'onTransitionWillStart',
+	    value: function onTransitionWillStart(data) {
+	      var _this2 = this;
+	
+	      return new _promise2.default(function (resolve) {
+	        if (!data || !data.detailPageData) return;
+	        _this2.setState({
+	          startPosition: data.detailPageData.startPosition,
+	          repoDetailData: data.detailPageData.repoData,
+	          offsetTop: data.scrollTop,
+	          doTransform: true
+	        }, resolve);
+	      });
+	    }
+	  }, {
+	    key: 'onTransitionDidEnd',
+	    value: function onTransitionDidEnd() {
+	      // this.getProfile();
+	    }
+	  }, {
+	    key: 'transitionManuallyStart',
+	    value: function transitionManuallyStart() {
+	      var _this3 = this;
+	
+	      return new _promise2.default(function (resolve) {
+	        _this3.setState({
+	          startPosition: {
+	            top: 60
+	          },
+	          doTransform: true
+	        }, resolve);
+	      });
+	    }
+	  }, {
+	    key: 'transitionManuallyStop',
+	    value: function transitionManuallyStop() {
+	      this.setState({
+	        doTransform: false
+	      });
 	    }
 	
-	    (0, _createClass3.default)(RepoDetail, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {}
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {}
-	    }, {
-	        key: 'onTransitionWillStart',
-	        value: function onTransitionWillStart(data) {
-	            var _this2 = this;
+	    // <RepoDetailContainer repoDetailData={this.state.repoDetailData} params={this.props.params} />
 	
-	            return new _promise2.default(function (resolve) {
-	                if (!data || !data.detailPageData) return;
-	                _this2.setState({
-	                    startPosition: data.detailPageData.startPosition,
-	                    repoDetailData: data.detailPageData.repoData,
-	                    offsetTop: data.scrollTop,
-	                    doTransform: true
-	                }, resolve);
-	            });
-	        }
-	    }, {
-	        key: 'onTransitionDidEnd',
-	        value: function onTransitionDidEnd() {
-	            // this.getProfile();
-	        }
-	    }, {
-	        key: 'transitionManuallyStart',
-	        value: function transitionManuallyStart() {
-	            var _this3 = this;
-	
-	            return new _promise2.default(function (resolve) {
-	                _this3.setState({
-	                    startPosition: {
-	                        top: 60
-	                    },
-	                    doTransform: true
-	                }, resolve);
-	            });
-	        }
-	    }, {
-	        key: 'transitionManuallyStop',
-	        value: function transitionManuallyStop() {
-	            this.setState({
-	                doTransform: false
-	            });
-	        }
-	
-	        // <RepoDetailContainer repoDetailData={this.state.repoDetailData} params={this.props.params} />
-	
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	
-	            return _react2.default.createElement(
-	                'div',
-	                {
-	                    id: 'repo-detail',
-	                    className: 'transition-item',
-	                    style: {
-	                        transform: this.state.doTransform ? 'translate3d(0, ' + (this.state.startPosition.top + this.state.offsetTop - 60) + 'px, 0)' : undefined
-	                    }
-	                },
-	                _react2.default.createElement(_RepoDetailContainer2.default, { repoDetailData: this.state.repoDetailData, params: this.props.params })
-	            );
-	        }
-	    }]);
-	    return RepoDetail;
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          id: 'repo-detail',
+	          className: 'transition-item',
+	          style: {
+	            transform: this.state.doTransform ? 'translate3d(0, ' + (this.state.startPosition.top + this.state.offsetTop - 60) + 'px, 0)' : undefined
+	          }
+	        },
+	        _react2.default.createElement(_RepoDetailContainer2.default, { repoDetailData: this.state.repoDetailData, params: this.props.params })
+	      );
+	    }
+	  }]);
+	  return RepoDetail;
 	}(_react2.default.Component);
 	
 	RepoDetail.propTypes = {};
@@ -210,7 +208,7 @@ webpackJsonp([2],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _reactRedux = __webpack_require__(402);
@@ -226,15 +224,14 @@ webpackJsonp([2],{
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapDispatchToProps = {
-	    getRepoPageDetail: _user.getRepoPageDetail,
-	    clearRepoDetailPage: _RepoDetail3.clearRepoDetailPage
+	  getRepoPageDetail: _user.getRepoPageDetail,
+	  clearRepoDetailPage: _RepoDetail3.clearRepoDetailPage
 	};
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	
-	    return {
-	        repoDetailReducer: state.repoDetailReducer.toJS()
-	    };
+	  return {
+	    repoDetailReducer: state.repoDetailReducer.toJS()
+	  };
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_RepoDetail2.default);
@@ -247,7 +244,7 @@ webpackJsonp([2],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _getPrototypeOf = __webpack_require__(353);
@@ -307,299 +304,298 @@ webpackJsonp([2],{
 	var TABS = [{ key: 'readme', value: 'README' }, { key: 'files', value: 'FILES & DIRECTORIES' }, { key: 'contributors', value: 'CONTRIBUTORS' }, { key: 'languages', value: 'LANGUAGES' }];
 	
 	var RepoDetail = function (_React$Component) {
-	    (0, _inherits3.default)(RepoDetail, _React$Component);
+	  (0, _inherits3.default)(RepoDetail, _React$Component);
 	
-	    function RepoDetail() {
-	        (0, _classCallCheck3.default)(this, RepoDetail);
+	  function RepoDetail() {
+	    (0, _classCallCheck3.default)(this, RepoDetail);
 	
-	        var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RepoDetail.__proto__ || (0, _getPrototypeOf2.default)(RepoDetail)).call(this));
 	
-	        _this.state = {
-	            activeTab: ''
-	        };
-	        _this.wait = false;
+	    _this.state = {
+	      activeTab: ''
+	    };
+	    _this.wait = false;
 	
-	        _this.getProfile = _this.getProfile.bind(_this);
-	        _this.switchTab = _this.switchTab.bind(_this);
-	        _this.refreshContentHeight = _this.refreshContentHeight.bind(_this);
-	        _this.onSectionScroll = _this.onSectionScroll.bind(_this);
-	        return _this;
+	    _this.getProfile = _this.getProfile.bind(_this);
+	    _this.switchTab = _this.switchTab.bind(_this);
+	    _this.refreshContentHeight = _this.refreshContentHeight.bind(_this);
+	    _this.onSectionScroll = _this.onSectionScroll.bind(_this);
+	    return _this;
+	  }
+	
+	  (0, _createClass3.default)(RepoDetail, [{
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      return nextProps.repoDetailReducer != this.props.repoDetailReducer || nextProps.repoDetailData != this.props.repoDetailData || nextState.activeTab != this.state.activeTab;
 	    }
+	  }, {
+	    key: 'onSectionScroll',
+	    value: function onSectionScroll() {
+	      var _this2 = this;
 	
-	    (0, _createClass3.default)(RepoDetail, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
+	      this.lastOffsetTop = this.refs.tabWrapper.parentElement.getBoundingClientRect().top;
+	      if (this.wait === false) {
+	        window.requestAnimationFrame(function () {
+	          if (_this2.lastOffsetTop < 60) {
+	            _this2.refs.tabWrapper.classList.add('fixed');
+	          } else {
+	            _this2.refs.tabWrapper.classList.remove('fixed');
+	          }
+	          _this2.wait = false;
+	        });
+	        this.wait = true;
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this3 = this;
 	
-	            return nextProps.repoDetailReducer != this.props.repoDetailReducer || nextProps.repoDetailData != this.props.repoDetailData || nextState.activeTab != this.state.activeTab;
-	        }
-	    }, {
-	        key: 'onSectionScroll',
-	        value: function onSectionScroll() {
-	            var _this2 = this;
+	      this.scrollDom = document.getElementById('scroll-section');
 	
-	            this.lastOffsetTop = this.refs.tabWrapper.parentElement.getBoundingClientRect().top;
-	            if (this.wait === false) {
-	                window.requestAnimationFrame(function () {
-	                    if (_this2.lastOffsetTop < 60) {
-	                        _this2.refs.tabWrapper.classList.add('fixed');
-	                    } else {
-	                        _this2.refs.tabWrapper.classList.remove('fixed');
-	                    }
-	                    _this2.wait = false;
-	                });
-	                this.wait = true;
-	            }
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this3 = this;
+	      this.scrollDom.addEventListener('scroll', this.onSectionScroll);
 	
-	            this.scrollDom = document.getElementById('scroll-section');
+	      setTimeout(function () {
+	        _this3.getProfile();
+	      }, 300);
+	    }
+	  }, {
+	    key: 'getProfile',
+	    value: function getProfile() {
+	      var _this4 = this;
 	
-	            this.scrollDom.addEventListener('scroll', this.onSectionScroll);
+	      this.props.getRepoPageDetail(this.props.params.username, this.props.params.repoName).done(function () {
+	        return _this4.switchTab({
+	          key: 'readme'
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.clearRepoDetailPage();
 	
-	            setTimeout(function () {
-	                _this3.getProfile();
-	            }, 300);
-	        }
-	    }, {
-	        key: 'getProfile',
-	        value: function getProfile() {
-	            var _this4 = this;
+	      this.scrollDom.removeEventListener('scroll', this.onSectionScroll);
+	    }
+	  }, {
+	    key: 'switchTab',
+	    value: function switchTab(tab) {
+	      var _this5 = this;
 	
-	            this.props.getRepoPageDetail(this.props.params.username, this.props.params.repoName).done(function () {
-	                return _this4.switchTab({
-	                    key: 'readme'
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            this.props.clearRepoDetailPage();
+	      this.setState({
+	        activeTab: tab.key
+	      }, function () {
+	        _this5.refreshContentHeight(tab);
+	      });
+	    }
+	  }, {
+	    key: 'refreshContentHeight',
+	    value: function refreshContentHeight(tab) {
+	      var selectedTab = document.getElementById(tab.key);
+	      var tabContent = document.getElementById('repo-tab-content');
+	      // this.refs.tabContent.
+	      tabContent.style.height = selectedTab.offsetHeight + 30 + 'px';
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this6 = this;
 	
-	            this.scrollDom.removeEventListener('scroll', this.onSectionScroll);
-	        }
-	    }, {
-	        key: 'switchTab',
-	        value: function switchTab(tab) {
-	            var _this5 = this;
-	
-	            this.setState({
-	                activeTab: tab.key
-	            }, function () {
-	                _this5.refreshContentHeight(tab);
-	            });
-	        }
-	    }, {
-	        key: 'refreshContentHeight',
-	        value: function refreshContentHeight(tab) {
-	            var selectedTab = document.getElementById(tab.key);
-	            var tabContent = document.getElementById('repo-tab-content');
-	            // this.refs.tabContent.
-	            tabContent.style.height = selectedTab.offsetHeight + 30 + 'px';
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this6 = this;
-	
-	            var _props$repoDetailRedu = this.props.repoDetailReducer;
-	            var repo = _props$repoDetailRedu.repo;
-	            var readme = _props$repoDetailRedu.readme;
-	            var contribs = _props$repoDetailRedu.contribs;
-	            var contents = _props$repoDetailRedu.contents;
-	            var languages = _props$repoDetailRedu.languages;
-	            var loadFailed = _props$repoDetailRedu.loadFailed;
+	      var _props$repoDetailRedu = this.props.repoDetailReducer;
+	      var repo = _props$repoDetailRedu.repo;
+	      var readme = _props$repoDetailRedu.readme;
+	      var contribs = _props$repoDetailRedu.contribs;
+	      var contents = _props$repoDetailRedu.contents;
+	      var languages = _props$repoDetailRedu.languages;
+	      var loadFailed = _props$repoDetailRedu.loadFailed;
 	
 	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_RepoContent2.default, this.props.repoDetailData || repo),
-	                _react2.default.createElement(
-	                    _reactAddonsCssTransitionGroup2.default,
-	                    {
-	                        className: 'tab-wrapper-transition-group',
-	                        transitionName: 'list',
-	                        transitionAppear: true,
-	                        transitionAppearTimeout: 500,
-	                        transitionEnterTimeout: 500,
-	                        transitionLeaveTimeout: 500
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_RepoContent2.default, this.props.repoDetailData || repo),
+	        _react2.default.createElement(
+	          _reactAddonsCssTransitionGroup2.default,
+	          {
+	            className: 'tab-wrapper-transition-group',
+	            transitionName: 'list',
+	            transitionAppear: true,
+	            transitionAppearTimeout: 500,
+	            transitionEnterTimeout: 500,
+	            transitionLeaveTimeout: 500
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              id: 'repo-tabs-wrapper',
+	              ref: 'tabWrapper'
+	            },
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'repo-tabs' },
+	              TABS.map(function (tab) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  {
+	                    key: tab.key,
+	                    onClick: function onClick() {
+	                      return _this6.switchTab(tab);
 	                    },
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            id: 'repo-tabs-wrapper',
-	                            ref: 'tabWrapper'
-	                        },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { id: 'repo-tabs' },
-	                            TABS.map(function (tab) {
-	                                return _react2.default.createElement(
-	                                    'div',
-	                                    {
-	                                        key: tab.key,
-	                                        onClick: function onClick() {
-	                                            return _this6.switchTab(tab);
-	                                        },
-	                                        className: (0, _classnames2.default)('repo-tab-item', { selected: _this6.state.activeTab === tab.key })
-	                                    },
-	                                    tab.value
-	                                );
-	                            })
-	                        )
-	                    )
-	                ),
-	                loadFailed ? _react2.default.createElement(
-	                    'div',
-	                    { className: 'offline-msg' },
-	                    'You are offline!',
-	                    _react2.default.createElement(
-	                        'div',
-	                        { onClick: this.getProfile(), className: 'blue-link' },
-	                        'Try again'
-	                    )
-	                ) : null,
+	                    className: (0, _classnames2.default)('repo-tab-item', { selected: _this6.state.activeTab === tab.key })
+	                  },
+	                  tab.value
+	                );
+	              })
+	            )
+	          )
+	        ),
+	        loadFailed ? _react2.default.createElement(
+	          'div',
+	          { className: 'offline-msg' },
+	          'You are offline!',
+	          _react2.default.createElement(
+	            'div',
+	            { onClick: this.getProfile(), className: 'blue-link' },
+	            'Try again'
+	          )
+	        ) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { ref: 'tabContent', id: 'repo-tab-content' },
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', 'markdown-body', { show: this.state.activeTab === 'readme' }),
+	              id: 'readme'
+	            },
+	            readme ? _react2.default.createElement(_reactMarkdown2.default, { source: readme }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'files' }),
+	              id: 'files'
+	            },
+	            contents.length ? contents.map(function (content) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: content.sha + content.name, className: 'file-item' },
 	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'file-icon' },
+	                  content.type === 'file' ? _react2.default.createElement('i', { className: 'fa fa-file-text-o' }) : _react2.default.createElement('i', { className: 'fa fa-folder' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'file-info' },
+	                  _react2.default.createElement(
 	                    'div',
-	                    { ref: 'tabContent', id: 'repo-tab-content' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            className: (0, _classnames2.default)('repo-content-item', 'markdown-body', { show: this.state.activeTab === 'readme' }),
-	                            id: 'readme'
-	                        },
-	                        readme ? _react2.default.createElement(_reactMarkdown2.default, { source: readme }) : _react2.default.createElement(
-	                            'div',
-	                            { className: 'empty-data' },
-	                            'No data'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'files' }),
-	                            id: 'files'
-	                        },
-	                        contents.length ? contents.map(function (content) {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                { key: content.sha + content.name, className: 'file-item' },
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'file-icon' },
-	                                    content.type === 'file' ? _react2.default.createElement('i', { className: 'fa fa-file-text-o' }) : _react2.default.createElement('i', { className: 'fa fa-folder' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'file-info' },
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'file-name' },
-	                                        content.name
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'file-date' },
-	                                        content.type === 'file' ? (0, _filesize2.default)(content.size) : null
-	                                    )
-	                                )
-	                            );
-	                        }) : _react2.default.createElement(
-	                            'div',
-	                            { className: 'empty-data' },
-	                            'No data'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'contributors' }),
-	                            id: 'contributors'
-	                        },
-	                        contribs && contribs.length ? contribs.map(function (contrib) {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                { key: contrib.id + contrib.login, className: 'contrib-item' },
-	                                _react2.default.createElement('div', {
-	                                    className: 'contrib-avatar',
-	                                    style: { backgroundImage: 'url(\'' + contrib.avatar_url + '\')' }
-	                                }),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'contrib-info' },
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'contrib-name' },
-	                                        contrib.login
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'contrib-value' },
-	                                        contrib.contributions,
-	                                        ' ',
-	                                        ' ',
-	                                        'contribution',
-	                                        contrib.contributions === 1 ? '' : 's'
-	                                    )
-	                                )
-	                            );
-	                        }) : _react2.default.createElement(
-	                            'div',
-	                            { className: 'empty-data' },
-	                            'No data'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        {
-	                            className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'languages' }),
-	                            id: 'languages'
-	                        },
-	                        languages.length ? languages.map(function (language) {
-	                            return _react2.default.createElement(
-	                                'div',
-	                                { key: language.name, className: 'lang-item' },
-	                                _react2.default.createElement('div', {
-	                                    className: 'lang-color',
-	                                    style: { backgroundColor: (0, _languageColor2.default)(language.name) }
-	                                }),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'lang-info' },
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'lang-name' },
-	                                        language.name
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'lang-value' },
-	                                        language.value,
-	                                        '%'
-	                                    )
-	                                )
-	                            );
-	                        }) : _react2.default.createElement(
-	                            'div',
-	                            { className: 'empty-data' },
-	                            'No data'
-	                        )
-	                    )
+	                    { className: 'file-name' },
+	                    content.name
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'file-date' },
+	                    content.type === 'file' ? (0, _filesize2.default)(content.size) : null
+	                  )
 	                )
-	            );
-	        }
-	    }]);
-	    return RepoDetail;
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'contributors' }),
+	              id: 'contributors'
+	            },
+	            contribs && contribs.length ? contribs.map(function (contrib) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: contrib.id + contrib.login, className: 'contrib-item' },
+	                _react2.default.createElement('div', {
+	                  className: 'contrib-avatar',
+	                  style: { backgroundImage: 'url(\'' + contrib.avatar_url + '\')' }
+	                }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'contrib-info' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'contrib-name' },
+	                    contrib.login
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'contrib-value' },
+	                    contrib.contributions,
+	                    ' ',
+	                    ' ',
+	                    'contribution',
+	                    contrib.contributions === 1 ? '' : 's'
+	                  )
+	                )
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: (0, _classnames2.default)('repo-content-item', { show: this.state.activeTab === 'languages' }),
+	              id: 'languages'
+	            },
+	            languages.length ? languages.map(function (language) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: language.name, className: 'lang-item' },
+	                _react2.default.createElement('div', {
+	                  className: 'lang-color',
+	                  style: { backgroundColor: (0, _languageColor2.default)(language.name) }
+	                }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'lang-info' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'lang-name' },
+	                    language.name
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'lang-value' },
+	                    language.value,
+	                    '%'
+	                  )
+	                )
+	              );
+	            }) : _react2.default.createElement(
+	              'div',
+	              { className: 'empty-data' },
+	              'No data'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return RepoDetail;
 	}(_react2.default.Component);
 	
 	RepoDetail.propTypes = {
-	    repoDetailReducer: _react2.default.PropTypes.object.isRequired,
-	    getRepoPageDetail: _react2.default.PropTypes.func.isRequired,
-	    clearRepoDetailPage: _react2.default.PropTypes.func.isRequired
+	  repoDetailReducer: _react2.default.PropTypes.object.isRequired,
+	  getRepoPageDetail: _react2.default.PropTypes.func.isRequired,
+	  clearRepoDetailPage: _react2.default.PropTypes.func.isRequired
 	};
 	exports.default = RepoDetail;
 
@@ -40523,7 +40519,7 @@ webpackJsonp([2],{
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _defineProperty2 = __webpack_require__(332);
@@ -40544,80 +40540,76 @@ webpackJsonp([2],{
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function clearRepoDetailPage() {
-	    return function (dispatch, getState) {
-	
-	        return dispatch({ type: _types.CLEAR_REPO_DETAIL_PAGE });
-	    };
+	  return function (dispatch, getState) {
+	    return dispatch({ type: _types.CLEAR_REPO_DETAIL_PAGE });
+	  };
 	}
 	
 	var initialState = (0, _immutable.fromJS)({
-	    startPosition: { top: 0, left: 0, right: 0 },
-	    repoData: {},
+	  startPosition: { top: 0, left: 0, right: 0 },
+	  repoData: {},
 	
-	    loadFailed: false,
-	    repo: {},
-	    readme: '',
-	    contribs: [],
-	    contents: [],
-	    languages: []
+	  loadFailed: false,
+	  repo: {},
+	  readme: '',
+	  contribs: [],
+	  contents: [],
+	  languages: []
 	});
 	
 	// ------------------------------------
 	// Action Handlers
 	// ------------------------------------
 	var ACTION_HANDLERS = (_ACTION_HANDLERS = {}, (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.DETAIL_TRANSITION_DATA, function (state, action) {
-	
-	    return state.merge({
-	        startPosition: action.startPosition,
-	        repoData: action.repoData
-	    });
+	  return state.merge({
+	    startPosition: action.startPosition,
+	    repoData: action.repoData
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.REPO_DETAIL_REQUEST_PAGE_FAILED, function (state, action) {
-	
-	    return state.merge({
-	        loadFailed: true
-	    });
+	  return state.merge({
+	    loadFailed: true
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.REPO_DETAIL_RECEIVED_ALL, function (state, action) {
-	    var _action$data = action.data;
-	    var repo = _action$data.repo;
-	    var readme = _action$data.readme;
-	    var contribs = _action$data.contribs;
-	    var contents = _action$data.contents;
-	    var languages = _action$data.languages;
+	  var _action$data = action.data;
+	  var repo = _action$data.repo;
+	  var readme = _action$data.readme;
+	  var contribs = _action$data.contribs;
+	  var contents = _action$data.contents;
+	  var languages = _action$data.languages;
 	
 	
-	    return state.merge({
-	        loadFailed: false,
-	        repo: repo,
-	        readme: readme,
-	        contribs: contribs,
-	        contents: contents,
-	        languages: languages
-	    });
+	  return state.merge({
+	    loadFailed: false,
+	    repo: repo,
+	    readme: readme,
+	    contribs: contribs,
+	    contents: contents,
+	    languages: languages
+	  });
 	}), (0, _defineProperty3.default)(_ACTION_HANDLERS, _types.CLEAR_REPO_DETAIL_PAGE, function (state, action) {
-	
-	    return state.merge({
-	        loadFailed: false,
-	        repo: {},
-	        readme: '',
-	        contribs: [],
-	        contents: [],
-	        languages: []
-	    });
+	  return state.merge({
+	    loadFailed: false,
+	    repo: {},
+	    readme: '',
+	    contribs: [],
+	    contents: [],
+	    languages: []
+	  });
 	}), _ACTION_HANDLERS);
 	
 	// ------------------------------------
 	// Reducer
 	// ------------------------------------
 	function moduleReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	    var action = arguments[1];
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
 	
-	    var handler = ACTION_HANDLERS[action.type];
+	  var handler = ACTION_HANDLERS[action.type];
 	
-	    return handler ? handler(state, action) : state;
+	  return handler ? handler(state, action) : state;
 	}
 
 /***/ }
 
 });
-//# sourceMappingURL=2.repoDetailReducer.c9550d49886c3ded97a8.js.map
+//# sourceMappingURL=2.repoDetailReducer.97f8e458683d63ba1436.js.map
